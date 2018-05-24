@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: lp-clj
+# key: lp-clj
+# --
+
+#+BEGIN_SRC clojure :exports code :session ${1:tangrammer}  :padline yes :mkdirp yes :tangle `(path* 0)`generated/${2:src}${3:`(path* 1)`}${4:`(path* 2)`}.clj
+(ns ${5:`(mapconcat 'identity (append (butlast (cdr (split-string (path* 1) "/"))) (list (path* 2)) ) "." )`})
+$6
+#+END_SRC

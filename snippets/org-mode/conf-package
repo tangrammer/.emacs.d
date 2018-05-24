@@ -1,0 +1,9 @@
+# key: conf-pk
+# name: conf-package
+# --
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p '$1)
+  (package-install '$1))
+(require '$1)
+#+END_SRC
+

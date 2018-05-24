@@ -1,0 +1,4 @@
+* .emacs.d
+this is my emacs config in literate programming :)
+
+

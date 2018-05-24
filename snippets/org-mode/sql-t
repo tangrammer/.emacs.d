@@ -1,0 +1,6 @@
+# key: sql-t
+# name: sql-t
+# --
+ #+BEGIN_SRC sql :exports both :database lumen_tenant_1
+    SET search_path TO ${1:public};	 
+ #+END_SRC

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: lumen-clj
+# key: lum
+# --
+
+#+BEGIN_SRC clojure :exports both :results value pp :session ${1:lumen} :padline yes :mkdirp yes 
+
+#+END_SRC
