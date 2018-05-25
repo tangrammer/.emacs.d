@@ -2,6 +2,6 @@
 # name: lp-conf
 # key: conf
 # --
-#+BEGIN_SRC emacs-lisp :results ${1:none} 
+#+BEGIN_SRC emacs-lisp :results ${1:silent} 
 $2
 #+END_SRC
