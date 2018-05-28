@@ -3,8 +3,7 @@ It's Magit! A Git porcelain inside Emacs. https://magit.vc
 
 Magit is an interface to the version control system Git, implemented as an Emacs package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. (more)
 
-
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp  :results silent
 (unless (package-installed-p 'magit)
   (package-install 'magit))
 (require 'magit)
@@ -442,6 +441,18 @@ https://ebzzry.github.io/emacs-pairs.html
 
 
 
+** imenu
+
+https://www.emacswiki.org/emacs/ImenuMode
+Imenu produces menus for accessing locations in documents, typically in the current buffer. You can access the locations using an ordinary menu (menu bar or other) or using minibuffer completion.
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(global-set-key (kbd "C-x C-i") 'imenu)
+
+#+END_SRC
+
+
 * org + clojure 
  #+BEGIN_SRC emacs-lisp 
 (require 'ob-clojure)
@@ -470,7 +481,7 @@ https://ebzzry.github.io/emacs-pairs.html
 
 * org & org-babel
 settings taken from [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/][http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/]]
-#+BEGIN_SRC emacs-lisp  
+#+BEGIN_SRC emacs-lisp  :results silent
 
 (require 'ob-dot)
 
@@ -495,8 +506,20 @@ settings taken from [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emac
 
 #+END_SRC
 
-#+RESULTS:
-: t
+
+
+** emacs-htmlize
+lets org to expor in html
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'htmlize)
+  (package-install 'htmlize))
+(require 'htmlize)
+#+END_SRC
+
+
+
+** toc-org
+generating tocs dynamically based on headings
 
 #+BEGIN_SRC emacs-lisp :results silent
 (unless (package-installed-p 'toc-org)
@@ -566,8 +589,10 @@ if you have any problem with it you should take a look to
 
 (defun nrepl-reset ()
   (interactive)
-  (cider-execute "(reset)"))
+  (cider-execute "(refresh)"))
+
 (define-key cider-mode-map (kbd "C-c r") 'nrepl-reset)
+(define-key cider-repl-mode-map (kbd "C-c r") 'nrepl-reset)
 
 (defun nrepl-test ()
   (interactive)
