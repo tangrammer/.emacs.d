@@ -583,11 +583,23 @@ if you have any problem with it you should take a look to
 
 (setq nrepl-log-messages t) 
 
+(setq cider-repl-scroll-on-output nil)
+(setq cider-show-eval-spinner nil)
 
 #+END_SRC
 
-#+RESULTS:
-: nrepl-test
+** lumen
+ #+BEGIN_SRC emacs-lisp :results silent 
+ (defun connect-lument-repl ()
+   (interactive)
+   (cider-connect "localhost" "47480" "~/git/akvo/akvo-lumen/backend"))
+ (define-key global-map (kbd "C-c l") 'connect-lument-repl)
+
+
+ #+END_SRC
+
+
+ #+RESULTS:
 
 ** hugslq
 #+BEGIN_SRC emacs-lisp :results silent 
