@@ -13,11 +13,6 @@ Magit is an interface to the version control system Git, implemented as an Emacs
 #+END_SRC
 
 
-
-#+RESULTS:
-: magit-status
- 
-
 * IDO
 #+BEGIN_SRC emacs-lisp :results silent
 
@@ -47,43 +42,43 @@ ido completion.  The buffer needs to have support for imenu already enabled.
 
 ** general configs
  #+BEGIN_SRC emacs-lisp :results silent
- ;; remove tool-bar
- (tool-bar-mode 0)
+  ;; remove tool-bar
+  (tool-bar-mode 0)
 
-;; How can I replace highlighted text with what I type?
-;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
-(delete-selection-mode 1)
+ ;; How can I replace highlighted text with what I type?
+ ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+ (delete-selection-mode 1)
 
- (set-face-attribute 'default nil :height 140)
+  (set-face-attribute 'default nil :height 140)
 
- ;; Set the default comment column to 70
+  ;; Set the default comment column to 70
 
- (setq-default comment-column 70)
+  (setq-default comment-column 70)
 
- (set-language-environment "UTF-8")
+  (set-language-environment "UTF-8")
 
- ;; Every time a window is started, make sure it get maximized
+  ;; Every time a window is started, make sure it get maximized
 
- (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-
- ;; switch to other frame http://stackoverflow.com/questions/93058/emacs-switching-to-another-frame-mac-os-x
- (global-set-key (kbd "M-o") 'other-frame)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
- ;; save all open buffers
- (global-set-key
-  (kbd "C-X C-S")
-  (lambda ()
-    (interactive)
-    (save-some-buffers t)))
+  ;; switch to other frame http://stackoverflow.com/questions/93058/emacs-switching-to-another-frame-mac-os-x
+  (global-set-key (kbd "M-o") 'other-frame)
 
 
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
+  ;; save all open buffers
+  (global-set-key
+   (kbd "C-X C-S")
+   (lambda ()
+     (interactive)
+     (save-some-buffers t)))
+
+
+ (setq redisplay-dont-pause t
+       scroll-margin 1
+       scroll-step 1
+       scroll-conservatively 10000
+       scroll-preserve-screen-position 1)
 
 
  #+END_SRC
@@ -241,6 +236,7 @@ A utility for quickly navigating Emacs windows
  (setq mac-option-modifier 'none)
  #+END_SRC
 
+
 * emacs help :) find things 
 
 http://emacsredux.com/blog/2016/02/14/look-up-the-keybindings-for-some-command/
@@ -288,6 +284,7 @@ YASnippet. Watch [a demo on YouTube][youtube-demo].
 (which-key-setup-side-window-right)
 #+END_SRC
  
+
 * editing code
 
 ** company mode
@@ -532,6 +529,8 @@ generating tocs dynamically based on headings
 
 
 
+
+
 * clojure!
 if you have any problem with it you should take a look to 
 (find-function 'org-babel-execute:clojure)
@@ -589,14 +588,15 @@ if you have any problem with it you should take a look to
 
 (defun nrepl-reset ()
   (interactive)
-  (cider-execute "(refresh)"))
+  (cider-execute "(clojure.tools.namespace.repl/refresh)"))
 
 (define-key cider-mode-map (kbd "C-c r") 'nrepl-reset)
 (define-key cider-repl-mode-map (kbd "C-c r") 'nrepl-reset)
 
 (defun nrepl-test ()
   (interactive)
-  (cider-execute "(test)"))
+  (nrepl-reset)
+  (cider-execute "(duct.util.repl/test)"))
 (define-key cider-mode-map (kbd "C-c t") 'nrepl-test)
 
 
@@ -612,6 +612,8 @@ if you have any problem with it you should take a look to
 (setq cider-show-eval-spinner nil)
 
 #+END_SRC
+
+#+RESULTS:
 
 ** lumen
  #+BEGIN_SRC emacs-lisp :results silent 
@@ -649,11 +651,17 @@ if you have any problem with it you should take a look to
 
 
 * agenda
+[[http://sachachua.com/blog/2008/01/tagging-in-org-plus-bonus-code-for-timeclocks-and-tags/][intro to agenda tags]]
+Examples of matching tags
+~tag1&tag2~: tag 1 and tag 2 
+~tag1-tag2~: tag1 minnus tag2
+~tag1|tag2~: tag1 or tag2
+
 #+BEGIN_SRC emacs-lisp :results silent
 
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (list "~/git/orgs"))
+(setq org-agenda-files (list "~/git/akvo/akvo-lumen/backend/specs"))
 
 #+END_SRC
 
@@ -907,9 +915,13 @@ https://github.com/syohex/emacs-helm-open-github
 
 #+END_SRC
 
-* md
+* md                                                               :markdown:
 #+BEGIN_SRC emacs-lisp :results silent 
 ;; (eval-after-load "org"
 ;;  '(require 'ox-gfm nil t))
 
 #+END_SRC
+
+
+ 
+

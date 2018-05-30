@@ -1,3 +1,6 @@
 *.html
 /network-security.data
 elpa/
+/ido.last
+/projectile-bookmarks.eld
+/.org-id-locations

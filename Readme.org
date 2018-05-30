@@ -1,4 +1,18 @@
 * .emacs.d
 this is my emacs config in literate programming :)
 
+***  emacs installed following this steps
+  https://stackoverflow.com/a/44094859/1074389
+
+#+BEGIN_SRC shell :exports code :results silent  :padline yes :mkdirp yes 
+
+   brew uninstall emacs
+   brew cleanup
+   brew doctor
+   brew update
+   brew upgrade
+   brew install emacs --with-cocoa --with-gnutls --with-rsvg --with-imagemagick
+
+#+END_SRC
+
 

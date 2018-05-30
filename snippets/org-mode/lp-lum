@@ -3,6 +3,6 @@
 # key: lum
 # --
 
-#+BEGIN_SRC clojure :exports both :results value pp :session ${1:lumen} :padline yes :mkdirp yes 
+#+BEGIN_SRC clojure :exports both :results silent :session ${1:lumen} :padline yes :mkdirp yes :tangle ../src/akvo/lumen/$2.clj
 
 #+END_SRC
