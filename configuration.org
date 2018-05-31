@@ -45,11 +45,7 @@ ido completion.  The buffer needs to have support for imenu already enabled.
   ;; remove tool-bar
   (tool-bar-mode 0)
 
- ;; How can I replace highlighted text with what I type?
- ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
- (delete-selection-mode 1)
-
-  (set-face-attribute 'default nil :height 140)
+  (set-face-attribute 'default nil :height 180)
 
   ;; Set the default comment column to 70
 
@@ -287,6 +283,17 @@ YASnippet. Watch [a demo on YouTube][youtube-demo].
 
 * editing code
 
+** replace highlighted text with what I type
+
+ https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+
+#+BEGIN_SRC emacs-lisp :results silent 
+ (delete-selection-mode 1)
+#+END_SRC
+
+
+
+
 ** company mode
 http://company-mode.github.io/
 #+BEGIN_SRC emacs-lisp 
@@ -447,6 +454,13 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 
 (global-set-key (kbd "C-x C-i") 'imenu)
 
+#+END_SRC
+
+
+* org
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(add-hook 'org-mode-hook 'visual-line-mode)
 #+END_SRC
 
 
