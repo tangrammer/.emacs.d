@@ -1,0 +1,7 @@
+# key: spec-example
+# name: spec-example
+# --
+*** :akvo.lumen.$1/$2
+#+BEGIN_SRC clojure :exports results :results value pp :session lumen :padline yes :mkdirp yes 
+(akvo.lumen.spec/example :akvo.lumen.$1/$2)
+#+END_SRC
