@@ -463,6 +463,23 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 (add-hook 'org-mode-hook 'visual-line-mode)
 #+END_SRC
 
+** TODO all org subheadings in imenu
+
+#+BEGIN_SRC emacs-lisp :results silent 
+ (describe-variable 'org-goto-interface ) 
+ (describe-variable 'org-outline-path-complete-in-steps ) 
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(setq org-goto-interface 'outline-path-completionp)
+(setq org-outline-path-complete-in-steps nil)
+
+#+END_SRC
+
+
+
+https://emacs.stackexchange.com/a/20762/13373
 
 * org + clojure 
  #+BEGIN_SRC emacs-lisp 
