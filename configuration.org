@@ -13,6 +13,8 @@ Magit is an interface to the version control system Git, implemented as an Emacs
 #+END_SRC
 
 
+
+
 * IDO
 #+BEGIN_SRC emacs-lisp :results silent
 
@@ -37,6 +39,12 @@ ido completion.  The buffer needs to have support for imenu already enabled.
 
 
 
+
+** TODO ido-completing-read+
+https://github.com/DarwinAwardWinner/ido-completing-read-plus
+
+** repeat last command
+https://www.google.es/search?safe=active&ei=t4ASW8D6B4rWwQLwuoagAQ&q=emacs+repeta+last+command&oq=emacs+repeta+last+command&gs_l=psy-ab.3..0i7i30k1l2j0i8i7i30k1.13072.13694.0.13820.6.6.0.0.0.0.141.359.0j3.3.0....0...1c.1.64.psy-ab..3.3.357....0.OfBHlV7eS4I
 
 * configure UI
 
@@ -224,6 +232,9 @@ A utility for quickly navigating Emacs windows
  (projectile-global-mode)
  #+END_SRC
 
+*** Display a list of all files in the project. With a prefix argument it will clear the cache first.
+
+    ~C-c p f~
 ** configure OSX keyboard 
  #+BEGIN_SRC emacs-lisp
  ;; osx keys
@@ -445,7 +456,7 @@ https://ebzzry.github.io/emacs-pairs.html
 
 
 
-** imenu
+** imenu                                                         :suggestion:
 
 https://www.emacswiki.org/emacs/ImenuMode
 Imenu produces menus for accessing locations in documents, typically in the current buffer. You can access the locations using an ordinary menu (menu bar or other) or using minibuffer completion.
@@ -457,13 +468,103 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 #+END_SRC
 
 
-* org
 
-#+BEGIN_SRC emacs-lisp :results silent 
-(add-hook 'org-mode-hook 'visual-line-mode)
+* UI: executing commands
+  https://github.com/lewang/command-log-mode
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'command-log-mode)
+  (package-install 'command-log-mode))
+(require 'command-log-mode)
 #+END_SRC
 
-** TODO all org subheadings in imenu
+** TODO lively : repeat last command
+   I had this cool functionality in emacs live ... still needs a bit of work to setup
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'lively)
+  (package-install 'lively))
+(require 'lively)
+#+END_SRC
+
+* UI: pattern search 
+https://github.com/abo-abo/swiper
+
+flexible, simple tools for minibuffer completion in Emacs
+
+This repository contains:
+
+Ivy, a generic completion mechanism for Emacs.
+
+Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
+
+Swiper, an Ivy-enhanced alternative to isearch.
+
+
+** ivy
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'ivy)
+   (package-install 'ivy))
+ (require 'ivy)
+ #+END_SRC
+
+
+** counsel
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'counsel)
+  (package-install 'counsel))
+(require 'counsel)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+
+#+END_SRC
+
+
+
+** swipper
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'swiper)
+   (package-install 'swiper))
+ (require 'swiper)
+ (ivy-mode 1)
+ (setq ivy-use-virtual-buffers t)
+ (setq enable-recursive-minibuffers t)
+ (global-set-key "\C-s" 'swiper)
+
+ #+END_SRC
+
+
+
+* org
+
+** powerline :: better headings
+ [[https://github.com/milkypostman/powerline][Emacs version of the Vim powerline.]] 
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'powerline)
+   (package-install 'powerline))
+ (require 'powerline)
+ #+END_SRC
+
+
+** wrap lines => Visual line mode
+ #+BEGIN_SRC emacs-lisp :results silent 
+ (add-hook 'org-mode-hook 'visual-line-mode)
+ #+END_SRC
+
+
+** better org bullets => org-bullets
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'org-bullets)
+  (package-install 'org-bullets))
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+#+END_SRC
+
+
+
+** all org subheadings in imenu => ~org-goto-interface~
 
 #+BEGIN_SRC emacs-lisp :results silent 
  (describe-variable 'org-goto-interface ) 
@@ -480,6 +581,7 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 
 
 https://emacs.stackexchange.com/a/20762/13373
+
 
 * org + clojure 
  #+BEGIN_SRC emacs-lisp 
