@@ -1,17 +1,29 @@
-* (ma)git
-It's Magit! A Git porcelain inside Emacs. https://magit.vc
 
-Magit is an interface to the version control system Git, implemented as an Emacs package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. (more)
+* git
 
-#+BEGIN_SRC emacs-lisp  :results silent
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
-(require 'magit)
+** (ma)git
+ It's Magit! A Git porcelain inside Emacs. https://magit.vc
 
-(global-set-key (kbd "C-x g") 'magit-status)
+ Magit is an interface to the version control system Git, implemented as an Emacs package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. (more)
+
+ #+BEGIN_SRC emacs-lisp  :results silent
+ (unless (package-installed-p 'magit)
+   (package-install 'magit))
+ (require 'magit)
+
+ (global-set-key (kbd "C-x g") 'magit-status)
+
+ #+END_SRC
+
+
+
+** git-link
+https://github.com/sshaw/git-link
+#+BEGIN_SRC emacs-lisp :results silent
+(load-library "git-link/git-link")
+(require 'git-link)
 
 #+END_SRC
-
 
 
 
@@ -649,6 +661,7 @@ lets org to expor in html
 
 
 ** toc-org
+
 generating tocs dynamically based on headings
 
 #+BEGIN_SRC emacs-lisp :results silent
@@ -661,6 +674,27 @@ generating tocs dynamically based on headings
 #+END_SRC
 
 
+
+
+** tangle append 
+I paste here an option to work with but there is another approach called noweb-ref
+https://emacs.stackexchange.com/questions/28098/how-to-change-org-mode-babel-tangle-write-to-file-way-as-append-instead-of-overr
+#+BEGIN_SRC emacs-lisp :results silent 
+(defun org-babel-tangle-append ()
+  "Append source code block at point to its tangle file.
+The command works like `org-babel-tangle' with prefix arg
+but `delete-file' is ignored."
+  (interactive)
+  (cl-letf (((symbol-function 'delete-file) #'ignore))
+    (org-babel-tangle '(4))))
+
+(defun org-babel-tangle-append-setup ()
+  "Add key-binding C-c C-v C-t for `org-babel-tangle-append'."
+  (org-defkey org-mode-map (kbd "C-c C-v +") 'org-babel-tangle-append))
+
+(add-hook 'org-mode-hook #'org-babel-tangle-append-setup)
+
+#+END_SRC
 
 
 

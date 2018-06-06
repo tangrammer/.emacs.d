@@ -8,7 +8,9 @@
 ;; * use my orgmode 
 ;; _(to fix babel + clojure)_ 
 ;; Download from [[https://orgmode.org/][orgmode]] the zip and point it in the following line 
-(add-to-list 'load-path "/Users/tangrammer/tools/org-9.1.13/lisp") 
+(add-to-list 'load-path "/Users/tangrammer/tools/org-9.1.13/lisp")
+(add-to-list 'load-path "~/.emacs.d/local/")
+
 (require 'org)
 (setq org-edit-src-content-indentation 0
       org-src-tab-acts-natively t
@@ -33,4 +35,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (json-mode htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit yasnippet which-key macrostep cider))))
+    (counsel swiper ivy lively command-log-mode w3 powerline org-bullets json-mode htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit yasnippet which-key macrostep cider))))
