@@ -871,7 +871,14 @@ added https://github.com/bluekezza/clj-stable-pprint to get pprint map data sort
  #+BEGIN_SRC emacs-lisp :results silent 
  (defun connect-lument-repl ()
    (interactive)
-   (cider-connect "localhost" "47480" "~/git/akvo/akvo-lumen/backend")
+   ;;(cider-connect  "47480" "~/git/akvo/akvo-lumen/backend")
+   (cider-nrepl-connect
+    (list :host "localhost" :port "47480"
+	  :repl-type "clj"
+	  :repl-init-function nil
+	  :session-name nil
+	  :project-dir "~/git/akvo/akvo-lumen/backend"))
+
    (cider-interactive-eval "(require '[clj-stable-pprint.core :as spp])"))
 
  (define-key global-map (kbd "C-c l") 'connect-lument-repl)
