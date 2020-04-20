@@ -36,7 +36,7 @@
 * beep / ding /alarm
 https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows
 #+BEGIN_SRC emacs-lisp :results silent
-(setq visible-bell 1)
+(setq visible-bell 0)
 #+END_SRC
 
 
@@ -566,6 +566,11 @@ https://ebzzry.github.io/emacs-pairs.html
 #+RESULTS:
 : live-paredit-delete-horizontal-space
 
+** paredit + lisp
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(add-hook 'elisp-mode-hook #'paredit-mode)
+#+END_SRC
 
 
 
@@ -580,6 +585,18 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 
 #+END_SRC
 
+
+
+*** imenu-toggle-show bar C-'
+ #+BEGIN_SRC emacs-lisp :results silent 
+ (use-package imenu-list
+   :ensure t
+   :bind (("C-'" . imenu-list-smart-toggle))
+   :config
+   (setq imenu-list-focus-after-activation t
+         imenu-list-auto-resize nil))
+
+ #+END_SRC
 
 
 
@@ -1084,13 +1101,27 @@ Examples of matching tags
 
 #+END_SRC
 
+** formatting
+#+BEGIN_SRC emacs-lisp
+(defun org-bolder (n)
+  (interactive "p")
+  (when (use-region-p)
+    (save-excursion
+      (goto-char (region-beginning))
+      (insert "*")
+      (line-beginning-position))
+    (save-excursion
+      (goto-char (region-end))
+      (insert "*")
+      (line-end-position))))
+(define-key org-mode-map "\C-cb" 'org-bolder)
+#+END_SRC
 
 ** capture
 #+BEGIN_SRC emacs-lisp :results silent 
 (setq org-default-notes-file "~/git/orgs/gtd/notes.org")
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/git/orgs/gtd/notes.org" "Tasks")
-                               "* TODO %i%?")
+(setq org-capture-templates '(("t" "Todo" entry (file+headline "~/git/orgs/gtd/notes.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
                               ("T" "Tickler" entry
                                (file+headline "~/git/orgs/gtd/tickler.org" "Tickler")
                                "* %i%? \n %U")))
@@ -1244,6 +1275,38 @@ https://github.com/syohex/emacs-helm-open-github
 (unless (package-installed-p 'logview)
   (package-install 'logview))
 (require 'logview)
+#+END_SRC
+
+
+
+
+* java
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'meghanada)
+  (package-install 'meghanada))
+(require 'meghanada)
+(add-hook 'java-mode-hook
+          (lambda ()
+            ;; meghanada-mode on
+            (meghanada-mode t)
+            ;; enable telemetry
+            (meghanada-telemetry-enable t)
+            (flycheck-mode +1)
+            (setq c-basic-offset 2)
+            ;; use code format
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+(cond
+   ((eq system-type 'windows-nt)
+    (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
+    (setq meghanada-maven-path "mvn.cmd"))
+   (t
+    (setq meghanada-java-path "java")
+    (setq meghanada-maven-path "mvn")))
+(add-hook 'meghanada-mode-hook 'hs-minor-mode)
+
+
 #+END_SRC
 
 
@@ -1455,3 +1518,32 @@ emacs client :) https://github.com/mpdel/mpdel
 
 
 
+
+
+
+* k8s 
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'kubernetes)
+  (package-install 'kubernetes))
+(require 'kubernetes)
+#+END_SRC
+
+
+* outline
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'imenu-list)
+  (package-install 'imenu-list))
+(require 'imenu-list)
+#+END_SRC
+
+
+* TODO transparency quil video
+#+BEGIN_SRC 
+(set-frame-parameter (selected-frame) 'alpha '(50 . 50))
+ (add-to-list 'default-frame-alist '(alpha . (50 . 50)))
+
+#+END_SRC
+
+* rewrite M-x
+source [[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/simple.el.gz::1805][simple.el]] found it via ~(describe-key)~
