@@ -11,6 +11,9 @@
 (add-to-list 'load-path "/Users/tangrammer/tools/org-9.1.13/lisp")
 (add-to-list 'load-path "~/.emacs.d/local/")
 
+(package-initialize)
+(package-refresh-contents)
+
 (require 'org)
 (setq org-edit-src-content-indentation 0
       org-src-tab-acts-natively t
