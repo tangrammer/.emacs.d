@@ -1,7 +1,10 @@
 * .emacs.d
-this is my emacs config in literate programming :)
+*mainly* this repo contains my current emacs config
 
-***  emacs installed following this steps
+right now configuration is written with literate programming approach, [[https://github.com/tangrammer/.emacs.d/blob/master/init.el#L26-L33][using org-mode and babel, in several files]] organized with [[https://github.com/tangrammer/.emacs.d/blob/master/configuration/.dir-locals.el#L1-L2][org-roam]]
+
+
+***  I installed emacs following this steps
   https://stackoverflow.com/a/44094859/1074389
 
 #+BEGIN_SRC shell :exports code :results silent  :padline yes :mkdirp yes 
