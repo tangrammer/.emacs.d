@@ -1,0 +1,55 @@
+#+TITLE: utils
+
+** paths
+#+BEGIN_SRC emacs-lisp :results silent 
+(defun path-data*()
+  (let* ((fnnd (file-name-nondirectory  (buffer-file-name)))
+	(fnse (file-name-sans-extension fnnd))
+	(bfn (buffer-file-name))
+	(cpd (clojure-project-dir))
+	(frn (file-relative-name bfn cpd))
+	(path (replace-regexp-in-string  "src" "" frn))
+	(path* (replace-regexp-in-string fnnd "" path))
+	(res (list cpd  path* fnse )))
+    res))
+
+
+(defun path*(place)
+   (nth place (path-data*)))
+
+#+END_SRC
+
+
+
+* WAITING save alias function
+  #+BEGIN_SRC  :eval never
+
+  (get-buffer "yupie")
+
+  (defmacro inc (f-name var)
+    ``(defun ,(make-symbol ,f-name) ()
+        (interactive)
+        (call-interactively ',,var)))
+
+  (inc "s" last-command)
+
+  (make-symbol "s")
+
+  (defun to-string (x)
+    (format "%s" x))
+
+  (defun write-fun (s)
+    (interactive "sFunction name:")
+    (with-current-buffer "funs.el"
+      (newline)
+      (insert (to-string (inc s last-command)))
+      (elisp-format-buffer)
+      (save-buffer)
+      )  
+    )
+
+
+  #+END_SRC
+
+
+  

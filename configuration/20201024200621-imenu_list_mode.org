@@ -1,0 +1,15 @@
+#+TITLE: imenu-list-mode
+[[file:20201024180511-minor_mode.org][minor-mode]]  [[file:20201024200935-imenu_mode.org][imenu-mode]]
+
+https://github.com/bmag/imenu-list
+
+Emacs plugin to show the current buffer's imenu entries in a seperate buffer
+
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'imenu-list)
+  (package-install 'imenu-list))
+(require 'imenu-list)
+#+END_SRC
+

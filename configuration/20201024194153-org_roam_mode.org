@@ -1,0 +1,16 @@
+#+TITLE: org-roam-mode
+[[file:20201024180511-minor_mode.org][minor-mode]]
+
+https://github.com/jethrokuan/org-roam
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'org-roam)
+  (package-install 'org-roam))
+(require 'org-roam)
+
+
+(add-hook 'after-init-hook 'org-roam-mode)
+;;(make-directory "~/org-roam")
+(setq org-roam-directory "~/org-roam")
+
+#+END_SRC
+

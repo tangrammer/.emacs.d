@@ -1,0 +1,9 @@
+#+TITLE: markdown
+[[file:20201024172354-coding.org][coding]]
+
+#+BEGIN_SRC emacs-lisp :results silent 
+;; (eval-after-load "org"
+;;  '(require 'ox-gfm nil t))
+
+#+END_SRC
+

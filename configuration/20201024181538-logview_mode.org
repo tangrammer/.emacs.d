@@ -1,0 +1,9 @@
+#+TITLE: logview-mode
+[[file:20201024180311-major_mode.org][major-mode]] [[file:20201024192916-logs.org][logs]]
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'logview)
+  (package-install 'logview))
+(require 'logview)
+#+END_SRC
+

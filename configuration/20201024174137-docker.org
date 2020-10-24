@@ -1,0 +1,16 @@
+#+TITLE: docker
+[[file:20201024172152-devops.org][devops]]
+
+#+BEGIN_SRC emacs-lisp 
+    (require 'tramp)
+
+#+END_SRC
+
+https://github.com/emacs-pe/docker-tramp.el
+#+BEGIN_SRC emacs-lisp :results silent
+(load-library "docker-tramp.el/docker-tramp.el")
+    (require 'docker-tramp)
+
+
+#+END_SRC
+

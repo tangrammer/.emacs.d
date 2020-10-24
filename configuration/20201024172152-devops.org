@@ -1,0 +1,3 @@
+#+TITLE: devops
+
+[[file:20201024172202-kubernetes.org][kubernetes]]

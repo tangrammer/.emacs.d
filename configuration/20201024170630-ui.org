@@ -1,0 +1,130 @@
+#+TITLE: UI
+[[file:20201024171113-toolbar.org][toolbar]] [[file:20201024170827-themes.org][themes]] [[file:20201024170950-keyboard.org][keyboard]] [[file:20201024171113-toolbar.org][toolbar]]
+
+* configure UI
+
+** general configs
+
+ #+BEGIN_SRC emacs-lisp :results silent
+
+  (set-face-attribute 'default nil :height 180)
+
+  ;; Set the default comment column to 70
+
+  (setq-default comment-column 70)
+
+  (set-language-environment "UTF-8")
+
+  ;; Every time a window is started, make sure it get maximized
+
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+
+  ;; switch to other frame http://stackoverflow.com/questions/93058/emacs-switching-to-another-frame-mac-os-x
+  (global-set-key (kbd "M-o") 'other-frame)
+
+
+  ;; save all open buffers
+  (global-set-key
+   (kbd "C-X C-S")
+   (lambda ()
+     (interactive)
+     (save-some-buffers t)))
+
+
+ (setq redisplay-dont-pause t
+       scroll-margin 1
+       scroll-step 1
+       scroll-conservatively 10000
+       scroll-preserve-screen-position 1)
+
+
+ #+END_SRC
+
+** win-switch navigating windows
+A utility for quickly navigating Emacs windows
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'win-switch)
+  (package-install 'win-switch))
+(require 'win-switch)
+(global-set-key (kbd "C-x o") 'win-switch-dispatch)
+#+END_SRC
+
+#+RESULTS:
+: win-switch-dispatch
+
+
+** moving
+#+BEGIN_SRC emacs-lisp :results silent
+;; ;;https://www.emacswiki.org/emacs/MoveLine
+;; (defun move-line (n)
+;;   "Move the current line up or down by N lines."
+;;   (interactive "p")
+;;   (setq col (current-column))
+;;   (beginning-of-line) (setq start (point))
+;;   (end-of-line) (forward-char) (setq end (point))
+;;   (let ((line-text (delete-and-extract-region start end)))
+;;     (forward-line n)
+;;     (insert line-text)
+;;     ;; restore point to original column in moved line
+;;     (forward-line -1)
+;;     (forward-char col)))
+
+;; (defun move-line-up (n)
+;;   "Move the current line up by N lines."
+;;   (interactive "p")
+;;   (move-line (if (null n) -1 (- n))))
+
+;; (defun move-line-down (n)
+;;   "Move the current line down by N lines."
+;;   (interactive "p")
+;;   (move-line (if (null n) 1 n)))
+
+;; ;;(global-set-key (kbd "M-<up>") 'move-line-up)
+;; ;;(global-set-key (kbd "M-<down>") 'move-line-down)
+
+
+;; ;;https://www.emacswiki.org/emacs/MoveRegion
+;; (defun move-region (start end n)
+;;   "Move the current region up or down by N lines."
+;;   (interactive "r\np")
+;;   (let ((line-text (delete-and-extract-region start end)))
+;;     (forward-line n)
+;;     (let ((start (point)))
+;;       (insert line-text)
+;;       (setq deactivate-mark nil)
+;;       (set-mark start))))
+
+;; (defun move-region-up (start end n)
+;;   "Move the current line up by N lines."
+;;   (interactive "r\np")
+;;   (move-region start end (if (null n) -1 (- n))))
+
+;; (defun move-region-down (start end n)
+;;   "Move the current line down by N lines."
+;;   (interactive "r\np")
+;;   (move-region start end (if (null n) 1 n)))
+
+;;   (exec-path-from-shell-initialize))
+;; (global-set-key (kbd "M-<up>") 'move-region-up)
+;; (global-set-key (kbd "M-<down>") 'move-region-down) 
+
+#+END_SRC
+
+
+** project interaction
+ http://projectile.readthedocs.io/en/latest/usage/
+ Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'projectile)
+   (package-install 'projectile))
+ (require 'projectile)
+ (projectile-global-mode)
+ #+END_SRC
+
+*** Display a list of all files in the project. With a prefix argument it will clear the cache first.
+
+    ~C-c p f~
+
+

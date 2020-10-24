@@ -1,6 +1,4 @@
 #+TITLE: Git
-
-
  
 * git-link
 https://github.com/sshaw/git-link

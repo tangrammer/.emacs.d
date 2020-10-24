@@ -1,0 +1,193 @@
+#+TITLE: editing
+
+* bbatsov/crux - eval-and-replace
+#+BEGIN_SRC emacs-lisp :results silent 
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
+#+END_SRC
+
+
+* commenting code
+M-;
+
+
+* code completion
+M-/
+
+* code indentation
+if mode supports indentation 
+CTRL-M-\
+
+
+
+
+* sorting words
+https://www.emacswiki.org/emacs/SortWords
+#+BEGIN_SRC emacs-lisp :results silent 
+(defun sort-words (reverse beg end)
+      "Sort words in region alphabetically, in REVERSE if negative.
+    Prefixed with negative \\[universal-argument], sorts in reverse.
+  
+    The variable `sort-fold-case' determines whether alphabetic case
+    affects the sort order.
+  
+    See `sort-regexp-fields'."
+      (interactive "*P\nr")
+      (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+#+END_SRC
+
+
+* replace highlighted text with what I type
+
+ https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+
+#+BEGIN_SRC emacs-lisp :results silent 
+ (delete-selection-mode 1)
+#+END_SRC
+
+
+
+
+* expand region 
+selecting incrementally textEmacs extension to increase selected region by semantic units.
+https://github.com/magnars/expand-region.el
+
+http://emacsrocks.com/e09.html
+
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'expand-region)
+  (package-install 'expand-region))
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+#+END_SRC
+
+#+RESULTS:
+: er/expand-region
+
+
+
+
+* hide-show
+https://www.emacswiki.org/emacs/HideShow
+HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
+
+#+BEGIN_SRC emacs-lisp 
+
+(global-set-key (kbd "M-+") 'hs-show-block)
+(global-set-key (kbd "M-*") 'hs-show-all)
+(global-set-key (kbd "M--") 'hs-hide-block)
+(global-set-key (kbd "M-Ç") 'hs-hide-level)
+(global-set-key (kbd "M-:") 'hs-hide-all)
+(add-hook 'web-mode-hook 'hs-minor-mode)
+(add-hook 'js2-mode-hook 'hs-minor-mode)
+(add-hook 'clojure-mode-hook 'hs-minor-mode)
+(add-hook 'cider-mode-hook 'hs-minor-mode)
+(add-hook 'lisp-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+#+END_SRC
+
+#+RESULTS:
+| hs-minor-mode |
+
+
+
+
+* RainbowDelimiters
+https://www.emacswiki.org/emacs/RainbowDelimiters
+rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
+ 
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'rainbow-delimiters)
+  (package-install 'rainbow-delimiters))
+(require 'rainbow-delimiters)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+#+END_SRC
+
+#+RESULTS:
+| rainbow-delimiters-mode |
+
+
+* smartparens
+https://github.com/Fuco1/smartparens
+https://ebzzry.github.io/emacs-pairs.html
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'smartparens)
+  (package-install 'smartparens))
+(require 'smartparens)
+(add-hook 'clojure-mode-hook 'smartparens-mode)
+(add-hook 'cider-mode-hook 'smartparens-mode)
+;;(add-hook 'cider-repl-mode 'smartparens-mode)
+
+(add-hook 'lisp-mode-hook 'smartparens-mode)
+#+END_SRC
+
+#+RESULTS:
+| smartparens-mode | hs-minor-mode |
+
+
+
+
+* multiple-cursors
+ https://github.com/magnars/multiple-cursors.el
+ http://emacsrocks.com/e13.html 
+
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'multiple-cursors)
+  (package-install 'multiple-cursors))
+(require 'multiple-cursors)
+
+(add-hook 'clojure-mode-hook 'multiple-cursors-mode) 
+(add-hook 'cider-mode-hook 'multiple-cursors-mode)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+#+END_SRC
+
+#+RESULTS:
+: mc/mark-all-like-this
+
+
+* paredit
+
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'paredit)
+  (package-install 'paredit))
+(require 'paredit)
+
+;; remove last lines inside a fn
+;;https://github.com/yatish27/emacs-live/blob/master/packs/dev/clojure-pack/config/paredit-conf.el
+(defun live-paredit-delete-horizontal-space ()
+  (interactive)
+  (just-one-space -1)
+  (paredit-backward-delete))
+
+;; should be =>>> define-key paredit-mode-map
+(global-set-key   (kbd "M-\\")    'live-paredit-delete-horizontal-space)
+
+#+END_SRC
+
+#+RESULTS:
+: live-paredit-delete-horizontal-space
+
+* paredit + lisp
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(add-hook 'elisp-mode-hook #'paredit-mode)
+(add-hook 'lisp-mode-hook #'paredit-mode)
+#+END_SRC
+
+
+
+

@@ -1,0 +1,133 @@
+#+TITLE: org-mode
+[[file:20201024180311-major_mode.org][major-mode]]
+
+
+** powerline :: better headings
+ [[https://github.com/milkypostman/powerline][Emacs version of the Vim powerline.]] 
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'powerline)
+   (package-install 'powerline))
+ (require 'powerline)
+ #+END_SRC
+
+
+** wrap lines => Visual line mode
+ #+BEGIN_SRC emacs-lisp :results silent 
+ (add-hook 'org-mode-hook 'visual-line-mode)
+ #+END_SRC
+
+
+** better org bullets => org-bullets
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'org-bullets)
+  (package-install 'org-bullets))
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+#+END_SRC
+
+
+
+** all org subheadings in imenu => ~org-goto-interface~
+
+#+BEGIN_SRC emacs-lisp :results silent 
+;; (describe-variable 'org-goto-interface ) 
+;; (describe-variable 'org-outline-path-complete-in-steps ) 
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(setq org-goto-interface 'outline-path-completionp)
+(setq org-outline-path-complete-in-steps nil)
+
+#+END_SRC
+
+
+
+https://emacs.stackexchange.com/a/20762/13373
+
+
+
+* orgmode                                                            :agenda:
+[[http://sachachua.com/blog/2008/01/tagging-in-org-plus-bonus-code-for-timeclocks-and-tags/][intro to agenda tags]]
+Examples of matching tags
+~tag1&tag2~: tag 1 and tag 2 
+~tag1-tag2~: tag1 minnus tag2
+~tag1|tag2~: tag1 or tag2
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-agenda-files (list ;;"~/.emacs.d/configuration.org"
+                             "~/git/orgs/gtd/notes.org"
+                             "~/org-roam/"
+                             ))
+
+#+END_SRC
+
+** formatting
+#+BEGIN_SRC emacs-lisp
+(defun org-bolder (n)
+  (interactive "p")
+  (when (use-region-p)
+    (save-excursion
+      (goto-char (region-beginning))
+      (insert "*")
+      (line-beginning-position))
+    (save-excursion
+      (goto-char (region-end))
+      (insert "*")
+      (line-end-position))))
+
+(defun negrita nil 
+  (interactive) 
+  (org-emphasize ?\*))
+
+(defun cursiva nil 
+  (interactive) 
+  (org-emphasize ?\/))
+
+(defun subrayado nil 
+  (interactive) 
+  (org-emphasize ?\_))
+
+
+(define-key org-mode-map "\C-cb" 'negrita)
+#+END_SRC
+
+#+RESULTS:
+: negrita
+
+** capture
+#+BEGIN_SRC emacs-lisp :results silent 
+(setq org-default-notes-file "~/git/orgs/gtd/notes.org")
+(setq org-capture-templates '(("t" "Todo" entry (file+headline "~/git/orgs/gtd/notes.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")))
+
+(define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-c\C-d" 'org-deadline)
+
+(defun idea nil 
+  (interactive) 
+  (org-capture t "t"))
+
+
+(defun agenda nil 
+  (interactive) 
+  (org-agenda t "t"))
+
+#+END_SRC
+
+
+** todo(s)
+   #+BEGIN_SRC emacs-lisp :results silent 
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "IN PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))
+   #+END_SRC
+   
+
+
+
+

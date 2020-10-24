@@ -1,0 +1,6 @@
+#+TITLE: kill - cut
+[[file:20201024181648-editing.org][editing]]
+* kill ring
+M-y cycling ring
+C-u C-SCP to previous mark
+

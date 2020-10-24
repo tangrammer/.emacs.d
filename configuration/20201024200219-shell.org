@@ -1,0 +1,9 @@
+#+TITLE: shell
+
+
+* shell-command-on-region                                             :shell:
+select text ... M-x shell-command-on-region wc
+wc count words 
+
+
+

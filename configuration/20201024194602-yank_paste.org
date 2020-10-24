@@ -1,0 +1,8 @@
+#+TITLE: yank - paste
+[[file:20201024181648-editing.org][editing]]
+
+* TODO Rich text clipboard for org-mode: Paste into a #+BEGIN_SRC block of correct mode, with link to where it came from https://melpa.org/#/org-rich-yank
+
+
+https://github.com/unhammer/org-rich-yank
+

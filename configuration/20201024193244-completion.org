@@ -1,0 +1,105 @@
+#+TITLE: completion
+[[file:20201024193333-pattern.org][pattern]]
+
+
+* UI: pattern search 
+https://github.com/abo-abo/swiper
+
+flexible, simple tools for minibuffer completion in Emacs
+
+This repository contains:
+
+Ivy, a generic completion mechanism for Emacs.
+
+Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
+
+Swiper, an Ivy-enhanced alternative to isearch.
+
+
+** ivy
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'ivy)
+   (package-install 'ivy))
+ (require 'ivy)
+ #+END_SRC
+
+
+** counsel
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'counsel)
+  (package-install 'counsel))
+(require 'counsel)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+
+#+END_SRC
+
+
+
+** swipper
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'swiper)
+   (package-install 'swiper))
+ (require 'swiper)
+ (ivy-mode 1)
+ (setq ivy-use-virtual-buffers t)
+ (setq enable-recursive-minibuffers t)
+ (global-set-key "\C-s" 'swiper)
+
+ #+END_SRC
+
+
+
+
+
+
+
+
+* icomplete-vertical
+emacs-lisp :results silent
+ #+BEGIN_SRC 
+(use-package icomplete-vertical
+  :ensure t
+  :demand t
+  :custom
+  (completion-styles '(partial-completion substring))
+  (completion-category-overrides '((file (styles basic substring))))
+  (read-file-name-completion-ignore-case t)
+  (read-buffer-completion-ignore-case t)
+  (completion-ignore-case t)
+  :config
+  (icomplete-mode)
+  (icomplete-vertical-mode)
+  :bind (:map icomplete-minibuffer-map
+              ("<down>" . icomplete-forward-completions)
+              ("C-n" . icomplete-forward-completions)
+              ("<up>" . icomplete-backward-completions)
+              ("C-p" . icomplete-backward-completions)
+              ("C-v" . icomplete-vertical-toggle)))
+
+ #+END_SRC
+
+
+* company mode
+http://company-mode.github.io/
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'company)
+  (package-install 'company))
+(require 'company)
+(global-company-mode)
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+#+END_SRC
+
+** fuzzy company :)
+#+BEGIN_SRC emacs-lisp 
+(unless (package-installed-p 'company-flx)
+  (package-install 'company-flx))
+(require 'company-flx)
+(with-eval-after-load 'company
+  (company-flx-mode +1))
+
+#+END_SRC
+
+#+RESULTS:
+: t
+

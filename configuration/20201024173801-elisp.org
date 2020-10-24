@@ -1,0 +1,41 @@
+#+TITLE: elisp
+[[file:20201024172354-coding.org][coding]] [[file:20201024192219-lisp.org][lisp]]
+
+
+* polymorphism on elisp
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Generic-Functions.html#Generic-Functions
+http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically
+
+
+
+* debugging emacs
+https://endlessparentheses.com/debugging-emacs-lisp-part-1-earn-your-independence.html
+edebug
+keys <SPACE> or `n`  ... ~c~ to stop debugger
+
+https://endlessparentheses.com/debugging-elisp-part-2-advanced-topics.html
+
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Debugging.html
+
+* elisp format
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'elisp-format)
+  (package-install 'elisp-format))
+(require 'elisp-format)
+#+END_SRC
+
+* elisp webserver
+http://eschulte.github.io/emacs-web-server/Org_002dmode-Export.html#Org_002dmode-Export
+
+
+* rewrite M-x
+source [[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/simple.el.gz::1805][simple.el]] found it via ~(describe-key)~
+
+
+
+
+
+
+
+
+

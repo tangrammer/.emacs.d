@@ -1,0 +1,28 @@
+#+TITLE: todo
+
+* hl-todo
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'hl-todo)
+  (package-install 'hl-todo))
+(require 'hl-todo)
+#+END_SRC
+
+
+
+ #+BEGIN_SRC emacs-lisp
+(setq hl-todo-keyword-faces
+      '(("TODO"   . "#FF0000")
+        ("FIXME"  . "#FF0000")
+        ("DEBUG"  . "#A020F0")
+        ("GOTCHA" . "#FF4500")
+        ("STUB"   . "#1E90FF")))
+
+ #+END_SRC
+
+ #+RESULTS:
+ : ((TODO . #FF0000) (FIXME . #FF0000) (DEBUG . #A020F0) (GOTCHA . #FF4500) (STUB . #1E90FF))
+
+
+
+
+

@@ -1,0 +1,6 @@
+#+TITLE: org-super-agenda-mode
+[[file:20201024180240-org_mode.org][org-mode]]
+
+* TODO config& install superagenda
+https://github.com/alphapapa/org-super-agenda
+

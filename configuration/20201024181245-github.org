@@ -1,0 +1,28 @@
+#+TITLE: github
+[[file:20201024153912-git.org][Git]]
+
+Utilities for opening github page
+https://github.com/syohex/emacs-helm-open-github
+
+emacs-lisp :results silent
+#+BEGIN_SRC 
+
+(unless (package-installed-p 'gh)
+  (package-install 'gh))
+(require 'gh)
+
+
+(unless (package-installed-p 'helm-open-github)
+  (package-install 'helm-open-github))
+(require 'helm-open-github)
+;; (global-set-key (kbd "C-c o f") 'helm-open-github-from-file)
+;; (global-set-key (kbd "C-c o c") 'helm-open-github-from-commit)
+;; (global-set-key (kbd "C-c o i") 'helm-open-github-from-issues)
+;; (global-set-key (kbd "C-c o p") 'helm-open-github-from-pull-requests)
+
+
+#+END_SRC
+
+ 
+
+

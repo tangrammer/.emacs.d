@@ -1,0 +1,6 @@
+#+TITLE: google
+[[file:20201024195828-search.org][search]]
+
+* TODO Google at a point
+https://github.com/Malabarba/emacs-google-this/
+

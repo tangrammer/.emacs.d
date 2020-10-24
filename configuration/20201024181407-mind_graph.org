@@ -1,0 +1,5 @@
+#+TITLE: mind graph
+[[file:20201024181435-graph.org][graph]]
+
+https://github.com/Kungsgeten/org-brain
+

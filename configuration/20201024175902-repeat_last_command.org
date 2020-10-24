@@ -1,0 +1,19 @@
+#+TITLE: repeat last command
+[[file:20201024170630-ui.org][UI]] [[file:20201024193244-completion.org][completion]]
+* last-command
+
+~M-x-p~
+https://www.gnu.org/software/emacs/manual/html_node/eintr/last_002dcommand-_0026-this_002dcommand.html
+https://stackoverflow.com/questions/275842/is-there-a-repeat-last-command-in-emacs
+
+
+
+** TODO lively : repeat last command
+   I had this cool functionality in emacs live ... still needs a bit of work to setup
+
+emacs-lisp :results silent
+#+BEGIN_SRC 
+(unless (package-installed-p 'lively)
+  (package-install 'lively))
+(require 'lively)
+#+END_SRC

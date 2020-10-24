@@ -1,0 +1,9 @@
+#+TITLE: toolbar
+
+
+#+BEGIN_SRC emacs-lisp :results silent 
+  ;; remove tool-bar
+  (tool-bar-mode 0)
+
+#+END_SRC
+

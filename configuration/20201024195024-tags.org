@@ -1,0 +1,103 @@
+#+TAGS: [ parent : sub1 sub2 ]
+#+TAGS: [ parent2 : sub2 sub3 ]
+#+TAGS: [ sub1 : child1 child2 ]
+#+TAGS: [ sub2 : cat1 cat2 cat3 cat4 ]
+#+TAGS: [ sub3 : cat5 ]
+
+#+TITLE: tags
+
+
+* exuberant ctags                                             :indexing:tags:
+Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. A tag signifies a language object for which an index entry is available (or, alternatively, the index entry created for that object).
+
+
+used for navigation of code ... "go to definition"
+http://ctags.sourceforge.net/
+
+
+* tags hierarchical                                               :cat1:cat5:
+https://www.youtube.com/watch?v=odOKnNDKSIs&index=36&list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE
+https://orgmode.org/manual/Tag-Hierarchy.html#Tag-Hierarchy
+
+
+* tags mode WORK IN PROGRESS
+
+**  interactive call to navigate tags
+    
+***  find cats in org file
+  #+BEGIN_SRC :eval no
+  (with-current-buffer "configuration.org"
+    org-tag-alist-for-agenda)
+  #+END_SRC
+
+  #+RESULTS:
+  | :startgrouptag |
+  | parent         |
+  | :grouptags     |
+  | sub1           |
+  | sub2           |
+  | :endgrouptag   |
+  | :newline       |
+  | :startgrouptag |
+  | parent2        |
+  | :grouptags     |
+  | sub2           |
+  | sub3           |
+  | :endgrouptag   |
+  | :newline       |
+  | :startgrouptag |
+  | sub1           |
+  | :grouptags     |
+  | child1         |
+  | child2         |
+  | :endgrouptag   |
+  | :newline       |
+  | :startgrouptag |
+  | sub2           |
+  | :grouptags     |
+  | cat1           |
+  | cat2           |
+  | cat3           |
+  | cat4           |
+  | :endgrouptag   |
+  | :newline       |
+  | :startgrouptag |
+  | sub3           |
+  | :grouptags     |
+  | cat5           |
+  | :endgrouptag   |
+
+***  CRUD hierarchical cats in org file
+    suppose that we can start using babaska
+   
+
+#+BEGIN_SRC shell
+export BABASHKA_CLASSPATH=$(clojure -Spath -Sdeps '{:deps {com.stuartsierra/dependency {:mvn/version "0.1.0"}
+}}')
+
+bb baba.clj
+#+END_SRC
+
+#+RESULTS:
+
+
+
+* visualisasing tags from orgfile
+https://www.reddit.com/r/orgmode/comments/eyufqz/orggraphviewgraphviz_interactive_visual_org/
+
+https://github.com/alphapapa/org-graph-view
+
+** org-graph-view
+https://github.com/sshaw/git-link
+emacs-lisp :results silent
+
+#+BEGIN_SRC 
+(load-library "org-graph-view/org-graph-view")
+(require 'org-graph-view)
+
+#+END_SRC
+
+
+https://pages.sachachua.com/evil-plans/
+
+

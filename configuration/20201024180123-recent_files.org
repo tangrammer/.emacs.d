@@ -1,0 +1,12 @@
+#+TITLE: recent files
+[[file:20201024170630-ui.org][UI]]
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(require 'recentf)
+
+(recentf-mode 1)
+
+(global-set-key "\C-xf" 'recentf-open-files)
+
+#+END_SRC
+

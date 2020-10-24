@@ -1,0 +1,10 @@
+#+TITLE: solarized theme
+[[file:20201024170827-themes.org][themes]]
+#+BEGIN_SRC emacs-lisp :results silent 
+(package-install 'solarized-theme)
+(defun tangrammer-load-clj-theme ()
+  (interactive)
+  (load-theme 'solarized-dark t)
+  )
+
+#+END_SRC

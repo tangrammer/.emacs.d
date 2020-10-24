@@ -1,0 +1,26 @@
+#+TITLE: java
+
+[[file:20201024172354-coding.org][coding]]
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'meghanada)
+  (package-install 'meghanada))
+(require 'meghanada)
+(add-hook 'java-mode-hook
+          (lambda ()
+            ;; meghanada-mode on
+            (meghanada-mode t)
+            ;; enable telemetry
+            ;;(meghanada-telemetry-enable t)
+            (flycheck-mode +1)
+            (setq c-basic-offset 2)
+            ;; use code format
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+
+(setq meghanada-java-path "java")
+(setq meghanada-maven-path "mvn")
+(add-hook 'meghanada-mode-hook 'hs-minor-mode)
+
+
+#+END_SRC
+
+

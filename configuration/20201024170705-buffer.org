@@ -1,0 +1,10 @@
+#+TITLE: Buffer
+
+
+** buffers
+#+BEGIN_SRC emacs-lisp :results silent
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+#+END_SRC
+
+

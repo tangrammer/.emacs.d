@@ -1,0 +1,9 @@
+#+TITLE: kubernetes
+
+  
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'kubernetes)
+  (package-install 'kubernetes))
+(require 'kubernetes)
+#+END_SRC
+

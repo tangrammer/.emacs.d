@@ -1,0 +1,16 @@
+#+TITLE: highlighting text
+
+* highLighting
+https://www.gnu.org/savannah-checkouts/gnu/emacs/manual/html_node/emacs/Highlight-Interactively.html
+
+[[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/hi-lock.el.gz::450][source]]
+
+** TODO mode for font face ... highlight ... 
+https://www.gnu.org/software/emacs/manual/html_node/eintr/defcustom.html
+https://stackoverflow.com/questions/7707002/changing-the-color-of-a-specific-piece-of-text-in-emacs-without-creating-a-theme
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Face-Customization.html#Face-Customization
+https://www.emacswiki.org/emacs/TextProperties
+https://www.emacswiki.org/emacs/FontLockMode
+https://www.emacswiki.org/emacs/FontLockForNewModes
+
+

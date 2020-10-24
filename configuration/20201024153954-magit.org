@@ -14,3 +14,21 @@
 
 
 
+
+* example from technomancy emacs course
+[[file:20201024173801-elisp.org][elisp]]
+
+https://github.com/technomancy/emacs-starter-kit/tree/0716d255e74f330f8f2b1b5280a5caf3518ea335
+
+#+BEGIN_SRC  :eval never
+;; (-third-item (-partition 4 (magit-git-items "log")))  
+;;(length (magit-git-items "log")) 
+;;(first (magit-unstaged-files)) 
+;;(magit-expand-git-file-name (magit-current-file)) 
+;;(magit-list-remotes)
+
+;;(magit-rev-abbrev "a081ddad2106cd427d2c81b9a947b8a6ec423b65")
+#+END_SRC
+
+#+RESULTS:
+: a081dda

@@ -1,0 +1,30 @@
+#+TITLE: web-mode
+[[file:20201024180311-major_mode.org][major-mode]]
+
+* webmode
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'web-mode)
+  (package-install 'web-mode))
+(require 'web-mode)
+
+
+ ;;(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+#+END_SRC
+
+
+
+#+BEGIN_SRC emacs-lisp :results silent 
+;; use web-mode for .jsx files
+
+(add-to-list 'auto-mode-alist '("\\.js$" . hs-minor-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . prettier-js-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . hs-minor-mode))
+
+#+END_SRC
+
+
+
+
+
+

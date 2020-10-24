@@ -1,9 +1,19 @@
 * top level packages
 
+* use-package
 #+BEGIN_SRC emacs-lisp :results silent
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
+
+#+END_SRC
+
+
+
+* smarttabs
+#+BEGIN_SRC emacs-lisp :results silent
+'(add-to-list 'load-path "~/.emacs.d/local/smarttabs")
+'(require 'smart-tabs-mode)
 
 #+END_SRC
 
