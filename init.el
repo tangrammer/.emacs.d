@@ -24,6 +24,14 @@
 ;; https://harryrschwartz.com/2016/02/15/switching-to-a-literate-emacs-configuration.html
 (org-babel-load-file "~/.emacs.d/configuration.org")
 
+(require 'dash)
+(let((dir "~/.emacs.d/configuration/"))
+  (->> (directory-files dir)
+       (--filter (string= "org" (file-name-extension it)))
+       (--map (let ((file-to-load (concat dir it)))
+                (message file-to-load)
+                (org-babel-load-file file-to-load)))))
+
 ;; (setq multi-term-program "/bin/zsh")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

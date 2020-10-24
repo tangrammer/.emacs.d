@@ -4,3 +4,4 @@ elpa/
 /ido.last
 /projectile-bookmarks.eld
 /.org-id-locations
+/configuration/*.el

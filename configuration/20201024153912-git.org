@@ -1,0 +1,14 @@
+#+TITLE: Git
+
+
+ 
+* git-link
+https://github.com/sshaw/git-link
+#+BEGIN_SRC emacs-lisp :results silent
+(load-library "git-link/git-link")
+(require 'git-link)
+
+#+END_SRC
+
+
+
