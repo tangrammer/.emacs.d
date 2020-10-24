@@ -5,4 +5,5 @@ elpa/
 /projectile-bookmarks.eld
 /.org-id-locations
 /configuration/*.el
+!/configuration/.dir-locals.el
 /configuration.el
