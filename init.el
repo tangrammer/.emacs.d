@@ -22,6 +22,7 @@
       org-support-shift-select 'always)
 
 ;; https://harryrschwartz.com/2016/02/15/switching-to-a-literate-emacs-configuration.html
+(org-babel-load-file "~/.emacs.d/top-level-packages.org")
 (org-babel-load-file "~/.emacs.d/configuration.org")
 
 (require 'dash)

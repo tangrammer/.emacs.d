@@ -1,0 +1,10 @@
+* top level packages
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+
+#+END_SRC
+
+
