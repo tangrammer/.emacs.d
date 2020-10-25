@@ -1,0 +1,5 @@
+#+title: debug
+
+[[file:20201024173801-elisp.org][elisp]]
+
+call interactively  M-x toggle-debug-on-error

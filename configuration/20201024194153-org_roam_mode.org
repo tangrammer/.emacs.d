@@ -29,11 +29,19 @@ a default sqlite db is created
 some [[file:20201025182315-key_bindings.org][key bindings]] to improve the usability 
 #+BEGIN_SRC emacs-lisp :results silent 
 
-(org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
-(org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
-(org-defkey org-mode-map (kbd "M-R") 'org-roam)
-(org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)
+(add-hook 'org-mode-hook (lambda ()
+                           (org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
+                           (org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
+                           (org-defkey org-mode-map (kbd "M-R") 'org-roam)
+                           (org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)))
+
 #+END_SRC
+
+
+* once that you call org-roam-graph you can find the graph here
+
+doing M-l in the related graph then open it in a browser
+
 
 
 * more than 1 roam system 

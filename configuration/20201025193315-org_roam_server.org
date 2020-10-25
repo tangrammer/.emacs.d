@@ -9,7 +9,7 @@ A Web Application to Visualize the Org-Roam Database
 
 #+BEGIN_SRC emacs-lisp :results silent 
 (use-package org-roam-server
-  :ensure t
+;;  :ensure t
   :config
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8080
@@ -26,3 +26,13 @@ A Web Application to Visualize the Org-Roam Database
 #+END_SRC
 
 
+If you work with more than one roam system you need to customize db and dir
+relates https://github.com/org-roam/org-roam-server/issues/8
+
+ ~(customize-group 'org-roam)~
+
+
+
+
+
+[[http://localhost:8080/][open http://localhost:8080/ browser]]
