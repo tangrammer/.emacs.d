@@ -1,5 +1,7 @@
 #+TITLE: ido
 
+[[file:20201024193244-completion.org][completion]]
+
 
   #+BEGIN_SRC 
 

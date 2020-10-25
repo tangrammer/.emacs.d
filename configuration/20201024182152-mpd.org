@@ -1,5 +1,7 @@
 #+TITLE: mpd
 
+[[file:20201024182059-music.org][music]]
+
 https://www.musicpd.org/
 osx installation instructions https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/
 

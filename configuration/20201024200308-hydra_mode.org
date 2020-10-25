@@ -1,5 +1,7 @@
 #+TITLE: hydra-mode
 
+[[file:20201024170630-ui.org][UI]]
+
  make Emacs bindings that stick around
 https://github.com/abo-abo/hydra
 

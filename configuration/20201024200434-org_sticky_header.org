@@ -1,6 +1,8 @@
 #+TITLE: org-sticky-header
 
 
+[[file:20201024180240-org_mode.org][org-mode]]
+
 config & install org-sticky-header
 
 Show off-screen Org heading at top of window

@@ -1,5 +1,8 @@
 #+TITLE: keyboard
 
+[[file:20201024170630-ui.org][UI]]
+
+
 ** configure OSX keyboard 
  #+BEGIN_SRC emacs-lisp
  ;; osx keys

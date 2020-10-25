@@ -1,5 +1,5 @@
 #+title: toc-org 
-[[file:20201024180416-org_babel.org][org-babel]] [[file:20201025113623-index.org][Index]]
+[[file:20201024180416-org_babel.org][org-babel]]
 generating tocs dynamically based on headings
 
 #+BEGIN_SRC emacs-lisp :results silent

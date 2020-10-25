@@ -73,8 +73,6 @@ but `delete-file' is ignored."
 
 
 
-** [[file:20201025173102-toc_org.org][toc-org]]
-
 * org + clojure 
  #+BEGIN_SRC emacs-lisp 
 (require 'ob-clojure)

@@ -32,7 +32,7 @@ some [[file:20201025182315-key_bindings.org][key bindings]] to improve the usabi
 (org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
 (org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
 (org-defkey org-mode-map (kbd "M-R") 'org-roam)
-
+(org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)
 #+END_SRC
 
 

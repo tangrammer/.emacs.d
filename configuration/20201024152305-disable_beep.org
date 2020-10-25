@@ -1,4 +1,7 @@
 #+TITLE: Disable Beep
+ 
+[[file:20201024170630-ui.org][UI]]
+
 
 https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows
 #+BEGIN_SRC emacs-lisp :results silent

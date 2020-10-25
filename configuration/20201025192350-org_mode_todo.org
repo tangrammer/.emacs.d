@@ -1,6 +1,6 @@
 #+title: org-mode todo
 
-relates to [[file:20201025192403-todo.org][todo]]
+relates to [[file:20201025200448-todo.org][todo]]
 
    #+BEGIN_SRC emacs-lisp :results silent 
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "IN PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))

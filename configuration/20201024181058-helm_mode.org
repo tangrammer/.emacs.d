@@ -1,6 +1,6 @@
 #+TITLE: helm-mode
 
-
+[[file:20201024193244-completion.org][completion]]
 
 * DONE see demo about configurations with helm 
   CLOSED: [2020-05-08 Fri 23:47]

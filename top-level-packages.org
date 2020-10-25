@@ -1,10 +1,15 @@
 * top level packages
 
 * use-package
+https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
+
+
 #+BEGIN_SRC emacs-lisp :results silent
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
+
+
 
 #+END_SRC
 

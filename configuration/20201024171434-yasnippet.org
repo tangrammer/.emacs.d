@@ -1,5 +1,7 @@
 #+TITLE: yasnippet
 
+[[file:20201024170630-ui.org][UI]]
+
 A template system for Emacs http://joaotavora.github.com/yasnippet/
 
 *YASnippet* is a template system for Emacs. It allows you to
