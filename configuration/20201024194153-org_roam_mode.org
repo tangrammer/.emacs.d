@@ -1,16 +1,40 @@
 #+TITLE: org-roam-mode
 [[file:20201024180511-minor_mode.org][minor-mode]]
 
+org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]
+
 https://github.com/jethrokuan/org-roam
-#+BEGIN_SRC emacs-lisp :results silent
+
+ #+BEGIN_SRC elisp
 (unless (package-installed-p 'org-roam)
   (package-install 'org-roam))
 (require 'org-roam)
 
+ #+END_SRC
+
+we want to have the mode activated always so we use [[file:20201025184003-after_init_hook.org][after-init-hook]]
+
+#+BEGIN_SRC emacs-lisp :results silent
+
 
 (add-hook 'after-init-hook 'org-roam-mode)
-;;(make-directory "~/org-roam")
+(make-directory "~/org-roam")
 (setq org-roam-directory "~/org-roam")
+
 
 #+END_SRC
 
+a default sqlite db is created 
+
+some [[file:20201025182315-key_bindings.org][key bindings]] to improve the usability 
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
+(org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
+(org-defkey org-mode-map (kbd "M-R") 'org-roam)
+
+#+END_SRC
+
+
+* more than 1 roam system 
+you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-locals]] as this configuration system

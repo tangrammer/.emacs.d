@@ -1,0 +1,13 @@
+#+title: toc-org 
+[[file:20201024180416-org_babel.org][org-babel]] [[file:20201025113623-index.org][Index]]
+generating tocs dynamically based on headings
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'toc-org)
+  (package-install 'toc-org))
+(require 'toc-org)
+(add-hook 'org-mode-hook 'toc-org-enable)
+
+
+#+END_SRC
+

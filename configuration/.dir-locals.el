@@ -1,2 +1,2 @@
-((nil . ((org-roam-directory . ".")
-         (org-roam-db-location . "./emacs-configuration.db"))))
+((nil . ((org-roam-directory . "~/.emacs.d/configuration")
+         (org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db"))))

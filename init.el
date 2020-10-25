@@ -24,13 +24,14 @@
 
 ;; https://harryrschwartz.com/2016/02/15/switching-to-a-literate-emacs-configuration.html
 (org-babel-load-file "~/.emacs.d/top-level-packages.org")
+
 (require 'dash)
-(let((dir "~/.emacs.d/configuration/"))
-  (->> (directory-files dir)
-       (--filter (string= "org" (file-name-extension it)))
-       (--map (let ((file-to-load (concat dir it)))
-                (message file-to-load)
-                (ignore-errors (org-babel-load-file file-to-load)) ))))
+ (let((dir "~/.emacs.d/configuration/"))
+   (->> (directory-files dir)
+        (--filter (string= "org" (file-name-extension it)))
+        (--map (let ((file-to-load (concat dir it)))
+                 (message file-to-load)
+                 (ignore-errors (org-babel-load-file file-to-load))))))
 
 ;; (setq multi-term-program "/bin/zsh")
 (custom-set-faces

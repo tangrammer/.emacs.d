@@ -1,0 +1,21 @@
+#+title: key bindings
+
+https://sachachua.com/blog/2013/03/emacs-use-function-keys-for-custom-keyboard-shortcuts/
+
+examples
+ #+BEGIN_SRC 
+
+ (global-set-key (kbd "<f9> <f9>") 'org-agenda-list)
+ (global-set-key (kbd "<f9> <f8>") (lambda () (interactive) (org-capture nil "r")))
+
+
+ #+END_SRC
+
+
+
+If you want to rebind something that was previously bound to a non-prefix map, you can unbind it first:
+
+~(global-unset-key (kbd "<f9>"))~
+
+* why use keybindings?
+dont like to think in the (interactive) command name and args when i'm thinking or in the words of [[file:20201024180240-org_mode.org][org-mode]] when I'm [[file:20201025184300-org_mode_capture.org][capturing]] ideas

@@ -1,0 +1,19 @@
+#+title: org-mode exports to other dir 
+[[file:20201024180416-org_babel.org][org-babel]]
+example of including a elisp value def in a org file with property (with [[file:20201024173801-elisp.org][elisp]])
+~#+bind: org-export-publishing-directory "./exports"~ 
+
+
+taken from https://emacs.stackexchange.com/questions/3985/make-org-mode-export-to-beamer-keep-temporary-files-out-of-the-current-directory/7989#7989
+
+   #+BEGIN_SRC emacs-lisp :results silent :eval no 
+   ;; (defvar org-export-output-directory-prefix "../../docs/backend/faqs" "../../docs/backend/faqs")
+
+   ;; (defadvice org-export-output-file-name (before org-add-export-dir activate)
+   ;;   "Modifies org-export to place exported files in a different directory"
+   ;;   (when (not pub-dir)
+   ;;       (setq pub-dir (concat org-export-output-directory-prefix ))
+   ;;       (when (not (file-directory-p pub-dir))
+   ;;        (make-directory pub-dir))))
+
+   #+END_SRC

@@ -1,0 +1,4 @@
+#+TITLE: Index
+
+this configuration is based in [[file:20201025182201-literate_programming.org][literate programming]] and [[file:20201024194153-org_roam_mode.org][org-roam-mode]]
+

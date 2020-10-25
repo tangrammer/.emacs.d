@@ -1,0 +1,4 @@
+#+title: org-mode capture
+
+this functionality is focused in capturing ideas. in  [[file:20201024194153-org_roam_mode.org][org-roam]] also there is capturing process 
+

@@ -1,6 +1,6 @@
 #+TITLE: js
-[[file:20201024172354-coding.org][coding]]
-[[file:20201024172545-jsx.org][jsx]]
+[[file:20201024172354-coding.org][coding]] [[file:20201025174437-language.org][language]]
+
 JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#emacs_configuration_for_eslint_and_jsx
  
 #+BEGIN_SRC emacs-lisp :results silent
