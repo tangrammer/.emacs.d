@@ -1,5 +1,5 @@
 #+TITLE: toolbar
-
+[[file:20201024170630-ui.org][UI]]
 
 #+BEGIN_SRC emacs-lisp :results silent 
   ;; remove tool-bar

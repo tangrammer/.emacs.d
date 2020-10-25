@@ -1,0 +1,16 @@
+#+title: power-line
+
+Relates to [[file:20201024170630-ui.org][UI]]
+
+Powerline is a utility plugin which allows you to create better-looking, more functional vim statuslines. See the screenshots below for a demonstration of the plugin's capabilities.
+
+ [[https://github.com/milkypostman/powerline][Emacs version of the Vim powerline.]] 
+
+ #+BEGIN_SRC emacs-lisp :results silent
+
+(use-package powerline
+  :ensure t
+  :config (powerline-default-theme))
+
+ #+END_SRC
+

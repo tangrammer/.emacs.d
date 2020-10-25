@@ -1,0 +1,5 @@
+#+title: use-package
+
+https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
+
+an [[/Users/tangrammer/.emacs.d/configuration/20201024180240-org_mode.org::21][example]] of use 

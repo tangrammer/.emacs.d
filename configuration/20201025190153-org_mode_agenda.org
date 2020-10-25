@@ -1,0 +1,12 @@
+#+title: org-mode agenda
+
+it's a [[file:20201024180240-org_mode.org][org-mode]] extension
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(defun agenda nil 
+  (interactive) 
+  (org-agenda t "t"))
+
+#+END_SRC
+

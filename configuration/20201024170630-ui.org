@@ -1,7 +1,6 @@
 #+TITLE: UI
-[[file:20201024171113-toolbar.org][toolbar]] [[file:20201024170827-themes.org][themes]] [[file:20201024170950-keyboard.org][keyboard]] [[file:20201024171113-toolbar.org][toolbar]]
 
-* configure UI
+Emacs UI client settings like [[file:20201024171113-toolbar.org][toolbar]] and [[file:20201024170827-themes.org][themes]]
 
 ** general configs
 
