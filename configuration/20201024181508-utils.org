@@ -20,9 +20,29 @@
 #+END_SRC
 
 
+** go to a directory using a predefined alias
+   
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(defun >go (choice)
+  (interactive
+   ;; complex code here that returns a list
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "roam" "roam-personal" "roam-configuration") nil t))))
+  (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
+                   ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
+                   ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
+                   ((string= choice "roam-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
+                   ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
+                   ((string= choice "roam-personal" ) "~/org-roam-personal/20201027121133-index.org")
+                   (t "~/.emacs.d/init.el"))))
+    (find-file dir)))
+#+END_SRC
+
+
 
 * WAITING save alias function
-  #+BEGIN_SRC  :eval never
+  #+BEGIN_SRC elisp :eval never
 
   (get-buffer "yupie")
 

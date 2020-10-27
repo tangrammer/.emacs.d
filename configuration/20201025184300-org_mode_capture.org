@@ -24,12 +24,15 @@ we can define templates
 
 one interactive function to capture "idea"
 
-#+BEGIN_SRC emacs-lisp :results 
+#+BEGIN_SRC emacs-lisp
 (defun idea nil 
   (interactive) 
   (org-capture t "t"))
  
 #+END_SRC
+
+#+RESULTS:
+: idea
 
 
 if we can see our notes: we use [[file:20201025190153-org_mode_agenda.org][org-mode agenda]]

@@ -1,4 +1,7 @@
 #+TITLE: org-roam-mode
+
+[[file:20201025233718-note_taking.org][note taking]]
+
 [[file:20201024180511-minor_mode.org][minor-mode]]
 
 org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]

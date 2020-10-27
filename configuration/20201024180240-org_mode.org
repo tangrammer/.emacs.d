@@ -72,13 +72,4 @@ https://emacs.stackexchange.com/a/20762/13373
 ;;(org-defkey org-mode-map (kbd "C-c i")  'cursiva)
 #+END_SRC
 
-
-
-
-
-   
-
-
-
-
    
