@@ -1,0 +1,45 @@
+#+title: org-journal
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(use-package org-journal
+  :ensure t
+  :defer t
+  :init
+  ;; Change default prefix key; needs to be set before loading org-journal
+  (setq org-journal-prefix-key "C-c j ")
+  :config
+  (setq org-journal-dir "~/git/journal/"))
+
+;; org-journal-dir => ~/Documents
+
+#+END_SRC
+* Basic usage
+
+every time you want to journal ...
+
+#+BEGIN_SRC emacs-lisp :results silent :eval never
+(call-interactively 'org-journal-new-entry) 
+
+#+END_SRC
+
+  
+  Bindings available in *org-journal-mode*:
+
+C-c C-f - go to the next journal file.
+C-c C-b - go to the previous journal file.
+C-c C-j - insert a new entry into the current journal file (creates the file if not present).
+C-c C-s - search the journal for a string.
+All journal entries are registered in the Emacs Calendar. To see available journal entries do M-x calendar. Bindings available in the calendar-mode:
+
+j m - mark entries in calendar
+j r - view an entry in a new buffer.
+j d - view an entry but do not switch to it.
+j n - add a new entry into the day’s file (creates the file if not present).
+j s w - search in all entries of the current week.
+j s m - search in all entries of the current month.
+j s y - search in all entries of the current year.
+j s f - search in all entries of all time.
+j s F - search in all entries in the future.
+[ - go to previous day with journal entries.
+] - go to next day with journal entries.
