@@ -32,10 +32,11 @@ http://eschulte.github.io/emacs-web-server/Org_002dmode-Export.html#Org_002dmode
 source [[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/simple.el.gz::1805][simple.el]] found it via ~(describe-key)~
 
 
+* add paredit-mode hook
+#+BEGIN_SRC emacs-lisp :results silent 
+(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+
+#+END_SRC
 
 
-
-
-
-
-
+  
