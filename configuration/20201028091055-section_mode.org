@@ -1,0 +1,5 @@
+#+title: section-mode
+
+[[file:20201024153954-magit.org][Magit]]
+
+https://magit.vc/manual/magit/Sections.html#Sections

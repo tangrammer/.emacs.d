@@ -1,0 +1,5 @@
+#+title: transient-mode
+
+[[file:20201024153954-magit.org][Magit]]
+
+https://magit.vc/manual/transient/index.html#SEC_Contents

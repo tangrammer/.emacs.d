@@ -23,3 +23,26 @@ https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-confi
 #+END_SRC
 
 
+
+* DONE define a private roam repo with lisp
+ #+BEGIN_SRC emacs-lisp :results silent
+ (defun private-git-dropbox (project-name)
+        "Set a private git dropbox"
+        (interactive "sEnter your project name: ")
+        (let* ((project-name "ey")
+              (pwd (string-trim (shell-command-to-string "pwd"))))
+          (shell-command-to-string "git init")
+          (shell-command-to-string "git add .")
+          (shell-command-to-string "git commit -m \"first commit\"")
+          (shell-command-to-string "cd /Volumes/winnie/Dropbox/funicular")
+          (shell-command-to-string (format "git init --bare %s.git" project-name))
+          (shell-command-to-string (format "cd %s" pwd))
+          (shell-command-to-string (format "git remote add dropbox /Volumes/winnie/Dropbox/funicular/%s.git" project-name))
+          (shell-command-to-string "git push -u dropbox master")
+          (message "your project %s has been initialised!" project-name)))
+
+ #+END_SRC
+
+ #+RESULTS:
+ : private-git-dropbox
+
