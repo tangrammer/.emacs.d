@@ -12,6 +12,13 @@
 
  #+END_SRC
 
+ #+BEGIN_SRC elisp :eval never
+ (magit-git-items "log")
+(magit-log )
+ #+END_SRC
+
+ #+RESULTS:
+ | commit dcb15d1ecdbe496364cf5f958be679e8edeeabf2 |
 
 
 

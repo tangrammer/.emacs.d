@@ -71,8 +71,6 @@ but `delete-file' is ignored."
 
 
 
-
-
 * org + clojure 
  #+BEGIN_SRC emacs-lisp 
 (require 'ob-clojure)
@@ -91,12 +89,11 @@ but `delete-file' is ignored."
 #+END_SRC
 
 
-* refcard
-  - local org [[/Users/tangrammer/git/tangrammer/refcard-org-babel/docs/index.org::1][files]]
-  - github [[https://github.com/fniessen/refcard-org-babel/blob/master/docs/index.org#L1][repo]]
-  
 
-* no eval
-~#+PROPERTY:  header-args :eval never~
+* errors
 
-  :eval never
+**  Error (org-babel): Error reading results: (end-of-file)
+    
+  you need to add =:results= output
+
+[[file:20201103151430-org_babel_results_of_evaluation.org][org-babel results of evaluation]]
