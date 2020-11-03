@@ -3,7 +3,7 @@
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Faces.html
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :eval never
 (list-faces-display) 
 
 #+END_SRC
