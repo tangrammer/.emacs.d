@@ -1,0 +1,5 @@
+#+title: org-babel results of evaluation
+
+[[file:20201024180416-org_babel.org][org-babel]]
+
+  https://orgmode.org/manual/Results-of-Evaluation.html
