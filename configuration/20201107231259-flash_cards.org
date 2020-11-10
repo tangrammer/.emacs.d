@@ -1,0 +1,4 @@
+#+title: flash cards
+
+https://github.com/abo-abo/pamparam
+

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: integrant-halt-key
+# key: >i-hk
+# --
+(defmethod ig/halt-key! $1  [_ opts]
+  (log/debug "halt-key" $1 opts)
+  $2)

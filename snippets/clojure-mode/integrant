@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: integrant
+# key: >i
+# --
+[integrant.core :as ig]

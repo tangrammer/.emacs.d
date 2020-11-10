@@ -3,7 +3,7 @@
 Emacs minor mode for a nice writing [[file:20201024170630-ui.org][UI]] environment
 
 
- #+BEGIN_SRC emacs-lisp :eval never
+ #+BEGIN_SRC emacs-lisp :eval no
  (use-package olivetti
    :ensure false
 

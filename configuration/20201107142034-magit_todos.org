@@ -1,0 +1,10 @@
+#+title: magit-todos
+
+https://github.com/alphapapa/magit-todos#usage
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(use-package magit-todos
+  :ensure t)
+#+END_SRC
+* TODO configuration
+  so far we only see the TODOs but not the other todo tags like =WAITING=

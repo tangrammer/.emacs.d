@@ -1,10 +1,13 @@
 #+TITLE: clojure
 [[file:20201024172354-coding.org][coding]]
+
+
 if you have any problem with it you should take a look to 
 (find-function 'org-babel-execute:clojure)
+
 ** cider
 
- #+BEGIN_SRC emacs-lisp 
+ #+BEGIN_SRC emacs-lisp :results silent
   ;;  make autoloads ;; do that in terminal and... it requires to have installed `cask`
 
 
@@ -39,10 +42,6 @@ if you have any problem with it you should take a look to
  ;;  (define-key cider-mode-map (kbd "M-RET") 'cider-doc)
 
 
-   (add-hook 'cider-repl-mode-hook #'paredit-mode)
-   (add-hook 'cider-mode-hook #'paredit-mode)
-
-
    ;; clojure figwheel
    ;; https://github.com/bhauman/lein-figwheel/wiki/Running-figwheel-with-Emacs-Inferior-Clojure-Interaction-Mode
    ;; (defun figwheel-repl ()
@@ -61,7 +60,7 @@ if you have any problem with it you should take a look to
    (defun find-buffer-regex (reg)
      (interactive)
      (remove-if-not #'(lambda (x) (string-match reg x))
-		    (mapcar #'buffer-name (buffer-list))))
+        (mapcar #'buffer-name (buffer-list))))
 
    (defun cider-execute (command)
      (interactive)
@@ -86,9 +85,9 @@ if you have any problem with it you should take a look to
 
 
    (setq cider-cljs-lein-repl
-	 "(do (require 'figwheel-sidecar.repl-api)
-		(figwheel-sidecar.repl-api/start-figwheel!)
-		(figwheel-sidecar.repl-api/cljs-repl))")
+   "(do (require 'figwheel-sidecar.repl-api)
+    (figwheel-sidecar.repl-api/start-figwheel!)
+    (figwheel-sidecar.repl-api/cljs-repl))")
 
 
    (setq nrepl-log-messages t) 
@@ -112,8 +111,15 @@ if you have any problem with it you should take a look to
 
  #+END_SRC
 
- #+RESULTS:
- : browse-spec
+ 
+add [[file:20201106210428-paredit_mode.org][paredit mode]]
+#+BEGIN_SRC emacs-lisp :results silent 
+ (add-hook 'cider-repl-mode-hook #'paredit-mode)
+ (add-hook 'cider-mode-hook #'paredit-mode)
+
+#+END_SRC
+
+ 
 
 ** hola
 *** TODO eval pprint replace                                          :cider:
@@ -156,18 +162,16 @@ modified [[/Users/tangrammer/git/tangrammer/cider/cider-client.el::228][cider-cl
 
 
 ** pprint to file commented
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :results silent
 (defun pprint ()
  (interactive)
-(cider-pprint-eval-last-sexp-to-comment))
+ (cider-pprint-eval-last-sexp-to-comment))
 
 ;;(define-key cider-mode-map (kbd "C-c C-S-p") 'pprint)
 ;;(define-key cider-mode-map (kbd "C-c C-p") 'cider-pprint-eval-last-sexp)
 
 #+END_SRC
 
-#+RESULTS:
-: cider-pprint-eval-last-sexp
 
 
 

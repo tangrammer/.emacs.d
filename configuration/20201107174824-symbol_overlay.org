@@ -1,0 +1,49 @@
+#+title: symbol-overlay
+
+[[file:20201107173736-text_overlay.org][Text Overlay]]
+
+https://github.com/wolray/symbol-overlay
+
+
+#+BEGIN_SRC emacs-lisp :results silent 
+(use-package symbol-overlay
+  :ensure t
+  :bind (("M-i" . symbol-overlay-put)
+         ("M-n" . symbol-overlay-switch-forward)
+         ("M-p" . symbol-overlay-switch-backward)
+         ("<f7>" . symbol-overlay-mode)
+         ("<f8>" . symbol-overlay-remove-all)))
+
+
+#+END_SRC
+
+how to how use, try the keys above!
+
+there is 2 ways of using:
+1- symbol-overlay mode:
+just higlight same word on all doc
+2- symbol-overlay-put
+higlight with a different color the word selected 
+
+
+[[https://github.com/wolray/symbol-overlay/issues/59][keys]] with with [[file:20201028091004-transient_mode.org][transient-mode]]
+#+BEGIN_SRC emacs-lisp :results silent 
+(define-transient-command symbol-overlay-transient ()
+              "Symbol Overlay transient"
+              ["Symbol Overlay"
+               ["Overlays"
+                ("." "Add/Remove at point" symbol-overlay-put)
+                ("k" "Remove All" symbol-overlay-remove-all)
+                ]
+               ["Move to Symbol"
+                ("n" "Next" symbol-overlay-switch-forward)
+                ("p" "Previous" symbol-overlay-switch-backward)
+                ]
+               ["Other"
+                ("m" "Hightlight symbol-at-point" symbol-overlay-mode)
+                ]
+               ])
+
+(global-set-key (kbd "M-:") 'symbol-overlay-transient)
+
+#+END_SRC

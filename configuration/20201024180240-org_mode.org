@@ -1,6 +1,7 @@
 #+TITLE: org-mode
 [[file:20201024180311-major_mode.org][major-mode]]
 
+** [[file:20201110102514-org_screenshot.org][org-screenshot]]
 
 ** wrap lines => Visual line mode
  #+BEGIN_SRC emacs-lisp :results silent 
@@ -73,3 +74,11 @@ https://emacs.stackexchange.com/a/20762/13373
 #+END_SRC
 
    
+ 
+
+
+
+** creating timestamps
+   https://orgmode.org/manual/Creating-Timestamps.html#Creating-Timestamps
+   =C-c . (org-time-stamp)= 
+   =C-c ! (org-time-stamp-inactive)=

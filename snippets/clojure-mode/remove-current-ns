@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: remove-current-ns
+# key: rm-ns
+# --
+(remove-ns (symbol (str *ns*)))

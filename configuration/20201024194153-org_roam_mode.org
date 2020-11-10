@@ -8,6 +8,7 @@ org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]
 
 https://github.com/jethrokuan/org-roam
 
+* install package
  #+BEGIN_SRC elisp
 (unless (package-installed-p 'org-roam)
   (package-install 'org-roam))
@@ -17,28 +18,29 @@ https://github.com/jethrokuan/org-roam
 
 we want to have the mode activated always so we use [[file:20201025184003-after_init_hook.org][after-init-hook]]
 
-#+BEGIN_SRC emacs-lisp :results silent
+** add hooks
+ #+BEGIN_SRC emacs-lisp :results silent
 
 
-(add-hook 'after-init-hook 'org-roam-mode)
-(make-directory "~/org-roam")
-(setq org-roam-directory "~/org-roam")
+ (add-hook 'after-init-hook 'org-roam-mode)
+ (make-directory "~/org-roam")
+ (setq org-roam-directory "~/org-roam")
 
 
-#+END_SRC
+ #+END_SRC
 
-a default sqlite db is created 
+ a default sqlite db is created 
 
-some [[file:20201025182315-key_bindings.org][key bindings]] to improve the usability 
-#+BEGIN_SRC emacs-lisp :results silent 
+**  some [[file:20201025182315-key_bindings.org][key bindings]] to improve the usability 
+ #+BEGIN_SRC emacs-lisp :results silent 
 
-(add-hook 'org-mode-hook (lambda ()
-                           (org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
-                           (org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
-                           (org-defkey org-mode-map (kbd "M-R") 'org-roam)
-                           (org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)))
+ (add-hook 'org-mode-hook (lambda ()
+                            (org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
+                            (org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
+                            (org-defkey org-mode-map (kbd "M-R") 'org-roam)
+                            (org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)))
 
-#+END_SRC
+ #+END_SRC
 
 
 * once that you call org-roam-graph you can find the graph here

@@ -1,0 +1,23 @@
+#+title: org-screenshot
+
+[[file:20201024180240-org_mode.org][org-mode]] [[file:20201110102842-screenshot.org][screenshot]] 
+
+trying this [[file:20201110102857-org_download.org][org-download]] approach
+ https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/
+
+the approach use https://github.com/jcsalterego/pngpaste
+I've installed it using homebrew =brew install pngpaste=
+pay attention that to use the clipboard you need the key control
+so C+COMMAND+MAYS+4 to make the normal osx screenshot but leaving it in the clipboard
+then =C-M-y= and it's configured on [[file:20201110102857-org_download.org][org-download]]
+
+
+
+- anyway there is another alternatives around like  https://github.com/dfeich/org-screenshot
+
+
+ 
+example:
+
+#+DOWNLOADED: screenshot @ 2020-11-10 10:54:31
+[[file:images/20201110-105431_screenshot.png]]

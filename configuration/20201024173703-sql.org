@@ -16,7 +16,7 @@ https://github.com/purcell/reformatter.el
 
 
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC emacs-lisp :eval no
  
 ;; (eval-after-load "sql"
 ;;   '(load-library "sql-indent"))

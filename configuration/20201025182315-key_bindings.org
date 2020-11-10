@@ -21,8 +21,12 @@ If you want to rebind something that was previously bound to a non-prefix map, y
 dont like to think in the (interactive) command name and args when i'm thinking or in the words of [[file:20201024180240-org_mode.org][org-mode]] when I'm [[file:20201025184300-org_mode_capture.org][capturing]] ideas
 
 
-* remind --- bindings
+* TODO take a look to remind --- bindings
 https://github.com/mtekman/remind-bindings.el
 
 
 
+* TODO take a look to emacs-key-assist
+  https://github.com/Boruch-Baum/emacs-key-assist
+
+  

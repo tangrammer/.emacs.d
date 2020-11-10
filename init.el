@@ -7,7 +7,7 @@
 ;; * use my orgmode 
 ;; _(to fix babel + clojure)_ 
 ;; Download from [[https://orgmode.org/][orgmode]] the zip and point it in the following line 
-(add-to-list 'load-path "/Users/tangrammer/tools/org-9.1.13/lisp")
+;;(add-to-list 'load-path "/Users/tangrammer/tools/org-9.1.13/lisp")
 ;;(add-to-list 'load-path "~/git/tangrammer/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/local/")
 
@@ -22,16 +22,31 @@
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
 
-;; https://harryrschwartz.com/2016/02/15/switching-to-a-literate-emacs-configuration.html
 (org-babel-load-file "~/.emacs.d/top-level-packages.org")
-
+(defmacro comment (&rest body)
+  "Comment out one or more s-expressions."
+  nil)
 (require 'dash)
- (let((dir "~/.emacs.d/configuration/"))
-   (->> (directory-files dir)
+(let((dir "~/.emacs.d/configuration/"))
+  (->> (directory-files dir)
+        (--filter (and (not (string= ".dir-locals.el" it)) (string= "el" (file-name-extension it))))
+        (--map (let ((file-to-load (concat dir it)))
+                 (message "to remove:%s" file-to-load)
+                 (delete-file file-to-load)
+                 ;;(ignore-errors (org-babel-load-file file-to-load))
+                 )))
+  
+  (comment (->> (directory-files dir)
         (--filter (string= "org" (file-name-extension it)))
         (--map (let ((file-to-load (concat dir it)))
                  (message file-to-load)
-                 (ignore-errors (org-babel-load-file file-to-load))))))
+                 (ignore-errors (org-babel-load-file file-to-load)))))))
+
+(org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
+(org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
+(org-defkey org-mode-map (kbd "M-R") 'org-roam)
+(org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)
+
 
 ;; (setq multi-term-program "/bin/zsh")
 (custom-set-faces
@@ -39,7 +54,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minibuffer-prompt ((t (:background "light green" :foreground "dark magenta" :weight normal)))))
+ '(minibuffer-prompt ((t (:background "light green" :foreground "dark magenta" :weight normal))))
+ '(which-key-key-face ((t (:inherit font-lock-constant-face :height 1.0))))
+ '(which-key-note-face ((t (:inherit which-key-separator-face :height 1.0)))))
 
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
@@ -47,7 +64,7 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-
+;;(agenda)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -98,13 +115,15 @@
  '(org-agenda-files (quote ("/Users/tangrammer/git/orgs/gtd/notes.org")))
  '(package-selected-packages
    (quote
-    (sqlite emacsql-sqlite3 csv-mode meghanada hl-todo keypression org-ref org-roam helm-swoop gruvbox-theme elisp-format mini-frame handlebars-sgml-mode handlebars-mode ess ada-ref-man kubernetes imenu-list helpful yaml-mode kubernetes-el js-comint indium dumb-jump js2-mode cider sqlformat clojure-mode use-package magithub rjsx-mode exec-path-from-shell json-mode flycheck ivy-mpdel mpdel jdee gist solarized-theme solarized-dark-theme solarized-dark counsel swiper ivy lively command-log-mode w3 powerline org-bullets htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit yasnippet which-key web-mode)))
+    (symbol-overlay magit-todos olivetti org-journal engine-mode org org-roam-server remind-bindings org-roam sqlite emacsql-sqlite3 csv-mode meghanada hl-todo keypression org-ref helm-swoop gruvbox-theme elisp-format mini-frame handlebars-sgml-mode handlebars-mode ess ada-ref-man kubernetes imenu-list helpful yaml-mode kubernetes-el js-comint indium dumb-jump js2-mode cider sqlformat clojure-mode use-package magithub rjsx-mode exec-path-from-shell json-mode flycheck ivy-mpdel mpdel jdee gist solarized-theme solarized-dark-theme solarized-dark counsel swiper ivy lively command-log-mode w3 powerline org-bullets htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit yasnippet web-mode)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
    (quote
-    ((org-roam-db-location . "./emacs-configuration.db")
-     (org-roam-directory . "."))))
+    ((eval setq-local org-roam-directory
+           (expand-file-name "./"))
+     (org-roam-directory . "~/.emacs.d/configuration")
+     (org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db"))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
@@ -134,7 +153,13 @@
  '(weechat-color-list
    (quote
     (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(which-key-frame-max-height 100)
+ '(which-key-frame-max-width 100)
+ '(which-key-side-window-max-width 0.6)
  '(xterm-color-names
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+
+
+

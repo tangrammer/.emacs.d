@@ -9,21 +9,3 @@ Imenu produces menus for accessing locations in documents, typically in the curr
 (global-set-key (kbd "C-x C-i") 'imenu)
 
 #+END_SRC
-
-
-
-** imenu-toggle-show bar C-'
-taken from https://jblevins.org/log/markdown-imenu
- #+BEGIN_SRC emacs-lisp :results silent 
- (use-package imenu-list
-   :ensure t
-   :bind (("C-'" . imenu-list-smart-toggle))
-   :config
-   (setq imenu-list-focus-after-activation t
-         imenu-list-auto-resize nil))
-
- #+END_SRC
-
- 
-
-

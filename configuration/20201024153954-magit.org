@@ -6,13 +6,14 @@
  Magit is an interface to the version control system Git, implemented as an Emacs package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. (more)
 
  #+BEGIN_SRC emacs-lisp  :results silent
- (use-package magit
-   :config
-   (global-set-key (kbd "C-x g") 'magit-status))
+  (use-package magit
+    :config
+    (global-set-key (kbd "C-x g") 'magit-status))
 
+ (add-hook 'magit-mode-hook #'magit-todos-mode)
  #+END_SRC
 
- #+BEGIN_SRC elisp :eval never
+ #+BEGIN_SRC elisp :eval no
  (magit-git-items "log")
 (magit-log )
  #+END_SRC
@@ -22,20 +23,3 @@
 
 
 
-* example from technomancy emacs course
-[[file:20201024173801-elisp.org][elisp]]
-
-https://github.com/technomancy/emacs-starter-kit/tree/0716d255e74f330f8f2b1b5280a5caf3518ea335
-
-#+BEGIN_SRC  :eval never
-;; (-third-item (-partition 4 (magit-git-items "log")))  
-;;(length (magit-git-items "log")) 
-;;(first (magit-unstaged-files)) 
-;;(magit-expand-git-file-name (magit-current-file)) 
-;;(magit-list-remotes)
-
-;;(magit-rev-abbrev "a081ddad2106cd427d2c81b9a947b8a6ec423b65")
-#+END_SRC
-
-#+RESULTS:
-: a081dda

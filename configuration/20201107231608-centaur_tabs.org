@@ -1,0 +1,9 @@
+#+title: centaur tabs
+
+
+[[file:20201024170630-ui.org][UI]] [[file:20201107231616-tabs.org][tabs]]
+
+
+Emacs plugin aiming to become an aesthetic, modern looking tabs plugin
+
+https://github.com/ema2159/centaur-tabs

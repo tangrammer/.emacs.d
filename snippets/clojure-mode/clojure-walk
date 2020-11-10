@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clojure-walk
+# key: ->w
+# --
+[clojure.walk :as w]

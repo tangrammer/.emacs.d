@@ -1,0 +1,9 @@
+#+title: elegant-emacs
+
+[[file:20201024170630-ui.org][UI]]
+
+
+https://github.com/rougier/elegant-emacs
+* TODO take a look to this template
+
+

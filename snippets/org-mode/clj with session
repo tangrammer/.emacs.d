@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: clj with session
+# key: >clj
+# --
+#+BEGIN_SRC clojure :session ${1:hello-world} :results ${2:silent} 
+$3
+#+END_SRC

@@ -28,8 +28,17 @@
     (insert-file-contents (format  "%s/.dir-locals.el" dir))
     (--map  (eval (read (format "(%s %s \"%s\")" 'setq-local (-last-item it) (rest it))))
             (eval (quote  (rest  (car (read (buffer-string)))))))))
-
 #+END_SRC
+
+** extract directory
+   #+BEGIN_SRC emacs-lisp :results silent 
+(defun extract-dir (path)
+  (string-join  (butlast (split-string path "\\/")) "/"))
+
+(extract-dir "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org")
+
+   #+END_SRC
+
 
 
 ** go to a directory using a predefined alias
@@ -44,22 +53,29 @@
   (interactive
    ;; complex code here that returns a list
    (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "roam" "roam-personal" "roam-configuration" "roam-lumen") nil t))))
+     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "roam" "roam-emacs-configuration" "roam-lumen") nil t))))
   (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
                    ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
                    ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
-                   ((string= choice "roam-configuration" ) "~/.emacs.d/configuration")
-                   ((string= choice "roam" ) "~/org-roam")
-                   ((string= choice "roam-personal" ) "~/org-roam-personal")
-                   ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam")
+                   ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
+                   ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
+                   ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org")
                    (t "~/.emacs.d/init.el"))))
     (cond
-     ((is-roam choice) (progn (let ((default-directory dir))
-                                (progn
-                                  ;;(org-roam-db-build-cache) ;; seems not necessary
-                                  (read-dir-locals default-directory)
-                                  (call-interactively 'org-roam-find-file)))))
+     ((is-roam choice) (progn
+                         (let ((yup (find-file (extract-dir  dir))))
+                           (let ((default-directory (extract-dir  dir)))
+                             (progn
+                               
+                               ;;(org-roam-db-build-cache) ;; seems not necessary
+                               ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
+                               ;;(org-roam-build-cache)
+                           
+                               (call-interactively 'org-roam-find-file)
+                               (kill-buffer yup)
+                               )))))
      (t (find-file dir)))))
+
 
 
      #+END_SRC
@@ -67,7 +83,7 @@
 
 
 * WAITING save alias function
-  #+BEGIN_SRC elisp :eval never
+  #+BEGIN_SRC elisp :eval no
 
   (get-buffer "yupie")
 

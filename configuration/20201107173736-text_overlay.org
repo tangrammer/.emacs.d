@@ -1,0 +1,6 @@
+#+title: Text Overlay
+[[file:20201024170630-ui.org][UI]] [[file:20201024181648-editing.org][editing]]
+
+
+besides currently installed [[file:20201107174824-symbol_overlay.org][symbol-overlay]] there is another option https://github.com/emacsorphanage/ov that could be insteresting to take a look too
+

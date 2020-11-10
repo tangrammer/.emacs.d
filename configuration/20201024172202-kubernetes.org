@@ -3,7 +3,7 @@
 [[file:20201024172152-devops.org][devops]]
 
   
-#+BEGIN_SRC emacs-lisp :results silent :eval never
+#+BEGIN_SRC emacs-lisp :results silent :eval no
 (unless (package-installed-p 'kubernetes)
   (package-install 'kubernetes))
 (require 'kubernetes)

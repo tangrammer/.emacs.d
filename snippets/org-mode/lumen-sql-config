@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: lumen-sql-config
+# key: >lsqlc
+# --
+#+PROPERTY: header-args:sql :engine postgresql 
+#+PROPERTY: header-args:sql+ :dbhost localhost
+#+PROPERTY: header-args:sql+ :dbport 5432 
+#+PROPERTY: header-args:sql+ :dbuser lumen
+#+PROPERTY: header-args:sql+ :dbpassword password
+#+PROPERTY: header-args:sql+ :database lumen_tenant_1

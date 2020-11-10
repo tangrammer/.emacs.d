@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: lum-spec
+# key: lum-spec
+# --
+#+PROPERTY: header-args:clojure :exports both
+#+PROPERTY: header-args:clojure+ :results silent
+#+PROPERTY: header-args:clojure+ :session lumen
+#+PROPERTY: header-args:clojure+ :padline yes
+#+PROPERTY: header-args:clojure+ :mkdirp yes
+#+PROPERTY: header-args:clojure+ :tangle ../src/akvo/lumen/specs/$1.clj
+
+* specs.$1
+
+#+BEGIN_SRC clojure
+(ns akvo.lumen.specs.$1
+     (:require [clojure.spec.alpha :as s]
+               [akvo.lumen.specs.core :as lumen.s]))
+
+$2
+
+#+END_SRC
