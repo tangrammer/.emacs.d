@@ -1,0 +1,12 @@
+#+title: json
+
+
+add hooks
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(add-to-list 'auto-mode-alist '("\\.json" . json-mode))
+(add-hook 'json-mode-hook 'hs-minor-mode)
+
+#+END_SRC
+

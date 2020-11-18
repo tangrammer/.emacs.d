@@ -1,0 +1,87 @@
+#+title: tangrammer-mode
+
+[[file:20201028091004-transient_mode.org][transient-mode]]
+
+
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(defun yazz (name v1)
+  (flet ((dummy-prompt
+          (prompt choices &optional display-fn)
+          (declare (ignore prompt))
+          (or (find name choices :key display-fn :test #'string=)
+              (throw 'notfound nil))))
+    (let ((yas/prompt-functions '(dummy-prompt)))
+      (catch 'notfound
+        (yas/insert-snippet t)
+        (insert v1)
+        (execute-kbd-macro [?\t]) ;;(insert ?\t)	
+        ))))
+
+(defun test-function (&optional args)
+  (interactive
+   (list (transient-args 'yas-babel)))
+  (message "%s" args)
+  (-let (((a b) (->>
+                 args
+              (--map (split-string it "="))
+              (--separate (string= "language" (first it))))))
+    (-if-let  (language (-first-item a))      
+        (yazz "block" (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (-last-item it)) b)))
+      (message "you need to select a language!"))))
+
+(transient-define-argument language-argument ()
+  "language"
+  :description "choose a language"
+  :class 'transient-option
+  :shortarg "-l"
+  :argument "language="
+  :choices '("sql" "elisp" "clojure" ))
+
+(transient-define-argument exports-argument ()
+  "exports doc"
+  :description "define how to export code"
+  :class 'transient-option
+  :shortarg "-e"
+  :argument "export="
+  :choices '("none" "code" "results" "both" ))
+
+(transient-define-argument eval-argument ()
+  "eval doc"
+  :description "define how to eval code"
+  :class 'transient-option
+  :shortarg "-v"
+  :argument "eval="
+  :choices '("query" "query-export" "never" "never-export" ))
+
+(defun tangrammer/co-authored-action (&optional args)
+  (interactive
+   (list (transient-args 'tangrammer/co-authored-command)))
+  (message "%s" args)
+  (if (-contains? args "multiple")
+      (call-interactively 'co-authored-multiple)
+    (call-interactively 'co-authored)))
+
+(define-transient-command tangrammer/co-authored-command ()
+  "Test Transient Title"
+  ["Arguments"
+   ("m" "multiple authors" "multiple")]
+  ["Actions"
+   ("c" "Co-Authored-BY" tangrammer/co-authored-action)])
+
+(define-transient-command tangrammer/git-command ()
+  "Git related things"
+  ["Actions"
+   ("c" "Co-Authored-BY" tangrammer/co-authored-command)])
+
+(define-transient-command >tangrammer ()
+  "tangrammer dispatcher"
+  ["Actions"
+   ("d" "Action d" test-function)
+   ("g" "go to places" >go)
+   ("m" "git related" tangrammer/git-command)])
+
+#+END_SRC
+
+

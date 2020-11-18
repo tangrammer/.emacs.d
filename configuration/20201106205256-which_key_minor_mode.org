@@ -30,10 +30,8 @@
 
    customized Which Key Side Window Max Width => 0.6 using following elisp function
 
-
-   #+BEGIN_SRC emacs-lisp :eval no
-
- ;;(customize-group 'which-key)
+ #+BEGIN_SRC untangle
+(customize-group 'which-key)
  #+END_SRC
 
 

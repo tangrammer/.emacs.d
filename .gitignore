@@ -7,7 +7,9 @@ elpa/
 /configuration/*.el
 !/configuration/.dir-locals.el
 /configuration.el
-/local
+/local/*
+!/local/ob-untangle.el
+!/local/sunshine.el
 /games
 /eshell
 /magithub

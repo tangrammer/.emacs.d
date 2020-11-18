@@ -1,3 +1,6 @@
 [submodule "snippets/yasnippets-orgmode"]
 	path = snippets/yasnippets-orgmode
 	url = https://github.com/yyr/yasnippets-orgmode.git
+[submodule "local/sunshine.el"]
+	path = local/sunshine.el
+	url = https://github.com/aaronbieber/sunshine.el.git

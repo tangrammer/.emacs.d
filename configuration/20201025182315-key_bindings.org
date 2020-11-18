@@ -22,7 +22,7 @@ dont like to think in the (interactive) command name and args when i'm thinking 
 
 
 * TODO take a look to remind --- bindings
-https://github.com/mtekman/remind-bindings.el
+https://gitlab.com/mtekman/remind-bindings.el
 
 
 

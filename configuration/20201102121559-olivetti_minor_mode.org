@@ -2,11 +2,17 @@
 
 Emacs minor mode for a nice writing [[file:20201024170630-ui.org][UI]] environment
 
+#+BEGIN_SRC untangle
+  (use-package olivetti
+    :ensure nil)
+  #+END_SRC
 
- #+BEGIN_SRC emacs-lisp :eval no
- (use-package olivetti
-   :ensure false
-
-   )
+ #+BEGIN_SRC emacs-lisp
+"wow"
  #+END_SRC
+
+  
+   #+BEGIN_SRC elisp
+1
+   #+END_SRC
 

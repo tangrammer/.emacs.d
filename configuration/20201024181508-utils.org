@@ -83,7 +83,7 @@
 
 
 * WAITING save alias function
-  #+BEGIN_SRC elisp :eval no
+  #+BEGIN_SRC untangle
 
   (get-buffer "yupie")
 
@@ -137,3 +137,5 @@
  #+RESULTS:
  : private-git-dropbox
 
+
+ 

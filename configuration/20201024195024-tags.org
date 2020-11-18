@@ -25,7 +25,7 @@ https://orgmode.org/manual/Tag-Hierarchy.html#Tag-Hierarchy
 **  interactive call to navigate tags
     
 ***  find cats in org file
-  #+BEGIN_SRC :eval no
+  #+BEGIN_SRC untangle
   (with-current-buffer "configuration.org"
     org-tag-alist-for-agenda)
   #+END_SRC

@@ -5,9 +5,11 @@
 * highLighting
 https://www.gnu.org/savannah-checkouts/gnu/emacs/manual/html_node/emacs/Highlight-Interactively.html
 
-[[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/hi-lock.el.gz::450][source]]
 
-** TODO mode for font face ... highlight ... 
+
+** DONE mode for font face ... highlight ...
+already installed [[file:20201107174824-symbol_overlay.org][symbol-overlay]]
+   
 https://www.gnu.org/software/emacs/manual/html_node/eintr/defcustom.html
 https://stackoverflow.com/questions/7707002/changing-the-color-of-a-specific-piece-of-text-in-emacs-without-creating-a-theme
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Face-Customization.html#Face-Customization

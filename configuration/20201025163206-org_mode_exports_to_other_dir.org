@@ -6,7 +6,7 @@ example of including a elisp value def in a org file with property (with [[file:
 
 taken from https://emacs.stackexchange.com/questions/3985/make-org-mode-export-to-beamer-keep-temporary-files-out-of-the-current-directory/7989#7989
 
-   #+BEGIN_SRC emacs-lisp :results silent :eval no 
+   #+BEGIN_SRC untangle
    ;; (defvar org-export-output-directory-prefix "../../docs/backend/faqs" "../../docs/backend/faqs")
 
    ;; (defadvice org-export-output-file-name (before org-add-export-dir activate)

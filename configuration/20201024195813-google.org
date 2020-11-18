@@ -1,6 +1,7 @@
 #+TITLE: google
 [[file:20201024195828-search.org][search]]
 
-* TODO Google at a point
+* DONE Google at a point
+already installed =>  [[file:20201027125059-engine_mode_searching_different_systems.org][engine-mode searching different systems]]
 https://github.com/Malabarba/emacs-google-this/
 

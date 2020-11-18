@@ -4,9 +4,39 @@
 settings taken from [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/][http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/]]
 
 
+* untangle to not output elisp code in configuration
+
+** DONE not output elisp code in configuration
+
+   so ob-tangle output all elisp and emacs-lisp blocks no matter which header do you use, so instead of patching the ob-tangle.el code I'm setting up a new clone of ob-lisp.el as ob-emacs-lisp-no.el where (almost) all definitions are aliased 
+   
+ #+BEGIN_SRC emacs-lisp :results silent 
+ (load-file "~/.emacs.d/local/ob-untangle.el")
+ #+END_SRC
+
+
+ below an example of using no-=elisp=
+and initially the intention was to call this logic in ob-tangle.el, but nevertheless it seems that emacs tries to load ob-table.elc that so far I don't know how to compile or determine which file should emacs load on startup
+
+ #+BEGIN_SRC untangle :exports none :eval never :tangle no
+   ;; try to fix ob-tangle with exports none
+(defun should-exports (source-block)
+  (let ((res (null (-first (lambda (x) (and
+                                    (eq (cdr x) 'none)
+                                    (eq (first x) :exports))) (nth 2 source-block)))))
+    (message "res %s block %s" res source-block)
+    res))
+
+ #+END_SRC
+
+
+ 
+
+* conf
 #+BEGIN_SRC emacs-lisp  :results silent
 
 (require 'ob-dot)
+
 
 
 (org-babel-do-load-languages

@@ -18,7 +18,7 @@
 
 every time you want to journal ...
 
-#+BEGIN_SRC emacs-lisp :results silent :eval no
+#+BEGIN_SRC untangle
 (call-interactively 'org-journal-new-entry) 
 
 #+END_SRC

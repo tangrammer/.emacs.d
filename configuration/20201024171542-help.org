@@ -32,8 +32,7 @@ A better Emacs *help* buffer
 * get keys of function
 [[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/help.el.gz::558][from]] 
 
-#+BEGIN_SRC elisp :eval no
-
+#+BEGIN_SRC untangle
 (where-is-internal 'move-end-of-line)
 ;;([5])
 

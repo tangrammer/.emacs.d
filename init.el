@@ -22,25 +22,26 @@
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
 
-(org-babel-load-file "~/.emacs.d/top-level-packages.org")
 (defmacro comment (&rest body)
   "Comment out one or more s-expressions."
   nil)
+
+(org-babel-load-file "~/.emacs.d/top-level-packages.org")
+
 (require 'dash)
 (let((dir "~/.emacs.d/configuration/"))
+  ;; remove first all .el files except .dir-locals.el
   (->> (directory-files dir)
         (--filter (and (not (string= ".dir-locals.el" it)) (string= "el" (file-name-extension it))))
         (--map (let ((file-to-load (concat dir it)))
-                 (message "to remove:%s" file-to-load)
-                 (delete-file file-to-load)
-                 ;;(ignore-errors (org-babel-load-file file-to-load))
-                 )))
-  
-  (comment (->> (directory-files dir)
-        (--filter (string= "org" (file-name-extension it)))
-        (--map (let ((file-to-load (concat dir it)))
-                 (message file-to-load)
-                 (ignore-errors (org-babel-load-file file-to-load)))))))
+                 (ignore-errors (delete-file file-to-load)))))
+  ;; tangle and load all org
+  (->> (directory-files dir)
+       (--filter (string= "org" (file-name-extension it)))
+       (--map (let ((file-to-load (concat dir it)))
+                (message file-to-load)
+                (ignore-errors (org-babel-load-file file-to-load))))))
+
 
 (org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
 (org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
@@ -115,7 +116,7 @@
  '(org-agenda-files (quote ("/Users/tangrammer/git/orgs/gtd/notes.org")))
  '(package-selected-packages
    (quote
-    (symbol-overlay magit-todos olivetti org-journal engine-mode org org-roam-server remind-bindings org-roam sqlite emacsql-sqlite3 csv-mode meghanada hl-todo keypression org-ref helm-swoop gruvbox-theme elisp-format mini-frame handlebars-sgml-mode handlebars-mode ess ada-ref-man kubernetes imenu-list helpful yaml-mode kubernetes-el js-comint indium dumb-jump js2-mode cider sqlformat clojure-mode use-package magithub rjsx-mode exec-path-from-shell json-mode flycheck ivy-mpdel mpdel jdee gist solarized-theme solarized-dark-theme solarized-dark counsel swiper ivy lively command-log-mode w3 powerline org-bullets htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit yasnippet web-mode)))
+    (yasnippet-snippets org-download symbol-overlay magit-todos org-journal engine-mode org org-roam-server remind-bindings org-roam sqlite emacsql-sqlite3 csv-mode meghanada hl-todo keypression org-ref helm-swoop gruvbox-theme elisp-format mini-frame handlebars-sgml-mode handlebars-mode ess ada-ref-man kubernetes imenu-list helpful yaml-mode kubernetes-el js-comint indium dumb-jump js2-mode cider sqlformat clojure-mode use-package magithub rjsx-mode exec-path-from-shell json-mode flycheck ivy-mpdel mpdel jdee gist solarized-theme solarized-dark-theme solarized-dark counsel swiper ivy lively command-log-mode w3 powerline org-bullets htmlize org-ehtml emacs-htmlize toc-org logview helm helm-open-github restclient win-switch paredit idomenu projectile multiple-cursors smartparens rainbow-delimiters ob-http expand-region company-flx company company-mode magit web-mode)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values

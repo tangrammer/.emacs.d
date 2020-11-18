@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Usage: co-authored-by <name> <name-2> <name-3> ...
+# Example: co-authored-by dan juan valeria
+
+set -eu
+
+declare -a authors
+
+for a in "$@"; do
+    authors+=("$(printf '%s' "--author=${a}")")
+done
+
+git log "${authors[@]}" | awk '/^Author:/ && !seen[$2]++ {print}' | sed 's/Author:/Co-authored-by:/g'

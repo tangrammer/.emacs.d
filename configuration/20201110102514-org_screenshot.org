@@ -12,7 +12,6 @@ so C+COMMAND+MAYS+4 to make the normal osx screenshot but leaving it in the clip
 then =C-M-y= and it's configured on [[file:20201110102857-org_download.org][org-download]]
 
 
-
 - anyway there is another alternatives around like  https://github.com/dfeich/org-screenshot
 
 
