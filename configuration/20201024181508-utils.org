@@ -21,7 +21,7 @@
 
 
 ** read/eval dir locals from another dir
-   [[file:20201103210419-elisp_eval.org][elisp eval]]
+
 #+BEGIN_SRC emacs-lisp :results silent 
 (defun read-dir-locals (dir)
   (with-temp-buffer
@@ -38,48 +38,6 @@
 (extract-dir "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org")
 
    #+END_SRC
-
-
-
-** go to a directory using a predefined alias
-
-   interesting the pattern matching example [[file:20201103210643-elisp_regex.org][elisp regex]]
-#+BEGIN_SRC emacs-lisp :results silent 
-
-(defun is-roam (path)
-  (if  (string-match-p (regexp-quote "roam") path) t nil))
-
-(defun >go (choice)
-  (interactive
-   ;; complex code here that returns a list
-   (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "roam" "roam-emacs-configuration" "roam-lumen") nil t))))
-  (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
-                   ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
-                   ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
-                   ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
-                   ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
-                   ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org")
-                   (t "~/.emacs.d/init.el"))))
-    (cond
-     ((is-roam choice) (progn
-                         (let ((yup (find-file (extract-dir  dir))))
-                           (let ((default-directory (extract-dir  dir)))
-                             (progn
-                               
-                               ;;(org-roam-db-build-cache) ;; seems not necessary
-                               ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
-                               ;;(org-roam-build-cache)
-                           
-                               (call-interactively 'org-roam-find-file)
-                               (kill-buffer yup)
-                               )))))
-     (t (find-file dir)))))
-
-
-
-     #+END_SRC
-
 
 
 * WAITING save alias function
@@ -111,9 +69,6 @@
 
 
   #+END_SRC
-
-
-
   
 * private dropbox repo
    #+BEGIN_SRC emacs-lisp :results silent
@@ -134,8 +89,6 @@
 
  #+END_SRC
 
- #+RESULTS:
- : private-git-dropbox
 
 
  

@@ -3,10 +3,89 @@
 [[file:20201028091004-transient_mode.org][transient-mode]]
 
 
+** go to a directory using a predefined alias
+
+   interesting the pattern matching example 
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(defun tangrammer/roam/go (choice)
+  (interactive
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " '("roam" "roam-emacs-configuration" "roam-lumen") nil t))))
+  (let ((dir (cond ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
+                   ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
+                   ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org"))))
+    (progn
+      (let ((yup (find-file (extract-dir  dir))))
+        (let ((default-directory (extract-dir  dir)))
+          (progn
+            
+            ;;(org-roam-db-build-cache) ;; seems not necessary
+            ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
+            ;;(org-roam-build-cache)
+            
+            (call-interactively 'org-roam-find-file)
+            (kill-buffer yup)
+            ))))))
+
+(defun tangrammer/dir/go (choice)
+  (interactive
+   ;; complex code here that returns a list
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "emacs-init-config") nil t))))
+  (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
+                   ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
+                   ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
+                   ((string= choice "emacs-init-config" ) "~/.emacs.d/init.el"))))
+    (find-file dir)))
+
+(defun tangrammer/dir/go/data-science-action (&optional args)
+  (interactive
+   (list (transient-args 'tangrammer/dir/go/data-science-command)))
+  (let ((dir (cond ((-contains? args "general") "~/git/akvo/data-science/akvo-data-science-services")
+                   ((-contains? args "example-lumen") "~/git/akvo/data-science/akvo-data-science-services/projects/example-lumen")
+                   ((-contains? args "example-local") "~/git/akvo/data-science/akvo-data-science-services/projects/example-local"))))
+    (find-file dir)))
+
+(define-transient-command tangrammer/dir/go/data-science-command ()
+  "Babel related things"
+  ["Arguments"
+     ("g" "data-science-services project" "general")
+     ("l" "example-lumen" "example-lumen")
+     ("o" "example-local" "example-local")]
+  ["Actions"
+   ("g" "go" tangrammer/dir/go/data-science-action)])
+
+(defun tangrammer/dir/go/lumen-action (&optional args)
+  (interactive
+   (list (transient-args 'tangrammer/dir/go/lumen-command)))
+  (let ((dir (cond ((-contains? args "backend") "~/git/akvo/akvo-lumen/backend/")
+                   ((-contains? args "client") "~/git/akvo/akvo-lumen/client"))))
+    (find-file dir)))
+
+(define-transient-command tangrammer/dir/go/lumen-command ()
+  "Babel related things"
+  ["Arguments"
+     ("b" "backend" "backend")
+     ("c" "client" "client")]
+  ["Actions"
+   ("g" "go" tangrammer/dir/go/lumen-action)])
+
+
+
+(define-transient-command tangrammer/dir/go-command ()
+  "tangrammer dir go dispatcher"
+  ["Actions"
+   ("d" "data-science related" tangrammer/dir/go/data-science-command)
+   ("l" "lumen related" tangrammer/dir/go/lumen-command)
+   ("e" "emacs related" tangrammer/dir/go)])
+     #+END_SRC
+
+** tangrammer transient options
 
 #+BEGIN_SRC emacs-lisp :results silent 
 
-(defun yazz (name v1)
+(defun populate-babel-source-block  (name v1)
   (flet ((dummy-prompt
           (prompt choices &optional display-fn)
           (declare (ignore prompt))
@@ -19,19 +98,19 @@
         (execute-kbd-macro [?\t]) ;;(insert ?\t)	
         ))))
 
-(defun test-function (&optional args)
+(defun tangrammer/babel/block-action (&optional args)
   (interactive
-   (list (transient-args 'yas-babel)))
+   (list (transient-args 'tangrammer/babel/block-generator-command)))
   (message "%s" args)
   (-let (((a b) (->>
                  args
               (--map (split-string it "="))
               (--separate (string= "language" (first it))))))
     (-if-let  (language (-first-item a))      
-        (yazz "block" (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (-last-item it)) b)))
+        (populate-babel-source-block "block" (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (-last-item it)) b)))
       (message "you need to select a language!"))))
 
-(transient-define-argument language-argument ()
+(transient-define-argument tangrammer/babel/language-argument ()
   "language"
   :description "choose a language"
   :class 'transient-option
@@ -39,7 +118,7 @@
   :argument "language="
   :choices '("sql" "elisp" "clojure" ))
 
-(transient-define-argument exports-argument ()
+(transient-define-argument tangrammer/babel/exports-argument ()
   "exports doc"
   :description "define how to export code"
   :class 'transient-option
@@ -47,7 +126,7 @@
   :argument "export="
   :choices '("none" "code" "results" "both" ))
 
-(transient-define-argument eval-argument ()
+(transient-define-argument tangrammer/babel/eval-argument ()
   "eval doc"
   :description "define how to eval code"
   :class 'transient-option
@@ -75,13 +154,22 @@
   ["Actions"
    ("c" "Co-Authored-BY" tangrammer/co-authored-command)])
 
+(define-transient-command tangrammer/babel/block-generator-command ()
+  "Babel related things"
+  ["Arguments"
+     ("l" "language" tangrammer/babel/language-argument)
+     ("e" "exports" tangrammer/babel/exports-argument)
+     ("v" "eval" tangrammer/babel/eval-argument)
+     ]
+  ["Actions"
+   ("c" "gen-block" tangrammer/babel/block-action)])
+
 (define-transient-command >tangrammer ()
   "tangrammer dispatcher"
   ["Actions"
-   ("d" "Action d" test-function)
-   ("g" "go to places" >go)
+   ("b" "babel things" tangrammer/babel/block-generator-command)
+   ("r" "roam(s)" tangrammer/roam/go)
+   ("d" "go to 'my' dirs" tangrammer/dir/go-command)
    ("m" "git related" tangrammer/git-command)])
 
 #+END_SRC
-
-

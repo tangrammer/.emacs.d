@@ -51,3 +51,7 @@ doing M-l in the related graph then open it in a browser
 
 * more than 1 roam system 
 you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-locals]] as this configuration system
+
+
+* TODO roam + babel + emacs config dependency order based on roam deps
+https://github.com/tangrammer/.emacs.d/issues/2
