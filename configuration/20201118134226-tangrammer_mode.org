@@ -8,77 +8,49 @@
    interesting the pattern matching example 
 #+BEGIN_SRC emacs-lisp :results silent 
 
-(defun tangrammer/roam/go (choice)
-  (interactive
-   (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " '("roam" "roam-emacs-configuration" "roam-lumen") nil t))))
-  (let ((dir (cond ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
-                   ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
-                   ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org"))))
-    (progn
-      (let ((yup (find-file (extract-dir  dir))))
-        (let ((default-directory (extract-dir  dir)))
-          (progn
-            
-            ;;(org-roam-db-build-cache) ;; seems not necessary
-            ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
-            ;;(org-roam-build-cache)
-            
-            (call-interactively 'org-roam-find-file)
-            (kill-buffer yup)
-            ))))))
-
-(defun tangrammer/dir/go (choice)
-  (interactive
-   ;; complex code here that returns a list
-   (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "emacs-init-config") nil t))))
-  (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
-                   ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
-                   ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
-                   ((string= choice "emacs-init-config" ) "~/.emacs.d/init.el"))))
-    (find-file dir)))
-
-(defun tangrammer/dir/go/data-science-action (&optional args)
-  (interactive
-   (list (transient-args 'tangrammer/dir/go/data-science-command)))
-  (let ((dir (cond ((-contains? args "general") "~/git/akvo/data-science/akvo-data-science-services")
-                   ((-contains? args "example-lumen") "~/git/akvo/data-science/akvo-data-science-services/projects/example-lumen")
-                   ((-contains? args "example-local") "~/git/akvo/data-science/akvo-data-science-services/projects/example-local"))))
-    (find-file dir)))
-
 (define-transient-command tangrammer/dir/go/data-science-command ()
-  "Babel related things"
-  ["Arguments"
-     ("g" "data-science-services project" "general")
-     ("l" "example-lumen" "example-lumen")
-     ("o" "example-local" "example-local")]
+  "Data-science related things"
   ["Actions"
-   ("g" "go" tangrammer/dir/go/data-science-action)])
-
-(defun tangrammer/dir/go/lumen-action (&optional args)
-  (interactive
-   (list (transient-args 'tangrammer/dir/go/lumen-command)))
-  (let ((dir (cond ((-contains? args "backend") "~/git/akvo/akvo-lumen/backend/")
-                   ((-contains? args "client") "~/git/akvo/akvo-lumen/client"))))
-    (find-file dir)))
+   ("g" "general"
+    (lambda (&optional args)
+      (interactive)
+      (find-file  "~/git/akvo/data-science/akvo-data-science-services")))
+   ("l" "example-lumen"
+    (lambda (&optional args)
+      (interactive)
+      (find-file  "~/git/akvo/data-science/akvo-data-science-services/projects/example-lumen")))
+   ("o" "example-local"
+    (lambda (&optional args)
+      (interactive)
+      (find-file  "~/git/akvo/data-science/akvo-data-science-services/projects/example-local")))
+   ])
 
 (define-transient-command tangrammer/dir/go/lumen-command ()
-  "Babel related things"
-  ["Arguments"
-     ("b" "backend" "backend")
-     ("c" "client" "client")]
+  "Lumen related dirs"  
   ["Actions"
-   ("g" "go" tangrammer/dir/go/lumen-action)])
+   ("c" "client" (lambda (&optional args)
+                          (interactive)
+                          (find-file  "~/git/akvo/akvo-lumen/client/")))
+   ("b" "backend" (lambda (&optional args)
+                          (interactive)
+                          (find-file  "~/git/akvo/akvo-lumen/backend/project.clj")))])
 
-
+(define-transient-command tangrammer/dir/go/emacs ()
+  "Emacs related things"
+  ["Actions"
+   ("c" "configuration" (lambda (&optional args)
+                          (interactive)
+                          (find-file  "~/.emacs.d/configuration")))
+   ("i" "init.el" (lambda (&optional args)
+                    (interactive)
+                    (find-file  "~/.emacs.d/init.el")))])
 
 (define-transient-command tangrammer/dir/go-command ()
   "tangrammer dir go dispatcher"
   ["Actions"
    ("d" "data-science related" tangrammer/dir/go/data-science-command)
    ("l" "lumen related" tangrammer/dir/go/lumen-command)
-   ("e" "emacs related" tangrammer/dir/go)])
+   ("e" "emacs related" tangrammer/dir/go/emacs)])
      #+END_SRC
 
 ** tangrammer transient options
@@ -164,7 +136,7 @@
   ["Actions"
    ("c" "gen-block" tangrammer/babel/block-action)])
 
-(define-transient-command >tangrammer ()
+(define-transient-command >t ()
   "tangrammer dispatcher"
   ["Actions"
    ("b" "babel things" tangrammer/babel/block-generator-command)

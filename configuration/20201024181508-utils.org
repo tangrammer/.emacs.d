@@ -92,3 +92,40 @@
 
 
  
+
+* old examples of interactively
+  deprecated in order to use transient
+  #+BEGIN_SRC untangle
+
+  (defun >t/roam/go (choice)
+    (interactive
+     (let ((completion-ignore-case  t))
+       (list (completing-read "Choose: " '("roam" "roam-emacs-configuration" "roam-lumen") nil t))))
+    (let ((dir (cond ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
+                     ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
+                     ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org"))))
+      (progn
+        (let ((yup (find-file (extract-dir  dir))))
+          (let ((default-directory (extract-dir  dir)))
+            (progn
+
+              ;;(org-roam-db-build-cache) ;; seems not necessary
+              ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
+              ;;(org-roam-build-cache)
+
+              (call-interactively 'org-roam-find-file)
+              (kill-buffer yup)
+              ))))))
+
+  (defun >t/dir/go (choice)
+    (interactive
+     ;; complex code here that returns a list
+     (let ((completion-ignore-case  t))
+       (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "emacs-init-config") nil t))))
+    (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
+                     ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
+                     ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
+                     ((string= choice "emacs-init-config" ) "~/.emacs.d/init.el"))))
+      (find-file dir)))
+
+  #+END_SRC
