@@ -1,4 +1,5 @@
 #+title: flash cards
 
-https://github.com/abo-abo/pamparam
+[[file:20201122113334-anki_editor.org][Anki editor]]
+
 

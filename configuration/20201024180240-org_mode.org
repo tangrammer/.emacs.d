@@ -82,3 +82,6 @@ https://emacs.stackexchange.com/a/20762/13373
    https://orgmode.org/manual/Creating-Timestamps.html#Creating-Timestamps
    =C-c . (org-time-stamp)= 
    =C-c ! (org-time-stamp-inactive)=
+
+
+

@@ -3,19 +3,22 @@
 settings included support for [[file:20201110102514-org_screenshot.org][org-screenshot]]
 
  #+BEGIN_SRC emacs-lisp :results silent 
-(use-package org-download
-    :after org
-    :defer nil
-    :custom
-    (org-download-method 'directory)
-    (org-download-image-dir "images")
-    (org-download-heading-lvl nil)
-    (org-download-timestamp "%Y%m%d-%H%M%S_")
-    (org-image-actual-width 300)
-    (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
-    :bind
-    ("C-M-y" . org-download-screenshot)
-    :config
-    (require 'org-download))
+ (use-package org-download
+     :after org
+     :defer nil
+     :custom
+     (org-download-method 'directory)
+     (org-download-image-dir "images")
+     (org-download-heading-lvl nil)
+     (org-download-timestamp "%Y%m%d-%H%M%S_")
+     (org-image-actual-width 300)
+     (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+     :bind
+     ("C-M-y" . org-download-screenshot)
+     :config
+     (require 'org-download))
 
  #+END_SRC
+
+#+DOWNLOADED: screenshot @ 2020-11-20 16:26:54
+[[file:images/20201120-162654_screenshot.png]]

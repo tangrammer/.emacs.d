@@ -1,4 +1,10 @@
 #+title: org-mode capture
+* TODO learn how to capture from outside from emacs
+https://yiufung.net/post/anki-org/
+
+* info about capturing
+
+
 
 this functionality is focused in capturing ideas as notes. in  [[file:20201024194153-org_roam_mode.org][org-roam]] also there is capturing process 
 

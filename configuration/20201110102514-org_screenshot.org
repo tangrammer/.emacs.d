@@ -20,3 +20,5 @@ example:
 
 #+DOWNLOADED: screenshot @ 2020-11-10 10:54:31
 [[file:images/20201110-105431_screenshot.png]]
+* TODO give a try a flameshoot
+idea from https://yiufung.net/post/anki-org/ 
