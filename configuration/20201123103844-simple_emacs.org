@@ -1,0 +1,127 @@
+#+title: simple emacs
+
+
+ #+BEGIN_SRC untangle :eval no
+
+     (setq visible-bell 0)
+
+     (require 'package)
+
+     (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                              ("marmalade" . "https://marmalade-repo.org/packages/")
+                              ("melpa" . "https://melpa.org/packages/")
+                              ("org" . "https://orgmode.org/elpa/")
+                              ("melpa-stable" . "https://stable.melpa.org/packages/")))
+
+     (package-initialize)
+
+     (setq default-input-method "MacOSX")
+     (setq mac-command-modifier 'meta)
+     (setq mac-option-modifier 'none)
+
+     (unless (package-installed-p 'use-package)
+       (package-install 'use-package))
+     (require 'use-package)
+
+     (use-package helm
+       :ensure t
+       :config (require 'helm-config)
+       (helm-mode 1))
+
+     (use-package company
+       :ensure t
+       :bind (("?\t" . company-indent-or-complete-common))
+       :config (global-company-mode))
+
+     (use-package company-flx
+       :ensure t
+       :after company
+       :config (company-flx-mode +1))
+
+
+     (use-package ivy
+       :ensure t)
+
+     (use-package counsel
+       :ensure t)
+
+     (use-package swiper
+       :ensure t
+       :bind (("C-s" . swiper))
+       :config (ivy-mode 1)
+       :custom ((ivy-use-virtual-buffers t)
+                (enable-recursive-minibuffers t)))
+
+
+
+  (use-package org-roam
+    :ensure t
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    ((make-directory "~/org-roam")
+     (org-roam-directory "~/org-roam")
+     )
+     :bind (:map org-roam-mode-map
+             (("M-F" . org-roam-find-file)
+              ("M-I" . org-roam-insert)
+              ("M-G" . org-roam-graph)
+              ("M-R" . org-roam))
+             :map org-mode-map
+             (("C-c n i" . org-roam-insert))
+             (("C-c n I" . org-roam-insert-immediate)))
+    )
+
+
+ (setq org-edit-src-content-indentation 0
+       org-src-tab-acts-natively t
+       org-src-fontify-natively t
+       org-confirm-babel-evaluate nil
+       org-support-shift-select 'always)
+
+
+
+ (use-package anki-editor
+   :after org
+   :bind (:map org-mode-map
+               ("<f12>" . anki-editor-cloze-region-auto-incr)
+               ("<f11>" . anki-editor-cloze-region-dont-incr)
+               ("<f10>" . anki-editor-reset-cloze-number)
+               ("<f9>"  . anki-editor-push-tree)
+               ("<f8>"  . anki-editor-insert-note))
+   :hook (org-capture-after-finalize . anki-editor-reset-cloze-number) ; Reset cloze-number after each capture.
+   :config
+   (setq anki-editor-create-decks t ;; Allow anki-editor to create a new deck if it doesn't exist
+         anki-editor-org-tags-as-anki-tags t)
+
+   (defun anki-editor-cloze-region-auto-incr (&optional arg)
+     "Cloze region without hint and increase card number."
+     (interactive)
+     (anki-editor-cloze-region my-anki-editor-cloze-number "")
+     (setq my-anki-editor-cloze-number (1+ my-anki-editor-cloze-number))
+     (forward-sexp))
+   (defun anki-editor-cloze-region-dont-incr (&optional arg)
+     "Cloze region without hint using the previous card number."
+     (interactive)
+     (anki-editor-cloze-region (1- my-anki-editor-cloze-number) "")
+     (forward-sexp))
+   (defun anki-editor-reset-cloze-number (&optional arg)
+     "Reset cloze number to ARG or 1"
+     (interactive)
+     (setq my-anki-editor-cloze-number (or arg 1)))
+   (defun anki-editor-push-tree ()
+     "Push all notes under a tree."
+     (interactive)
+     (anki-editor-push-notes '(4))
+     (anki-editor-reset-cloze-number))
+   ;; Initialize
+   (anki-editor-reset-cloze-number)
+   )
+
+  (use-package magit
+    :config
+    (global-set-key (kbd "C-x g") 'magit-status))
+
+
+ #+END_SRC
+

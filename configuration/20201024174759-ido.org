@@ -2,8 +2,10 @@
 
 [[file:20201024193244-completion.org][completion]]
 
+*_So far using helm!_*
 
-  #+BEGIN_SRC 
+* CANCELLED previous configs
+  #+BEGIN_SRC untangle :eval no
 
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
@@ -15,15 +17,12 @@
 This package provides the `idomenu' command for selecting an imenu tag using
 ido completion.  The buffer needs to have support for imenu already enabled.
 
-emacs-lisp 
-#+BEGIN_SRC 
+#+BEGIN_SRC untangle :eval no
 (unless (package-installed-p 'idomenu)
   (package-install 'idomenu))
 (require 'idomenu)
 #+END_SRC
 
- #+RESULTS:
- : idomenu
 
 
 from https://masteringemacs.org/article/introduction-to-ido-mode

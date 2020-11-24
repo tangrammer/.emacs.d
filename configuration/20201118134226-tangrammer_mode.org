@@ -2,7 +2,7 @@
 
 [[file:20201028091004-transient_mode.org][transient-mode]]
 
-
+* exercises
 ** go to a directory using a predefined alias
 
    interesting the pattern matching example 
@@ -153,7 +153,8 @@
    ("s" "sunshine? " sunshine-forecast)
    ("d" "go to 'my' dirs" t/dir/go-command)
    ("o" "org related" t/org/command)
-   ("m" "git related" t/git-command)])
+   ("m" "git related" t/git-command)
+   ("t" "text related" t/overlay/command)])
 
 #+END_SRC
 

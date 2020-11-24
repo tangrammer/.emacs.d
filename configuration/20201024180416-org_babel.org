@@ -32,7 +32,7 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 
  
 
-* conf
+* -conf
 #+BEGIN_SRC emacs-lisp  :results silent
 
 (require 'ob-dot)

@@ -28,7 +28,7 @@ higlight with a different color the word selected
 
 [[https://github.com/wolray/symbol-overlay/issues/59][keys]] with with [[file:20201028091004-transient_mode.org][transient-mode]]
 #+BEGIN_SRC emacs-lisp :results silent 
-(define-transient-command symbol-overlay-transient ()
+(define-transient-command t/overlay/command ()
               "Symbol Overlay transient"
               ["Symbol Overlay"
                ["Overlays"
@@ -44,6 +44,6 @@ higlight with a different color the word selected
                 ]
                ])
 
-(global-set-key (kbd "M-:") 'symbol-overlay-transient)
+
 
 #+END_SRC

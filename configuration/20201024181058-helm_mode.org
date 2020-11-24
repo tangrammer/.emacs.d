@@ -9,20 +9,21 @@ https://www.youtube.com/watch?v=k78f8NYYIto
 
 * config 
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'helm)
-  (package-install 'helm))
-(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
+
+(use-package helm
+    :ensure t
+    :config (require 'helm-config)
+    (helm-mode 1))
+
 
 #+END_SRC
 
 
 
-** swoop
+** CANCELLED swoop
 https://github.com/emacsorphanage/helm-swoop
 
-#+BEGIN_SRC 
+#+BEGIN_SRC untangle
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)

@@ -1,6 +1,6 @@
 #+title: org-roam-server
 
-[[file:20201024194153-org_roam_mode.org][org-roam-mode]] [[file:20201024181435-graph.org][graph]] 
+[[file:20201024194153-org_roam_mode.org][org-roam-mode]]
 
 https://github.com/org-roam/org-roam-server
 

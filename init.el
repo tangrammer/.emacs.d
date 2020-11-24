@@ -16,11 +16,6 @@
 
 
 (require 'org)
-(setq org-edit-src-content-indentation 0
-      org-src-tab-acts-natively t
-      org-src-fontify-natively t
-      org-confirm-babel-evaluate nil
-      org-support-shift-select 'always)
 
 (defmacro comment (&rest body)
   "Comment out one or more s-expressions."
@@ -43,12 +38,6 @@
                 (ignore-errors (org-babel-load-file file-to-load))))))
 
 
-(org-defkey org-mode-map (kbd "M-F") 'org-roam-find-file)
-(org-defkey org-mode-map (kbd "M-I") 'org-roam-insert)
-(org-defkey org-mode-map (kbd "M-R") 'org-roam)
-(org-defkey org-mode-map (kbd "M-G") 'org-roam-graph)
-
-
 ;; (setq multi-term-program "/bin/zsh")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -56,6 +45,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(minibuffer-prompt ((t (:background "light green" :foreground "dark magenta" :weight normal))))
+ '(sunshine-forecast-date-face ((t (:foreground "dark magenta" :weight ultra-bold))))
  '(which-key-key-face ((t (:inherit font-lock-constant-face :height 1.0))))
  '(which-key-note-face ((t (:inherit which-key-separator-face :height 1.0)))))
 

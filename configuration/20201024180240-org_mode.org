@@ -1,6 +1,20 @@
 #+TITLE: org-mode
 [[file:20201024180311-major_mode.org][major-mode]]
 
+* config
+
+  #+BEGIN_SRC emacs-lisp :results silent
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil
+      org-support-shift-select 'always)
+ 
+
+  #+END_SRC
+
+
+
 ** [[file:20201110102514-org_screenshot.org][org-screenshot]]
 
 ** wrap lines => Visual line mode
