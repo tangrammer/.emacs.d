@@ -1,0 +1,9 @@
+#+title: before-save-hook
+
+
+ #+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+ #+END_SRC
+
+ #+RESULTS:
+ | delete-trailing-whitespace |
