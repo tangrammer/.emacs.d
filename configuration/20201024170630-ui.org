@@ -23,12 +23,6 @@ Emacs UI client settings like [[file:20201024171113-toolbar.org][toolbar]] and [
   (global-set-key (kbd "M-o") 'other-frame)
 
 
-  ;; save all open buffers
-  (global-set-key
-   (kbd "C-X C-S")
-   (lambda ()
-     (interactive)
-     (save-some-buffers t)))
 
 
  (setq redisplay-dont-pause t

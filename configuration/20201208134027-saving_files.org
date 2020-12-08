@@ -1,0 +1,12 @@
+#+title: saving files
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+  ;; save all open buffers
+  (global-set-key
+   (kbd "C-X C-S")
+   (lambda ()
+     (interactive)
+     (save-some-buffers t)))
+
+#+END_SRC
