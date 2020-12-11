@@ -4,9 +4,8 @@
 
 * exercises
 ** go to a directory using a predefined alias
-
-   interesting the pattern matching example 
-#+BEGIN_SRC emacs-lisp :results silent 
+   interesting the pattern matching example
+#+BEGIN_SRC emacs-lisp :results silent
 (defun -tangrammer-dir-find-file (args file)
   (if (-contains? args "projectile")
       (projectile-find-file file)
@@ -34,7 +33,7 @@
       (-tangrammer-dir-find-file args "~/git/akvo/data-science/akvo-data-science-services/projects/example-local")))])
 
 (define-transient-command t/dir/go/lumen-command ()
-  "Lumen related dirs"  
+  "Lumen related dirs"
   ["Actions"
    ("c" "client" (lambda (&optional args)
                           (interactive)
@@ -63,7 +62,7 @@
 
 * tangrammer transient options
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 
 (defun populate-babel-source-block  (name v1)
   (flet ((dummy-prompt
@@ -75,7 +74,7 @@
       (catch 'notfound
         (yas/insert-snippet t)
         (insert v1)
-        (execute-kbd-macro [?\t]) ;;(insert ?\t)	
+        (execute-kbd-macro [?\t]) ;;(insert ?\t)
         ))))
 
 
@@ -87,7 +86,7 @@
                  args
               (--map (split-string it "="))
               (--separate (string= "language" (first it))))))
-    (-if-let  (language (-first-item a))      
+    (-if-let  (language (-first-item a))
         (populate-babel-source-block "block" (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (-last-item it)) b)))
       (message "you need to select a language!"))))
 
@@ -135,6 +134,17 @@
   ["Actions"
    ("c" "Co-Authored-BY" t/co-authored-command)])
 
+(defun add-lumen-admin (author)
+  (interactive "semail to use as admin user: ")
+  (message "%s" (shell-command-to-string (format "~/git/akvo/akvo-lumen/backend/dev_helpers/local-admin.sh %s" author))))
+
+
+(define-transient-command t/flumen/flumen-command ()
+  "Flumen related things"
+  ["Actions"
+   ("a" "add lumen admin" add-lumen-admin)])
+
+
 (define-transient-command t/babel/block-generator-command ()
   "Babel related things"
   ["Arguments"
@@ -145,27 +155,31 @@
   ["Actions"
    ("c" "gen-block" t/babel/block-action)])
 
+
 (define-transient-command >t ()
   "tangrammer dispatcher"
   ["Actions"
+   ("d" "go to 'my' dirs" t/dir/go-command)
+   ("m" "git related" t/git-command)
+   ("t" "text related" t/overlay/command)]
+  ["Orgmode based"
    ("b" "babel things" t/babel/block-generator-command)
    ("r" "roam(s)" t/roam/go)
-   ("s" "sunshine? " sunshine-forecast)
-   ("d" "go to 'my' dirs" t/dir/go-command)
-   ("o" "org related" t/org/command)
-   ("m" "git related" t/git-command)
-   ("t" "text related" t/overlay/command)])
+   ("o" "org related" t/org/command)]
+  ["Flumen"
+   ("f" "flumen related" t/flumen/flumen-command)]
+  ["Miscellaneous"
+   ("s" "sunshine? " sunshine-forecast)])
 
 #+END_SRC
 
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC emacs-lisp :results silent
  (global-set-key (kbd "<f1>") '>t)
  (global-set-key (kbd "<f2>") 't/org/command)
 
  #+END_SRC
 
-
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (define-transient-command t/org/headlines-command ()
   "org view actions"
   ["Actions"
@@ -181,8 +195,3 @@
    ("h" "headlines related" t/org/headlines-command)
    ("s" "insert screenshot" org-download-screenshot)])
 #+END_SRC
-
-
- 
-
-
