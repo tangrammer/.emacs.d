@@ -2,4 +2,48 @@
 
 [[file:20201024173801-elisp.org][elisp]]
 
-call interactively  M-x toggle-debug-on-error
+* first part of https://endlessparentheses.com/debugging-emacs-lisp-part-1-earn-your-independence.html
+
+
+1- Go to where the function is defined. You can usually do that with =C-h f= (which calls describe function) or just =M-x find-function=.
+2- Press =C-u C-M-x=. This turns on Edebug for that function.
+3- Now, just invoke the function (or some other command that calls that function).
+
+
+The next time the Edebugged function gets called, Emacs will display its source code and will take you through it step-by-step. 
+Press =n= to continue to the next step 
+or =c= to stop fooling around and skip to the end.
+
+
+To undo this effect (to remove instrumentation) simply visit its definition again and hit =C-M-x= without the prefix.xs
+* second part of the endless tuto https://endlessparentheses.com/debugging-elisp-part-2-advanced-topics.html
+
+
+more in the manual https://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html#Edebug
+
+
+
+You can find the full list of commands on Edebug's manual page but the most useful ones:
+
+- q 
+Quit current execution, occasionally more useful than c, C and G.
+- h
+Move point somewhere else, then hit h. Everything in between will be “skipped” (executed, but not displayed), and Edebug continues from there. Highly useful in very long functions.
+- o
+Move out of the containing sexp. Tremendously useful in loops.
+- i
+Go “inside” the function called at point. In other words, if point is immediately before a function call, i will instrument the function as if you had called C-u C-M-x on it and leave you inside this new Edebug session.
+
+
+=debug= and =debug-on-entry=
+
+As shiny as it is, Edebug isn't exactly clean. Its instrumentation, though invisible, is not free of side-effects. It is not surprising then, that some bugs simply vanish when you Edebug them. Fortunately, that's not our only option. Emacs also offers the [[https://doc.endlessparentheses.com/Fun/debug][debug]] function, which is powerful and straightforward.
+
+Just add =(debug)= anywhere inside a function. Next time the function is executed, Emacs will present you with a backtrace of the code state at that point. Alternatively, you invoke the command [[https://doc.endlessparentheses.com/Fun/debug-on-entry][debug-on-entry]] and give it the name of a function.
+
+Though this backtrace display might not be as pretty as Edebug, it's every bit as interactive.
+
+There's a [[https://endlessparentheses.com/images/debug-png9-20fps.gif][gif]] which shows what you can do by just hitting =d=  to step deeper into the structure, and then =c= to quickly get out. You can also jump around a bit with =j=, and evaluate expressions under an environment as if you were inside the function with =e=.
+
+
+

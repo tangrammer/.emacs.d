@@ -10,7 +10,7 @@ this functionality is focused in capturing ideas as notes. in  [[file:2020102419
 
 Notes captured are stored in one main file
 
- #+BEGIN_SRC elisp
+ #+BEGIN_SRC emacs-lisp
  (setq org-default-notes-file "~/git/orgs/gtd/notes.org")
  #+END_SRC
 

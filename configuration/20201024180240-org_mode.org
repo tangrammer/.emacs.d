@@ -4,21 +4,20 @@
 * config
 
   #+BEGIN_SRC emacs-lisp :results silent
-(setq org-edit-src-content-indentation 0
-      org-src-tab-acts-natively t
-      org-src-fontify-natively t
-      org-confirm-babel-evaluate nil
-      org-support-shift-select 'always)
- 
+  (setq org-edit-src-content-indentation 0
+        org-src-tab-acts-natively t
+        org-src-fontify-natively t
+        org-confirm-babel-evaluate nil
+        org-support-shift-select 'always)
+
 
   #+END_SRC
-
 
 
 ** [[file:20201110102514-org_screenshot.org][org-screenshot]]
 
 ** wrap lines => Visual line mode
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC emacs-lisp :results silent
  (add-hook 'org-mode-hook 'visual-line-mode)
  #+END_SRC
 
@@ -28,7 +27,7 @@
 #+BEGIN_SRC emacs-lisp :results silent
 
 (use-package org-bullets
-  :ensure t
+  :straight t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 #+END_SRC
@@ -37,12 +36,12 @@
 
 ** all org subheadings in imenu => ~org-goto-interface~
 
-#+BEGIN_SRC emacs-lisp :results silent 
-;; (describe-variable 'org-goto-interface ) 
-;; (describe-variable 'org-outline-path-complete-in-steps ) 
+#+BEGIN_SRC emacs-lisp :results silent
+;; (describe-variable 'org-goto-interface )
+;; (describe-variable 'org-outline-path-complete-in-steps )
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 
 (setq org-goto-interface 'outline-path-completionp)
 (setq org-outline-path-complete-in-steps nil)
@@ -56,8 +55,8 @@ https://emacs.stackexchange.com/a/20762/13373
 
 
 
-** an attempt to format using 
-#+BEGIN_SRC emacs-lisp  :results silent 
+** an attempt to format using
+#+BEGIN_SRC emacs-lisp  :results silent
 (defun org-bolder (n)
   (interactive "p")
   (when (use-region-p)
@@ -70,16 +69,16 @@ https://emacs.stackexchange.com/a/20762/13373
       (insert "*")
       (line-end-position))))
 
-(defun negrita nil 
-  (interactive) 
+(defun negrita nil
+  (interactive)
   (org-emphasize ?\*))
 
-(defun cursiva nil 
-  (interactive) 
+(defun cursiva nil
+  (interactive)
   (org-emphasize ?\/))
 
-(defun subrayado nil 
-  (interactive) 
+(defun subrayado nil
+  (interactive)
   (org-emphasize ?\_))
 
 
@@ -87,15 +86,51 @@ https://emacs.stackexchange.com/a/20762/13373
 ;;(org-defkey org-mode-map (kbd "C-c i")  'cursiva)
 #+END_SRC
 
-   
- 
+
+
 
 
 
 ** creating timestamps
    https://orgmode.org/manual/Creating-Timestamps.html#Creating-Timestamps
-   =C-c . (org-time-stamp)= 
+   =C-c . (org-time-stamp)=
    =C-c ! (org-time-stamp-inactive)=
 
 
+* org-outer-indent
+https://github.com/rougier/org-outer-indent
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package org-outer-indent
+  :straight (el-patch :type git :host github :repo "rougier/org-outer-indent")
+  :config (add-hook 'org-mode-hook 'org-outer-indent-mode)
+  (add-hook 'org-mode-hook 'org-num-mode)
+)
 
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(defun org-num-format (numbering)
+  (cond ((= (length numbering) 1)
+         (concat (propertize (format " %d " (nth 0 numbering))
+                             'face 'nano-face-header-faded) " "))
+        (t
+         (propertize
+          (concat (mapconcat #'number-to-string numbering ".") " ")
+          'face 'nano-face-faded))))
+(setq org-num-format-function #'org-num-format)
+
+(face-remap-add-relative 'org-document-info
+                         :inherit 'nano-face-faded)
+(face-remap-add-relative 'org-document-title
+                         :foreground nano-color-foreground
+                         :family "Roboto Slab"
+                         :height 250
+                         :weight 'medium)
+(font-lock-add-keywords 'org-mode '(("\\(^*+\\) " 0 'nano-face-faded)))
+
+(setq org-num-face 'nano-face-faded)
+(setq org-hidden-keywords '(author date startup))
+(setq fill-column 70)
+(setq-default line-spacing 1)
+#+END_SRC

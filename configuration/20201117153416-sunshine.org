@@ -4,12 +4,18 @@ An Emacs package for displaying the forecast from OpenWeatherMap.
 
   https://github.com/aaronbieber/sunshine.el
 
-   #+BEGIN_SRC emacs-lisp :results silent 
-   (add-to-list 'load-path "~/.emacs.d/local/sunshine.el/")
+   #+BEGIN_SRC emacs-lisp :results silent
+(straight-use-package
+ '(sunshine :type git :host github :repo "aaronbieber/sunshine.el"))
+
    (require 'sunshine)
-   (setq sunshine-appid "")
-   (setq sunshine-location "Seville")
+   (setq sunshine-appid (getenv "SUNSHINE_APPID")) ;; loaded from env.el
+   (setq sunshine-location "Seville,ES")
    (setq sunshine-units 'metric)
    (setq sunshine-show-icons t)
+   ;;(setq sunshine-forecast-date t)
+
    #+END_SRC
 
+* DONE load env vars
+added ignored file [[/Users/tangrammer/.emacs.d/env.el::1][env.el]] with =setenv= vars following [[http://ergoemacs.org/emacs/emacs_env_var_paths.html][ergoemacs instructions]]

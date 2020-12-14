@@ -9,10 +9,10 @@ org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]
 https://github.com/jethrokuan/org-roam
 
 * install package
- #+BEGIN_SRC elisp :results silent
+ #+BEGIN_SRC emacs-lisp :results silent
 
  (use-package org-roam
-   :ensure t
+
    :hook
    (after-init . org-roam-mode)
    :custom
@@ -38,8 +38,8 @@ https://github.com/jethrokuan/org-roam
 
 
 
- 
- a default sqlite db is created 
+
+ a default sqlite db is created
 
 
 * once that you call org-roam-graph you can find the graph here
@@ -48,7 +48,7 @@ doing M-l in the related graph then open it in a browser
 
 
 
-* more than 1 roam system 
+* more than 1 roam system
 you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-locals]] as this configuration system
 
 
@@ -56,7 +56,7 @@ you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-l
 https://github.com/tangrammer/.emacs.d/issues/2
 
 * t/roam/go
-  #+BEGIN_SRC elisp :results silent
+  #+BEGIN_SRC emacs-lisp :results silent
 
   (defun t/roam/go (choice)
     (interactive

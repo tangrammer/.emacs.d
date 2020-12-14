@@ -2,8 +2,6 @@
 
 [[file:20201024170630-ui.org][UI]]
 
-
 https://github.com/rougier/elegant-emacs
-* TODO take a look to this template
-
-
+* DONE take a look to this template
+[[file:20201229000602-nano_emacs.org][nano-emacs]]

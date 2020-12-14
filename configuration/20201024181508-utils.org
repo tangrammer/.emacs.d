@@ -1,7 +1,7 @@
 #+TITLE: utils
 
 ** paths
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun path-data*()
   (let* ((fnnd (file-name-nondirectory  (buffer-file-name)))
 	(fnse (file-name-sans-extension fnnd))
@@ -22,7 +22,7 @@
 
 ** read/eval dir locals from another dir
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun read-dir-locals (dir)
   (with-temp-buffer
     (insert-file-contents (format  "%s/.dir-locals.el" dir))
@@ -31,7 +31,7 @@
 #+END_SRC
 
 ** extract directory
-   #+BEGIN_SRC emacs-lisp :results silent 
+   #+BEGIN_SRC emacs-lisp :results silent
 (defun extract-dir (path)
   (string-join  (butlast (split-string path "\\/")) "/"))
 
@@ -64,12 +64,12 @@
       (insert (to-string (inc s last-command)))
       (elisp-format-buffer)
       (save-buffer)
-      )  
+      )
     )
 
 
   #+END_SRC
-  
+
 * private dropbox repo
    #+BEGIN_SRC emacs-lisp :results silent
  (defun private-git-dropbox (project-name)
@@ -91,7 +91,7 @@
 
 
 
- 
+
 
 * old examples of interactively
   deprecated in order to use transient

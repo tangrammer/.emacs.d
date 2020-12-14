@@ -5,9 +5,9 @@
 https://github.com/wolray/symbol-overlay
 
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (use-package symbol-overlay
-  :ensure t
+  :straight t
   :bind (("M-i" . symbol-overlay-put)
          ("M-n" . symbol-overlay-switch-forward)
          ("M-p" . symbol-overlay-switch-backward)
@@ -23,11 +23,11 @@ there is 2 ways of using:
 1- symbol-overlay mode:
 just higlight same word on all doc
 2- symbol-overlay-put
-higlight with a different color the word selected 
+higlight with a different color the word selected
 
 
 [[https://github.com/wolray/symbol-overlay/issues/59][keys]] with with [[file:20201028091004-transient_mode.org][transient-mode]]
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (define-transient-command t/overlay/command ()
               "Symbol Overlay transient"
               ["Symbol Overlay"

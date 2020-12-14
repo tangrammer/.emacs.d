@@ -4,10 +4,12 @@ Project Interaction Library for Emacs
 
 https://github.com/bbatsov/projectile
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (use-package projectile
-  :ensure t
+  :straight t
   :config (progn (projectile-mode +1)
+                 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+                 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
                  (setq projectile-completion-system 'ivy))
   )
 #+END_SRC

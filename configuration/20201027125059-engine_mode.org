@@ -6,9 +6,10 @@ https://github.com/hrs/engine-mode
 
 Minor mode for defining and querying search engines through Emacs.
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (use-package engine-mode
-  :ensure t)
+:straight t
+  )
 
 (defengine duckduckgo
   "https://duckduckgo.com/?q=%s"
@@ -32,4 +33,3 @@ Minor mode for defining and querying search engines through Emacs.
 theoretically with :keybinding  C-x / d is now bound to the new function engine/search-duckduckgo ... but not yet
 
 anyway the function is interactive so M-x engine/search-duckduckgo should work
-

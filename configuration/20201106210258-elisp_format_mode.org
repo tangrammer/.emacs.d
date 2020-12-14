@@ -4,20 +4,11 @@
 
 https://www.emacswiki.org/emacs/ElispFormat
 
-  
+
 #+BEGIN_SRC emacs-lisp :results silent
 
 (use-package elisp-format
- :ensure t)
+:straight t
+ )
 
 #+END_SRC
-
-
-
-
-
-
-
-  
-
-  

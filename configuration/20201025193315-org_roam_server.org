@@ -7,9 +7,9 @@ https://github.com/org-roam/org-roam-server
 A Web Application to Visualize the Org-Roam Database
 
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (use-package org-roam-server
-;;  :ensure t
+  :straight t
   :config
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8080

@@ -4,9 +4,9 @@
 
 
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'paredit)
-  (package-install 'paredit))
+
 (require 'paredit)
+
 
 ;; remove last lines inside a fn
 ;;https://github.com/yatish27/emacs-live/blob/master/packs/dev/clojure-pack/config/paredit-conf.el
@@ -22,7 +22,3 @@
 
 #+RESULTS:
 : live-paredit-delete-horizontal-space
-
- 
-
-

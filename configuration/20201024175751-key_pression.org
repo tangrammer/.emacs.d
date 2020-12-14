@@ -5,7 +5,7 @@
 https://github.com/chuntaro/emacs-keypression
 
 
-#+BEGIN_SRC 
+#+BEGIN_SRC untangle :eval no
 (unless (package-installed-p 'keypression)
   (package-install 'keypression))
 (require 'keypression)

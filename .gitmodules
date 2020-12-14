@@ -1,6 +1,15 @@
-[submodule "snippets/yasnippets-orgmode"]
-	path = snippets/yasnippets-orgmode
-	url = https://github.com/yyr/yasnippets-orgmode.git
 [submodule "local/sunshine.el"]
 	path = local/sunshine.el
 	url = https://github.com/aaronbieber/sunshine.el.git
+[submodule "local/nano-emacs"]
+	path = local/nano-emacs
+	url = https://github.com/rougier/nano-emacs.git
+[submodule "local/org-download"]
+	path = local/org-download
+	url = https://github.com/abo-abo/org-download.git
+[submodule "local/org-roam-server"]
+	path = local/org-roam-server
+	url = https://github.com/org-roam/org-roam-server.git
+[submodule "local/anki-editor"]
+	path = local/anki-editor
+	url = https://github.com/louietan/anki-editor.git

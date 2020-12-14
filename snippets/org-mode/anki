@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: anki
+# key: >a
+# --
+** $1
+    :PROPERTIES:
+    :ANKI_NOTE_TYPE: ${0:Basic (and reversed card)}
+    :END:
+*** Front
+    $1
+*** Back
+    $2

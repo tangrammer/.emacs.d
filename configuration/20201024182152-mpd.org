@@ -6,19 +6,21 @@ https://www.musicpd.org/
 osx installation instructions https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/
 
 emacs client :) https://github.com/mpdel/mpdel
+* (LOW LEVEL API) communication wiht MPD server with libmpdel
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package libmpdel
+    :straight t
+    )
 
-#+BEGIN_SRC emacs-lisp 
-(unless (package-installed-p 'libmpdel)
-  (package-install 'libmpdel))
- (require 'libmpdel)
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp 
-(add-to-list 'load-path "~/.emacs.d/local/libmpdel")
-(add-to-list 'load-path "~/.emacs.d/local/mpdel")
-(require 'mpdel)
-(mpdel-mode)
+* (HIGH LEVEL API) same as ncmpcpp with mpdel
+#+BEGIN_SRC emacs-lisp :results silent
 
+(use-package mpdel
+    :straight t
+    :config
+    (mpdel-mode))
 (setq mpdel-prefix-key (kbd "C-. z"))
 
 

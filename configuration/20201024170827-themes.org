@@ -13,9 +13,6 @@
   ;; theme recommended by toxi for LP
   (load-theme 'leuven t))
 
-(global-set-key (kbd "C-c C-t C-c") 'theme-clojure)
-(global-set-key (kbd "C-c C-t C-o") 'theme-org)
-
 (theme-org)
 
 

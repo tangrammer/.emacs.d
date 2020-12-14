@@ -16,7 +16,7 @@
 
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package which-key
-  :ensure t
+  :straight t
   :config (progn
             (which-key-mode)
             (which-key-setup-side-window-right)))
@@ -35,5 +35,7 @@
  #+END_SRC
 
 
-
- 
+#+BEGIN_SRC emacs-lisp :results silent
+(setq which-key-side-window-max-width 0.6)
+(setq which-key-side-window-max-height 0.6)
+#+END_SRC

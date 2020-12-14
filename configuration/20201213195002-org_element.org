@@ -1,0 +1,10 @@
+#+title: org-element
+
+[[file:20201024180240-org_mode.org][org-mode]] utils to work with org elements
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+  (defun t/org/element/name-at-point ()
+    (plist-get (cadr (org-element-at-point)) :name))
+
+#+END_SRC

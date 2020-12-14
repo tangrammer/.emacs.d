@@ -1,9 +1,9 @@
 #+title: org-journal
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 
 (use-package org-journal
-  :ensure t
+
   :defer t
   :init
   ;; Change default prefix key; needs to be set before loading org-journal
@@ -19,11 +19,11 @@
 every time you want to journal ...
 
 #+BEGIN_SRC untangle
-(call-interactively 'org-journal-new-entry) 
+(call-interactively 'org-journal-new-entry)
 
 #+END_SRC
 
-  
+
   Bindings available in *org-journal-mode*:
 
 C-c C-f - go to the next journal file.

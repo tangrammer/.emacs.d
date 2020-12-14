@@ -2,8 +2,9 @@
 
 settings included support for [[file:20201110102514-org_screenshot.org][org-screenshot]]
 
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC emacs-lisp :results silent
  (use-package org-download
+     :straight t
      :after org
      :defer nil
      :custom

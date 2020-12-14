@@ -2,25 +2,23 @@
 
 [[file:20201024193244-completion.org][completion]]
 
-* DONE see demo about configurations with helm 
-  CLOSED: [2020-05-08 Fri 23:47]
+* demo about configurations with helm
 a great video demo about "Some Configurations with Helm"
 https://www.youtube.com/watch?v=k78f8NYYIto
 
-* config 
+* config
 #+BEGIN_SRC emacs-lisp :results silent
 
-(use-package helm
-    :ensure t
-    :config (require 'helm-config)
-    (helm-mode 1))
-
-
+;;(straight-use-package 'helm)
+;;(require 'helm-config)
+;;(helm-mode 1)
+;; (use-package helm
+;;     :straight t
+;;     :config
+;;  )
 #+END_SRC
 
-
-
-** CANCELLED swoop
+** swoop
 https://github.com/emacsorphanage/helm-swoop
 
 #+BEGIN_SRC untangle
@@ -75,8 +73,3 @@ https://github.com/emacsorphanage/helm-swoop
 
 
 #+END_SRC
-
-
-
-
-

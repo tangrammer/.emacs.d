@@ -5,9 +5,10 @@ config from
 https://yiufung.net/post/anki-org/ and
 https://github.com/yiufung/dot-emacs/blob/master/init.el
 
-#+BEGIN_SRC elisp :results silent
+#+BEGIN_SRC emacs-lisp :results silent
 (use-package anki-editor
   :after org
+:straight t
   :bind (:map org-mode-map
               ("<f12>" . anki-editor-cloze-region-auto-incr)
               ("<f11>" . anki-editor-cloze-region-dont-incr)
@@ -42,5 +43,7 @@ https://github.com/yiufung/dot-emacs/blob/master/init.el
   ;; Initialize
   (anki-editor-reset-cloze-number)
   )
+
+(add-hook 'org-mode-hook 'anki-editor-mode)
 
   #+END_SRC

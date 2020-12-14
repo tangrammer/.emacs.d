@@ -2,8 +2,15 @@
 
 [[file:20201028091004-transient_mode.org][transient-mode]]
 
-* exercises
-** go to a directory using a predefined alias
+* babel parse table values as vars :var x=table-name[r,c]
+- =x= is var to be injected in block code
+- =table-name= is org table name =#+NAME:table-name= included in current org/babel file
+- =r= is index row table
+- =c= is index column row
+
+
+
+* go to a directory using a predefined alias
    interesting the pattern matching example
 #+BEGIN_SRC emacs-lisp :results silent
 (defun -tangrammer-dir-find-file (args file)
@@ -62,136 +69,202 @@
 
 * tangrammer transient options
 
-#+BEGIN_SRC emacs-lisp :results silent
-
-(defun populate-babel-source-block  (name v1)
-  (flet ((dummy-prompt
-          (prompt choices &optional display-fn)
-          (declare (ignore prompt))
-          (or (find name choices :key display-fn :test #'string=)
-              (throw 'notfound nil))))
-    (let ((yas/prompt-functions '(dummy-prompt)))
-      (catch 'notfound
-        (yas/insert-snippet t)
-        (insert v1)
-        (execute-kbd-macro [?\t]) ;;(insert ?\t)
-        ))))
-
-
-(defun t/babel/block-action (&optional args)
-  (interactive
-   (list (transient-args 't/babel/block-generator-command)))
-  (message "%s" args)
-  (-let (((a b) (->>
-                 args
-              (--map (split-string it "="))
-              (--separate (string= "language" (first it))))))
-    (-if-let  (language (-first-item a))
-        (populate-babel-source-block "block" (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (-last-item it)) b)))
-      (message "you need to select a language!"))))
-
-(transient-define-argument t/babel/language-argument ()
-  "language"
-  :description "choose a language"
-  :class 'transient-option
-  :shortarg "-l"
-  :argument "language="
-  :choices '("sql" "elisp" "clojure" ))
-
-(transient-define-argument t/babel/exports-argument ()
-  "exports doc"
-  :description "define how to export code"
-  :class 'transient-option
-  :shortarg "-e"
-  :argument "export="
-  :choices '("none" "code" "results" "both" ))
-
-(transient-define-argument t/babel/eval-argument ()
-  "eval doc"
-  :description "define how to eval code"
-  :class 'transient-option
-  :shortarg "-v"
-  :argument "eval="
-  :choices '("query" "query-export" "never" "never-export" ))
-
-(defun t/co-authored-action (&optional args)
-  (interactive
-   (list (transient-args 't/co-authored-command)))
-  (message "%s" args)
-  (if (-contains? args "multiple")
-      (call-interactively 'co-authored-multiple)
-    (call-interactively 'co-authored)))
-
-(define-transient-command t/co-authored-command ()
-  "Test Transient Title"
-  ["Arguments"
-   ("m" "multiple authors" "multiple")]
-  ["Actions"
-   ("c" "Co-Authored-BY" t/co-authored-action)])
-
-(define-transient-command t/git-command ()
-  "Git related things"
-  ["Actions"
-   ("c" "Co-Authored-BY" t/co-authored-command)])
-
-(defun add-lumen-admin (author)
-  (interactive "semail to use as admin user: ")
-  (message "%s" (shell-command-to-string (format "~/git/akvo/akvo-lumen/backend/dev_helpers/local-admin.sh %s" author))))
-
-
-(define-transient-command t/flumen/flumen-command ()
-  "Flumen related things"
-  ["Actions"
-   ("a" "add lumen admin" add-lumen-admin)])
-
-
-(define-transient-command t/babel/block-generator-command ()
-  "Babel related things"
-  ["Arguments"
-     ("l" "language" t/babel/language-argument)
-     ("e" "exports" t/babel/exports-argument)
-     ("v" "eval" t/babel/eval-argument)
-     ]
-  ["Actions"
-   ("c" "gen-block" t/babel/block-action)])
-
-
-(define-transient-command >t ()
-  "tangrammer dispatcher"
-  ["Actions"
-   ("d" "go to 'my' dirs" t/dir/go-command)
-   ("m" "git related" t/git-command)
-   ("t" "text related" t/overlay/command)]
-  ["Orgmode based"
-   ("b" "babel things" t/babel/block-generator-command)
-   ("r" "roam(s)" t/roam/go)
-   ("o" "org related" t/org/command)]
-  ["Flumen"
-   ("f" "flumen related" t/flumen/flumen-command)]
-  ["Miscellaneous"
-   ("s" "sunshine? " sunshine-forecast)])
-
-#+END_SRC
+** TODO all babel [[/Users/tangrammer/git/tangrammer/refcard-org-babel/docs/header-args.org::1][options]]
 
  #+BEGIN_SRC emacs-lisp :results silent
- (global-set-key (kbd "<f1>") '>t)
- (global-set-key (kbd "<f2>") 't/org/command)
+ (defun populate-babel-source-block  (name v1)
+   (flet ((dummy-prompt
+           (prompt choices &optional display-fn)
+           (declare (ignore prompt))
+           (or (find name choices :key display-fn :test #'string=)
+               (throw 'notfound nil))))
+     (let ((yas/prompt-functions '(dummy-prompt)))
+       (catch 'notfound
+         (yas/insert-snippet t)
+         (insert v1)
+         (execute-kbd-macro [?\t]) ;;(insert ?\t)
+         ))))
+
+ (defun t/babel/block-action (&optional args)
+   (interactive
+    (list (transient-args 't/babel/block-generator-command)))
+   (message "%s" args)
+   (-let ((values (->> args
+                       (--map (split-string it "=")))))
+     (message "%s" values)
+    (-let (((a b) (->> values
+                       (--separate (string= "language" (first it))))))
+      (-if-let  (language (-first-item a))
+          (populate-babel-source-block "block"
+                                       (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (s-replace "$$" "=" (-last-item it))) b)))
+        (message "you need to select a language!")))))
+
+ (transient-define-argument t/babel/language-argument ()
+   "language"
+   :description "choose a language"
+   :class 'transient-option
+   :shortarg "-l"
+   :argument "language="
+   :choices '("sql" "elisp" "clojure" ))
+
+ (transient-define-argument t/babel/exports-argument ()
+   "exports doc"
+   :description "define how to export code"
+   :class 'transient-option
+   :shortarg "-e"
+   :argument "export="
+   :choices '("none" "code" "results" "both" ))
+
+ ;; (transient-define-argument t/babel/cache-argument ()
+ ;;   "Avoids re-evaluating unchanged code blocks."
+ ;;   :description "Avoids re-evaluating unchanged code blocks."
+ ;;   :class 'transient-option
+ ;;   :shortarg "-c"
+ ;;   :argument "cache="
+ ;;   :choices '("no" "yes"))
+
+ (transient-define-argument t/babel/eval-argument ()
+   "eval doc"
+   :description "define how to eval code"
+   :class 'transient-option
+   :shortarg "-E"
+   :argument "eval="
+   :choices '("query" "query-export" "never" "never-export" ))
+
+ (defun select-table (tables)
+   (completing-read "select table: " (--map (format "%s" (car it)) tables) ))
+
+ (defun select-row (rows)
+   (completing-read "select row: " (-concat '(" ") (--map (format "%s" it) rows)) ))
+
+ (defun select-col (cols)
+   (completing-read "select col: " (-concat '(" ") (--map (format "%s" it) cols)) ))
+
+ (defclass param-class (transient-option) ())
+
+ (cl-defmethod transient-infix-set ((obj param-class) value)
+   (oset obj value (format "%s" value)))
+
+ ;; (cl-defmethod transient-infix-value ((obj param-class))
+ ;;   (format "param=%s" (oref obj value)))
+
+ (cl-defmethod transient-infix-read ((obj param-class))
+   (let* ((var-name (read-string "var name: "))
+          (tables (t/org/all-tables-to-lisp))
+          (selected-table-name (funcall 'select-table tables))
+          (selected-table (car (--filter (equal selected-table-name (format "%s" (car it))) tables)))
+          (selected-row (funcall 'select-row (car (cdr selected-table))))
+          )
+     (if (equal " " selected-row)
+         (format "%s$$%s" var-name selected-table-name)
+       (let ((row-index (--find-index (equal selected-row (format "%s" it)) (car (cdr selected-table))))
+             (selected-col (funcall 'select-col (read selected-row))))
+         (if (equal " " selected-col)
+             (format "%s$$%s[%s]" var-name selected-table-name row-index)
+           (format "%s$$%s[%s,%s]" var-name selected-table-name row-index (--find-index (equal selected-col (format "%s" it)) (read selected-row))))))))
+
+ (transient-define-argument t/babel/eval-param ()
+   "eval var"
+   :description "define vars"
+   :class 'param-class
+   :shortarg "-v"
+   :prompt "var"
+   :argument "var=")
+
+ (defun t/co-authored-action (&optional args)
+   (interactive
+    (list (transient-args 't/co-authored-command)))
+   (message "%s" args)
+   (if (-contains? args "multiple")
+       (call-interactively 'co-authored-multiple)
+     (call-interactively 'co-authored)))
+
+ (define-transient-command t/co-authored-command ()
+   "Test Transient Title"
+   ["Arguments"
+    ("m" "multiple authors" "multiple")]
+   ["Actions"
+    ("c" "Co-Authored-BY" t/co-authored-action)])
+
+ (define-transient-command t/git-command ()
+   "Git related things"
+   ["Actions"
+    ("c" "Co-Authored-BY" t/co-authored-command)])
+
+ (defun add-lumen-admin (author)
+   (interactive "semail to use as admin user: ")
+   (message "%s" (shell-command-to-string (format "~/git/akvo/akvo-lumen/backend/dev_helpers/local-admin.sh %s" author))))
+
+ (define-transient-command t/flumen/flumen-command ()
+   "Flumen related things"
+   ["Actions"
+    ("a" "add lumen admin" add-lumen-admin)])
+
+ (define-transient-command t/babel/block-generator-command ()
+   "Babel related things"
+   ["Arguments"
+      ("l" "language" t/babel/language-argument)
+      ("e" "exports" t/babel/exports-argument)
+      ("v" "var" t/babel/eval-param)
+      ("E" "eval" t/babel/eval-argument)]
+   ["Actions"
+    ("b" "gen-block" t/babel/block-action)]
+ ;;  (interactive)
+  ;; (transient-setup 't/babel/block-generator-command)
+   )
+
+ (define-transient-command t/help ()
+   "tangrammer help"
+   ["Help"
+    ("f" "function" describe-function)
+    ("v" "variable" describe-variable)])
+
+ (define-transient-command >t ()
+   "tangrammer dispatcher"
+   [["git"
+      ("g" "git utils" t/git-command)]
+    ["Actions"
+      ("d" "go to 'my' dirs" t/dir/go-command)]
+    ["Text"
+     ("t" "overlay" t/overlay/command)]
+    ["Orgmode"
+     ("b" "babel" t/babel/block-generator-command)
+     ("r" "roam(s)" t/roam/go)
+     ("o" "org related" t/org/command)]
+    ["Flumen"
+     ("f" "flumen related" t/flumen/flumen-command)]]
+   [["Help"
+     ("h" "help" t/help)]
+    ["Miscellaneous"
+     ("s" "sunshine? " sunshine-forecast)]])
 
  #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results silent
-(define-transient-command t/org/headlines-command ()
-  "org view actions"
-  ["Actions"
-   ("s" "narrow-to-subtree" org-narrow-to-subtree)
-   ("b" "narrow-to-block" org-narrow-to-block)
-   ("w" "widen" widen)])
 
-(define-transient-command t/org/command ()
-  "Orgs related things"
-  ["Actions"
-   ("c" "capture" org-capture)
-   ("t" "insert timestamp" (lambda () (interactive) org-insert-time-stamp))
-   ("h" "headlines related" t/org/headlines-command)
-   ("s" "insert screenshot" org-download-screenshot)])
-#+END_SRC
+
+  #+BEGIN_SRC emacs-lisp :results silent
+  (global-set-key (kbd "<f1>") '>t)
+  (global-set-key (kbd "<f2>") 't/org/command)
+
+  #+END_SRC
+
+  #+NAME: pepe
+ | a | b |
+ | 1 | 2 |
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (define-transient-command t/org/headlines-command ()
+   "org view actions"
+   ["Actions"
+    ("s" "narrow-to-subtree" org-narrow-to-subtree)
+    ("b" "narrow-to-block" org-narrow-to-block)
+    ("w" "widen" widen)])
+
+ (define-transient-command t/org/command ()
+   "Orgs related things"
+   ["Actions"
+    ("c" "capture" org-capture)
+    ("t" "insert timestamp" (lambda () (interactive) org-insert-time-stamp))
+    ("h" "headlines related" t/org/headlines-command)
+    ("s" "insert screenshot" org-download-screenshot)])
+ #+END_SRC

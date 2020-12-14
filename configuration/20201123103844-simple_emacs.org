@@ -24,29 +24,29 @@
      (require 'use-package)
 
      (use-package helm
-       :ensure t
+
        :config (require 'helm-config)
        (helm-mode 1))
 
      (use-package company
-       :ensure t
+
        :bind (("?\t" . company-indent-or-complete-common))
        :config (global-company-mode))
 
      (use-package company-flx
-       :ensure t
+
        :after company
        :config (company-flx-mode +1))
 
 
      (use-package ivy
-       :ensure t)
+       )
 
      (use-package counsel
-       :ensure t)
+       )
 
      (use-package swiper
-       :ensure t
+
        :bind (("C-s" . swiper))
        :config (ivy-mode 1)
        :custom ((ivy-use-virtual-buffers t)
@@ -55,7 +55,7 @@
 
 
   (use-package org-roam
-    :ensure t
+
     :hook
     (after-init . org-roam-mode)
     :custom
@@ -124,4 +124,3 @@
 
 
  #+END_SRC
-

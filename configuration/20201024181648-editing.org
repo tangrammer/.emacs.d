@@ -1,7 +1,7 @@
 #+TITLE: editing
 
 * bbatsov/crux - eval-and-replace
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
@@ -22,23 +22,22 @@ M-;
 * code completion
 M-/
 
+
 * code indentation
-if mode supports indentation 
+if mode supports indentation
 CTRL-M-\
-
-
 
 
 * sorting words
 https://www.emacswiki.org/emacs/SortWords
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun sort-words (reverse beg end)
       "Sort words in region alphabetically, in REVERSE if negative.
     Prefixed with negative \\[universal-argument], sorts in reverse.
-  
+
     The variable `sort-fold-case' determines whether alphabetic case
     affects the sort order.
-  
+
     See `sort-regexp-fields'."
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\w+" "\\&" beg end))
@@ -49,28 +48,27 @@ https://www.emacswiki.org/emacs/SortWords
 
  https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
  (delete-selection-mode 1)
 #+END_SRC
 
 
 
 
-* expand region 
+* expand region
 selecting incrementally textEmacs extension to increase selected region by semantic units.
 https://github.com/magnars/expand-region.el
 
 http://emacsrocks.com/e09.html
 
-#+BEGIN_SRC emacs-lisp 
-(unless (package-installed-p 'expand-region)
-  (package-install 'expand-region))
+#+BEGIN_SRC emacs-lisp :results silent
+ (use-package expand-region
+     :straight t)
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+
 #+END_SRC
 
-#+RESULTS:
-: er/expand-region
 
 
 
@@ -79,47 +77,40 @@ http://emacsrocks.com/e09.html
 https://www.emacswiki.org/emacs/HideShow
 HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
 
-#+BEGIN_SRC emacs-lisp 
-
+#+BEGIN_SRC emacs-lisp :results silent
 (global-set-key (kbd "M-+") 'hs-show-block)
 (global-set-key (kbd "M-*") 'hs-show-all)
 (global-set-key (kbd "M--") 'hs-hide-block)
 (global-set-key (kbd "M-Ç") 'hs-hide-level)
 (global-set-key (kbd "M-:") 'hs-hide-all)
-(add-hook 'web-mode-hook 'hs-minor-mode)
-(add-hook 'js2-mode-hook 'hs-minor-mode)
+;;(add-hook 'web-mode-hook 'hs-minor-mode)
+;;(add-hook 'js2-mode-hook 'hs-minor-mode)
 (add-hook 'clojure-mode-hook 'hs-minor-mode)
 (add-hook 'cider-mode-hook 'hs-minor-mode)
 (add-hook 'lisp-mode-hook 'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 #+END_SRC
 
-#+RESULTS:
-| hs-minor-mode |
-
-
-
 
 * RainbowDelimiters
 https://www.emacswiki.org/emacs/RainbowDelimiters
 rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
- 
-#+BEGIN_SRC emacs-lisp 
-(unless (package-installed-p 'rainbow-delimiters)
-  (package-install 'rainbow-delimiters))
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+ (use-package rainbow-delimiters
+     :straight t)
+
 (require 'rainbow-delimiters)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
 
-#+RESULTS:
-| rainbow-delimiters-mode |
-
 
 * smartparens
 https://github.com/Fuco1/smartparens
 https://ebzzry.github.io/emacs-pairs.html
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'smartparens)
   (package-install 'smartparens))
 (require 'smartparens)
@@ -138,14 +129,15 @@ https://ebzzry.github.io/emacs-pairs.html
 
 * multiple-cursors
  https://github.com/magnars/multiple-cursors.el
- http://emacsrocks.com/e13.html 
+ http://emacsrocks.com/e13.html
+#+BEGIN_SRC emacs-lisp :results silent
 
-#+BEGIN_SRC emacs-lisp 
-(unless (package-installed-p 'multiple-cursors)
-  (package-install 'multiple-cursors))
+  (use-package multiple-cursors
+     :straight t)
+
 (require 'multiple-cursors)
 
-(add-hook 'clojure-mode-hook 'multiple-cursors-mode) 
+(add-hook 'clojure-mode-hook 'multiple-cursors-mode)
 (add-hook 'cider-mode-hook 'multiple-cursors-mode)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -154,11 +146,3 @@ https://ebzzry.github.io/emacs-pairs.html
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 #+END_SRC
-
-#+RESULTS:
-: mc/mark-all-like-this
-
-
-
-
-

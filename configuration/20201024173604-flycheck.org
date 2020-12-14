@@ -3,9 +3,18 @@
 [[file:20201024170630-ui.org][UI]]
 
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'flycheck)
-  (package-install 'flycheck))
+(use-package flycheck
+:straight t
+  )
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+
 (require 'flycheck)
+(dolist (checker '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
+  (setq flycheck-checkers (cons checker (delq checker flycheck-checkers))))
 
 ;; turn on flychecking globally
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -42,4 +51,3 @@
 
 
 #+END_SRC
-

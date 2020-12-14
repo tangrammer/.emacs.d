@@ -16,10 +16,9 @@ YASnippet. Watch [a demo on YouTube][youtube-demo].
 [youtube-demo]: http://www.youtube.com/watch?v=ZCGmZK4V7Sg
 
 
-#+BEGIN_SRC emacs-lisp :results silent 
-(unless (package-installed-p 'yasnippet)
-  (package-install 'yasnippet))
-(yas-global-mode 1)
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package yasnippet
+  :straight t
+  :config (yas-global-mode 1))
 
 #+END_SRC
-

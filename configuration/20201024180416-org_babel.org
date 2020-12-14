@@ -8,9 +8,9 @@ settings taken from [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emac
 
 ** DONE not output elisp code in configuration
 
-   so ob-tangle output all elisp and emacs-lisp blocks no matter which header do you use, so instead of patching the ob-tangle.el code I'm setting up a new clone of ob-lisp.el as ob-emacs-lisp-no.el where (almost) all definitions are aliased 
-   
- #+BEGIN_SRC emacs-lisp :results silent 
+   so ob-tangle output all elisp and emacs-lisp blocks no matter which header do you use, so instead of patching the ob-tangle.el code I'm setting up a new clone of ob-lisp.el as ob-emacs-lisp-no.el where (almost) all definitions are aliased
+
+ #+BEGIN_SRC emacs-lisp :results silent
  (load-file "~/.emacs.d/local/ob-untangle.el")
  #+END_SRC
 
@@ -30,7 +30,7 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
  #+END_SRC
 
 
- 
+
 
 * -conf
 #+BEGIN_SRC emacs-lisp  :results silent
@@ -39,34 +39,37 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 
 
 
+
+(setq org-export-babel-evaluate t)
+
+(setq org-hide-emphasis-markers t)
+
+(global-auto-revert-mode)
+
+(setq org-startup-with-inline-images t)
+
+
 (org-babel-do-load-languages
   'org-babel-load-languages
   '((clojure . t)
     (dot . t)
     (shell . t)
     (sql . t)
-    (http . t)
+    ;;(http . t)
     (emacs-lisp . t)))
 
-(setq org-export-babel-evaluate t)
-
-(setq org-hide-emphasis-markers t)
-
-(global-auto-revert-mode)  
-
-(setq org-startup-with-inline-images t)
 
 #+END_SRC
 
 ** collapse sources by default
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC emacs-lisp :results silent
  (add-hook 'org-mode-hook 'org-hide-block-all)
 
  #+END_SRC
 
 ** collapse results by default
-#+BEGIN_SRC emacs-lisp :results silent 
-(add-hook 'org-mode-hook 'org-babel-result-hide-all) 
+#+BEGIN_SRC emacs-lisp :results silent
+(add-hook 'org-mode-hook 'org-babel-result-hide-all)
 #+END_SRC
 
 ** emacs-htmlize
@@ -78,11 +81,11 @@ lets org to expor in html
 #+END_SRC
 
 
-** tangle append 
+** tangle append
 I paste here an option to work with but there is another approach called noweb-ref
 https://emacs.stackexchange.com/questions/28098/how-to-change-org-mode-babel-tangle-write-to-file-way-as-append-instead-of-overr
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun org-babel-tangle-append ()
   "Append source code block at point to its tangle file.
 The command works like `org-babel-tangle' with prefix arg
@@ -101,18 +104,93 @@ but `delete-file' is ignored."
 
 
 
-* org + clojure 
- #+BEGIN_SRC emacs-lisp 
-(require 'ob-clojure)
+* org + clojure
+Updated with https://github.com/kimim/kimim-emacs/blob/master/README.org#clojure
+BTW: you can do =cider-jack-in= in any directory to start a new REPL without a project
+ #+BEGIN_SRC emacs-lisp
+ ;; (require 'ob-clojure)
 
-(setq org-babel-clojure-nrepl-timeout nil)
- 
- (setq org-babel-clojure-backend 'cider)
+ ;; (setq org-babel-clojure-nrepl-timeout nil)
+
+ ;; (setq org-babel-clojure-backend 'cider)
+
+ (use-package ob-clojure
+
+   :config
+   (use-package clojure-mode)
+   (require 'ob-clojure)
+   (use-package cider)
+   (setq org-babel-clojure-backend 'cider)
+   (defun org-babel-expand-body:clojure (body params)
+     "Expand BODY according to PARAMS, return the expanded body."
+     (let* ((vars (org-babel--get-vars params))
+          (ns (or (cdr (assq :ns params))
+                (org-babel-clojure-default-ns) ;;(org-babel-clojure-cider-current-ns)
+                  ))
+          (result-params (cdr (assq :result-params params)))
+          (print-level nil)
+          (print-length nil)
+          (body (org-trim
+               (concat
+                ;; Source block specified namespace :ns.
+                (and (cdr (assq :ns params)) (format "(ns %s)\n" ns))
+                ;; Variables binding.
+                (if (null vars) (org-trim body)
+                  (format "(let [%s]\n%s)"
+                        (mapconcat
+                         (lambda (var)
+                           (format "%S (quote %S)" (car var) (cdr var)))
+                         vars
+                         "\n      ")
+                        body))))))
+       (if (or (member "code" result-params)
+             (member "pp" result-params))
+         (format "(print (str (do %s)))" body)
+         body))))
+
+ #+END_SRC
+
+if fails clojure evaluation, reeval ob-clojure following original code
+
+ #+BEGIN_SRC untangle
+(defun org-babel-expand-body:clojure (body params)
+  "Expand BODY according to PARAMS, return the expanded body."
+  (let* ((vars (org-babel--get-vars params))
+	 (ns (or (cdr (assq :ns params))
+		 (if (eq org-babel-clojure-backend 'cider)
+		     (or cider-buffer-ns
+			 (let ((repl-buf (cider-current-connection)))
+			   (and repl-buf (buffer-local-value
+					  'cider-buffer-ns repl-buf))))
+		   org-babel-clojure-default-ns)))
+	 (result-params (cdr (assq :result-params params)))
+	 (print-level nil)
+	 (print-length nil)
+	 ;; Remove comments, they break (let [...] ...) bindings
+	 (body (replace-regexp-in-string "^[ 	]*;+.*$" "" body))
+	 (body (org-trim
+		(concat
+		 ;; Source block specified namespace :ns.
+		 (and (cdr (assq :ns params)) (format "(ns %s)\n" ns))
+		 ;; Variables binding.
+		 (if (null vars) (org-trim body)
+		   (format "(let [%s]\n%s)"
+			   (mapconcat
+			    (lambda (var)
+			      (format "%S %S" (car var) (cdr var)))
+			    vars
+			    "\n      ")
+			   body))))))
+    (if (or (member "code" result-params)
+	    (member "pp" result-params))
+	(format "(clojure.pprint/pprint (do %s))" body)
+      body)))
  #+END_SRC
 
 
+
 * http
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'ob-http)
   (package-install 'ob-http))
 (require 'ob-http)
@@ -123,7 +201,7 @@ but `delete-file' is ignored."
 * errors
 
 **  Error (org-babel): Error reading results: (end-of-file)
-    
+
   you need to add =:results= output
 
 [[file:20201103151430-org_babel_results_of_evaluation.org][org-babel results of evaluation]]

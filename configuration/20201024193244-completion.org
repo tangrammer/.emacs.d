@@ -6,7 +6,7 @@
 
  #+BEGIN_SRC untangle
 (use-package icomplete-vertical
-  :ensure t
+
   :demand t
   :custom
   (completion-styles '(partial-completion substring))
@@ -25,6 +25,3 @@
               ("C-v" . icomplete-vertical-toggle)))
 
  #+END_SRC
-
-
- 

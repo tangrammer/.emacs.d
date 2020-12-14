@@ -1,0 +1,14 @@
+# key: >
+# name: at
+# --
+***** $1x$2
+    :PROPERTIES:
+    :ANKI_NOTE_TYPE: Basic
+    :END:
+ 
+****** Front
+$1x$2
+
+****** Back
+${2:$(* (string-to-number (or (yas-field-value 1) "0")) (string-to-number (or yas-text "0")))}
+
