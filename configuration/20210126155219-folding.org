@@ -1,0 +1,40 @@
+#+title: folding
+
+* hide-show
+https://www.emacswiki.org/emacs/HideShow
+HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
+
+#+BEGIN_SRC emacs-lisp :results silent
+ (use-package hideshow
+   :straight t
+   :bind (("M-+" . hs-show-block)
+          ("M-*" . hs-show-all)
+          ("M--" . hs-hide-block)
+          ("M-Ç" . hs-hide-level)
+          ("M-:" . hs-hide-all))
+     :hook (prog-mode))
+
+;;(add-hook 'web-mode-hook 'hs-minor-mode)
+;;(add-hook 'js2-mode-hook 'hs-minor-mode)
+;; (add-hook 'clojure-mode-hook 'hs-minor-mode)
+;; (add-hook 'cider-mode-hook 'hs-minor-mode)
+;; (add-hook 'js-mode-hook 'hs-minor-mode)
+;; (add-hook 'js2-mode-hook 'hs-minor-mode)
+;; (add-hook 'lisp-mode-hook 'hs-minor-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+#+END_SRC
+
+
+* origami (Based on indentation)
+A folding minor mode for Emacs
+https://github.com/gregsexton/origami.el
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package origami
+  :straight (origami :type git :host github :repo "gregsexton/origami.el")
+  :bind (("M-+" . origami-open-node)
+         ("M--" . origami-close-node)
+         ("M-Ç" . origami-recursively-toggle-node)
+         ("M-*" . origami-open-all-nodes)))
+#+END_SRC

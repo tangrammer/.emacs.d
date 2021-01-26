@@ -71,27 +71,6 @@ http://emacsrocks.com/e09.html
 
 
 
-
-
-* hide-show
-https://www.emacswiki.org/emacs/HideShow
-HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
-
-#+BEGIN_SRC emacs-lisp :results silent
-(global-set-key (kbd "M-+") 'hs-show-block)
-(global-set-key (kbd "M-*") 'hs-show-all)
-(global-set-key (kbd "M--") 'hs-hide-block)
-(global-set-key (kbd "M-Ç") 'hs-hide-level)
-(global-set-key (kbd "M-:") 'hs-hide-all)
-;;(add-hook 'web-mode-hook 'hs-minor-mode)
-;;(add-hook 'js2-mode-hook 'hs-minor-mode)
-(add-hook 'clojure-mode-hook 'hs-minor-mode)
-(add-hook 'cider-mode-hook 'hs-minor-mode)
-(add-hook 'lisp-mode-hook 'hs-minor-mode)
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-#+END_SRC
-
-
 * RainbowDelimiters
 https://www.emacswiki.org/emacs/RainbowDelimiters
 rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
