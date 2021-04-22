@@ -75,21 +75,20 @@ http://emacsrocks.com/e09.html
 https://www.emacswiki.org/emacs/RainbowDelimiters
 rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 
- (use-package rainbow-delimiters
-     :straight t)
+(use-package rainbow-delimiters
+  :straight t
+  :hook (prog-mode clojure-mode))
 
-(require 'rainbow-delimiters)
 
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
 
 
 * smartparens
 https://github.com/Fuco1/smartparens
 https://ebzzry.github.io/emacs-pairs.html
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC untangle
 (unless (package-installed-p 'smartparens)
   (package-install 'smartparens))
 (require 'smartparens)
@@ -111,17 +110,18 @@ https://ebzzry.github.io/emacs-pairs.html
  http://emacsrocks.com/e13.html
 #+BEGIN_SRC emacs-lisp :results silent
 
-  (use-package multiple-cursors
-     :straight t)
+(use-package multiple-cursors
+  :straight t
+  :hook (fundamental-mode php-mode)
+  :bind
+  (("C-S-c C-S-c" . mc/edit-lines)
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-c C-<" . mc/mark-all-like-this)))
 
-(require 'multiple-cursors)
-
-(add-hook 'clojure-mode-hook 'multiple-cursors-mode)
-(add-hook 'cider-mode-hook 'multiple-cursors-mode)
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;;  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+;;  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;;  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;;  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 #+END_SRC
