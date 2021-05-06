@@ -1,5 +1,8 @@
 #+TITLE: org-babel
+
 [[file:20201024180240-org_mode.org][org-mode]] [[file:20201024180511-minor_mode.org][minor-mode]]
+
+
 
 settings taken from [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/][http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/]]
 
@@ -32,7 +35,7 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 
 
 
-* -conf
+* conf
 #+BEGIN_SRC emacs-lisp  :results silent
 
 (require 'ob-dot)
@@ -75,11 +78,11 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 ** emacs-htmlize
 lets org to expor in html
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'htmlize)
-  (package-install 'htmlize))
-(require 'htmlize)
-#+END_SRC
+(use-package htmlize
+  :straight t
+)
 
+#+END_SRC
 
 ** tangle append
 I paste here an option to work with but there is another approach called noweb-ref
@@ -191,10 +194,13 @@ if fails clojure evaluation, reeval ob-clojure following original code
 
 * http
 #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'ob-http)
-  (package-install 'ob-http))
-(require 'ob-http)
+(use-package ob-http
+  :straight t
+)
+
 #+END_SRC
+
+#+RESULTS:
 
 
 

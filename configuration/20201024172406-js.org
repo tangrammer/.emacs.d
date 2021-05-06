@@ -2,17 +2,20 @@
 [[file:20201024172354-coding.org][coding]] [[file:20201025174437-language.org][language]]
 
 JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#emacs_configuration_for_eslint_and_jsx
- 
-#+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'js2-mode)
-  (package-install 'js2-mode))
-(require 'js2-mode)
 
-;; configure indentation 
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package js2-mode
+  :straight t
+  :hook (dumb-jump-mode)
+  :config
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (setq-default js2-basic-offset 2))
+
+;; configure indentation
 ;; https://github.com/mooz/js2-mode/issues/339
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-(setq-default js2-basic-offset 2)
+
 
 #+END_SRC
 
@@ -56,9 +59,13 @@ definition of the thing under point.
 https://github.com/redguardtoo/js-comint
 
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'js-comint)
-  (package-install 'js-comint))
-(require 'js-comint)
+(use-package js-comint
+
+  :straight t
+;;  :hook (hs-minor-mode)
+    )
+
+
 #+END_SRC
 
 
