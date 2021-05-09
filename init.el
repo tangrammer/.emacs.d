@@ -11,6 +11,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(setq make-backup-files nil)
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+
 
 ;; * use my orgmode
 ;; _(to fix babel + clojure)_
@@ -32,6 +35,11 @@
 (straight-use-package 'org)
 
 (org-babel-load-file "~/.emacs.d/top-level-packages.org")
+
+(custom-set-variables
+ '(safe-local-variable-values
+   '((org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db")
+     (org-roam-directory . "~/.emacs.d/configuration"))))
 
 (require 'dash)
 (let((dir "~/.emacs.d/configuration/"))
@@ -57,6 +65,7 @@
  '(safe-local-variable-values
    '((org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db")
      (org-roam-directory . "~/.emacs.d/configuration")))
+ '(transient-force-fixed-pitch t)
  '(which-key-side-window-max-height 0.6)
  '(which-key-side-window-max-width 0.6))
 (custom-set-faces
