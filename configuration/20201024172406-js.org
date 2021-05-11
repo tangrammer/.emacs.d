@@ -30,18 +30,6 @@ JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#em
 
 
 
-* dumb-jump
-an Emacs "jump to definition" package for 40+ languages
-
-https://github.com/jacktasia/dumb-jump
-
-C-M-g => go to def
-C-M-p => go back
- #+BEGIN_SRC emacs-lisp :results silent
- (unless (package-installed-p 'dumb-jump)
-   (package-install 'dumb-jump))
- (require 'dumb-jump)
- #+END_SRC
 
 * ivy
 #+BEGIN_SRC emacs-lisp
@@ -119,5 +107,3 @@ Run a JavaScript interpreter in an inferior process window.
 
 
 #+END_SRC
-
-
