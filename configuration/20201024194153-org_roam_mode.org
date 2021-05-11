@@ -88,3 +88,12 @@ https://github.com/tangrammer/.emacs.d/issues/2
       (find-file dir)))
 
   #+END_SRC
+
+
+
+* TODO take a look to "roam-block"
+  https://github.com/Kinneyzhang/roam-block
+
+
+* TODO take a look to "delve"
+  https://github.com/publicimageltd/delve
