@@ -145,3 +145,9 @@ https://github.com/awth13/org-appear
 (add-hook 'org-mode-hook 'org-appear-mode)
 
  #+END_SRC
+
+
+
+* minor agenda modes
+  [[file:20201025190153-org_mode_agenda.org][org-mode agenda]]
+  [[file:20201024200405-org_super_agenda_mode.org][org-super-agenda-mode]]

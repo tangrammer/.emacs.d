@@ -1,13 +1,38 @@
 #+title: org-mode agenda
 
-it's a [[file:20201024180240-org_mode.org][org-mode]] extension
+- [See also [[file:20201024200405-org_super_agenda_mode.org][org-super-agenda-mode]].]
 
-#+BEGIN_SRC emacs-lisp :results silent 
+- https://orgmode.org/manual/Agenda-Views.html
 
-(defun agenda nil 
-  (interactive) 
-  (org-agenda t "t"))
+Due to the way Org works, TODO items, time-stamped items, and tagged headlines can be scattered throughout a file or even a number of files. To get an overview of open action items, or of events that are important for a particular date, this information must be collected, sorted and displayed in an organized way.
+
+The extracted information is displayed in a special agenda buffer. This buffer is read-only, but provides commands to visit the corresponding locations in the original Org files, and even to edit these files remotely.
 
 
-#+END_SRC
+** agenda files
 
+ #+BEGIN_SRC emacs-lisp
+ (org-agenda-files)
+ #+END_SRC
+
+ #+RESULTS:
+
+  #+BEGIN_SRC emacs-lisp :results silent
+
+  (defun agenda-todos nil
+    (interactive)
+    (org-agenda t "t"))
+
+  (define-transient-command t/agenda ()
+          "agenda related things"
+          ["Actions"
+           ("t" "todos" agenda-todos)
+           ("l" "agenda files" (lambda () (interactive) (message "%s" org-agenda-files)))
+           ("a" "Add file to agenda files" org-agenda-file-to-front)
+           ("r" "remove file to agenda files" org-remove-file)])
+  #+END_SRC
+
+** TODO add interactive function to add directory to scan agenda files :urgent:
+
+[[/Users/tangrammer/.emacs.d/straight/repos/org/lisp/org.el::3136][If an entry is a directory, all files in that directory that are matched
+by `org-agenda-file-regexp' will be part of the file list.]]

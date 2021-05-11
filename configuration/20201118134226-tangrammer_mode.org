@@ -282,7 +282,9 @@
        ("s" "sunshine? " sunshine-forecast)
        ]
       ["Music"
-       ("m" "mpd related " t/music)]])
+       ("m" "mpd related " t/music)]
+      ["agenda"
+       ("a" "agenda" t/agenda)]])
  #+END_SRC
 
 

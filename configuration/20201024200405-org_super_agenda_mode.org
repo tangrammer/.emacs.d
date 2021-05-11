@@ -1,8 +1,7 @@
 #+TITLE: org-super-agenda-mode
 [[file:20201025190153-org_mode_agenda.org][org-mode agenda]]
 
-this seems like the preferred functionality to work with agenda 
+this seems like the preferred functionality to work with agenda
 
 * TODO config & install superagenda
 https://github.com/alphapapa/org-super-agenda
-
