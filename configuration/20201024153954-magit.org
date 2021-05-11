@@ -75,3 +75,20 @@
 
 ** more resources
    https://github.com/punchagan/git-mob-sh
+
+
+
+
+* dired-git-info
+  https://github.com/clemera/dired-git-info
+  Show git info in Emacs dired
+
+  dired-git-info
+
+  #+BEGIN_SRC emacs-lisp :results silent
+    (use-package dired-git-info
+      :straight t
+
+    )
+  (add-hook 'dired-after-readin-hook 'dired-git-info-auto-enable)
+  #+END_SRC
