@@ -101,10 +101,10 @@ https://emacs.stackexchange.com/a/20762/13373
 https://github.com/rougier/org-outer-indent
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package org-outer-indent
-  :straight (el-patch :type git :host github :repo "rougier/org-outer-indent")
-  :config (add-hook 'org-mode-hook 'org-outer-indent-mode)
-  (add-hook 'org-mode-hook 'org-num-mode)
-)
+  :straight (org-outer-indent :type git :host github :repo "rougier/org-outer-indent")
+;;  :config (add-hook 'org-mode-hook 'org-outer-indent-mode)
+;;  (add-hook 'org-mode-hook 'org-num-mode)
+  )
 
 #+END_SRC
 
@@ -122,11 +122,11 @@ https://github.com/rougier/org-outer-indent
 
 (face-remap-add-relative 'org-document-info
                          :inherit 'nano-face-faded)
-(face-remap-add-relative 'org-document-title
-                         :foreground nano-color-foreground
-                         :family "Roboto Slab"
-                         :height 250
-                         :weight 'medium)
+;; (face-remap-add-relative 'org-document-title
+;;                          :foreground nano-color-foreground
+;;                          :family "Roboto Slab"
+;;                          :height 250
+;;                          :weight 'medium)
 (font-lock-add-keywords 'org-mode '(("\\(^*+\\) " 0 'nano-face-faded)))
 
 (setq org-num-face 'nano-face-faded)

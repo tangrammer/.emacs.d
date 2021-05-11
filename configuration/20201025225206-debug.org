@@ -10,8 +10,8 @@
 3- Now, just invoke the function (or some other command that calls that function).
 
 
-The next time the Edebugged function gets called, Emacs will display its source code and will take you through it step-by-step. 
-Press =n= to continue to the next step 
+The next time the Edebugged function gets called, Emacs will display its source code and will take you through it step-by-step.
+Press =n= to continue to the next step
 or =c= to stop fooling around and skip to the end.
 
 
@@ -25,7 +25,7 @@ more in the manual https://www.gnu.org/software/emacs/manual/html_node/elisp/Ede
 
 You can find the full list of commands on Edebug's manual page but the most useful ones:
 
-- q 
+- q
 Quit current execution, occasionally more useful than c, C and G.
 - h
 Move point somewhere else, then hit h. Everything in between will be “skipped” (executed, but not displayed), and Edebug continues from there. Highly useful in very long functions.
@@ -46,4 +46,5 @@ Though this backtrace display might not be as pretty as Edebug, it's every bit a
 There's a [[https://endlessparentheses.com/images/debug-png9-20fps.gif][gif]] which shows what you can do by just hitting =d=  to step deeper into the structure, and then =c= to quickly get out. You can also jump around a bit with =j=, and evaluate expressions under an environment as if you were inside the function with =e=.
 
 
-
+* TODO take a look to edebug-inline-result
+  https://github.com/stardiviner/edebug-inline-result

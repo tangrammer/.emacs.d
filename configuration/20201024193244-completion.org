@@ -1,5 +1,5 @@
 #+TITLE: completion
-[[file:20201024193333-pattern.org][pattern]]
+[[file:20201024193333-pattern.org][pattern]] [[file:20210127102219-narrowing.org][narrowing]]
 
 
 * CANCELLED icomplete-vertical

@@ -5,15 +5,15 @@ An Emacs package for displaying the forecast from OpenWeatherMap.
   https://github.com/aaronbieber/sunshine.el
 
    #+BEGIN_SRC emacs-lisp :results silent
-(straight-use-package
- '(sunshine :type git :host github :repo "aaronbieber/sunshine.el"))
+   (straight-use-package
+    '(sunshine :type git :host github :repo "aaronbieber/sunshine.el"))
 
    (require 'sunshine)
-   (setq sunshine-appid (getenv "SUNSHINE_APPID")) ;; loaded from env.el
-   (setq sunshine-location "Seville,ES")
-   (setq sunshine-units 'metric)
-   (setq sunshine-show-icons t)
-   ;;(setq sunshine-forecast-date t)
+      (setq sunshine-appid (getenv "SUNSHINE_APPID")) ;; loaded from env.el
+      (setq sunshine-location "Seville,ES")
+      (setq sunshine-units 'metric)
+      (setq sunshine-show-icons t)
+      ;;(setq sunshine-forecast-date t)
 
    #+END_SRC
 

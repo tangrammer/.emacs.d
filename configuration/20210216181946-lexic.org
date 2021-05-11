@@ -1,0 +1,4 @@
+#+title: lexic
+
+* TODO install dictionary support
+https://github.com/tecosaur/lexic

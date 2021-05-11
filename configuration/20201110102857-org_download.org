@@ -20,6 +20,3 @@ settings included support for [[file:20201110102514-org_screenshot.org][org-scre
      (require 'org-download))
 
  #+END_SRC
-
-#+DOWNLOADED: screenshot @ 2020-11-20 16:26:54
-[[file:images/20201120-162654_screenshot.png]]

@@ -1,0 +1,8 @@
+#+title: straight
+
+emacs package manager
+https://github.com/raxod502/straight.el
+
+* use local examples
+
+- using github repo [[file:20210114124051-dired_hacks.org][dired-hacks]]

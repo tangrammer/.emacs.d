@@ -1,0 +1,4 @@
+#+title: formatting
+
+* TODO  research
+https://github.com/lassik/emacs-format-all-the-code

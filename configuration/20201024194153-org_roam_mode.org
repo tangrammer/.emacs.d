@@ -12,7 +12,7 @@ https://github.com/jethrokuan/org-roam
  #+BEGIN_SRC emacs-lisp :results silent
 
  (use-package org-roam
-
+  :straight t
    :hook
    (after-init . org-roam-mode)
    :custom
@@ -45,8 +45,6 @@ https://github.com/jethrokuan/org-roam
 * once that you call org-roam-graph you can find the graph here
 
 doing M-l in the related graph then open it in a browser
-
-
 
 * more than 1 roam system
 you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-locals]] as this configuration system

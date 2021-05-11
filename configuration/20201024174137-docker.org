@@ -1,7 +1,7 @@
 #+TITLE: docker
 [[file:20201024172152-devops.org][devops]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
     (require 'tramp)
 
 #+END_SRC
@@ -13,4 +13,5 @@ https://github.com/emacs-pe/docker-tramp.el
 
 
 #+END_SRC
-
+* TODO research  manage docker from emacs
+https://github.com/Silex/docker.el

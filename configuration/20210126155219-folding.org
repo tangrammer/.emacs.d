@@ -7,12 +7,12 @@ HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of
 #+BEGIN_SRC emacs-lisp :results silent
  (use-package hideshow
    :straight t
+   :hook (fundamental-mode)
    :bind (("M-+" . hs-show-block)
           ("M-*" . hs-show-all)
           ("M--" . hs-hide-block)
           ("M-Ç" . hs-hide-level)
-          ("M-:" . hs-hide-all))
-     :hook (prog-mode))
+          ("M-:" . hs-hide-all)))
 
 ;;(add-hook 'web-mode-hook 'hs-minor-mode)
 ;;(add-hook 'js2-mode-hook 'hs-minor-mode)

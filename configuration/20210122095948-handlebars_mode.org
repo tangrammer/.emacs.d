@@ -4,8 +4,7 @@
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package handlebars-mode
   :straight (handlebars-mode :type git :host github :repo "danielevans/handlebars-mode")
-  :config (add-hook 'handlebars-mode-hook 'origami-mode)
-
+;;  :hook (origami-mode linum-mode)
 )
 
 #+END_SRC

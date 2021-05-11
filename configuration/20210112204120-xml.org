@@ -1,0 +1,6 @@
+#+title: xml
+
+https://github.com/philjackson/xmlgen
+
+* TODO elisp research
+An s-expression to XML [[file:20210112204144-dsl.org][DSL]] in elisp
