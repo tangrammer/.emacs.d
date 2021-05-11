@@ -2,18 +2,22 @@
 
 https://github.com/alphapapa/magit-todos#usage
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 (use-package magit-todos
 :straight t
   :after magit
   )
+
+
+;;(setq magit-todos-exclude-globs '("*.html" "*.html"))
+
 #+END_SRC
 
 * DONE configuration
   so far we only see the TODOs but not the other todo tags like =WAITING=
 Solution: use customize magit-todos them goto magit-todos-keywords and add values needed
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC untangle
       (setq magit-todos-keywords-list '("TODO" "WAITING" "IN PROGRESS"))
     magit-todos-keywords-list
    #+END_SRC
@@ -22,7 +26,7 @@ Solution: use customize magit-todos them goto magit-todos-keywords and add value
    | TODO | WAITING | IN PROGRESS |
 
 
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC untangle
    (setq magit-todos-group-by '(magit-todos-item-keyword))
 magit-todos-group-by
     #+END_SRC
