@@ -67,9 +67,10 @@
 #+BEGIN_SRC emacs-lisp :results silent
    (defun co-co (authors)
      (interactive "sauthors separated by comma: ")
-     (insert (shell-command-to-string (format "~/.emacs.d/configuration/co-authored-by %s" authors)))
+     (insert (shell-command-to-string (format "~/.emacs.d/bashs/co-authored-by %s" authors)))
      )
 #+END_SRC
+
 
 
 
