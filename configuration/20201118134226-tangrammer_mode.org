@@ -283,6 +283,8 @@
        ]
       ["Music"
        ("m" "mpd related " t/music)]
+      ["xml"
+       ("x" "format xml" ninrod/reformat-xml)]
       ["agenda"
        ("a" "agenda" t/agenda)]])
  #+END_SRC
