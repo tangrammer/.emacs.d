@@ -22,9 +22,11 @@ JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#em
 
 * indiumn
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'indium)
-  (package-install 'indium))
-(require 'indium)
+(use-package indium
+
+  :straight t
+;;  :hook (hs-minor-mode)
+    )
 #+END_SRC
 
 
