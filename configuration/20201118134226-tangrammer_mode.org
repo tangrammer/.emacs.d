@@ -243,7 +243,14 @@
         ("v" "var" t/babel/eval-param)
         ("E" "eval" t/babel/eval-argument)]
      ["Actions"
-      ("b" "gen-block" t/babel/block-action)]
+      ("b" "gen-block" t/babel/block-action)
+      ("h" "hide all blocks" org-hide-block-all)
+      ("s" "show all blocks" (lambda (&optional args)
+                               (interactive)
+                               (org-show-all '(blocks))))
+
+     ("x" "execute all blocks" org-babel-execute-buffer)
+      ]
    ;;  (interactive)
     ;; (transient-setup 't/babel/block-generator-command)
      )

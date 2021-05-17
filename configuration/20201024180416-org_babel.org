@@ -120,9 +120,11 @@ BTW: you can do =cider-jack-in= in any directory to start a new REPL without a p
  (use-package ob-clojure
 
    :config
-   (use-package clojure-mode)
+   (use-package clojure-mode
+     :straight t)
    (require 'ob-clojure)
-   (use-package cider)
+   (use-package cider
+     :straight t)
    (setq org-babel-clojure-backend 'cider)
    (defun org-babel-expand-body:clojure (body params)
      "Expand BODY according to PARAMS, return the expanded body."
