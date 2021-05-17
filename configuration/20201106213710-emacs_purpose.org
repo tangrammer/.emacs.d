@@ -1,7 +1,0 @@
-#+title: emacs purpose
-
-https://github.com/bmag/emacs-purpose
-
-Manage Windows and Buffers According to Purposes
-* TODO install 
-
