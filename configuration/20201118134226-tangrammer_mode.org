@@ -192,6 +192,7 @@
    (define-transient-command t/git-command ()
      "Git related things"
      ["Actions"
+      ("p" "set private git repo"  private-git-dropbox)
       ("c" "Co-Authored-BY" t/co-authored-command)])
 
    (defun add-lumen-admin (author tenant)
@@ -293,7 +294,9 @@
       ["xml"
        ("x" "format xml" ninrod/reformat-xml)]
       ["agenda"
-       ("a" "agenda" t/agenda)]])
+       ("a" "agenda" t/agenda)]
+      ["hs-minor-mode"
+       ("-" "hs-minor-mode" hs-minor-mode)]])
  #+END_SRC
 
 

@@ -31,3 +31,5 @@ projectile.cache
 env.el
 /request
 /straight
+configuration/emacs-configuration.db
+org-roam.db
