@@ -1,6 +1,18 @@
 #+title: org-table
 
 [[file:20201024180240-org_mode.org][org-mode]] table related utils
+* how to import csv into a org table?
+https://orgmode.org/manual/Built_002din-Table-Editor.html#Built_002din-Table-Editor
+So just paste the data into an org file, select it, and do C-u C-c | .
+ #+BEGIN_SRC untangle
+ org-table-create-or-convert-from-region
+ #+END_SRC
+
+
+
+
+
+* more things
 
 
 Found this code in https://www.reddit.com/r/orgmode/comments/9y52f2/i_want_to_work_on_tables_using_elisp/
@@ -73,3 +85,18 @@ example output of =t/org/insert-table-names=
 
  #+RESULTS:
  : read-org-result-by-name
+
+
+
+
+
+* Fill (auto-layout) tables
+
+
+  https://github.com/casouri/ftable
+
+  #+BEGIN_SRC untangle :results silent
+  (use-package ftable
+    :straight (ftable :type git :host github :repo "casouri/ftable")
+    )
+  #+END_SRC
