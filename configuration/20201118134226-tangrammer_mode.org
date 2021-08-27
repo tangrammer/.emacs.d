@@ -75,18 +75,19 @@
 ** TODO all babel [[/Users/tangrammer/git/tangrammer/refcard-org-babel/docs/header-args.org::1][options]]
 
  #+BEGIN_SRC emacs-lisp :results silent
-   (defun populate-babel-source-block  (name v1)
-     (flet ((dummy-prompt
-             (prompt choices &optional display-fn)
-             (declare (ignore prompt))
-             (or (find name choices :key display-fn :test #'string=)
-                 (throw 'notfound nil))))
-       (let ((yas/prompt-functions '(dummy-prompt)))
-         (catch 'notfound
-           (yas/insert-snippet t)
-           (insert v1)
-           (execute-kbd-macro [?\t]) ;;(insert ?\t)
-           ))))
+ (defun populate-babel-source-block  (name v1)
+   (progn
+     (defun dummy-prompt
+         (prompt choices &optional display-fn)
+       (declare (ignore prompt))
+       (or (cl-find name choices :key display-fn :test #'string=)
+           (throw 'notfound nil)))
+     (let ((yas/prompt-functions '(dummy-prompt)))
+       (catch 'notfound
+         (yas/insert-snippet t)
+         (insert v1)
+         (execute-kbd-macro [?\t]) ;;(insert ?\t)
+         ))))
 
    (defun t/babel/block-action (&optional args)
      (interactive
@@ -96,7 +97,7 @@
                          (--map (split-string it "=")))))
        (message "%s" values)
       (-let (((a b) (->> values
-                         (--separate (string= "language" (first it))))))
+                         (--separate (string= "language" (-first-item it))))))
         (-if-let  (language (-first-item a))
             (populate-babel-source-block "block"
                                          (--reduce-from (concat acc " " it) (-last-item language) (--map (format ":%s %s" (-first-item it) (s-replace "$$" "=" (-last-item it))) b)))
