@@ -327,5 +327,6 @@
     ("T" "selected csv to table" org-table-create-or-convert-from-region)
     ("t" "insert timestamp" (lambda () (interactive) org-insert-time-stamp))
     ("h" "headlines related" t/org/headlines-command)
+    ("d" "delete table column" org-table-delete-column)
     ("s" "insert screenshot" org-download-screenshot)])
  #+END_SRC
