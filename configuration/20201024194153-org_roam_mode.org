@@ -59,10 +59,11 @@ https://github.com/tangrammer/.emacs.d/issues/2
   (defun t/roam/go (choice)
     (interactive
      (let ((completion-ignore-case  t))
-       (list (completing-read "Choose: " '("roam" "roam-emacs-configuration" "roam-lumen" "roam-local") nil t))))
-    (let ((dir (cond ((string= choice "roam-emacs-configuration" ) "~/.emacs.d/configuration/20201025113623-index.org")
+       (list (completing-read "Choose: " '("roam" "roam-emacs-conf" "unep" "roam-lumen" "roam-local") nil t))))
+    (let ((dir (cond ((string= choice "roam-emacs-conf" ) "~/.emacs.d/configuration/20201025113623-configuration_index.org")
                      ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
                      ((string= choice "roam-local" ) "~/taller/20210604100524-tallerindex.org")
+                     ((string= choice "unep" ) "~/git/akvo/unep-gpml/backend/roam/20210803193530-unep_index.org")
                      ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org"))))
       (progn
         (let ((yup (find-file (extract-dir  dir))))
