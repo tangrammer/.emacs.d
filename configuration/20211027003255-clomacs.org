@@ -1,0 +1,33 @@
+#+title: clomacs
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package clomacs
+  :straight t
+
+)
+
+#+END_SRC
+
+ #+BEGIN_SRC
+ cd .emacs.d/
+ git clone https://github.com/kostafey/cm-test
+ #+END_SRC
+
+
+ #+BEGIN_SRC untangle
+(add-to-list 'load-path "~/.emacs.d/cm-test/src/elisp/")
+(require 'cm-test)
+
+ #+END_SRC
+
+ select following text and
+ #+BEGIN_SRC md
+[![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.txt)
+ #+END_SRC
+
+
+  #+BEGIN_SRC html
+<p><a href='http://www.gnu.org/licenses/gpl-3.0.txt'><img src="https://img.shields.io/badge/license-GPL_3-green.svg" alt="License GPL 3" /></a></p>
+  #+END_SRC
