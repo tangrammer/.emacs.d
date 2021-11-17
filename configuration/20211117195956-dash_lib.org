@@ -1,0 +1,9 @@
+#+title: elisp dash lib
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package dash
+:straight t
+)
+
+#+END_SRC
