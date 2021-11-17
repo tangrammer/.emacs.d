@@ -1,0 +1,56 @@
+#+title: mmm-mode
+
+https://emacs.stackexchange.com/a/28269
+
+https://github.com/purcell/mmm-mode
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package mmm-mode
+  :straight (mmm-mode :type git :host github :repo "purcell/mmm-mode")
+
+)
+#+END_SRC
+* How to eval orgmode blocks
+  https://emacs.stackexchange.com/a/28269
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (require 'mmm-mode)
+ (setq mmm-global-mode 'maybe)
+ (mmm-add-mode-ext-class 'org-mode nil 'org-python)
+ (mmm-add-mode-ext-class 'org-mode nil 'org-elisp)
+
+ (mmm-add-group
+  'org-python
+  '((python-src-block
+     :submode python-mode
+     :face org-block
+     :front "#\\+BEGIN_SRC python.*\n"
+     :back "#\\+END_SRC")))
+
+ (mmm-add-group
+  'org-elisp
+  '((elisp-src-block
+     :submode emacs-lisp-mode
+     :face org-block
+     :front "#\\+BEGIN_SRC emacs-lisp.*\n"
+     :back "#\\+END_SRC")))
+
+ #+END_SRC
+
+
+
+
+
+Example:
+first you need to toggle ~mmm-mode~ calling interactively  ~mmm-mode-on~
+
+Then try to eval directly this source block with ~C-X E~
+
+Always you can ~C-C C~ to eval using normal orgmode/babel functionality
+
+#+BEGIN_SRC emacs-lisp
+(require 'dash)
+ (-first-item '("hola"))
+
+ #+END_SRC
