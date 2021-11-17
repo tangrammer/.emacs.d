@@ -1,0 +1,5 @@
+#+title: aliasing functions
+
+
+* TODO explore aliasing
+https://nullprogram.com/blog/2019/12/10/

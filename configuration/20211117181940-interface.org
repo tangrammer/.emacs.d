@@ -1,0 +1,11 @@
+#+title: interface
+
+ #+BEGIN_SRC emacs-lisp
+completing-read
+ #+END_SRC
+
+
+
+* TODO explore frog-menu as visual options UI
+
+  https://github.com/clemera/frog-menu
