@@ -33,3 +33,4 @@ env.el
 /straight
 configuration/emacs-configuration.db
 org-roam.db
+/cm-test/
