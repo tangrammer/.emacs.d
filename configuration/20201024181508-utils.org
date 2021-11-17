@@ -40,35 +40,6 @@
    #+END_SRC
 
 
-* WAITING save alias function
-  #+BEGIN_SRC untangle
-
-  (get-buffer "yupie")
-
-  (defmacro inc (f-name var)
-    ``(defun ,(make-symbol ,f-name) ()
-        (interactive)
-        (call-interactively ',,var)))
-
-  (inc "s" last-command)
-
-  (make-symbol "s")
-
-  (defun to-string (x)
-    (format "%s" x))
-
-  (defun write-fun (s)
-    (interactive "sFunction name:")
-    (with-current-buffer "funs.el"
-      (newline)
-      (insert (to-string (inc s last-command)))
-      (elisp-format-buffer)
-      (save-buffer)
-      )
-    )
-
-
-  #+END_SRC
 
 * private dropbox repo
    #+BEGIN_SRC emacs-lisp :results silent
