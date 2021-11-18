@@ -1,13 +1,42 @@
 #+title: postgres
 * use clojure babashka to read postgres metadata
   [[/Users/tangrammer/org-roam/20210907013341-babashka.org::1][local-dev-link]]
+
+
+so far using it with .dir-locals inside proper project
+
+#+BEGIN_SRC emacs-lisp
+ ((nil . ((dbtype . "postgresql")
+          (host . "localhost")
+          (dbname . "gpml")
+          (user . "unep")
+          (password . "password")
+          (port . 5432))))
+
+ #+END_SRC
+
+
+
 #+BEGIN_SRC emacs-lisp :results silent
+(defun transient-args-to-plist (args)
+  (->> args
+   (--reduce-from (let ((res (split-string it "=")))
+                    (plist-put acc (intern (-first-item res)) (-last-item res))) '())))
 
-;;(shell-command "./bb-postgres.clj stakeholder"  (switch-to-buffer "pepe.el"))
 
-(defun bb (query-type &optional query-id)
+
+(transient-args-to-plist '("hola=1" "adios=2"))
+
+(defun bb (props query-type &optional query-id)
   (with-temp-buffer
-    (shell-command (format "/Users/tangrammer/org-roam/bb-postgres.clj %s %s" query-type query-id)  (buffer-name))
+    (shell-command (format "~/.emacs.d/bbs/bb-postgres.clj %s %s %s %s %s %s %s %s"
+                           (plist-get props 'dbtype)
+                           (plist-get props 'host)
+                           (plist-get props 'dbname)
+                           (plist-get props 'user)
+                           (plist-get props 'password)
+                           (plist-get props 'port)
+                           query-type query-id)  (buffer-name))
     ;;(clipboard-kill-region (point-min) (point-max))
     (let ((res (message "%s" (buffer-string))))
       ;;(clipboard-kill-region (point-min) (point-max))
@@ -25,32 +54,83 @@
   "..."
   (interactive
    (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " (car (read-from-string (bb "tables"))) nil t))))
-  (message "Table '%s', columns:  %s " choice (bb "columns" choice)))
+     (list (completing-read "Choose: " (car (read-from-string (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "tables"))) nil t))))
+  (message "Table '%s', columns:  %s " choice (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "columns" choice)))
 
 (defun bb-columns-view (choice)
   "..."
   (interactive
    (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " (car (read-from-string (bb "views"))) nil t))))
-  (message "Table '%s', columns:  %s " choice (bb "columns" choice)))
+     (list (completing-read "Choose: " (car (read-from-string (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "views"))) nil t))))
+  (message "Table '%s', columns:  %s " choice (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "columns" choice)))
 
 (defun bb-enums-view (choice)
   "..."
   (interactive
    (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " (car (read-from-string (bb "enums"))) nil t))))
-  (message "ENUM '%s', values:  %s " choice (bb "enums-values" choice)))
+     (list (completing-read "Choose: " (car (read-from-string (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "enums"))) nil t))))
+  ;;(message "%s" (plist-get (transient-args-to-plist (transient-args 't/postgres/meta)) 'port))
+  (message "ENUM '%s', values:  %s " choice (bb (transient-args-to-plist (transient-args 't/postgres/meta)) "enums-values" choice)))
 
 
 
-(define-transient-command t/postgres/unep ()
-  "unep postgres related"
+(transient-define-argument t/sql/dbtype ()
+    "language"
+    :description "choose a dbtype"
+    :class 'transient-option
+    :shortarg "-l"
+    :argument "dbtype="
+    :choices '("postgresql"  ))
+(transient-define-argument t/sql/host ()
+    "host"
+    :description "choose a host"
+    :class 'transient-option
+    :shortarg "-h"
+    :argument "host="
+    )
+(transient-define-argument t/sql/dbname ()
+  "dbname"
+    :description "choose a dbname"
+    :class 'transient-option
+    :argument "dbname="
+    )
+(transient-define-argument t/sql/dbuser ()
+  "user"
+    :description "choose a dbuser"
+    :class 'transient-option
+    :argument "user="
+    )
+(transient-define-argument t/sql/dbpassword ()
+  "pass"
+    :description "choose a pass"
+    :class 'transient-option
+    :argument "password="
+    )
+(transient-define-argument t/sql/dbport ()
+  "port"
+    :description "choose a pass"
+    :class 'transient-option
+    :argument "port="
+    )
+
+(define-transient-command t/postgres/meta ()
+  "postgres meta related"
+  :value `("dbtype=postgresql" "host=localhost" "port=5432")
+  ["Arguments"
+   ("d" "dbtype" t/sql/dbtype)
+   ("h" "host" t/sql/host)
+   ("b" "dbname" t/sql/dbname)
+   ("u" "user" t/sql/dbuser)
+   ("p" "password" t/sql/dbpassword)
+   ("P" "port" t/sql/dbport)]
   ["Actions"
    ("v" "views" bb-columns-view)
    ("e" "enums" bb-enums-view)
-   ("t" "tables" bb-columns-table)])
- #+END_SRC
+   ("t" "tables" bb-columns-table)]
+
+  )
+
+   #+END_SRC
 * emacs lisp postgres lib
   don't work with recent postgres versions
   https://github.com/cbbrowne/pg.el

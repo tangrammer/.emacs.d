@@ -56,3 +56,9 @@ Almost all the code is based in transient-infix/transient-infix-read impl.
           value)))))
 
 #+END_SRC
+* how to pass values
+  https://www.reddit.com/r/emacs/comments/ciyqib/how_to_set_transient_infix_params_default_values/evbvyxl/
+
+* how to save values
+
+  ~C-X C-S~

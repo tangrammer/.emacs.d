@@ -13,13 +13,18 @@
 (require '[pod.babashka.postgresql :as pg]
          '[clojure.string :as str])
 
-(def db {:dbtype   "postgresql"
-         :host     "localhost"
-         :dbname   "gpml"
-         :user     "unep"
-         :password "password"
-         :port     5432})
+(def opts (let [[dbtype host dbname user password port
+                 query-type query-id] *command-line-args*]
+            {:dbtype (or dbtype "postgresql")
+             :host (or host "localhost")
+             :dbname dbname
+             :user user
+             :password password
+             :port (or port 5432)
+             :query-type query-type
+             :query-id query-id}))
 
+(def db opts)
 
 (defn columns [db table]
   (let [res (pg/execute! db ["select table_schema,
@@ -72,9 +77,6 @@ JOIN pg_type AS type
 GROUP BY type.typname"])
          (map :pg_type/name))))
 
-
-
-
 (comment
 
 
@@ -90,12 +92,10 @@ GROUP BY type.typname"])
 
   (columns db "currency")
   )
-(let [query-type (first *command-line-args*)
-      query-id (second *command-line-args*)]
-  (when (or query-type query-id)
-      (condp = query-type
-        "tables" (tables db)
-        "views"  (tables db "VIEW")
-        "enums"  (enums db)
-        "enums-values"  (enums db query-id)
-        "columns" (columns db query-id))))
+(when (or (:query-type opts) (:query-id opts))
+  (condp = (:query-type opts)
+    "tables" (tables db)
+    "views"  (tables db "VIEW")
+    "enums"  (enums db)
+    "enums-values"  (enums db (:query-id opts))
+    "columns" (columns db (:query-id opts))))
