@@ -1,0 +1,6 @@
+#+title: org capture - Declarative Org Capture Templates for Emacs
+
+
+
+* DOCT: Declarative Org Capture Templates for Emacs
+https://github.com/progfolio/doct
