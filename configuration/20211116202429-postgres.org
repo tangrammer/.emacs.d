@@ -1,0 +1,56 @@
+#+title: postgres
+* use clojure babashka to read postgres metadata
+  [[/Users/tangrammer/org-roam/20210907013341-babashka.org::1][local-dev-link]]
+#+BEGIN_SRC emacs-lisp :results silent
+
+;;(shell-command "./bb-postgres.clj stakeholder"  (switch-to-buffer "pepe.el"))
+
+(defun bb (query-type &optional query-id)
+  (with-temp-buffer
+    (shell-command (format "/Users/tangrammer/org-roam/bb-postgres.clj %s %s" query-type query-id)  (buffer-name))
+    ;;(clipboard-kill-region (point-min) (point-max))
+    (let ((res (message "%s" (buffer-string))))
+      ;;(clipboard-kill-region (point-min) (point-max))
+      res)))
+
+;;
+;; https://stackoverflow.com/questions/8145008/how-to-parse-a-string-as-a-list-structure
+(comment
+ (car (read-from-string (bb "tables")))
+ (car (read-from-string (bb "views")))
+ (car (read-from-string (bb "columns" "country")))
+ (car (read-from-string (bb "enums" ))) )
+
+(defun bb-columns-table (choice)
+  "..."
+  (interactive
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " (car (read-from-string (bb "tables"))) nil t))))
+  (message "Table '%s', columns:  %s " choice (bb "columns" choice)))
+
+(defun bb-columns-view (choice)
+  "..."
+  (interactive
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " (car (read-from-string (bb "views"))) nil t))))
+  (message "Table '%s', columns:  %s " choice (bb "columns" choice)))
+
+(defun bb-enums-view (choice)
+  "..."
+  (interactive
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " (car (read-from-string (bb "enums"))) nil t))))
+  (message "ENUM '%s', values:  %s " choice (bb "enums-values" choice)))
+
+
+
+(define-transient-command t/postgres/unep ()
+  "unep postgres related"
+  ["Actions"
+   ("v" "views" bb-columns-view)
+   ("e" "enums" bb-enums-view)
+   ("t" "tables" bb-columns-table)])
+ #+END_SRC
+* emacs lisp postgres lib
+  don't work with recent postgres versions
+  https://github.com/cbbrowne/pg.el

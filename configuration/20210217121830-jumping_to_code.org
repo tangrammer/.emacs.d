@@ -9,9 +9,10 @@ https://github.com/jacktasia/dumb-jump
 C-M-g => go to def
 C-M-p => go back
  #+BEGIN_SRC emacs-lisp :results silent
- (use-package dumb-jump
-      :straight t
-      :hook (js2-mode js-mode))
+  (use-package dumb-jump
+       :straight t
+;;       :hook (js2-mode js-mode)
+       )
  #+END_SRC
 
 
