@@ -1,25 +1,31 @@
 #+TITLE: Magit
 
 [[file:20201024153912-git.org][Git]]
- It's Magit! A Git porcelain inside Emacs. https://magit.vc
+
+It's Magit! A Git porcelain inside Emacs. https://magit.vc
 
  Magit is an interface to the version control system Git, implemented as an Emacs package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. (more)
 
- #+BEGIN_SRC emacs-lisp  :results silent
- (use-package magit
-   :straight t
-   :config
-   (global-set-key (kbd "C-x g") 'magit-status))
 
-;; (add-hook 'magit-mode-hook #'magit-todos-mode)
+- Installed with MELPA! thus the ~nil~ ~:straight~ value in the ~use-package~ config
+
+ #+BEGIN_SRC emacs-lisp  :results silent
+   (use-package magit
+     :straight nil
+     :config
+     (global-set-key (kbd "C-x g") 'magit-status)
+     )
+
+ ;; (add-hook 'magit-mode-hook #'magit-todos-mode)
+
 
  #+END_SRC
 
 
 * example using magit api from elisp
  #+BEGIN_SRC untangle
- (magit-git-items "log")
-(magit-log )
+  (magit-git-items "log")
+ (magit-log )
  #+END_SRC
 
  #+RESULTS:
@@ -86,7 +92,7 @@
 
   dired-git-info
 
-  #+BEGIN_SRC emacs-lisp :results silent
+  #+BEGIN_SRC untangle :results silent
     (use-package dired-git-info
       :straight t
 
