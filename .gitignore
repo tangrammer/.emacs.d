@@ -34,3 +34,4 @@ env.el
 configuration/emacs-configuration.db
 org-roam.db
 /cm-test/
+/logview-cache.extmap

@@ -1,0 +1,4 @@
+# key: >u
+# name: update hugsql
+# --
+--~ (when (contains? params :$1) ",$1 = :$1::${2:$$(yas-choose-value '("text" "integer" "boolean" "time" "timestamp"))}")

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: enum-vals
+# key: >e
+# --
+\dT+ $1

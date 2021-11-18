@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: git-straight
+# key: gs!
+# --
+(use-package $2
+  :straight ($2 :type git :host github :repo "$1")
+  $3)
