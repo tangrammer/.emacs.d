@@ -1,5 +1,8 @@
-#+title: toc-org 
-[[file:20201024180416-org_babel.org][org-babel]]
+:PROPERTIES:
+:ID:       8579AE59-E42D-4570-90A2-D17752C1BF0C
+:END:
+#+title: toc-org
+[[id:C895FB0A-DD35-4E32-B0CA-D0AD7832C77C][org-babel]]
 generating tocs dynamically based on headings
 
 #+BEGIN_SRC emacs-lisp :results silent
@@ -10,4 +13,3 @@ generating tocs dynamically based on headings
 
 
 #+END_SRC
-

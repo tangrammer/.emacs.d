@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       6DA32A80-7CCD-4D22-923A-92A5F0BB929D
+:END:
 #+title: elisp dash lib
 
 

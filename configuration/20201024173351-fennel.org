@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       D96F8E04-C4D6-44F3-A36A-148BB6145E74
+:END:
 #+TITLE: fennel
-[[file:20201024172354-coding.org][coding]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]]
 
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC untangle :results silent
 (autoload 'fennel-mode "~/.emacs.d/local/fennel-mode/fennel-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.fnl\\'" . fennel-mode))
  #+END_SRC
@@ -9,8 +12,7 @@
 https://github.com/chrisman/fennel-pong
 
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC untangle :results silent
 (setq exec-path (append exec-path '("~/git/emacs-simple/Fennel/fennel")))
 
 #+END_SRC
-

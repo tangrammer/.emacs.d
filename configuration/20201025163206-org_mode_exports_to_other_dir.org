@@ -1,7 +1,10 @@
-#+title: org-mode exports to other dir 
-[[file:20201024180416-org_babel.org][org-babel]]
-example of including a elisp value def in a org file with property (with [[file:20201024173801-elisp.org][elisp]])
-~#+bind: org-export-publishing-directory "./exports"~ 
+:PROPERTIES:
+:ID:       9BDB5D80-8D0E-444E-B149-0B45A715B678
+:END:
+#+title: org-mode exports to other dir
+[[id:C895FB0A-DD35-4E32-B0CA-D0AD7832C77C][org-babel]]
+example of including a elisp value def in a org file with property (with [[id:A7AFD82B-B000-4220-8958-D316C016B088][elisp]])
+~#+bind: org-export-publishing-directory "./exports"~
 
 
 taken from https://emacs.stackexchange.com/questions/3985/make-org-mode-export-to-beamer-keep-temporary-files-out-of-the-current-directory/7989#7989

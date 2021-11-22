@@ -1,9 +1,12 @@
+:PROPERTIES:
+:ID:       DF5155DC-47A3-4458-B0BE-8BE3C6B4C03A
+:END:
 #+TITLE: help
 
 
 * Looking for a keybinding?
 http://emacsredux.com/blog/2016/02/14/look-up-the-keybindings-for-some-command/
-[[file:20201106205256-which_key_minor_mode.org][which-key minor mode]]
+[[id:68707211-4C1F-4562-AE43-2AA0A4E3F21E][which-key minor mode]]
 
 
 
@@ -30,7 +33,7 @@ A better Emacs *help* buffer
 
 
 * get keys of function
-[[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/help.el.gz::558][from]] 
+[[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/help.el.gz::558][from]]
 
 #+BEGIN_SRC untangle
 (where-is-internal 'move-end-of-line)
@@ -46,18 +49,16 @@ last-command
 
 
 (let* (
-       (symbol 'find-file) 
+       (symbol 'find-file)
        (keys (where-is-internal symbol nil nil nil nil))
        ;;(keys (mapconcat 'key-description keys ", "))
        )
 	(if (> (length keys) 0)
 			(format "%s" keys )
-	  
+
 		(message "no keys"))
   (-map (lambda (x) (char-or-string-p (aref x 0))) keys)
 
-  
+
   )
 #+END_SRC
-
-

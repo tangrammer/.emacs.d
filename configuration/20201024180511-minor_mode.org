@@ -1,2 +1,5 @@
+:PROPERTIES:
+:ID:       9B1630B3-A027-4244-A736-E0681FAEA613
+:END:
 #+TITLE: minor-mode
-
+* hola minor mode

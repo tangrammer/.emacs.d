@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       09B6EE5C-771A-4285-B84B-52C460271E94
+:END:
 #+title: narrowing selectrum
 
 https://github.com/raxod502/selectrum
@@ -8,6 +11,29 @@ https://github.com/raxod502/selectrum
 (setq completion-ignore-case t)
 ;;(read-file-name-completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results silent
+(add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-direction)
+               (direction . right)
+               (window-width . 0.33)
+               (window-height . fit-window-to-buffer)))
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-side-window)
+               (side . right)
+               (slot . 0)
+               (window-width . 0.33)
+               (window-parameters . ((no-other-window . t)
+                                     (no-delete-other-windows . t)))))
 
 #+END_SRC
 
@@ -245,3 +271,11 @@ If TOP-NODE is provided, then just select from its sub-nodes."
   (selectrum-info "(org)"))
 
  #+END_SRC
+
+
+* FAQs
+how select what you've typed?
+https://github.com/raxod502/selectrum#keybindings
+you can use <up> or C-p ...
+
+[[id:EEAD9005-EA85-4E45-8010-F06A00B5671F][example]]

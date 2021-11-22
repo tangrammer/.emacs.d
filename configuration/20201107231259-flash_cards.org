@@ -1,5 +1,6 @@
+:PROPERTIES:
+:ID:       DD4AEBF2-5DCC-402F-8A51-9B85EAC2C2B1
+:END:
 #+title: flash cards
 
-[[file:20201122113334-anki_editor.org][Anki editor]]
-
-
+[[id:5C18CD56-FC16-4774-A6D1-F44C56CB4C64][Anki editor]]

@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       37F38F67-87D2-4BE1-B62E-FB9ACDDDFC58
+:END:
 #+TITLE: web-mode
-[[file:20201024180311-major_mode.org][major-mode]]
+[[id:B39AECDA-33D7-4717-8044-E40BD40B05EC][major-mode]]
 
 * webmode
 #+BEGIN_SRC emacs-lisp :results silent

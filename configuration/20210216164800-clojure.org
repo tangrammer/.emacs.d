@@ -1,1 +1,4 @@
+:PROPERTIES:
+:ID:       251A7FAB-01CB-4DB7-BD40-37A9880E0024
+:END:
 #+title: clojure

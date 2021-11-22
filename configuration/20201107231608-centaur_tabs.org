@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       AAB0C884-0347-477B-9A2C-353BAF4209AE
+:END:
 #+title: centaur tabs
 
 
-[[file:20201024170630-ui.org][UI]] [[file:20201107231616-tabs.org][tabs]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]] [[id:834A729A-1185-4DAC-B307-3952CE0617E3][tabs]]
 
 
 Emacs plugin aiming to become an aesthetic, modern looking tabs plugin

@@ -1,7 +1,14 @@
-#+title: objed clemera
+:PROPERTIES:
+:ID:       1C2AD091-E903-42D9-9E01-597CBE24DBD6
+:END:
+#+title: objed, an emacs lisp lib that works with contexts
 
-[[file:20211117200420-contexts.org][contexts]]
 
+* relates
+- [[id:143416EF-2E4A-491F-BFBD-960430146985][semantic contexts]]
+
+- [[id:23AB3B88-9FB0-4948-A516-8D5F01B1D45F][by clemera]]
+- [[id:380F1872-A92D-4628-B1F1-8221F1284417][aliasing functions]]
 
 https://github.com/clemera/objed
 * TODO explore

@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       3376EBCD-DCDB-4D53-86C1-5077FC571797
+:END:
 #+title: move line
 
-[[file:20201024181648-editing.org][editing]] [[file:20201024170630-ui.org][UI]]
+[[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]] [[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 https://www.emacswiki.org/emacs/MoveLine
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (defun move-line (n)
   "Move the current line up or down by N lines."
   (interactive "p")
@@ -31,5 +34,3 @@ https://www.emacswiki.org/emacs/MoveLine
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 #+END_SRC
-
-

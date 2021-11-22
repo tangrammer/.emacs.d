@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       74BA9AEF-C068-4FA5-805E-BFB379FBA942
+:END:
 #+title: mmm-mode
 
 https://emacs.stackexchange.com/a/28269
@@ -16,7 +19,7 @@ https://github.com/purcell/mmm-mode
 
  #+BEGIN_SRC emacs-lisp :results silent
  (require 'mmm-mode)
- (setq mmm-global-mode 'maybe)
+ (setq mmm-global-mode nil)
  (mmm-add-mode-ext-class 'org-mode nil 'org-python)
  (mmm-add-mode-ext-class 'org-mode nil 'org-elisp)
 

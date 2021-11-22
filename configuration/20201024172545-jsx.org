@@ -1,16 +1,23 @@
+:PROPERTIES:
+:ID:       930CDB7D-DA6B-4BB5-90DF-735428F593D3
+:END:
 #+TITLE: jsx
-[[file:20201024172406-js.org][js]]  [[file:20201025174437-language.org][language]]
+[[id:DAE4560C-1B96-4BEF-B7C5-973CB1917161][js]]  [[id:15B089E4-4B1A-4D3D-BC90-CB2467C991AB][language]]
 https://github.com/felipeochoa/rjsx-mode/
- 
+
 #+BEGIN_SRC emacs-lisp :results silent
-(unless (package-installed-p 'rjsx-mode)
-  (package-install 'rjsx-mode))
-(require 'rjsx-mode)
-(add-to-list 'auto-mode-alist '("\\.jsx$" . rjsx-mode))
+
+(use-package rjsx-mode
+  :straight t
+;;  :hook (dumb-jump-mode)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . rjsx-mode))
+)
+
 #+END_SRC
 
 
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC untangle :results silent
 
   ;; adjust indents for web-mode to 2 spaces
   (defun my-web-mode-hook ()
@@ -33,6 +40,3 @@ https://github.com/felipeochoa/rjsx-mode/
       ad-do-it))
 
  #+END_SRC
-
-
-

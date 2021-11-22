@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       D5334026-FB36-4768-86D9-B608CD8EB16C
+:ROAM_ALIASES: emacs-crux
+:END:
+#+title: crux - Collection of Ridiculously Useful eXtensions for Emacs
+
+
+[[id:EBADB2DB-AA01-4855-98D8-E3AF97F09D78][bbatsov]]
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package crux
+  :straight (crux :type git :host github :repo "bbatsov/crux")
+  )
+#+END_SRC

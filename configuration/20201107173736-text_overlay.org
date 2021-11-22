@@ -1,6 +1,8 @@
+:PROPERTIES:
+:ID:       AECC5271-3EA8-4614-A923-C050C94E545D
+:END:
 #+title: Text Overlay
-[[file:20201024170630-ui.org][UI]] [[file:20201024181648-editing.org][editing]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]] [[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]]
 
 
-besides currently installed [[file:20201107174824-symbol_overlay.org][symbol-overlay]] there is another option https://github.com/emacsorphanage/ov that could be insteresting to take a look too
-
+besides currently installed [[id:207AE00F-16CA-459E-AACC-C74742715FF4][symbol-overlay]] there is another option https://github.com/emacsorphanage/ov that could be insteresting to take a look too

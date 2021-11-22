@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       A8518899-990D-452A-B2C4-4DC664D500E8
+:END:
 #+title: json
 
 

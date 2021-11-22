@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       EFAE1559-6B48-429E-9140-9638F929A763
+:END:
 #+title: company-mode
-[[file:20201024193244-completion.org][completion]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]]
 
 
 

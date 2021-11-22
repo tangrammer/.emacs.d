@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       08EED441-17E3-46FA-812C-F0E6CC4A7896
+:END:
 #+title: org-element
 
 utils to work with orgmode elements

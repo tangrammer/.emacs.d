@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       EBADB2DB-AA01-4855-98D8-E3AF97F09D78
+:END:
+#+title: bbatsov
+
+Bozhidar Batsov
+
+author of [[id:8C149D9A-C49E-4064-B1F1-060AF8F91665][cider clojure]] and [[id:28BCF075-E648-43BF-BD4A-44D51A506133][projectile]] and [[id:D5334026-FB36-4768-86D9-B608CD8EB16C][emacs-crux]]

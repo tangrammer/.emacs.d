@@ -1,10 +1,11 @@
+:PROPERTIES:
+:ID:       C6447D81-2B7A-439B-B32D-06AB95BC0E50
+:END:
 #+TITLE: alda
 
-[[file:20201024182059-music.org][music]]
+[[id:3CB23FD8-EE44-4DEC-9862-CF17030BFE24][music]]
 
 * music alda
 https://github.com/alda-lang/alda-core/blob/master/examples/seconds_and_milliseconds.alda
 there is an emacs-mode too
 https://gitlab.com/jgkamat/alda-mode
-
-

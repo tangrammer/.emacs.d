@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       F5EC1426-6FAF-445A-9345-1D0CE80913C3
+:END:
 #+TITLE: toolbar
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
   ;; remove tool-bar
   (tool-bar-mode 0)
 
 #+END_SRC
-

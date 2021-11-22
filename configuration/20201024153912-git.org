@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       96E8F7AF-A8B9-470C-A6BC-FFCD1C5927DE
+:END:
 #+TITLE: Git
 
 * git-link

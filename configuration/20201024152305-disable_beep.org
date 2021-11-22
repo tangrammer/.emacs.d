@@ -1,12 +1,12 @@
+:PROPERTIES:
+:ID:       5DFCCCB2-00EF-4ADC-92C5-89B651CEB8BE
+:END:
 #+TITLE: Disable Beep
- 
-[[file:20201024170630-ui.org][UI]]
+
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 
 https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows
 #+BEGIN_SRC emacs-lisp :results silent
 (setq visible-bell 0)
 #+END_SRC
-
-
- 

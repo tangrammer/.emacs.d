@@ -1,3 +1,4 @@
+:PROPERTIES:
+:ID:       834A729A-1185-4DAC-B307-3952CE0617E3
+:END:
 #+title: tabs
-
-

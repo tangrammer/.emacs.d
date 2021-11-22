@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       1366B95D-8868-4B98-93AC-33A7F187743F
+:END:
 #+TITLE: flycheck
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package flycheck

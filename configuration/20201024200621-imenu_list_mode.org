@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       EFEB0A4F-87F5-405F-8454-979C4357BCC0
+:END:
 #+TITLE: imenu-list-mode
-[[file:20201024180511-minor_mode.org][minor-mode]]  [[file:20201024200935-imenu_mode.org][imenu-mode]]
+[[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]  [[id:B18E8F51-908B-4FC8-9DEB-CC4FF325852C][imenu-mode]]
 
 https://github.com/bmag/imenu-list
 

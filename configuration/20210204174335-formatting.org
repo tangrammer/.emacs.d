@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       74802C2D-F22E-4461-9349-F1C7BF778901
+:END:
 #+title: formatting
 
 * TODO  research

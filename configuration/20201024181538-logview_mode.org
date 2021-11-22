@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       068B0966-E317-4A03-BAAD-E7EE9FEF5F42
+:END:
 #+TITLE: logview-mode
-[[file:20201024180311-major_mode.org][major-mode]] [[file:20201024192916-logs.org][logs]]
+[[id:B39AECDA-33D7-4717-8044-E40BD40B05EC][major-mode]] [[id:84697862-EA42-4C96-B908-FFBB5E768CEC][logs]]
 
 #+BEGIN_SRC emacs-lisp :results silent
 

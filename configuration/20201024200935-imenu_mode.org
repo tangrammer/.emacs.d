@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       B18E8F51-908B-4FC8-9DEB-CC4FF325852C
+:END:
 #+TITLE: imenu-mode
-[[file:20201024193244-completion.org][completion]] [[file:20201024172354-coding.org][coding]] [[file:20201024180240-org_mode.org][org-mode]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]] [[id:CDC94012-241F-4140-984E-89878DC309FE][coding]] [[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]]
 
 https://www.emacswiki.org/emacs/ImenuMode
 Imenu produces menus for accessing locations in documents, typically in the current buffer. You can access the locations using an ordinary menu (menu bar or other) or using minibuffer completion.

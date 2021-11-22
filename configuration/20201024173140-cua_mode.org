@@ -1,5 +1,7 @@
+:PROPERTIES:
+:ID:       DC4A57E6-77B9-44C1-908F-A2C7B79AD770
+:END:
 #+TITLE: cua-mode
 
 
 editing several lines at the same time
-

@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       EB15A0BE-3257-40DF-AA9F-01539424313C
+:END:
 #+TITLE: recent files
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 (require 'recentf)
 
 (recentf-mode 1)
@@ -9,4 +12,3 @@
 (global-set-key "\C-xf" 'recentf-open-files)
 
 #+END_SRC
-

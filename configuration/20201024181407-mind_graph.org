@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       6CEC4D20-ABB8-42DD-A47C-8C53803EE3A5
+:END:
 #+TITLE: mind graph
 * org-brain
 https://github.com/Kungsgeten/org-brain

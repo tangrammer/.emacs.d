@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       207AE00F-16CA-459E-AACC-C74742715FF4
+:END:
 #+title: symbol-overlay
 
-[[file:20201107173736-text_overlay.org][Text Overlay]]
+[[id:AECC5271-3EA8-4614-A923-C050C94E545D][Text Overlay]]
 
 https://github.com/wolray/symbol-overlay
 
@@ -26,7 +29,7 @@ just higlight same word on all doc
 higlight with a different color the word selected
 
 
-[[https://github.com/wolray/symbol-overlay/issues/59][keys]] with with [[file:20201028091004-transient_mode.org][transient-mode]]
+[[https://github.com/wolray/symbol-overlay/issues/59][keys]] with with [[id:C9CEE177-77AA-45FF-BC21-26065418591A][transient-mode]]
 #+BEGIN_SRC emacs-lisp :results silent
 (define-transient-command t/overlay/command ()
               "Symbol Overlay transient"

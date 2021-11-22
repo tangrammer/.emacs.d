@@ -1,8 +1,11 @@
+:PROPERTIES:
+:ID:       784E4883-2BAC-4E80-BDB5-2AD4EA3F32F4
+:END:
 #+TITLE: links
-[[file:20201024181508-utils.org][utils]]
+[[id:D55D87D8-6AE2-4A62-8DF0-9A366792F6D5][utils]]
 
 ** file  to clipboard
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 ;;http://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
 (defun tangrammer-file-name-on-clipboard ()
   "Put the current file name on the clipboard"
@@ -30,9 +33,3 @@
 
 (define-key global-map (kbd "M-l") 'tang-copy-current-line-position-to-clipboard)
 #+END_SRC
-
-
-
-
-
-

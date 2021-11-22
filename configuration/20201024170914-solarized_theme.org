@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       B07DFFF2-BAC8-4812-B4CD-A2A14C5B91A1
+:END:
 #+TITLE: solarized theme
-[[file:20201024170827-themes.org][themes]]
-#+BEGIN_SRC emacs-lisp :results silent 
+[[id:529AD7C6-5CEF-4F5C-B5B0-0747C9D80017][themes]]
+#+BEGIN_SRC emacs-lisp :results silent
 (package-install 'solarized-theme)
 (defun tangrammer-load-clj-theme ()
   (interactive)

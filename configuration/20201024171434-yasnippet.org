@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       240EDCD3-BB8C-4A6D-86A5-DECD5BBD406F
+:END:
 #+TITLE: yasnippet
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 A template system for Emacs http://joaotavora.github.com/yasnippet/
 

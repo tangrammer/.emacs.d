@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       DC1D0E78-84FE-4395-AA39-B638B6B738D9
+:END:
 #+title: sunshine
 
 An Emacs package for displaying the forecast from OpenWeatherMap.

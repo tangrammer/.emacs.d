@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       C3AA1491-22C2-455F-8263-3B31F24E135C
+:END:
 #+TITLE: helm-mode
 
-[[file:20201024193244-completion.org][completion]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]]
 
 * demo about configurations with helm
 a great video demo about "Some Configurations with Helm"

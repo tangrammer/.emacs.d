@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       8C149D9A-C49E-4064-B1F1-060AF8F91665
+:END:
 #+title: cider clojure
 
-[[file:20210216164800-clojure.org][clojure]]
+[[id:251A7FAB-01CB-4DB7-BD40-37A9880E0024][clojure]]
 
 ** cider
 
@@ -105,7 +108,7 @@
  #+END_SRC
 
 
-*** add [[file:20201106210428-paredit_mode.org][paredit mode]]
+*** add [[id:FEF71DEB-610B-44E2-88E8-CE2AED6F0091][paredit mode]]
  #+BEGIN_SRC emacs-lisp :results silent
  (add-hook 'cider-repl-mode-hook #'paredit-mode)
  (add-hook 'cider-mode-hook #'paredit-mode)

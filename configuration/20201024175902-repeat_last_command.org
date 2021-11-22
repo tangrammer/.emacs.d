@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       F8D2628D-A956-4697-8198-F771079E8D05
+:END:
 #+TITLE: repeat last command
-[[file:20201024170630-ui.org][UI]] [[file:20201024193244-completion.org][completion]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]] [[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]]
 * last-command
 
 ~M-x-p~
@@ -12,7 +15,7 @@ https://stackoverflow.com/questions/275842/is-there-a-repeat-last-command-in-ema
    I had this cool functionality in emacs live ... still needs a bit of work to setup
 
 emacs-lisp :results silent
-#+BEGIN_SRC 
+#+BEGIN_SRC
 (unless (package-installed-p 'lively)
   (package-install 'lively))
 (require 'lively)

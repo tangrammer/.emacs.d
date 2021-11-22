@@ -1,7 +1,9 @@
+:PROPERTIES:
+:ID:       F43480F7-998E-4876-86CB-231BE448F034
+:END:
 #+TITLE: hydra-mode
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
  make Emacs bindings that stick around
 https://github.com/abo-abo/hydra
-

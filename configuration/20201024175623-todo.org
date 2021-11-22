@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       F142F641-FA37-4FF2-8236-45160F984F2F
+:END:
 #+TITLE: todo
 
 * hl-todo
@@ -21,8 +24,3 @@
 
  #+RESULTS:
  : ((TODO . #FF0000) (FIXME . #FF0000) (DEBUG . #A020F0) (GOTCHA . #FF4500) (STUB . #1E90FF))
-
-
-
-
-

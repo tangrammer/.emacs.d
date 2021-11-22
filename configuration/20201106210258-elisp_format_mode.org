@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       8A8ABE71-F108-4B24-9D4B-2E9872908E5E
+:END:
 #+title: elisp-format mode
 
-[[file:20201024173801-elisp.org][elisp]] [[file:20201024180511-minor_mode.org][minor-mode]]
+[[id:A7AFD82B-B000-4220-8958-D316C016B088][elisp]] [[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]
 
 https://www.emacswiki.org/emacs/ElispFormat
 

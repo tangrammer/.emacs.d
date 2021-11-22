@@ -1,6 +1,8 @@
+:PROPERTIES:
+:ID:       FDFF0AC8-3F19-4AA4-8266-3423719AAE5D
+:END:
 #+TITLE: kill - cut
-[[file:20201024181648-editing.org][editing]]
+[[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]]
 * kill ring
 M-y cycling ring
 C-u C-SCP to previous mark
-

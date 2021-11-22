@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       D1CD2556-B41B-43E3-B7C5-5689FF115D94
+:END:
 #+TITLE: key pression
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 https://github.com/chuntaro/emacs-keypression
 
@@ -18,5 +21,3 @@ https://github.com/chuntaro/emacs-keypression
       keypression-font-face-attribute '(:width normal :height 200 :weight bold))
 
 #+END_SRC
-
-

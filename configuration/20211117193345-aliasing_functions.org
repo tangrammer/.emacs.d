@@ -1,4 +1,7 @@
-#+title: aliasing functions
+:PROPERTIES:
+:ID:       380F1872-A92D-4628-B1F1-8221F1284417
+:END:
+#+title: aliasing
 
 
 * TODO explore aliasing

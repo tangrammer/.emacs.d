@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       C82F0D56-70CE-46B6-B211-30B2DFE5CC08
+:END:
 #+TITLE: editing
 
 * bbatsov/crux - eval-and-replace

@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       0759F1DB-EE6E-4BE3-98DB-3FADC8207D0B
+:END:
 #+TITLE: yank - paste
-[[file:20201024181648-editing.org][editing]]
+[[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]]
 
 * TODO Rich text clipboard for org-mode: Paste into a #+BEGIN_SRC block of correct mode, with link to where it came from https://melpa.org/#/org-rich-yank
 
@@ -8,7 +11,7 @@ https://github.com/unhammer/org-rich-yank
 
 
 
-* [[file:20210127102219-narrowing_selectrum.org][narrowing selectrum]]
+* [[id:09B6EE5C-771A-4285-B84B-52C460271E94][narrowing selectrum]]
 
 
 

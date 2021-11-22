@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       4E22B8A8-B3F6-41B5-B968-3058DEC38D6E
+:END:
 #+title: org-babel results of evaluation
 
-[[file:20201024180416-org_babel.org][org-babel]]
+[[id:C895FB0A-DD35-4E32-B0CA-D0AD7832C77C][org-babel]]
 
   https://orgmode.org/manual/Results-of-Evaluation.html

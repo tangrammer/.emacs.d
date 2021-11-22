@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       FB74B5EF-7163-4980-A7AD-009080D90DAD
+:END:
 #+title: swipper
-[[file:20201024193244-completion.org][completion]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]]
 
 
 * UI: pattern search

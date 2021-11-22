@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       D599C09A-16BB-4A30-BAC4-538FCD173A00
+:END:
 #+title: org-table
 
-[[file:20201024180240-org_mode.org][org-mode]] table related utils
+[[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]] table related utils
 * how to import csv into a org table?
 https://orgmode.org/manual/Built_002din-Table-Editor.html#Built_002din-Table-Editor
 So just paste the data into an org file, select it, and do C-u C-c | .

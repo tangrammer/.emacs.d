@@ -1,5 +1,9 @@
+:PROPERTIES:
+:ID:       D65AAFCB-3A9D-4717-937A-114FA8BC3175
+:END:
 #+title: org capture - Declarative Org Capture Templates for Emacs
 
+[[id:BB93A9CA-E3BE-4A10-AC0F-282FBD8F588F][org-mode capture]]
 
 
 * DOCT: Declarative Org Capture Templates for Emacs

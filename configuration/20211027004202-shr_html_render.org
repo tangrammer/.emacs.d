@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       7800CCA9-5E97-4358-8C2D-A14C471FB08D
+:END:
 #+title: shr html render
 
 

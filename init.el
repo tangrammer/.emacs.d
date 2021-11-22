@@ -11,8 +11,26 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq make-backup-files nil)
-(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+
+(setq org-roam-v2-ack t)
+
+;;(setq auto-save-default nil)
+;;(setq make-backup-files nil)
+(defvar --backup-directory (concat user-emacs-directory "backups"))
+(if (not (file-exists-p --backup-directory))
+        (make-directory --backup-directory t))
+(setq backup-directory-alist `(("." . ,--backup-directory)))
+(setq make-backup-files t               ; backup of a file the first time it is saved.
+      backup-by-copying t               ; don't clobber symlinks
+      version-control t                 ; version numbers for backup files
+      delete-old-versions t             ; delete excess backup files silently
+      delete-by-moving-to-trash t
+      kept-old-versions 6               ; oldest versions to keep when a new numbered backup is made (default: 2)
+      kept-new-versions 9               ; newest versions to keep when a new numbered backup is made (default: 2)
+      auto-save-default t               ; auto-save every buffer that visits a file
+      auto-save-timeout 20              ; number of seconds idle time before auto-save (default: 30)
+      auto-save-interval 200            ; number of keystrokes between auto-saves (default: 300)
+      )
 
 
 ;; * use my orgmode
@@ -32,22 +50,20 @@
 ;;(package-initialize)
 ;;(package-refresh-contents)
 
-(straight-use-package 'org)
+(straight-use-package 'use-package)
+
+(use-package org :straight nil)
+
+;;(straight-use-package 'org)
 
 (org-babel-load-file "~/.emacs.d/top-level-packages.org")
 
-(custom-set-variables
- '(safe-local-variable-values
-   '((org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db")
-     (org-roam-directory . "~/.emacs.d/configuration"))))
-
-(require 'dash)
 (let((dir "~/.emacs.d/configuration/"))
   ;; remove first all .el files except .dir-locals.el
-  ;; (->> (directory-files dir)
-  ;;       (--filter (and (not (string= ".dir-locals.el" it)) (string= "el" (file-name-extension it))))
-  ;;       (--map (let ((file-to-load (concat dir it)))
-  ;;                (ignore-errors (delete-file file-to-load)))))
+  (->> (directory-files dir)
+        (--filter (and (not (string= ".dir-locals.el" it)) (string= "el" (file-name-extension it))))
+        (--map (let ((file-to-load (concat dir it)))
+                 (ignore-errors (delete-file file-to-load)))))
   ;; tangle and load all org
   (->> (directory-files dir)
        (--filter (string= "org" (file-name-extension it)))
@@ -60,17 +76,29 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(epg-gpg-program "/usr/local/bin/gpg")
- '(package-selected-packages
-   '(simple-httpd yasnippet-snippets yaml-mode win-switch which-key web-mode w3 use-package toc-org symbol-overlay sqlite solarized-theme smartparens rjsx-mode restclient remind-bindings rainbow-delimiters projectile powerline paredit pamparam org-roam-server org-ref org-journal org-ehtml org-download org-bullets olivetti ob-http mpdel mini-frame meghanada marginalia magithub magit-todos macrostep logview lively kubernetes keypression json-mode js-comint jdee indium imenu-list idomenu icomplete-vertical helpful helm-swoop helm-open-github handlebars-sgml-mode handlebars-mode gruvbox-theme gist flycheck-clj-kondo expand-region exec-path-from-shell ess engine-mode emacsql-sqlite elisp-format dumb-jump csv-mode company-flx command-log-mode clomacs anki-editor))
  '(safe-local-variable-values
    '((org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db")
-     (org-roam-directory . "~/.emacs.d/configuration")))
- '(transient-force-fixed-pitch t)
- '(which-key-side-window-max-height 0.6)
- '(which-key-side-window-max-width 0.6))
+     (org-roam-directory . "~/.emacs.d/configuration"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+ (global-set-key (kbd "M-+") 'hs-show-block)
+ (global-set-key  (kbd "M-*") 'hs-show-all)
+ (global-set-key (kbd "M--")  'hs-hide-block)
+ (global-set-key (kbd "M-Ç") 'hs-hide-level)
+ (global-set-key (kbd "M-:") 'hs-hide-all)
+
+ (add-hook 'rjsx-mode-hook #'hs-minor-mode)
+ (add-hook 'js-mode-hook #'hs-minor-mode)
+ (add-hook 'js2-mode-hook #'hs-minor-mode)
+
+(add-hook 'web-mode-hook 'hs-minor-mode)
+ (add-hook 'clojure-mode-hook 'hs-minor-mode)
+ (add-hook 'cider-mode-hook 'hs-minor-mode)
+
+ (add-hook 'lisp-mode-hook 'hs-minor-mode)
+ (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)

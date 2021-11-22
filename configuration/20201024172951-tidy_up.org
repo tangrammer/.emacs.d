@@ -1,9 +1,12 @@
+:PROPERTIES:
+:ID:       F3C9FBDE-510C-4C03-B5F9-76B5AABF84D8
+:END:
 #+TITLE: tidy up
 
 ** remove-all-files-ending-with-made-by-emacs
 http://stackoverflow.com/questions/2680389/how-to-remove-all-files-ending-with-made-by-emacs
 
- #+BEGIN_SRC emacs-lisp :results silent 
+ #+BEGIN_SRC emacs-lisp :results silent
 
  (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
    backup-by-copying t    ; Don't delink hardlinks

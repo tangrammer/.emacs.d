@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       A4F1575F-007F-45D9-A6EB-858D0F23805C
+:END:
 #+title: nano-emacs
 
 https://github.com/rougier/nano-emacs/

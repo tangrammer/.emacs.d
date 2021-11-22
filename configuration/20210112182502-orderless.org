@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       C23DD0B5-0ADF-41E6-940F-5A6467F60A71
+:END:
 #+title: orderless
 
-[[file:20201024193244-completion.org][completion]] [[file:20210127102219-narrowing.org][narrowing]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]] [[id:09B6EE5C-771A-4285-B84B-52C460271E94][narrowing]]
 
 https://github.com/oantolin/orderless
 * install orderless

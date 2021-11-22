@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       FCA83DF0-89FF-4A2B-A0B9-C3DE18CA36AF
+:END:
 #+title: elegant-emacs
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 https://github.com/rougier/elegant-emacs
 * DONE take a look to this template
-[[file:20201229000602-nano_emacs.org][nano-emacs]]
+[[id:A4F1575F-007F-45D9-A6EB-858D0F23805C][nano-emacs]]

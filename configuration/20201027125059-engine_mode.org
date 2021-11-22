@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       70382A1A-4913-4CA5-98AB-D5ECCD9E601F
+:END:
 #+title: engine-mode
-[[file:20201024180511-minor_mode.org][minor-mode]]
+[[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]
 
 https://github.com/hrs/engine-mode
 

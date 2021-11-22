@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       DAE4560C-1B96-4BEF-B7C5-973CB1917161
+:END:
 #+TITLE: js
-[[file:20201024172354-coding.org][coding]] [[file:20201025174437-language.org][language]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]] [[id:15B089E4-4B1A-4D3D-BC90-CB2467C991AB][language]]
 
 JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#emacs_configuration_for_eslint_and_jsx
 
@@ -7,7 +10,7 @@ JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#em
 
 (use-package js2-mode
   :straight t
-  :hook (dumb-jump-mode)
+  ;;  :hook (dumb-jump-mode)
   :config
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
@@ -21,7 +24,7 @@ JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#em
 
 
 * indiumn
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 (use-package indium
 
   :straight t
@@ -34,7 +37,12 @@ JS CONFIG http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html#em
 
 
 * ivy
-#+BEGIN_SRC emacs-lisp
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package dumb-jump
+  :straight (dumb-jump :type git :host github :repo "jacktasia/dumb-jump")
+    )
+
 (dumb-jump-mode)
 (setq dumb-jump-selector 'ivy)
 #+END_SRC
@@ -77,7 +85,7 @@ Run a JavaScript interpreter in an inferior process window.
 
 * prettier
 
-#+BEGIN_SRC emacs-lisp :results silent
+  #+BEGIN_SRC untangle :results silent
 (add-to-list 'load-path "~/.emacs.d/local/prettier-eslint-emacs-frank")
 (require 'prettier-eslint)
 '(add-hook 'js2-mode-hook 'prettier-eslint-mode)
@@ -93,7 +101,7 @@ Run a JavaScript interpreter in an inferior process window.
 
 
  ;;https://github.com/prettier/prettier-emacs
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 '(add-to-list 'load-path "~/.emacs.d/local/prettier-emacs")
 
 '(require 'prettier-js)

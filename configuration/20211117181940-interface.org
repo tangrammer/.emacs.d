@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       4743ED00-053A-43B4-935C-614A835CED2B
+:END:
 #+title: interface
 
  #+BEGIN_SRC emacs-lisp

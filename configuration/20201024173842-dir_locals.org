@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       01EFDFA1-7F81-4E06-9E1A-855FA76AA864
+:END:
 #+TITLE: dir-locals
-[[file:20201024173801-elisp.org][elisp]]
+[[id:A7AFD82B-B000-4220-8958-D316C016B088][elisp]]
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 ;; https://emacs.stackexchange.com/questions/13080/reloading-directory-local-variables
 (defun my-reload-dir-locals-for-current-buffer ()
   "reload dir locals for the current buffer"
@@ -12,4 +15,3 @@
 (setq enable-local-variables :all)
 
 #+END_SRC
-

@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       C895FB0A-DD35-4E32-B0CA-D0AD7832C77C
+:END:
 #+TITLE: org-babel
 
-[[file:20201024180240-org_mode.org][org-mode]] [[file:20201024180511-minor_mode.org][minor-mode]]
+[[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]] [[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]
 
 
 
@@ -36,6 +39,15 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 
 
 * conf
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package dot-mode
+  :straight t
+
+)
+#+END_SRC
+
+
 #+BEGIN_SRC emacs-lisp  :results silent
 
 (require 'ob-dot)
@@ -63,6 +75,13 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 
 
 #+END_SRC
+
+ #+BEGIN_SRC dot
+ diagraph G{
+           main -> parse
+          }
+ #+END_SRC
+
 
 ** collapse sources by default
  #+BEGIN_SRC emacs-lisp :results silent
@@ -212,4 +231,4 @@ if fails clojure evaluation, reeval ob-clojure following original code
 
   you need to add =:results= output
 
-[[file:20201103151430-org_babel_results_of_evaluation.org][org-babel results of evaluation]]
+[[id:4E22B8A8-B3F6-41B5-B968-3058DEC38D6E][org-babel results of evaluation]]

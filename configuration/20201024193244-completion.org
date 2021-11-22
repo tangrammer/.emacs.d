@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       132D89BB-1EF4-4565-99D0-FE2F76200DF3
+:END:
 #+TITLE: completion
-[[file:20201024193333-pattern.org][pattern]] [[file:20210127102219-narrowing.org][narrowing]]
+[[id:9B0538B3-1286-4FDC-9DB7-68F4551C93C0][pattern]] [[id:09B6EE5C-771A-4285-B84B-52C460271E94][narrowing]]
 
 
 * CANCELLED icomplete-vertical

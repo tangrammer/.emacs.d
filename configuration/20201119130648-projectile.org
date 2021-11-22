@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       28BCF075-E648-43BF-BD4A-44D51A506133
+:END:
 #+title: projectile
 
 Project Interaction Library for Emacs

@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       D9C2B476-AE18-419A-9F09-3BAE19C4E5B2
+:END:
+#+title: folding hideshow origami
+
+* hideshow
+
+ #+BEGIN_SRC emacs-lisp :results silent
+
+
+
+ #+END_SRC
+
+* joe
+
+* origami (Based on indentation)
+A folding minor mode for Emacs
+https://github.com/gregsexton/origami.el
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package origami
+  :straight (origami :type git :host github :repo "gregsexton/origami.el")
+  :bind (("M-+" . origami-open-node)
+         ("M--" . origami-close-node)
+         ("M-Ç" . origami-recursively-toggle-node)
+         ("M-*" . origami-open-all-nodes)))
+#+END_SRC

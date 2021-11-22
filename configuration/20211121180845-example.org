@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       EEAD9005-EA85-4E45-8010-F06A00B5671F
+:END:
+#+title: example
+
+ahí va eso

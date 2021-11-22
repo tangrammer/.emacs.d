@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       4774DD6D-3C10-4108-9C65-C20AA09C1083
+:END:
 #+TITLE: Magit
 
-[[file:20201024153912-git.org][Git]]
+[[id:96E8F7AF-A8B9-470C-A6BC-FFCD1C5927DE][Git]]
 
 It's Magit! A Git porcelain inside Emacs. https://magit.vc
 
@@ -29,7 +32,7 @@ It's Magit! A Git porcelain inside Emacs. https://magit.vc
  #+END_SRC
 
  #+RESULTS:
- | commit dcb15d1ecdbe496364cf5f958be679e8edeeabf2 |
+ | transient--resume-which-key-mode |
 
 
 

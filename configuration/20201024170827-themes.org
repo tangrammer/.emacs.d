@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       529AD7C6-5CEF-4F5C-B5B0-0747C9D80017
+:END:
 #+TITLE: themes
-[[file:20201024170630-ui.org][UI]] 
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 
 #+BEGIN_SRC emacs-lisp :results silent
@@ -55,4 +58,3 @@
 
 * dracula theme
 https://draculatheme.com/emacs
-

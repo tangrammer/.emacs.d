@@ -1,13 +1,14 @@
+:PROPERTIES:
+:ID:       A7AFD82B-B000-4220-8958-D316C016B088
+:END:
 #+TITLE: elisp
-[[file:20201024172354-coding.org][coding]] [[file:20201024192219-lisp.org][lisp]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]] [[id:85D8DAA3-B34A-4C1B-A216-2072103EE3D6][lisp]]
 
-add [[file:20201106210428-paredit_mode.org][paredit mode]] hook
+add [[id:FEF71DEB-610B-44E2-88E8-CE2AED6F0091][paredit mode]] hook
 
 
-  #+BEGIN_SRC emacs-lisp :results silent 
+  #+BEGIN_SRC emacs-lisp :results silent
   (add-hook 'elisp-mode-hook #'paredit-mode)
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
 #+END_SRC
-
-

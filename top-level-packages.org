@@ -1,7 +1,7 @@
 * top level packages
 
 ** comment macro
-
+https://stackoverflow.com/questions/4200905/how-do-i-comment-out-sexps-in-elisp-code
   #+BEGIN_SRC emacs-lisp :results silent
  (defmacro comment (&rest body)
    "Comment out one or more s-expressions."
@@ -9,6 +9,12 @@
 
   #+END_SRC
 
+** to-string
+   #+BEGIN_SRC emacs-lisp :results silent
+   (defun to-string (x)
+     (format "%s" x))
+
+   #+END_SRC
 
 ** use-package
  https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
@@ -20,9 +26,19 @@
 
 
 
+* hide-show
+https://www.emacswiki.org/emacs/HideShow
+HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
+
+Configured in init.el
+
 ** paredit
 #+BEGIN_SRC emacs-lisp :results silent
- (straight-use-package 'paredit)
+;;(setq straight-repository-branch "develop")
+(straight-use-package 'paredit)
+;; (use-package paredit
+;;   :straight t
+;;   )
 
 #+END_SRC
 
@@ -97,6 +113,7 @@ https://github.com/magnars/dash.el
  ((member "-dark" command-line-args) (require 'nano-theme-dark))
  (t (require 'nano-theme-light)))
 
+
 ;; Customize support for 'emacs -q' (Optional)
 ;; You can enable customizations by creating the nano-custom.el file
 ;; with e.g. `touch nano-custom.el` in the folder containing this file.
@@ -167,30 +184,6 @@ https://github.com/magnars/dash.el
 #+END_SRC
 
 #+RESULTS:
-
-hide-show
-https://www.emacswiki.org/emacs/HideShow
-HideShow is a minor mode similar to OutlineMode – it hides and shows blocks of text. In particular, it hides balanced-expression code blocks and multi-line comment blocks.
-
-#+BEGIN_SRC emacs-lisp :results silent
- (use-package hideshow
-   :straight t
-   :bind (:map hs-minor-mode-map
-               ("M-+" . hs-show-block)
-               ("M-*" . hs-show-all)
-               ("M--" . hs-hide-block)
-               ("M-Ç" . hs-hide-level)
-               ("M-:" . hs-hide-all)))
-
-;;(add-hook 'web-mode-hook 'hs-minor-mode)
-;;(add-hook 'js2-mode-hook 'hs-minor-mode)
-;; (add-hook 'clojure-mode-hook 'hs-minor-mode)
-;; (add-hook 'cider-mode-hook 'hs-minor-mode)
-;; (add-hook 'js-mode-hook 'hs-minor-mode)
-;; (add-hook 'js2-mode-hook 'hs-minor-mode)
-;; (add-hook 'lisp-mode-hook 'hs-minor-mode)
-;; (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-#+END_SRC
 
 
 * origami (Based on indentation)

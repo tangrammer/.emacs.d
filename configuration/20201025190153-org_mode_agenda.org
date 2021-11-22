@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       70414820-F3B0-429D-84DB-22920D8D7E8F
+:END:
 #+title: org-mode agenda
 
-- [See also [[file:20201024200405-org_super_agenda_mode.org][org-super-agenda-mode]].]
+- [See also [[id:9676C7B3-2F34-4CE8-87B5-1CDB656D7718][org-super-agenda-mode]].]
 
 - https://orgmode.org/manual/Agenda-Views.html
 
@@ -32,7 +35,7 @@ The extracted information is displayed in a special agenda buffer. This buffer i
            ("r" "remove file to agenda files" org-remove-file)])
   #+END_SRC
 
-** TODO add interactive function to add directory to scan agenda files :urgent:
+** WAITING add interactive function to add directory to scan agenda files :urgent:
 
 [[/Users/tangrammer/.emacs.d/straight/repos/org/lisp/org.el::3136][If an entry is a directory, all files in that directory that are matched
 by `org-agenda-file-regexp' will be part of the file list.]]

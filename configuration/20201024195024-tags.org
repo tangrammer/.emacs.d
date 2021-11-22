@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       496E0013-D07D-417C-8F4B-6CF2DBF29473
+:END:
 #+TAGS: [ parent : sub1 sub2 ]
 #+TAGS: [ parent2 : sub2 sub3 ]
 #+TAGS: [ sub1 : child1 child2 ]
@@ -23,7 +26,7 @@ https://orgmode.org/manual/Tag-Hierarchy.html#Tag-Hierarchy
 * tags mode WORK IN PROGRESS
 
 **  interactive call to navigate tags
-    
+
 ***  find cats in org file
   #+BEGIN_SRC untangle
   (with-current-buffer "configuration.org"
@@ -69,7 +72,7 @@ https://orgmode.org/manual/Tag-Hierarchy.html#Tag-Hierarchy
 
 ***  CRUD hierarchical cats in org file
     suppose that we can start using babaska
-   
+
 
 #+BEGIN_SRC shell
 export BABASHKA_CLASSPATH=$(clojure -Spath -Sdeps '{:deps {com.stuartsierra/dependency {:mvn/version "0.1.0"}
@@ -91,7 +94,7 @@ https://github.com/alphapapa/org-graph-view
 https://github.com/sshaw/git-link
 emacs-lisp :results silent
 
-#+BEGIN_SRC 
+#+BEGIN_SRC
 (load-library "org-graph-view/org-graph-view")
 (require 'org-graph-view)
 
@@ -99,5 +102,3 @@ emacs-lisp :results silent
 
 
 https://pages.sachachua.com/evil-plans/
-
-

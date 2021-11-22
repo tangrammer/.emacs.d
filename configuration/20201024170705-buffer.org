@@ -1,12 +1,13 @@
+:PROPERTIES:
+:ID:       3D78EF4B-D094-4945-8DE2-49F46EF4E31E
+:END:
 #+TITLE: Buffer
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
-** uniquify.el  
+** uniquify.el
 unique buffer names dependent on file name
 
 #+BEGIN_SRC emacs-lisp :results silent
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 #+END_SRC
-
-

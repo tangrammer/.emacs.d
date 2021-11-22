@@ -1,7 +1,9 @@
+:PROPERTIES:
+:ID:       B851B218-3B88-4B22-B330-78932487EF63
+:END:
 #+TITLE: google
-[[file:20201024195828-search.org][search]]
+[[id:F5927B34-DF40-4598-9134-1BA7360FA126][search]]
 
 * DONE Google at a point
-already installed =>  [[file:20201027125059-engine_mode_searching_different_systems.org][engine-mode searching different systems]]
+already installed =>  [[id:EBC4B944-2420-4AF8-92D3-4D469FC65560][engine-mode searching different systems]]
 https://github.com/Malabarba/emacs-google-this/
-

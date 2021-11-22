@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       5EBDD0E2-D868-4FBB-95D2-71D654DE5204
+:END:
 #+title: use-package
 
-[[file:20201025233433-package_menu.org][package-menu]]
+[[id:AFA8ADA7-F8B7-46C5-BAE7-AE875FC53448][package-menu]]
 
 https://github.com/jwiegley/use-package
 
@@ -8,4 +11,4 @@ https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-confi
 
 an [[/Users/tangrammer/.emacs.d/configuration/20201024180240-org_mode.org::21][example]] of use
 
-Example: [[file:20201107174824-symbol_overlay.org][symbol-overlay]]
+Example: [[id:207AE00F-16CA-459E-AACC-C74742715FF4][symbol-overlay]]

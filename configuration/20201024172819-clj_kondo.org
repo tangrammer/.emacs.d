@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       679DF9A6-0F0B-445D-9EB6-0158A38EB09F
+:END:
 #+title: clj-kondo
 
 clojure
-[[file:20201024172354-coding.org][coding]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]]
 
 
 if you have any problem with it you should take a look to

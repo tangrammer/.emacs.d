@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       9719CE1A-D66D-4BE5-B4CA-80A1D6A007AE
+:END:
 #+TITLE: java
 
-[[file:20201024172354-coding.org][coding]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]]
 #+BEGIN_SRC untangle :results silent
 (use-package meghanada
     :straight t

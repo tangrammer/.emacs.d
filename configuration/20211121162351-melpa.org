@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       14E642EB-CD14-46DD-BB73-60581717A184
+:END:
+#+title: melpa
+
+
+ #+BEGIN_SRC untangle :results silent
+ (add-to-list 'package-archives
+              '("MELPA" .
+       "https://melpa.org/packages/"))
+ (package-initialize)
+
+#+END_SRC

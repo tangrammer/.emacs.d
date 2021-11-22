@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       09F137BD-F579-4654-9BA6-293B8DED62D1
+:END:
 #+TITLE: restclient-mode
-[[file:20201024180311-major_mode.org][major-mode]]
+[[id:B39AECDA-33D7-4717-8044-E40BD40B05EC][major-mode]]
 
 ** restclient
 HTTP REST client tool for emacs
@@ -10,4 +13,3 @@ https://github.com/pashky/restclient.el
   (package-install 'restclient))
 (require 'restclient)
 #+END_SRC
-

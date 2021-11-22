@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       68707211-4C1F-4562-AE43-2AA0A4E3F21E
+:END:
 #+title: which-key minor mode
 
-[[file:20201024171542-help.org][help]]
+[[id:DF5155DC-47A3-4458-B0BE-8BE3C6B4C03A][help]]
 
  https://github.com/justbur/emacs-which-key
 

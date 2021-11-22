@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       B1B6F909-4D67-48E7-B6CB-8F47641740A3
+:END:
 #+title: elisp string manipulation library
 
-[[file:20201024173801-elisp.org][elisp]]
+[[id:A7AFD82B-B000-4220-8958-D316C016B088][elisp]]
 
   [[file:~/org-roam/20201106202007-elisp_string_manipulation.org::*The long lost Emacs string manipulation library.][The long lost Emacs string manipulation library.]]
 

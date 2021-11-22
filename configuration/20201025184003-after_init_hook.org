@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       A639AEA9-99B0-45E2-827B-1CEDF051B216
+:END:
 #+title: after-init-hook
 
 just as its name states ...

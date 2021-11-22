@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       2FEE7841-93C0-4F82-A699-5A0A2BD86147
+:END:
 #+title: handlebars mode
 
 

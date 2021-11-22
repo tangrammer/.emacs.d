@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       FEF71DEB-610B-44E2-88E8-CE2AED6F0091
+:END:
 #+title: paredit mode
 
-[[file:20201024180511-minor_mode.org][minor-mode]]
+[[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]
 
 
 #+BEGIN_SRC emacs-lisp :results silent

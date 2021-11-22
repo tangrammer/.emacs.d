@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       1193A193-5EE3-4EC3-B5A6-2B05A5FFA422
+:END:
 #+title: dired-hacks
 
 https://www.youtube.com/watch?v=z26b8HKFsNE

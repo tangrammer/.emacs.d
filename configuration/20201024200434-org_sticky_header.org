@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       3C0F9E2B-34CB-4482-9E3A-4B42CF749BA9
+:END:
 #+TITLE: org-sticky-header
 
 
-[[file:20201024180240-org_mode.org][org-mode]]
+[[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]]
 
 config & install org-sticky-header
 
@@ -11,4 +14,3 @@ https://github.com/alphapapa/org-sticky-header
 
 ** same with tables
 https://github.com/cute-jumper/org-table-sticky-header
-

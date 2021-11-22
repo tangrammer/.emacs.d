@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       C013E174-4BEC-4844-8ED4-EB3AD51C9268
+:END:
 #+TITLE: docker
-[[file:20201024172152-devops.org][devops]]
+[[id:CB5CDC11-3A9A-4904-AC14-13F4DC133F27][devops]]  [[id:17F53D50-62A2-4C21-B4FE-AC9129A6F77D][tramp]]
 
 #+BEGIN_SRC emacs-lisp
     (require 'tramp)
@@ -8,10 +11,31 @@
 
 https://github.com/emacs-pe/docker-tramp.el
 #+BEGIN_SRC emacs-lisp :results silent
-(load-library "docker-tramp.el/docker-tramp.el")
-    (require 'docker-tramp)
+
+(use-package docker-tramp
+  :straight (docker-tramp :type git :host github :repo "emacs-pe/docker-tramp.el")
+  )
+
+
+(comment "old "
+ (load-library "docker-tramp.el/docker-tramp.el")
+ (require 'docker-tramp)
+ )
+
 
 
 #+END_SRC
 * TODO research  manage docker from emacs
 https://github.com/Silex/docker.el
+
+#+BEGIN_SRC emacs-lisp :results silent
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(use-package docker
+
+  :straight nil
+:ensure t
+  :bind ("C-c d" . docker)
+  )
+
+#+END_SRC

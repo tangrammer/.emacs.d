@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       CAE1E886-70B4-49AC-89C1-9DA3722C3CEE
+:END:
 #+title: note taking
 
 

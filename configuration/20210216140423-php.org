@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       0D7DAAB2-0356-47C3-8802-E52383A1569E
+:END:
 #+title: php
 
 #+BEGIN_SRC emacs-lisp :results silent

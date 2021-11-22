@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       639E858E-9B95-4EAA-99DF-EAC91EFA2B87
+:END:
 #+TITLE: sql
-[[file:20201024172354-coding.org][coding]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]]
 
 https://github.com/purcell/sqlformat
 https://github.com/purcell/reformatter.el
@@ -17,7 +20,7 @@ https://github.com/purcell/reformatter.el
 
 
 #+BEGIN_SRC untangle
- 
+
 ;; (eval-after-load "sql"
 ;;   '(load-library "sql-indent"))
 
@@ -26,4 +29,3 @@ https://github.com/purcell/reformatter.el
 ;; (require 'plsql)
 
 #+END_SRC
-

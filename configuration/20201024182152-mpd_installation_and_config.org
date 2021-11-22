@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       2EE02E54-4D68-4669-965B-21924E75AA83
+:END:
 #+TITLE: mpd installation and config
 
-[[file:20201024182059-music.org][music]]
+[[id:3CB23FD8-EE44-4DEC-9862-CF17030BFE24][music]]
 
 https://www.musicpd.org/
 osx installation instructions https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/

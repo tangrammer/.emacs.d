@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       F1B860C5-7C4A-4F01-9619-FBCC8B208AAE
+:END:
 #+title: marginalia
 
 #+BEGIN_SRC emacs-lisp :results silent

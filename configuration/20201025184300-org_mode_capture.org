@@ -1,4 +1,10 @@
+:PROPERTIES:
+:ID:       BB93A9CA-E3BE-4A10-AC0F-282FBD8F588F
+:END:
 #+title: org-mode capture
+
+[[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]]
+
 * TODO learn how to capture from outside from emacs
 https://yiufung.net/post/anki-org/
 
@@ -6,7 +12,7 @@ https://yiufung.net/post/anki-org/
 
 
 
-this functionality is focused in capturing ideas as notes. in  [[file:20201024194153-org_roam_mode.org][org-roam]] also there is capturing process 
+this functionality is focused in capturing ideas as notes. in  [[id:D8F4651F-5768-4D7F-9432-42CA6EC198EC][org-roam]] also there is capturing process
 
 Notes captured are stored in one main file
 
@@ -15,9 +21,9 @@ Notes captured are stored in one main file
  #+END_SRC
 
 
-we can define templates 
+we can define templates
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
          "* TODO %?\n  %i\n  %a")))
@@ -31,14 +37,14 @@ we can define templates
 one interactive function to capture "idea"
 
 #+BEGIN_SRC emacs-lisp
-(defun idea nil 
-  (interactive) 
+(defun idea nil
+  (interactive)
   (org-capture t "t"))
- 
+
 #+END_SRC
 
 #+RESULTS:
 : idea
 
 
-if we can see our notes: we use [[file:20201025190153-org_mode_agenda.org][org-mode agenda]]
+if we can see our notes: we use [[id:70414820-F3B0-429D-84DB-22920D8D7E8F][org-mode agenda]]

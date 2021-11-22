@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       1296C0B9-C8B0-4EBA-9A5E-A958C62D0646
+:END:
 #+title: postgres
 * use clojure babashka to read postgres metadata
   [[/Users/tangrammer/org-roam/20210907013341-babashka.org::1][local-dev-link]]
@@ -5,15 +8,17 @@
 
 so far using it with .dir-locals inside proper project
 
-#+BEGIN_SRC emacs-lisp
- ((nil . ((dbtype . "postgresql")
+#+BEGIN_SRC untangle
+ (comment ((nil . ((dbtype . "postgresql")
           (host . "localhost")
           (dbname . "gpml")
           (user . "unep")
           (password . "password")
-          (port . 5432))))
+          (port . 5432)))))
 
  #+END_SRC
+
+ #+RESULTS:
 
 
 

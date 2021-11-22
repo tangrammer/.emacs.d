@@ -1,9 +1,20 @@
+:PROPERTIES:
+:ID:       7252E962-E81C-4B67-A350-EA58797D2DB7
+:END:
 #+TITLE: markdown
-[[file:20201024172354-coding.org][coding]]
+[[id:CDC94012-241F-4140-984E-89878DC309FE][coding]]
 
-#+BEGIN_SRC emacs-lisp :results silent 
+#+BEGIN_SRC emacs-lisp :results silent
 ;; (eval-after-load "org"
 ;;  '(require 'ox-gfm nil t))
 
 #+END_SRC
 
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package markdown-mode
+  :straight t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+ #+END_SRC

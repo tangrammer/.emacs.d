@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       3AD20370-765B-48FA-BF20-E850B840649E
+:END:
 #+title: emacs installation
 
 installed on osx using brew

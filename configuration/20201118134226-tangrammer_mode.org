@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       1D759F26-2557-4F07-80F9-A1811375DC56
+:END:
 #+title: tangrammer-mode
 
-[[file:20201028091004-transient_mode.org][transient-mode]]
+[[id:C9CEE177-77AA-45FF-BC21-26065418591A][transient-mode]]
 
 * babel parse table values as vars :var x=table-name[r,c]
 - =x= is var to be injected in block code

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       23AB3B88-9FB0-4948-A516-8D5F01B1D45F
+:END:
+#+title: clemera
+
+A very intersting [[id:A086B1A4-810E-4C57-AB45-AEC4E9299CA4][emacs-lisp]] author

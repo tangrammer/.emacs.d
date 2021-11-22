@@ -1,6 +1,8 @@
+:PROPERTIES:
+:ID:       B5487226-B37B-4937-BCB9-6A249EA7BA58
+:END:
 #+TITLE: annotate files
 
 
 * TODO annotate
 https://github.com/bastibe/annotate.el
-

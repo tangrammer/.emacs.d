@@ -1,11 +1,14 @@
+:PROPERTIES:
+:ID:       EE6C8255-7890-44EE-9FEE-ED0A249282B6
+:END:
 #+TITLE: github
-[[file:20201024153912-git.org][Git]]
+[[id:96E8F7AF-A8B9-470C-A6BC-FFCD1C5927DE][Git]]
 
 Utilities for opening github page
 https://github.com/syohex/emacs-helm-open-github
 
 emacs-lisp :results silent
-#+BEGIN_SRC 
+#+BEGIN_SRC
 
 (unless (package-installed-p 'gh)
   (package-install 'gh))
@@ -22,7 +25,3 @@ emacs-lisp :results silent
 
 
 #+END_SRC
-
- 
-
-

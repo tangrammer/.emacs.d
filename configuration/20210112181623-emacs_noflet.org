@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       5D23DCF0-8843-4E6A-83B4-BA9E76B97580
+:END:
 #+title: emacs-noflet
-[[file:20201107231438-testing.org][
-testing]]
+[[id:A4169737-CA7A-460F-A331-DE9561C4C1FC][testing]]
 
 https://github.com/nicferrier/emacs-noflet
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 (use-package noflet
   :straight (emacs-noflet :type git :host github :repo "nicferrier/emacs-noflet")
 

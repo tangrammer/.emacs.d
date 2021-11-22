@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       89CB560C-1855-4F4F-9F83-B31FDE66A325
+:END:
 #+title: before-save-hook
 
-[[file:20201208134027-saving_files.org][saving files]]
+[[id:DC21EC4F-4E2D-460E-AC68-CF0E7D09CD88][saving files]]
 
  #+BEGIN_SRC emacs-lisp
 (add-hook 'before-save-hook #'delete-trailing-whitespace)

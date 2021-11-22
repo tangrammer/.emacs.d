@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       D55D87D8-6AE2-4A62-8DF0-9A366792F6D5
+:END:
 #+TITLE: utils
 
 ** paths

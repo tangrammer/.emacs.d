@@ -1,45 +1,67 @@
+:PROPERTIES:
+:ID:       D8F4651F-5768-4D7F-9432-42CA6EC198EC
+:END:
 #+TITLE: org-roam-mode
 
-[[file:20201025233718-note_taking.org][note taking]]
+[[id:CAE1E886-70B4-49AC-89C1-9DA3722C3CEE][note taking]]
 
-[[file:20201024180511-minor_mode.org][minor-mode]]
+[[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]]
 
-org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]
+org-roam works on top of [[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]]
 
 https://github.com/jethrokuan/org-roam
+* installing and configuring org-roam package
 
-* install package
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package org-roam
+  :ensure t
+  :straight t
+  :custom
+  (org-roam-directory (file-truename "~/.emacs.d/configuration"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+#+END_SRC
+ a default sqlite db is created
+
+
+ insert roam links with completition everywhere
+#+BEGIN_SRC emacs-lisp :results silent
+(setq org-roam-completion-everywhere t)
+
+#+END_SRC
+
+
+* org-roam-ui
+
  #+BEGIN_SRC emacs-lisp :results silent
 
- (use-package org-roam
-  :straight t
-   :hook
-   (after-init . org-roam-mode)
-   :custom
-   ((make-directory "~/org-roam")
-    (org-roam-directory "~/org-roam")
+  (use-package org-roam
+   :straight t
+    ;; :hook
+    ;; (after-init . org-roam-mode)
+    ;; :custom
+    ;; ((make-directory "~/org-roam")
+    ;;  (org-roam-directory "~/org-roam")
+    ;;  )
+    ;;  :bind (("M-F" . org-roam-find-file)
+    ;;          ("M-I" . org-roam-insert)
+    ;;          ("M-G" . org-roam-graph)
+    ;;          ("M-R" . org-roam))
     )
-    :bind (("M-F" . org-roam-find-file)
-            ("M-I" . org-roam-insert)
-            ("M-G" . org-roam-graph)
-            ("M-R" . org-roam))
-   )
 
-    ;; :bind (:map org-roam-mode-map
-    ;;         (("C-c n l" . org-roam)
-    ;;          ("C-c n f" . org-roam-find-file)
-    ;;          ("C-c n g" . org-roam-graph))
-    ;;         :map org-mode-map
-    ;;         (("C-c n i" . org-roam-insert))
-    ;;         (("C-c n I" . org-roam-insert-immediate)))
+
 
 
  #+END_SRC
-
-
-
-
- a default sqlite db is created
 
 
 * once that you call org-roam-graph you can find the graph here

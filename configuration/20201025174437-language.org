@@ -1,4 +1,6 @@
+:PROPERTIES:
+:ID:       15B089E4-4B1A-4D3D-BC90-CB2467C991AB
+:END:
 #+title: language
 
-general config for language 
-
+general config for language

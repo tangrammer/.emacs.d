@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       72E40393-23DB-40B0-83E2-C300BCA349AC
+:END:
 #+TITLE: highlighting text
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 * highLighting
 https://www.gnu.org/savannah-checkouts/gnu/emacs/manual/html_node/emacs/Highlight-Interactively.html
@@ -8,13 +11,11 @@ https://www.gnu.org/savannah-checkouts/gnu/emacs/manual/html_node/emacs/Highligh
 
 
 ** DONE mode for font face ... highlight ...
-already installed [[file:20201107174824-symbol_overlay.org][symbol-overlay]]
-   
+already installed [[id:207AE00F-16CA-459E-AACC-C74742715FF4][symbol-overlay]]
+
 https://www.gnu.org/software/emacs/manual/html_node/eintr/defcustom.html
 https://stackoverflow.com/questions/7707002/changing-the-color-of-a-specific-piece-of-text-in-emacs-without-creating-a-theme
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Face-Customization.html#Face-Customization
 https://www.emacswiki.org/emacs/TextProperties
 https://www.emacswiki.org/emacs/FontLockMode
 https://www.emacswiki.org/emacs/FontLockForNewModes
-
-

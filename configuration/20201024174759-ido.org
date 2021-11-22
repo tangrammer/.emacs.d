@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       3DB473DC-F220-4D05-8AD2-68585A942F46
+:END:
 #+TITLE: ido
 
-[[file:20201024193244-completion.org][completion]]
+[[id:132D89BB-1EF4-4565-99D0-FE2F76200DF3][completion]]
 
 *_So far using helm!_*
 
@@ -35,5 +38,3 @@ C-x C-f .org C-SPC
 
 ** TODO ido-completing-read+
 https://github.com/DarwinAwardWinner/ido-completing-read-plus
-
-

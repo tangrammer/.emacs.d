@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       3E57913F-3E5D-454F-BD10-2F2BF948AC16
+:END:
 #+title: org-journal
 
 #+BEGIN_SRC emacs-lisp :results silent

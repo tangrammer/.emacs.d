@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       058C5DB9-32D1-4919-8944-3A6B43CB9D30
+:END:
 #+TITLE: kubernetes
 
-[[file:20201024172152-devops.org][devops]]
+[[id:CB5CDC11-3A9A-4904-AC14-13F4DC133F27][devops]]
 
-  
+
 #+BEGIN_SRC untangle
 (unless (package-installed-p 'kubernetes)
   (package-install 'kubernetes))
 (require 'kubernetes)
 #+END_SRC
-

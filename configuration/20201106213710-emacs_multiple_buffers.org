@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       82A36A94-DE2E-472F-8587-A9D3D90BAB70
+:END:
 #+title: emacs multiple buffers
 
 Manage Windows and Buffers According to Purposes

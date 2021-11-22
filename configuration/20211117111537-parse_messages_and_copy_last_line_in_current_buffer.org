@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       075332F8-E86E-40FE-9BCF-A152FF1CF4D8
+:END:
 #+title: parse messages and copy last line in current buffer
 
 

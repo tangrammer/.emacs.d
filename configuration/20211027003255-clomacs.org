@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       A30E1EC1-003F-4BCA-95C7-A709C06BADAB
+:END:
 #+title: clomacs
 
 

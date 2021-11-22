@@ -1,9 +1,10 @@
+:PROPERTIES:
+:ID:       9880DC8E-6C2E-4C0A-8620-6B1167FF09C6
+:END:
 #+TITLE: common lisp
-[[file:20201024192219-lisp.org][lisp]] [[file:20201025174437-language.org][language]]
+[[id:85D8DAA3-B34A-4C1B-A216-2072103EE3D6][lisp]] [[id:15B089E4-4B1A-4D3D-BC90-CB2467C991AB][language]]
 https://portacle.github.io/
 
 
-* p5s common lisp 
+* p5s common lisp
 https://github.com/vydd/sketch
-
-

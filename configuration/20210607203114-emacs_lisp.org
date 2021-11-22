@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       A086B1A4-810E-4C57-AB45-AEC4E9299CA4
+:END:
 #+title: emacs-lisp
 
 Emacs Lisp is a dialect of the Lisp programming language used as a scripting language by Emacs

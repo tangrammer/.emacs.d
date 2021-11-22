@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       5C18CD56-FC16-4774-A6D1-F44C56CB4C64
+:END:
 #+title: Anki editor
 
 

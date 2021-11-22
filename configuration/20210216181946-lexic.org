@@ -1,4 +1,7 @@
+:PROPERTIES:
+:ID:       359921E8-611F-4FB6-8A54-1F1A55DFBE29
+:END:
 #+title: lexic
 
-* TODO install dictionary support
+* install dictionary support
 https://github.com/tecosaur/lexic

@@ -1,14 +1,15 @@
-#+TITLE: OSX keyboard 
+:PROPERTIES:
+:ID:       FFAE76E7-273F-43C9-B53B-9BC35B84FDE5
+:END:
+#+TITLE: OSX keyboard
 
-[[file:20201024170630-ui.org][UI]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 
-** configure OSX keyboard 
+** configure OSX keyboard
  #+BEGIN_SRC emacs-lisp
  ;; osx keys
  (setq default-input-method "MacOSX")
  (setq mac-command-modifier 'meta)
  (setq mac-option-modifier 'none)
  #+END_SRC
-
-

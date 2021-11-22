@@ -1,8 +1,10 @@
+:PROPERTIES:
+:ID:       24CAED11-70BD-46FA-BA7C-277F8EF4F01B
+:END:
 #+title: org-mode todo
 
-relates to [[file:20201025200448-todo.org][todo]]
+relates to [[id:089B3A23-0BE5-44A0-921E-B666C1C0E111][todo]]
 
-   #+BEGIN_SRC emacs-lisp :results silent 
+   #+BEGIN_SRC emacs-lisp :results silent
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "IN PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))
    #+END_SRC
-

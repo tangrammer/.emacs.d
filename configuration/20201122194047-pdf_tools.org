@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       000BE010-45B7-4EA2-B8AE-D932DC8DDBF8
+:END:
 #+title: pdf-tools
 
 https://github.com/politza/pdf-tools

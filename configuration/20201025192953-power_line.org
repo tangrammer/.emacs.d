@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       54FE380D-7588-41B3-B4F2-E8B4CB3AF53C
+:END:
 #+title: power-line
 
-Relates to [[file:20201024170630-ui.org][UI]]
+Relates to [[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
 
 Powerline is a utility plugin which allows you to create better-looking, more functional vim statuslines. See the screenshots below for a demonstration of the plugin's capabilities.
 

@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       51F0AC09-FE26-4756-8C29-4F32771BFC52
+:END:
 #+title: org-download
 
-settings included support for [[file:20201110102514-org_screenshot.org][org-screenshot]]
+settings included support for [[id:8F3663A1-8B03-402E-BD86-6F954122BA43][org-screenshot]]
 
  #+BEGIN_SRC emacs-lisp :results silent
  (use-package org-download

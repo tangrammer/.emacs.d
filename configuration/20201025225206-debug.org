@@ -1,6 +1,18 @@
+:PROPERTIES:
+:ID:       39570DD4-2015-456F-80DC-E2A7D25CC833
+:END:
 #+title: debug
 
-[[file:20201024173801-elisp.org][elisp]]
+[[id:A7AFD82B-B000-4220-8958-D316C016B088][elisp]]
+
+ #+BEGIN_SRC emacs-lisp
+ (toggle-debug-on-error)
+ #+END_SRC
+
+ #+RESULTS:
+
+
+
 
 * first part of https://endlessparentheses.com/debugging-emacs-lisp-part-1-earn-your-independence.html
 

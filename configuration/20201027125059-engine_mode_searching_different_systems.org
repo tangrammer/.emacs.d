@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       EBC4B944-2420-4AF8-92D3-4D469FC65560
+:END:
 #+title: engine-mode searching different systems
-[[file:20201024180511-minor_mode.org][minor-mode]] [[file:20201024195828-search.org][search]]
+[[id:9B1630B3-A027-4244-A736-E0681FAEA613][minor-mode]] [[id:F5927B34-DF40-4598-9134-1BA7360FA126][search]]
 
 https://github.com/hrs/engine-mode
 

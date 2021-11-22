@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       7D3CE653-80D3-4F93-B5EE-3150BC9959BE
+:END:
 #+TITLE: command-log-mode
-[[file:20201024180311-major_mode.org][major-mode]]
+[[id:B39AECDA-33D7-4717-8044-E40BD40B05EC][major-mode]]
 
 * UI: executing commands
   https://github.com/lewang/command-log-mode
@@ -8,5 +11,3 @@
   (package-install 'command-log-mode))
 (require 'command-log-mode)
 #+END_SRC
-
-

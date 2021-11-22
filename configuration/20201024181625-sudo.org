@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       A3757B2D-1416-4181-AA00-455D50C3CDB8
+:END:
 #+TITLE: sudo
-[[file:20201024181648-editing.org][editing]]
-[[file:20201024181712-permissions.org][permissions]]
+[[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]]
+[[id:6B7D50CF-5128-44A9-96BA-3BD6945DBC0C][permissions]]
 
 ** sudo-edit
 #+BEGIN_SRC emacs-lisp :results silent
@@ -16,7 +19,7 @@ buffer is not visiting a file."
       (find-file (concat "/sudo:root@localhost:"
                          (ido-read-file-name "Find file(as root): ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
- 
+
 
 #+END_SRC
 

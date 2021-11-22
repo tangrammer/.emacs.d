@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       78ECADD2-BFCA-481B-AF6B-69BE2793E0E6
+:END:
 #+title: magit-todos
 
 https://github.com/alphapapa/magit-todos#usage

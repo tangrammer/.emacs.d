@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       AFA8ADA7-F8B7-46C5-BAE7-AE875FC53448
+:END:
 #+title: package-menu
 
 

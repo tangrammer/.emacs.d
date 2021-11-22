@@ -1,2 +1,7 @@
+:PROPERTIES:
+:ID:       C8F0E480-641D-4407-B04D-EFC347DF9785
+:END:
 #+title: screenshot
 
+* WAITING try https://github.com/tecosaur/screenshot
+  Swiftly grab pretty images of your code
