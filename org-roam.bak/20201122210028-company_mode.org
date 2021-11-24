@@ -1,0 +1,22 @@
+#+title: company-mode
+[[file:20201024193244-completion.org][completion]]
+
+
+
+* company mode
+http://company-mode.github.io/
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package company
+   :straight t
+  ;;  :bind (("<tab>" . company-indent-or-complete-common))
+    :config (global-company-mode))
+;; (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+#+END_SRC
+
+** fuzzy company :)
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package company-flx
+  :straight t
+  :after company
+  :config (company-flx-mode +1))
+#+END_SRC

@@ -1,0 +1,5 @@
+#+title: emacs installation
+
+installed on osx using brew
+
+upgraded to 27.1 with =brew upgrade emacs-plus=

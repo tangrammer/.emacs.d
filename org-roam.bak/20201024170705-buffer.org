@@ -1,0 +1,12 @@
+#+TITLE: Buffer
+[[file:20201024170630-ui.org][UI]]
+
+** uniquify.el  
+unique buffer names dependent on file name
+
+#+BEGIN_SRC emacs-lisp :results silent
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+#+END_SRC
+
+

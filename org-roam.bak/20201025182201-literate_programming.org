@@ -1,0 +1,12 @@
+#+title: literate programming
+
+
+* IN PROGRESS is there any example?
+
+- https://orgmode.org/manual/Working-with-Source-Code.html#Working-with-Source-Code
+- http://howardism.org/Technical/Emacs/literate-devops.html
+- https://github.com/Literate-DevOps/literate-programming-tutorials and [[https://raw.githubusercontent.com/Literate-DevOps/literate-programming-tutorials/master/how-to/01-assassinate-the-archbishop-of-canterbury-in-1170-ce/how-to-assassinate-the-archbishop-of-canterbury-in-1170-ce.org][this one: in orgmode version]] or [[https://github.com/Literate-DevOps/literate-programming-tutorials/blob/master/how-to/01-assassinate-the-archbishop-of-canterbury-in-1170-ce/how-to-assassinate-the-archbishop-of-canterbury-in-1170-ce.org][human version]]
+
+
+* how is called the library in [[file:20210607203114-emacs_lisp.org][emacs-lisp]]?                          :curious:
+  Even though it should be named babel.el, right now is ob-core.el

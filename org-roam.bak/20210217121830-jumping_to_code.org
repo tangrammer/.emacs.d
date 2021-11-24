@@ -1,0 +1,33 @@
+#+title: jumping to code
+
+
+* dumb-jump
+an Emacs "jump to definition" package for 40+ languages
+
+https://github.com/jacktasia/dumb-jump
+
+C-M-g => go to def
+C-M-p => go back
+ #+BEGIN_SRC emacs-lisp :results silent
+  (use-package dumb-jump
+       :straight t
+;;       :hook (js2-mode js-mode)
+       )
+ #+END_SRC
+
+
+
+
+* TODO try smart-jump
+
+
+  https://github.com/jojojames/smart-jump
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package smart-jump
+  :straight t
+  :hook (php-mode)
+  :bind (("M-." . smart-jump-go)
+         ("M-," . smart-jump-back)
+         ("M-?" . smart-jump-references)))
+
+#+END_SRC

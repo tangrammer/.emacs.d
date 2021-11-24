@@ -1,0 +1,36 @@
+#+title: aliasing functions
+
+
+* TODO explore aliasing
+https://nullprogram.com/blog/2019/12/10/
+
+
+* TODO save alias function
+
+
+  #+BEGIN_SRC emacs-lisp :results silent
+
+(get-buffer "funs.el")
+
+(defmacro alias (f-name var)
+  ``(defun ,(make-symbol ,f-name) ()
+      (interactive)
+      (call-interactively ',,var)))
+
+(comment
+ (alias "tangrammer-ole" last-command)
+ (make-symbol "s"))
+
+(defun write-fun (s)
+  (interactive "sFunction name:")
+  (with-current-buffer "funs.el"
+    (newline)
+    (insert (to-string (alias s last-command)))
+    (elisp-format-buffer)
+    (save-buffer)
+    )
+  )
+
+
+
+  #+END_SRC

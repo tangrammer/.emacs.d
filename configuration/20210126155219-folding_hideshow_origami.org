@@ -3,6 +3,9 @@
 :END:
 #+title: folding hideshow origami
 
+[[id:C82F0D56-70CE-46B6-B211-30B2DFE5CC08][editing]]
+[[id:B87BE6C5-BF53-4B06-9713-1C272540530B][UI]]
+
 * hideshow
 
  #+BEGIN_SRC emacs-lisp :results silent

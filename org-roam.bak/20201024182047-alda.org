@@ -1,0 +1,10 @@
+#+TITLE: alda
+
+[[file:20201024182059-music.org][music]]
+
+* music alda
+https://github.com/alda-lang/alda-core/blob/master/examples/seconds_and_milliseconds.alda
+there is an emacs-mode too
+https://gitlab.com/jgkamat/alda-mode
+
+

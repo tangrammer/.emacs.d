@@ -1,0 +1,14 @@
+#+TITLE: org-sticky-header
+
+
+[[file:20201024180240-org_mode.org][org-mode]]
+
+config & install org-sticky-header
+
+Show off-screen Org heading at top of window
+
+https://github.com/alphapapa/org-sticky-header
+
+** same with tables
+https://github.com/cute-jumper/org-table-sticky-header
+

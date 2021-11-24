@@ -1,0 +1,17 @@
+#+TITLE: markdown
+[[file:20201024172354-coding.org][coding]]
+
+#+BEGIN_SRC emacs-lisp :results silent
+;; (eval-after-load "org"
+;;  '(require 'ox-gfm nil t))
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package markdown-mode
+  :straight t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+ #+END_SRC

@@ -1,0 +1,39 @@
+#+title: engine-mode searching different systems
+[[file:20201024180511-minor_mode.org][minor-mode]] [[file:20201024195828-search.org][search]]
+
+https://github.com/hrs/engine-mode
+
+
+Minor mode for defining and querying search engines through Emacs.
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package engine-mode
+  )
+
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d"
+)
+
+(defengine google
+  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
+
+(defengine wikipedia
+  "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+  :keybinding "w"
+  :docstring "Searchin' the wikis.")
+
+(defengine clojuredocs
+  "https://clojuredocs.org/search?q=%s"
+  :keybinding "c"
+  :docstring "Searchin' the clojuredocs.")
+
+
+
+(engine/set-keymap-prefix (kbd "C-x /"))
+#+END_SRC
+
+theoretically with :keybinding  C-x / d is now bound to the new function engine/search-duckduckgo ... but not yet
+
+anyway the function is interactive so M-x engine/search-duckduckgo should work

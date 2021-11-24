@@ -1,0 +1,39 @@
+#+TITLE: ido
+
+[[file:20201024193244-completion.org][completion]]
+
+*_So far using helm!_*
+
+* CANCELLED previous configs
+  #+BEGIN_SRC untangle :eval no
+
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+
+  #+END_SRC
+
+** idomenu
+This package provides the `idomenu' command for selecting an imenu tag using
+ido completion.  The buffer needs to have support for imenu already enabled.
+
+#+BEGIN_SRC untangle :eval no
+(unless (package-installed-p 'idomenu)
+  (package-install 'idomenu))
+(require 'idomenu)
+#+END_SRC
+
+
+
+from https://masteringemacs.org/article/introduction-to-ido-mode
+
+Another useful command in ido-mode is C-SPC which restricts the list of options to the current set.
+
+I use this if I'm looking for an org-mode file but I can't remember the exact name:
+
+C-x C-f .org C-SPC
+
+** TODO ido-completing-read+
+https://github.com/DarwinAwardWinner/ido-completing-read-plus
+
+

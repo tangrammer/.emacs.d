@@ -1,0 +1,24 @@
+#+title: paredit mode
+
+[[file:20201024180511-minor_mode.org][minor-mode]]
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(require 'paredit)
+
+
+;; remove last lines inside a fn
+;;https://github.com/yatish27/emacs-live/blob/master/packs/dev/clojure-pack/config/paredit-conf.el
+(defun live-paredit-delete-horizontal-space ()
+  (interactive)
+  (just-one-space -1)
+  (paredit-backward-delete))
+
+;; should be =>>> define-key paredit-mode-map
+(global-set-key   (kbd "M-\\")    'live-paredit-delete-horizontal-space)
+
+#+END_SRC
+
+#+RESULTS:
+: live-paredit-delete-horizontal-space

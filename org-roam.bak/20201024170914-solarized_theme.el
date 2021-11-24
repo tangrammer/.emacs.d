@@ -1,0 +1,5 @@
+(package-install 'solarized-theme)
+(defun tangrammer-load-clj-theme ()
+  (interactive)
+  (load-theme 'solarized-dark t)
+  )

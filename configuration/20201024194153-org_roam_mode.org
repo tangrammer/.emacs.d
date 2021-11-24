@@ -96,7 +96,7 @@ https://github.com/tangrammer/.emacs.d/issues/2
               ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
               ;;(org-roam-build-cache)
 
-              (call-interactively 'org-roam-find-file)
+              (call-interactively 'org-roam-node-find)
               (kill-buffer yup)
               ))))))
 

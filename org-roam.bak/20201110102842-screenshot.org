@@ -1,0 +1,4 @@
+#+title: screenshot
+
+* WAITING try https://github.com/tecosaur/screenshot
+  Swiftly grab pretty images of your code

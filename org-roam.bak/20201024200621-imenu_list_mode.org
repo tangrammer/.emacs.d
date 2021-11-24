@@ -1,0 +1,19 @@
+#+TITLE: imenu-list-mode
+[[file:20201024180511-minor_mode.org][minor-mode]]  [[file:20201024200935-imenu_mode.org][imenu-mode]]
+
+https://github.com/bmag/imenu-list
+
+Emacs plugin to show the current buffer's imenu entries in a seperate buffer
+
+** imenu-toggle-show bar C-'
+taken from https://jblevins.org/log/markdown-imenu
+ #+BEGIN_SRC emacs-lisp :results silent
+  (use-package imenu-list
+
+    :bind (("C-'" . imenu-list-smart-toggle))
+    :straight t
+    :config
+    (setq imenu-list-focus-after-activation t
+          imenu-list-auto-resize nil))
+
+ #+END_SRC

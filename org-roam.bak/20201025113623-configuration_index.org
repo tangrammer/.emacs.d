@@ -1,0 +1,47 @@
+#+TITLE: Configuration Index
+
+#+DOWNLOADED: file:/Users/tangrammer/Desktop/Screenshot 2021-06-08 at 17.18.17.png @ 2021-06-09 00:14:42
+[[file:images/20210609-001442_Screenshot 2021-06-08 at 17.18.17.png]]
+
+
+Disclaimer:
+all these docs is my personal attempt to use a structured documentation approach.
+So far docs these docs are organized in linked files that contain FAQs with tags that specify the expected acctitude to dig into them.
+
+
+
+* Tags
+  #+BEGIN_SRC dot :file images/dot_test.png
+digraph a {
+        newbie [shape=box];
+  newbie -> common_lisp;
+  lisp -> scheme;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:images/dot_test.png]]
+
+
+Existent tags are:
+- newbie
+- beginner
+- curious
+
+
+* Configuration
+
+** how emacs is normally configured?                               :begginer:
+   Normally an emacs configuration consists on one file ~init.el~ located in ~~/.emacs~ folder.
+   There are some options to modularize/refine the config in several places but you can also have all the emacs configuration settins in this ~init.el~ file.
+
+   Of coure more on this topic is fully available on [[https://duckduckgo.com/?q=emacs+configuration&atb=v120-1&ia=web][internet]]
+
+** why this emacs config used [[file:20201025182201-literate_programming.org][literate programming]] and [[file:20201024194153-org_roam_mode.org][org-roam-mode]]? :begginer:curious:
+   Well, literate programming advocate to write /human/ docs more that develop code. And my personal /wish/ when I config some tool is to understand the settings (so i could adapt them to my preferences or needs) more than just copy/pasting just code.
+   if you go into this file: [[file:20201025182201-literate_programming.org][literate programming]] and take a look to the examples provides you'll realise about the chaging role in developing code.
+** WAITING how is this literate config loaded in emacs?             :curious:
+*** how to avoid org compilation?
+    untangle mode
+** WAITING create emacs drawing
+   https://github.com/misohena/el-easydraw

@@ -1,0 +1,11 @@
+#+TITLE: imenu-mode
+[[file:20201024193244-completion.org][completion]] [[file:20201024172354-coding.org][coding]] [[file:20201024180240-org_mode.org][org-mode]]
+
+https://www.emacswiki.org/emacs/ImenuMode
+Imenu produces menus for accessing locations in documents, typically in the current buffer. You can access the locations using an ordinary menu (menu bar or other) or using minibuffer completion.
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(global-set-key (kbd "C-x C-i") 'imenu)
+
+#+END_SRC

@@ -1,0 +1,3 @@
+#+title: emacs-lisp
+
+Emacs Lisp is a dialect of the Lisp programming language used as a scripting language by Emacs

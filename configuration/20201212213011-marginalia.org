@@ -3,6 +3,8 @@
 :END:
 #+title: marginalia
 
+[[id:C854F570-A5A9-43BE-AC31-0ADE2B914246][documentation]]
+
 #+BEGIN_SRC emacs-lisp :results silent
 
 ;; Enable richer annotations using the Marginalia package

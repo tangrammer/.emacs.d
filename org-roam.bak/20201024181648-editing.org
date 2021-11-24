@@ -1,0 +1,127 @@
+#+TITLE: editing
+
+* bbatsov/crux - eval-and-replace
+#+BEGIN_SRC emacs-lisp :results silent
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
+#+END_SRC
+
+
+* commenting code
+M-;
+
+
+* code completion
+M-/
+
+
+* code indentation
+if mode supports indentation
+CTRL-M-\
+
+
+* sorting words
+https://www.emacswiki.org/emacs/SortWords
+#+BEGIN_SRC emacs-lisp :results silent
+(defun sort-words (reverse beg end)
+      "Sort words in region alphabetically, in REVERSE if negative.
+    Prefixed with negative \\[universal-argument], sorts in reverse.
+
+    The variable `sort-fold-case' determines whether alphabetic case
+    affects the sort order.
+
+    See `sort-regexp-fields'."
+      (interactive "*P\nr")
+      (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+#+END_SRC
+
+
+* replace highlighted text with what I type
+
+ https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+
+#+BEGIN_SRC emacs-lisp :results silent
+ (delete-selection-mode 1)
+#+END_SRC
+
+
+
+
+* expand region
+selecting incrementally textEmacs extension to increase selected region by semantic units.
+https://github.com/magnars/expand-region.el
+
+http://emacsrocks.com/e09.html
+
+#+BEGIN_SRC emacs-lisp :results silent
+ (use-package expand-region
+     :straight t)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+#+END_SRC
+
+
+
+* RainbowDelimiters
+https://www.emacswiki.org/emacs/RainbowDelimiters
+rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
+
+#+BEGIN_SRC untangle :results silent
+
+(use-package rainbow-delimiters
+  :straight t
+  :hook (prog-mode clojure-mode))
+
+
+#+END_SRC
+
+
+* smartparens
+https://github.com/Fuco1/smartparens
+https://ebzzry.github.io/emacs-pairs.html
+#+BEGIN_SRC untangle
+(unless (package-installed-p 'smartparens)
+  (package-install 'smartparens))
+(require 'smartparens)
+(add-hook 'clojure-mode-hook 'smartparens-mode)
+(add-hook 'cider-mode-hook 'smartparens-mode)
+;;(add-hook 'cider-repl-mode 'smartparens-mode)
+
+(add-hook 'lisp-mode-hook 'smartparens-mode)
+#+END_SRC
+
+#+RESULTS:
+| smartparens-mode | hs-minor-mode |
+
+
+
+
+* multiple-cursors
+ https://github.com/magnars/multiple-cursors.el
+ http://emacsrocks.com/e13.html
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package multiple-cursors
+  :straight t
+  :hook (fundamental-mode php-mode)
+  :bind
+  (("C-S-c C-S-c" . mc/edit-lines)
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-c C-<" . mc/mark-all-like-this)))
+
+;;  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+;;  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;;  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;;  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+#+END_SRC

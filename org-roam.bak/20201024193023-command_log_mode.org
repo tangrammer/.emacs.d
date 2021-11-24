@@ -1,0 +1,12 @@
+#+TITLE: command-log-mode
+[[file:20201024180311-major_mode.org][major-mode]]
+
+* UI: executing commands
+  https://github.com/lewang/command-log-mode
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'command-log-mode)
+  (package-install 'command-log-mode))
+(require 'command-log-mode)
+#+END_SRC
+
+

@@ -1,0 +1,126 @@
+#+TITLE: org-roam-mode
+
+[[file:20201025233718-note_taking.org][note taking]]
+
+[[file:20201024180511-minor_mode.org][minor-mode]]
+
+org-roam works on top of [[file:20201024180240-org_mode.org][org-mode]]
+
+https://github.com/jethrokuan/org-roam
+
+* install package
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(add-to-list 'package-archives
+    '("MELPA" .
+      "https://melpa.org/packages/"))
+(package-initialize)
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/.emacs.d/configuration"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+#+END_SRC
+
+
+
+ #+BEGIN_SRC untangle :results silent
+
+  (use-package org-roam
+   :straight t
+    ;; :hook
+    ;; (after-init . org-roam-mode)
+    ;; :custom
+    ;; ((make-directory "~/org-roam")
+    ;;  (org-roam-directory "~/org-roam")
+    ;;  )
+    ;;  :bind (("M-F" . org-roam-find-file)
+    ;;          ("M-I" . org-roam-insert)
+    ;;          ("M-G" . org-roam-graph)
+    ;;          ("M-R" . org-roam))
+    )
+
+ )
+
+
+ #+END_SRC
+
+
+
+
+ a default sqlite db is created
+
+
+* once that you call org-roam-graph you can find the graph here
+
+doing M-l in the related graph then open it in a browser
+
+* more than 1 roam system
+you can use .[[/Users/tangrammer/.emacs.d/configuration/.dir-locals.el::1][dir-locals]] as this configuration system
+
+
+* TODO roam + babel + emacs config dependency order based on roam deps
+https://github.com/tangrammer/.emacs.d/issues/2
+
+* t/roam/go
+  #+BEGIN_SRC emacs-lisp :results silent
+
+  (defun t/roam/go (choice)
+    (interactive
+     (let ((completion-ignore-case  t))
+       (list (completing-read "Choose: " '("roam" "roam-emacs-conf" "unep" "roam-lumen" "roam-local") nil t))))
+    (let ((dir (cond ((string= choice "roam-emacs-conf" ) "~/.emacs.d/configuration/20201025113623-configuration_index.org")
+                     ((string= choice "roam" ) "~/org-roam/20201027120343-index.org")
+                     ((string= choice "roam-local" ) "~/taller/20210604100524-tallerindex.org")
+                     ((string= choice "unep" ) "~/git/akvo/unep-gpml/backend/roam/20210803193530-unep_index.org")
+                     ((string= choice "roam-lumen" ) "~/git/akvo/akvo-lumen/backend/roam/20201102093126-index.org"))))
+      (progn
+        (let ((yup (find-file (extract-dir  dir))))
+          (let ((default-directory (extract-dir  dir)))
+            (progn
+
+              ;;(org-roam-db-build-cache) ;; seems not necessary
+              ;;(read-dir-locals default-directory) ;; finally just opening and killing the buffer to read the locals
+              ;;(org-roam-build-cache)
+
+              (call-interactively 'org-roam-find-file)
+              (kill-buffer yup)
+              ))))))
+
+  (defun >t/dir/go (choice)
+    (interactive
+     ;; complex code here that returns a list
+     (let ((completion-ignore-case  t))
+       (list (completing-read "Choose: " '( "data-science" "lumen" "lumen-backend" "emacs-init-config") nil t))))
+    (let ((dir (cond ((string= choice "lumen" ) "~/git/akvo/akvo-lumen")
+                     ((string= choice "lumen-backend" ) "~/git/akvo/akvo-lumen/backend/project.clj")
+                     ((string= choice "data-science" ) "~/git/akvo/data-science/akvo-data-science-services")
+                     ((string= choice "emacs-init-config" ) "~/.emacs.d/init.el"))))
+      (find-file dir)))
+
+  #+END_SRC
+
+
+
+* TODO take a look to "roam-block"
+  https://github.com/Kinneyzhang/roam-block
+
+
+* TODO take a look to "delve"
+  https://github.com/publicimageltd/delve

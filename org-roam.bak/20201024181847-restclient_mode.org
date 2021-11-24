@@ -1,0 +1,13 @@
+#+TITLE: restclient-mode
+[[file:20201024180311-major_mode.org][major-mode]]
+
+** restclient
+HTTP REST client tool for emacs
+https://github.com/pashky/restclient.el
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'restclient)
+  (package-install 'restclient))
+(require 'restclient)
+#+END_SRC
+

@@ -1,0 +1,8 @@
+#+title: package-menu
+
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Package-Menu.html#Package-Menu
+
+
+
+Download and install all packages marked with i, and their dependencies; also, delete all packages marked with d (package-menu-execute). This also removes the marks.

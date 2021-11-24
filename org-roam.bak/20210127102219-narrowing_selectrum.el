@@ -1,0 +1,5 @@
+(straight-use-package 'selectrum)
+(selectrum-mode +1)
+(setq completion-ignore-case t)
+;;(read-file-name-completion-ignore-case t)
+(setq read-buffer-completion-ignore-case t)

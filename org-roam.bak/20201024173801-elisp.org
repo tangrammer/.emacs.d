@@ -1,0 +1,13 @@
+#+TITLE: elisp
+[[file:20201024172354-coding.org][coding]] [[file:20201024192219-lisp.org][lisp]]
+
+add [[file:20201106210428-paredit_mode.org][paredit mode]] hook
+
+
+  #+BEGIN_SRC emacs-lisp :results silent 
+  (add-hook 'elisp-mode-hook #'paredit-mode)
+  (add-hook 'lisp-mode-hook #'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+#+END_SRC
+
+

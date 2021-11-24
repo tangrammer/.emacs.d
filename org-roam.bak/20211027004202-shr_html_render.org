@@ -1,0 +1,7 @@
+#+title: shr html render
+
+
+eg emacs fun to render html
+~shr-render-buffer~
+
+https://www.emacswiki.org/emacs/HtmlRendering

@@ -1,0 +1,30 @@
+#+title: xml
+
+
+* sgml-mode -> format xml
+
+  https://emacs.stackexchange.com/a/31990
+
+  https://davidcapello.com/blog/emacs/reformat-xml-on-emacs/
+
+
+  #+BEGIN_SRC emacs-lisp :results silent
+    (use-package sgml-mode
+      :straight t)
+
+
+  (defun ninrod/reformat-xml ()
+    (interactive)
+    (save-excursion
+      (sgml-pretty-print (point-min) (point-max))
+      (indent-region (point-min) (point-max))))
+
+
+
+ #+END_SRC
+
+
+https://github.com/philjackson/xmlgen
+
+* TODO elisp research
+An s-expression to XML [[file:20210112204144-dsl.org][DSL]] in elisp

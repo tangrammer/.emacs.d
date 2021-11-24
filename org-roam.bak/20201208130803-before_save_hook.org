@@ -1,0 +1,10 @@
+#+title: before-save-hook
+
+[[file:20201208134027-saving_files.org][saving files]]
+
+ #+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+ #+END_SRC
+
+ #+RESULTS:
+ | delete-trailing-whitespace |

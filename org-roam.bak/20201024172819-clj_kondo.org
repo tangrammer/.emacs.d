@@ -1,0 +1,90 @@
+#+title: clj-kondo
+
+clojure
+[[file:20201024172354-coding.org][coding]]
+
+
+if you have any problem with it you should take a look to
+(find-function 'org-babel-execute:clojure)
+
+
+** clj-kondo
+https://github.com/borkdude/clj-kondo
+download binary
+install emacs package flycheck-clj-kondo
+
+#+BEGIN_SRC shell  :results silent
+curl -sLO https://raw.githubusercontent.com/borkdude/clj-kondo/master/script/install-clj-kondo
+chmod +x install-clj-kondo
+./install-clj-kondo
+
+#+END_SRC
+
+
+
+ #+RESULTS:
+ | Downloading  | https://github.com/borkdude/clj-kondo/releases/download/v2020.11.07/clj-kondo-2020.11.07-macos-amd64.zip | to        | /tmp |                |
+ | Successfully | installed                                                                                                | clj-kondo | in   | /usr/local/bin |
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package flycheck-clj-kondo
+:straight t)
+(require 'flycheck-clj-kondo)
+
+#+END_SRC
+
+;; First install the package:
+
+;; then install the checker as soon as `clojure-mode' is loaded
+
+
+
+** TODO eval pprint replace                                           :cider:
+   firstly sort clojure maps https://github.com/bluekezza/clj-stable-pprint
+  ~[clj-stable-pprint "0.0.3"]~
+  then connect cider with clj-stable-pprint and set up a shortcut command
+
+*** lumen
+
+ added https://github.com/bluekezza/clj-stable-pprint to get pprint map data sorted
+
+ modified [[/Users/tangrammer/git/tangrammer/cider/cider-client.el::228][cider-client.el]]
+
+  #+BEGIN_SRC emacs-lisp :results silent
+  (defun connect-lument-repl ()
+    (interactive)
+    ;;(cider-connect  "47480" "~/git/akvo/akvo-lumen/backend")
+    (cider-nrepl-connect
+     (list :host "localhost" :port "47480"
+	   :repl-type "clj"
+	   :repl-init-function nil
+	   :session-name nil
+	   :project-dir "~/git/akvo/akvo-lumen/backend"))
+
+    (cider-interactive-eval "(require '[clj-stable-pprint.core :as spp])"))
+
+  (define-key global-map (kbd "C-c l") 'connect-lument-repl)
+ #+END_SRC
+
+  #+RESULTS:
+
+** hugslq
+#+BEGIN_SRC emacs-lisp :results silent
+;; https://github.com/rkaercher/hugsql-ghosts
+;; (require 'hugsql-ghosts)
+
+;; (add-hook 'cider-mode-hook 'hugsql-ghosts-install-hook)
+
+#+END_SRC
+
+
+** pprint to file commented
+#+BEGIN_SRC emacs-lisp :results silent
+(defun pprint ()
+ (interactive)
+ (cider-pprint-eval-last-sexp-to-comment))
+
+;;(define-key cider-mode-map (kbd "C-c C-S-p") 'pprint)
+;;(define-key cider-mode-map (kbd "C-c C-p") 'cider-pprint-eval-last-sexp)
+
+#+END_SRC

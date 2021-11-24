@@ -1,0 +1,14 @@
+#+TITLE: OSX keyboard 
+
+[[file:20201024170630-ui.org][UI]]
+
+
+** configure OSX keyboard 
+ #+BEGIN_SRC emacs-lisp
+ ;; osx keys
+ (setq default-input-method "MacOSX")
+ (setq mac-command-modifier 'meta)
+ (setq mac-option-modifier 'none)
+ #+END_SRC
+
+

@@ -1,0 +1,11 @@
+#+title: straight
+
+emacs package manager
+https://github.com/raxod502/straight.el
+
+- Added a emacs-lisp yasnippet ~gs!~ to generate straight github template
+
+
+* use local examples
+
+- using github repo [[file:20210114124051-dired_hacks.org][dired-hacks]]

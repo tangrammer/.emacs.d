@@ -1,0 +1,5 @@
+#+title: flash cards
+
+[[file:20201122113334-anki_editor.org][Anki editor]]
+
+

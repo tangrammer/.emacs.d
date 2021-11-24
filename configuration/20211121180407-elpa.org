@@ -2,3 +2,5 @@
 :ID:       F884D352-C7ED-42B5-AA21-DAF5CAAE620B
 :END:
 #+title: elpa
+
+[[id:02B69963-7C5A-40D2-9C7A-388809D0F63C][repositories]]

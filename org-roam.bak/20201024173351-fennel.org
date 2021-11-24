@@ -1,0 +1,15 @@
+#+TITLE: fennel
+[[file:20201024172354-coding.org][coding]]
+
+ #+BEGIN_SRC untangle :results silent
+(autoload 'fennel-mode "~/.emacs.d/local/fennel-mode/fennel-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.fnl\\'" . fennel-mode))
+ #+END_SRC
+
+https://github.com/chrisman/fennel-pong
+
+
+#+BEGIN_SRC untangle :results silent
+(setq exec-path (append exec-path '("~/git/emacs-simple/Fennel/fennel")))
+
+#+END_SRC

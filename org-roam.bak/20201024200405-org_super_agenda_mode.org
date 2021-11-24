@@ -1,0 +1,8 @@
+#+TITLE: org-super-agenda-mode
+[[file:20201025190153-org_mode_agenda.org][org-mode agenda]]
+
+
+https://github.com/alphapapa/org-super-agenda
+Supercharge your Org daily/weekly agenda by grouping items
+
+Useful if you work scheduling event/tasks to dates ... not my case yet

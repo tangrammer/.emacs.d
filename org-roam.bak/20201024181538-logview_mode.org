@@ -1,0 +1,21 @@
+#+TITLE: logview-mode
+[[file:20201024180311-major_mode.org][major-mode]] [[file:20201024192916-logs.org][logs]]
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package logview
+:straight t
+
+  ;; :hook
+  ;; (after-init . org-roam-mode)
+  ;; :custom
+  ;; ((make-directory "~/org-roam")
+  ;;  (org-roam-directory "~/org-roam")
+  ;;  )
+  ;;  :bind (("M-F" . org-roam-find-file)
+  ;;          ("M-I" . org-roam-insert)
+  ;;          ("M-G" . org-roam-graph)
+  ;;          ("M-R" . org-roam))
+  )
+
+#+END_SRC

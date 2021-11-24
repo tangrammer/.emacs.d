@@ -1,0 +1,14 @@
+#+title: elisp-format mode
+
+[[file:20201024173801-elisp.org][elisp]] [[file:20201024180511-minor_mode.org][minor-mode]]
+
+https://www.emacswiki.org/emacs/ElispFormat
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(use-package elisp-format
+:straight t
+ )
+
+#+END_SRC

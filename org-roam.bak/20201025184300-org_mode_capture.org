@@ -1,0 +1,44 @@
+#+title: org-mode capture
+* TODO learn how to capture from outside from emacs
+https://yiufung.net/post/anki-org/
+
+* info about capturing
+
+
+
+this functionality is focused in capturing ideas as notes. in  [[file:20201024194153-org_roam_mode.org][org-roam]] also there is capturing process 
+
+Notes captured are stored in one main file
+
+ #+BEGIN_SRC emacs-lisp
+ (setq org-default-notes-file "~/git/orgs/gtd/notes.org")
+ #+END_SRC
+
+
+we can define templates 
+
+#+BEGIN_SRC emacs-lisp :results silent 
+
+(setq org-capture-templates '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+         "* TODO %?\n  %i\n  %a")))
+
+(define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-c\C-d" 'org-deadline)
+
+#+END_SRC
+
+
+one interactive function to capture "idea"
+
+#+BEGIN_SRC emacs-lisp
+(defun idea nil 
+  (interactive) 
+  (org-capture t "t"))
+ 
+#+END_SRC
+
+#+RESULTS:
+: idea
+
+
+if we can see our notes: we use [[file:20201025190153-org_mode_agenda.org][org-mode agenda]]

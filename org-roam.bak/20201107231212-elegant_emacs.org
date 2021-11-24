@@ -1,0 +1,7 @@
+#+title: elegant-emacs
+
+[[file:20201024170630-ui.org][UI]]
+
+https://github.com/rougier/elegant-emacs
+* DONE take a look to this template
+[[file:20201229000602-nano_emacs.org][nano-emacs]]

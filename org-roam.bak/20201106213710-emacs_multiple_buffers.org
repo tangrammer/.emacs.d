@@ -1,0 +1,8 @@
+#+title: emacs multiple buffers
+
+Manage Windows and Buffers According to Purposes
+
+* TODO review first
+- https://github.com/bmag/emacs-purpose
+- https://github.com/alphapapa/bufler.el
+- https://github.com/nex3/perspective-el

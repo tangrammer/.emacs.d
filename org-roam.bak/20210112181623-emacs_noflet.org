@@ -1,0 +1,12 @@
+#+title: emacs-noflet
+[[file:20201107231438-testing.org][
+testing]]
+
+https://github.com/nicferrier/emacs-noflet
+
+#+BEGIN_SRC untangle :results silent
+(use-package noflet
+  :straight (emacs-noflet :type git :host github :repo "nicferrier/emacs-noflet")
+
+)
+#+END_SRC

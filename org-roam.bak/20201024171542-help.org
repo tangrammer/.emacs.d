@@ -1,0 +1,63 @@
+#+TITLE: help
+
+
+* Looking for a keybinding?
+http://emacsredux.com/blog/2016/02/14/look-up-the-keybindings-for-some-command/
+[[file:20201106205256-which_key_minor_mode.org][which-key minor mode]]
+
+
+
+* helpful
+https://github.com/Wilfred/helpful
+A better Emacs *help* buffer
+
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'helpful)
+  (package-install 'helpful))
+(require 'helpful)
+(global-set-key (kbd "C-h f") #'helpful-callable)
+
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+(global-set-key (kbd "C-h F") #'helpful-function)
+
+#+END_SRC
+
+
+
+
+
+
+* get keys of function
+[[/usr/local/Cellar/emacs/HEAD-8c6a502_1/share/emacs/27.0.50/lisp/help.el.gz::558][from]] 
+
+#+BEGIN_SRC untangle
+(where-is-internal 'move-end-of-line)
+;;([5])
+
+(where-is-internal 'find-file)
+;; ([open] [24 6] [menu-bar file new-file])
+last-command
+(key-description [24])
+(key-description [6])
+
+
+
+
+(let* (
+       (symbol 'find-file) 
+       (keys (where-is-internal symbol nil nil nil nil))
+       ;;(keys (mapconcat 'key-description keys ", "))
+       )
+	(if (> (length keys) 0)
+			(format "%s" keys )
+	  
+		(message "no keys"))
+  (-map (lambda (x) (char-or-string-p (aref x 0))) keys)
+
+  
+  )
+#+END_SRC
+
+

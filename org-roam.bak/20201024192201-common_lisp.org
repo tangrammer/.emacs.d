@@ -1,0 +1,9 @@
+#+TITLE: common lisp
+[[file:20201024192219-lisp.org][lisp]] [[file:20201025174437-language.org][language]]
+https://portacle.github.io/
+
+
+* p5s common lisp 
+https://github.com/vydd/sketch
+
+

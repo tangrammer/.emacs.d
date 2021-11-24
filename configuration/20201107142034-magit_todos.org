@@ -3,6 +3,8 @@
 :END:
 #+title: magit-todos
 
+[[id:4774DD6D-3C10-4108-9C65-C20AA09C1083][Magit]]
+
 https://github.com/alphapapa/magit-todos#usage
 
 #+BEGIN_SRC untangle :results silent

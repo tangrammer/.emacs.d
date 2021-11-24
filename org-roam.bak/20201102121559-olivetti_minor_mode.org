@@ -1,0 +1,17 @@
+#+title: olivetti minor mode
+
+Emacs minor mode for a nice writing [[file:20201024170630-ui.org][UI]] environment
+
+#+BEGIN_SRC untangle
+  (use-package olivetti
+   )
+  #+END_SRC
+
+ #+BEGIN_SRC emacs-lisp
+"wow"
+ #+END_SRC
+
+
+   #+BEGIN_SRC emacs-lisp
+1
+   #+END_SRC

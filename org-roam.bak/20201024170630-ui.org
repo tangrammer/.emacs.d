@@ -1,0 +1,60 @@
+#+TITLE: UI
+
+Emacs UI client settings like [[file:20201024171113-toolbar.org][toolbar]] and [[file:20201024170827-themes.org][themes]]
+
+** general configs
+
+ #+BEGIN_SRC emacs-lisp :results silent
+
+  (set-face-attribute 'default nil :height 180)
+
+  ;; Set the default comment column to 70
+
+  (setq-default comment-column 70)
+
+  (set-language-environment "UTF-8")
+
+  ;; Every time a window is started, make sure it get maximized
+
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+
+  ;; switch to other frame http://stackoverflow.com/questions/93058/emacs-switching-to-another-frame-mac-os-x
+  (global-set-key (kbd "M-o") 'other-frame)
+
+
+
+
+ (setq redisplay-dont-pause t
+       scroll-margin 1
+       scroll-step 1
+       scroll-conservatively 10000
+       scroll-preserve-screen-position 1)
+
+
+ #+END_SRC
+
+** win-switch navigating windows
+A utility for quickly navigating Emacs windows
+#+BEGIN_SRC emacs-lisp :results silent
+(unless (package-installed-p 'win-switch)
+  (package-install 'win-switch))
+(require 'win-switch)
+(global-set-key (kbd "C-x o") 'win-switch-dispatch)
+#+END_SRC
+
+
+** project interaction
+ http://projectile.readthedocs.io/en/latest/usage/
+ Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (unless (package-installed-p 'projectile)
+   (package-install 'projectile))
+ (require 'projectile)
+ (projectile-global-mode)
+ #+END_SRC
+
+*** Display a list of all files in the project. With a prefix argument it will clear the cache first.
+
+    ~C-c p f~

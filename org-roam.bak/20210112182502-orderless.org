@@ -1,0 +1,16 @@
+#+title: orderless
+
+[[file:20201024193244-completion.org][completion]] [[file:20210127102219-narrowing_selectrum.org][narrowing]]
+
+https://github.com/oantolin/orderless
+* install orderless
+integrated with ivy
+
+#+BEGIN_SRC untangle :results silent
+(use-package orderless
+  :straight t
+  :after ivy
+  :config (setq ivy-re-builders-alist '((t . orderless-ivy-re-builder))))
+
+
+#+END_SRC

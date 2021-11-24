@@ -1,0 +1,12 @@
+#+title: dired-hacks
+
+https://www.youtube.com/watch?v=z26b8HKFsNE
+
+https://github.com/Fuco1/dired-hacks
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package dired-hacks-utils
+  :straight (dired-hacks-utils :type git :host github :repo "Fuco1/dired-hacks")
+
+)
+#+END_SRC

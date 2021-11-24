@@ -1,0 +1,29 @@
+#+title: php
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package php-mode
+
+  :straight t
+;;  :hook (hs-minor-mode)
+    )
+#+END_SRC
+* phpactor
+
+
+  #+BEGIN_SRC untangle :results silent
+  (use-package phpactor
+    :hook (hs-minor-mode)
+    :straight (phpactor
+               :host github
+               :type git
+               :repo "emacs-php/phpactor.el"
+               :branch "master"
+               :files ("*.el" "composer.json" "composer.lock" (:exclude "*test.el"))
+               :init (with-eval-after-load 'php-mode
+                       (define-key php-mode-map (kbd "M-.") #'phpactor-goto-definition)
+                       (define-key php-mode-map (kbd "M-?") #'phpactor-find-references))
+
+
+               )
+    )
+  #+END_SRC

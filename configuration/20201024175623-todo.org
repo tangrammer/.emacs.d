@@ -10,8 +10,6 @@
 (require 'hl-todo)
 #+END_SRC
 
-
-
  #+BEGIN_SRC emacs-lisp
 (setq hl-todo-keyword-faces
       '(("TODO"   . "#FF0000")

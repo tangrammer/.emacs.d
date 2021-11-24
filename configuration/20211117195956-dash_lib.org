@@ -3,7 +3,7 @@
 :END:
 #+title: elisp dash lib
 
-
+[[id:A086B1A4-810E-4C57-AB45-AEC4E9299CA4][emacs-lisp]]
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package dash
 :straight t

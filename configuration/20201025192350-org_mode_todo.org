@@ -3,7 +3,7 @@
 :END:
 #+title: org-mode todo
 
-relates to [[id:089B3A23-0BE5-44A0-921E-B666C1C0E111][todo]]
+relates to [[id:089B3A23-0BE5-44A0-921E-B666C1C0E111][GUAU]]
 
    #+BEGIN_SRC emacs-lisp :results silent
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "IN PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))

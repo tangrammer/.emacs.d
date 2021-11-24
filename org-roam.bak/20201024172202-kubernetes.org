@@ -1,0 +1,11 @@
+#+TITLE: kubernetes
+
+[[file:20201024172152-devops.org][devops]]
+
+  
+#+BEGIN_SRC untangle
+(unless (package-installed-p 'kubernetes)
+  (package-install 'kubernetes))
+(require 'kubernetes)
+#+END_SRC
+
