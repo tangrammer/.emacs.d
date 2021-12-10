@@ -35,7 +35,21 @@ The extracted information is displayed in a special agenda buffer. This buffer i
            ("r" "remove file to agenda files" org-remove-file)])
   #+END_SRC
 
+** DONE Improving todo agenda list to show only headings but no files (thus org file names are really long)
+- just noticing now that in mode line appears the file name so everything is around but simplified a bit now
+#+BEGIN_SRC emacs-lisp :results silent
+(add-to-list 'org-agenda-prefix-format '(todo . " "))
+;; to remove previous adaptation   (setq org-agenda-prefix-format (delete  '(todo . " ") org-agenda-prefix-format))
+#+END_SRC
+
+
 ** WAITING add interactive function to add directory to scan agenda files :urgent:
 
 [[/Users/tangrammer/.emacs.d/straight/repos/org/lisp/org.el::3136][If an entry is a directory, all files in that directory that are matched
 by `org-agenda-file-regexp' will be part of the file list.]]
+
+#+BEGIN_SRC untangle :results silent
+org-agenda-files
+(setq org-agenda-files '("~/org-roam"))
+
+#+END_SRC
