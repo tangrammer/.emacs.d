@@ -1,12 +1,129 @@
+#+title: orgmode element
 :PROPERTIES:
 :ID:       08EED441-17E3-46FA-812C-F0E6CC4A7896
 :END:
-#+title: org-element
 
-utils to work with orgmode elements
+utils to work with [[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]] elements
 
+[[id:AA646BB0-63E4-4EE3-A958-4FD9B0FEDBCC][WIP]]
+
+https://emacs.stackexchange.com/questions/35042/parsing-an-orgmode-file-with-org-element-parse-buffer
+
+*org-element-interpret-data* is the reciprocal operation of *org-element-parse-buffer*
+
+
+https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
 
 #+BEGIN_SRC emacs-lisp :results silent
   (defun t/org/element/name-at-point ()
     (plist-get (cadr (org-element-at-point)) :name))
 #+END_SRC
+
+* Example of *org-element-parse-buffer*
+ #+BEGIN_SRC emacs-lisp
+ ;; the org data is a current buffer
+ (defun org-ast-buffer (buffer-n)
+   (with-current-buffer buffer-n (org-mode)
+                        (org-element-parse-buffer)))
+ ;; eg: (org-ast-buffer "org-example.org")
+
+ ;; the org data is a current file
+ (defun org-ast (file)
+   (with-temp-buffer (insert-file-contents file)
+                     (org-mode)
+                     (org-element-parse-buffer)))
+
+ (defun extract-table-from-parsed-org (tb-name parsed-org-ast)
+   (org-element-map parsed-org-ast 'table
+     (lambda (element)
+       (when (string= tb-name (org-element-property :name element))
+         element))
+     nil                                 ;info
+     t ))
+
+ (setq datum (org-ast "./org-example.org"))
+ (setq tblname "data-1")
+
+ (setq table  (extract-table-from-parsed-org tblname datum))
+
+ ;; step-1, read table values and print values to *Messages*
+ (with-temp-buffer (insert-file-contents "./org-example.org")
+                   (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+                     (goto-char (org-element-property :contents-begin extracted-table))
+                     (let ((contents (org-table-to-lisp)))
+                       (dolist (row contents)
+                         (unless (eq row 'hline)
+                           (princ row)
+                           (princ "\n"))))))
+ ;; step-2, read table values and eval as lisp
+ (with-temp-buffer (insert-file-contents "./org-example.org")
+                   (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+                     (goto-char (org-element-property :contents-begin extracted-table))
+                     (let ((format "lisp")
+                           (contents (org-table-to-lisp)))
+                       (dolist (row contents)
+                         (unless
+                             ;; when not is a line not the first comlum is call function-name
+                             (or
+                                  (and
+                                   (not (eq row 'hline))
+                                   (string= (-first-item row) "function-name") )
+                                  (eq row 'hline))
+                           ;; destructure expected row pattern
+                           (-let (((function-name alias-function namespaces) row))
+                             (message (format "%s - %s -%s"  (symbolp (intern function-name)) (symbolp (intern alias-function)) namespaces))
+                             (alias alias-function (intern function-name))
+                             (eval (car (read-from-string (format "%s"(alias alias-function (intern function-name))))))
+                             ))))))
+
+ (intern "ey")
+
+
+ (defmacro alias (f-name var)
+   ``(defun ,(make-symbol ,f-name) ()
+       (interactive)
+       (call-interactively ',,var)))
+
+
+ (parseedn-print-str (org-ast "./org-example.org"))
+ ;; (setq max-lisp-eval-depth 50000)
+                                         ;, (setq max-specpdl-size 50000)
+
+ (comment (with-temp-file "./data2.el"
+            (insert (parseedn-print-str datum ))
+
+            ))
+
+ (defun my-write (file data)
+   (with-temp-file "./data.el"
+     (prin1 (org-ast "../configuration/org-example.org") (current-buffer))
+
+     )
+   )
+
+ (comment "WIP"
+          (with-current-buffer "data.el"
+            (insert (to-string (org-ast "../configuration/org-example.org")))
+            (elisp-format-buffer)
+            (save-buffer)))
+
+
+ #+END_SRC
+
+
+
+
+* org-element-map
+
+ #+BEGIN_SRC emacs-lisp
+ org-element-map
+ #+END_SRC
+
+
+
+
+
+* advanced implementation examples
+
+#+DOWNLOADED: file:/Users/tangrammer/Downloads/Using-org-mode-outside-of-Emacs---sort-of.org @ 2021-11-29 13:13:48
+[[file:images/20211129-131348_Using-org-mode-outside-of-Emacs---sort-of.org]]
