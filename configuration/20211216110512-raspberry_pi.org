@@ -1,0 +1,132 @@
+:PROPERTIES:
+:ID:       5DA1D131-93C4-4B44-B670-3E9741DAE461
+:END:
+#+title: raspberry pi
+
+
+
+#+DOWNLOADED: file:/Users/tangrammer/Desktop/Screenshot 2021-12-16 at 11.09.08.png @ 2021-12-16 11:09:29
+[[file:images/20211216-110929_Screenshot 2021-12-16 at 11.09.08.png]]
+
+
+* Accessing the GPIO Pins from a [[id:746B6667-E973-4778-86C9-96F6CE3C5AEA][Bash]] Script
+Without adding further dependencies, Bash scripts can access and control the Pi’s [[id:5CDB7E44-C8A9-4365-9435-53B927682069][GPIO]] pins using sysfs. This presents as a set of filesystem paths which can be manipulated to configure individual pins as inputs or outputs and to set and read their values. On the Pi, these paths look like:
+
+~/sys/class/gpio/gpio<pin_number>~
+and each has a /direction and /value, for example for GPIO 11:
+~/sys/class/gpio/gpio11/direction~
+~/sys/class/gpio/gpio11/value~
+As we will see later in this article, the direction and value can be set by writing values to these “paths” as the root user on the Pi.
+The pin numbering scheme used by sysfs is the Broadcom (BCM) one, so the pin numbers that you need to use will match those in the diagram earlier in this article.
+
+
+#+BEGIN_SRC shell
+#!/bin/bash
+
+# Common path for all GPIO access
+BASE_GPIO_PATH=/sys/class/gpio
+
+# Assign names to GPIO pin numbers for each light
+RED=9
+YELLOW=10
+GREEN=11
+
+# Assign names to states
+ON="1"
+OFF="0"
+
+# Utility function to export a pin if not already exported
+exportPin()
+{
+    if [ ! -e $BASE_GPIO_PATH/gpio$1 ]; then
+        echo "$1" > $BASE_GPIO_PATH/export
+    fi
+}
+
+# Utility function to set a pin as an output
+setOutput()
+{
+    echo "out" > $BASE_GPIO_PATH/gpio$1/direction
+}
+
+# Utility function to change state of a light
+setLightState()
+{
+    echo $2 > $BASE_GPIO_PATH/gpio$1/value
+}
+
+# Utility function to turn all lights off
+allLightsOff()
+{
+    setLightState $RED $OFF
+    setLightState $YELLOW $OFF
+    setLightState $GREEN $OFF
+}
+
+# Ctrl-C handler for clean shutdown
+shutdown()
+{
+    allLightsOff
+    exit 0
+}
+
+trap shutdown SIGINT
+
+# Export pins so that we can use them
+exportPin $RED
+exportPin $YELLOW
+exportPin $GREEN
+
+# Set pins as outputs
+setOutput $RED
+setOutput $YELLOW
+setOutput $GREEN
+
+# Turn lights off to begin
+allLightsOff
+
+# Loop forever until user presses Ctrl-C
+while [ 1 ]
+do
+    # Red
+    setLightState $RED $ON
+    sleep 3
+
+    # Red and Yellow
+    setLightState $YELLOW $ON
+    sleep 1
+
+    # Green
+    setLightState $RED $OFF
+    setLightState $YELLOW $OFF
+    setLightState $GREEN $ON
+    sleep 5
+
+    # Yellow
+    setLightState $GREEN $OFF
+    setLightState $YELLOW $ON
+    sleep 2
+
+    # Yellow off
+    setLightState $YELLOW $OFF
+done
+#+END_SRC
+
+
+Lines 1–13 set up some variables so that things we need have more meaningful names. The red LED is on GPIO 9, yellow on 10 and green on 11. We also abstract out the common base path /sys/class/gpio as we will be using that a lot. ON and OFF are used as they are more meaningful than the actual 1 and 0 values that the script will use.
+Exporting Pins
+In order to use a GPIO pin through sysfs, we first have to “export” each one to make the appropriate paths available. The function exportPin at lines 16–21 does this. For example to export pin 9 it will use the following command (once all variables have been resolved to their values):
+echo "9" > /sys/class/gpio/export
+This creates paths in /sys/class/gpio for pin 9 but will error if those paths exist already. To overcome this the exportPin function checks first and will only export a pin if the path to it does not yet exist.
+Setting Pin Direction
+Pins can be used for input or output. In this case we need to use them as outputs to control each of the three LEDs on the traffic lights. The function setOutput (lines 24–27) does this by sending “out” to the “direction” path for the pin. Example for GPIO 9:
+echo "out" > /sys/class/gpio/gpio9/direction
+Turning Lights On and Off
+Function setLightState at lines 30–33 handles turning one of the lights on and off by setting its GPIO pin to high (1 — on) or low (0 — off). It does this by writing either 1 or 0 to the “value” path for the pin. Example for GPIO 9:
+echo "1" > /sys/class/gpio/gpio9/value
+Turning Everything Off on Exit
+The code’s going to run in an infinite loop exiting when Ctrl-C is pressed and the SIGINT signal is sent. In order to tidy up and turn all three of the lights off when this happens we need to trap and handle the SIGINT signal. This is achieved with lines 44–50 which define a function shutdown and register it as the handler for SIGINT.
+shutdown calls another utility function that in turn calls setLightState for each of the three lights to switch them off. It then uses exit to cleanly stop the script, returning control to the shell.
+The Main Code Loop
+The main code entry point starts at line 52 and uses the functions we defined earlier to export each of the three required pins and to set them as outputs. It then calls the utility function allLightsOff which ensures that all three of the traffic light LEDs are turned off so that we are in a known state to begin from.
+Lines 66–89 are an infinite loop in which we use setLightState to turn individual traffic light LEDs on and off in the correct order for a UK traffic light (red, red + yellow, green, yellow, red, repeat…). The built in sleep command allows the code to stay in each state for a few seconds before moving to the next.

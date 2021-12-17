@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       5CDB7E44-C8A9-4365-9435-53B927682069
+:END:
+#+title: GPIO
+
+* General-purpose input/output
+https://en.wikipedia.org/wiki/General-purpose_input/output
