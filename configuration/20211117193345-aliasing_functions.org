@@ -8,31 +8,95 @@
 https://nullprogram.com/blog/2019/12/10/
 
 
+* learning-mode IMPL
+:PROPERTIES:
+:ID:       3D6782D5-75BA-4A60-AB7E-E5E616CDB1FA
+:END:
+
+** data structures
+
+- function-alias
+#+BEGIN_SRC emacs-lisp
+
+ [:function-name :aliases-function-names :namespaces]
+
+ #+END_SRC
+
+
+* [100%] Functionality:
+- [X] elisp interactive-fun to grab function-alias data-type
+- [X] write function-alias inside an org table
+- [X] parse org with org element (using [[/Users/tangrammer/.emacs.d/configuration/20201213195002-org_element.org::25][org-element]] api))
+  - [X] write org table
+  - [X] eval elisp code based on org-mode-table => [[/Users/tangrammer/.emacs.d/configuration/20201213195002-org_element.org::96][link]]
+- [ ] search functions by category
+
+* [0%] Extra features
+- [ ] [[id:B45ADBF7-D7E6-4AB7-B2CA-5ACE1BFF1A3D][datalevin]] to read/query
+- [ ] optional store last args from repeated command
+  if there is last args then call interactively with these args
+
+
+* TODO elisp store last args
+:PROPERTIES:
+:ID:       323F60EC-7558-4765-9EFD-4515F3F10E52
+:END:
+https://emacs.stackexchange.com/questions/13100/repeating-any-last-command-complex-or-not
+
+ #+BEGIN_SRC emacs-lisp
+ (defun repeat-complex-command-no-confirm ()
+   "..."
+   (interactive)
+   (let* ((hist  command-history)
+          newcmd)
+     (while (eq 'repeat-complex-command-no-confirm (caar hist))
+       (setq hist  (cdr hist)))
+     (setq newcmd  (car hist))
+     (if newcmd
+         (apply #'funcall-interactively (car newcmd)
+                (mapcar (lambda (ee) (eval ee t)) (cdr newcmd)))
+       (error "There are no previous complex commands to repeat"))))
+
+(defun my-repeat ()
+  "..."
+  (interactive)
+  (if (eq last-command (caar command-history))
+      (repeat-complex-command-no-confirm)
+    (call-interactively last-command))
+  (setq this-command  last-command))
+
+;;(global-set-key "\C-o" 'my-repeat) ; Bind it to a repeatable key
+
+ #+END_SRC
+
+
 * TODO save alias function
 
 
   #+BEGIN_SRC emacs-lisp :results silent
 
-(get-buffer "funs.el")
+  (get-buffer "funs.el")
 
-(defmacro alias (f-name var)
-  ``(defun ,(make-symbol ,f-name) ()
-      (interactive)
-      (call-interactively ',,var)))
+  (defmacro alias (f-name var)
+    ``(defun ,(make-symbol ,f-name) ()
+        (interactive)
+        (call-interactively ',,var)))
 
-(comment
- (alias "tangrammer-ole" last-command)
- (make-symbol "s"))
+  (comment
+   (alias "tangrammer-ole" last-command)
+   (make-symbol "s"))
 
-(defun write-fun (s)
-  (interactive "sFunction name:")
-  (with-current-buffer "funs.el"
-    (newline)
-    (insert (to-string (alias s last-command)))
-    (elisp-format-buffer)
-    (save-buffer)
+  (defun write-fun (s)
+    (interactive "sFunction name:")
+    (with-current-buffer "funs.el"
+      (newline)
+      (insert (to-string (alias s last-command)))
+      (elisp-format-buffer)
+      (save-buffer)
+      )
     )
-  )
+
+
 
 
 

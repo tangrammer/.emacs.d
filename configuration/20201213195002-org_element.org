@@ -41,11 +41,11 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
      nil                                 ;info
      t ))
 
- (setq datum (org-ast "./org-example.org"))
+ (setq path-file "org-example.org")
+ (setq datum (org-ast path-file))
  (setq tblname "data-1")
 
  (setq table  (extract-table-from-parsed-org tblname datum))
-
  ;; step-1, read table values and print values to *Messages*
  (with-temp-buffer (insert-file-contents "./org-example.org")
                    (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
@@ -55,34 +55,77 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
                          (unless (eq row 'hline)
                            (princ row)
                            (princ "\n"))))))
+
+
  ;; step-2, read table values and eval as lisp
- (with-temp-buffer (insert-file-contents "./org-example.org")
-                   (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
-                     (goto-char (org-element-property :contents-begin extracted-table))
-                     (let ((format "lisp")
-                           (contents (org-table-to-lisp)))
-                       (dolist (row contents)
-                         (unless
-                             ;; when not is a line not the first comlum is call function-name
-                             (or
-                                  (and
-                                   (not (eq row 'hline))
-                                   (string= (-first-item row) "function-name") )
-                                  (eq row 'hline))
-                           ;; destructure expected row pattern
-                           (-let (((function-name alias-function namespaces) row))
-                             (message (format "%s - %s -%s"  (symbolp (intern function-name)) (symbolp (intern alias-function)) namespaces))
-                             (alias alias-function (intern function-name))
-                             (eval (car (read-from-string (format "%s"(alias alias-function (intern function-name))))))
-                             ))))))
+ (defun eval-defs (path-file tblname)
+   (let ((datum (org-ast path-file)))
+     (with-temp-buffer (insert-file-contents path-file)
+                            (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+                              (goto-char (org-element-property :contents-begin extracted-table))
+                              (let ((format "lisp")
+                                    (contents (org-table-to-lisp)))
+                                (dolist (row contents)
+                                  (unless
+                                      ;; when not is a line not the first comlum is call function-name
+                                      (or
+                                       (and
+                                        (not (eq row 'hline))
+                                        (string= (-first-item row) "function-name") )
+                                       (eq row 'hline))
+                                    ;; destructure expected row pattern
+                                    (-let (((function-name alias-function namespaces) row))
+                                      ;; following line only print row data
+                                      (message (format "%s - %s -%s"  (symbolp (intern function-name)) (symbolp (intern alias-function)) namespaces))
+                                      ;; belong only generate code but don't eval it
+                                      ;; (alias alias-function (intern function-name))
+                                      (eval (car (read-from-string (format "%s" (alias alias-function (intern function-name))))))))))))))
 
- (intern "ey")
+ ;; step-3, try to insert a new table row value
+ (defun write-new-alias (path-file tblname fun alias categories)
+   (let ((datum (org-ast path-file)))
+     (with-current-buffer (find-file-noselect path-file)
+       (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+         (goto-char (org-element-property :contents-end extracted-table))
+         (insert (format "\t|%s|%s|%s|\n" fun alias (if categories (s-join ", " categories) "")))
+         (org-table-align)
+         (save-buffer))))
+   ;; eval again all defs
+   (eval-defs path-file tblname))
 
 
- (defmacro alias (f-name var)
-   ``(defun ,(make-symbol ,f-name) ()
-       (interactive)
-       (call-interactively ',,var)))
+ ;; eg (write-new-alias path-file tblname 'find-file 'wow '("chachi" "osospichi"))
+ (defun aprende (alias categories)
+   (interactive (list (read-string "Tu nombre preferido de función: ") (read-categories)))
+
+   (write-new-alias tblname datum (intern (to-string last-command)) (intern alias) categories)
+   )
+
+ (defun jo (uno &rest r)
+   (format "%s %s" uno (when r (s-join ", " r)))
+   )
+ (jo "isis" "usus" "dos")
+
+ (defun read-categories ()
+   (let (tags tag done)
+     (while (not done)
+       (setq tag (read-string "categoría: "))
+       (if (string-empty-p tag)
+           (setq done t)
+         (push tag tags)))
+     (nreverse tags)))
+
+ (defun my-test (title tags)
+   (interactive (list (read-string "Title: ") (read-categories)))
+   (message "%s: %s" title tags))
+
+
+
+ (comment "already defined in aliasing functions"
+          (defmacro alias (f-name var)
+            ``(defun ,(make-symbol ,f-name) ()
+                (interactive)
+                (call-interactively ',,var))))
 
 
  (parseedn-print-str (org-ast "./org-example.org"))
@@ -118,10 +161,6 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
  #+BEGIN_SRC emacs-lisp
  org-element-map
  #+END_SRC
-
-
-
-
 
 * advanced implementation examples
 
