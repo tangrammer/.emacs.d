@@ -103,3 +103,26 @@ example output of =t/org/insert-table-names=
     :straight (ftable :type git :host github :repo "casouri/ftable")
     )
   #+END_SRC
+
+
+* org-listtable-to-string. It's the reverse of org-table-to-lisp.
+
+;; https://stackoverflow.com/a/22146049
+;; answer from abo-abo
+;; code found https://github.com/tkf/org-mode/blob/c2ebeea6f68f2ef804d387c238e4acccf655dc64/lisp/org-colview.el#L1326
+
+#+BEGIN_SRC emacs-lisp :results silent
+(defun org-listtable-to-string (tbl)
+  "Convert a listtable TBL to a string that contains the Org-mode table.
+The table still need to be aligned.  The resulting string has no leading
+and tailing newline characters."
+  (mapconcat
+   (lambda (x)
+     (cond
+      ((listp x)
+       (concat "|" (mapconcat 'identity x "|") "|"))
+      ((eq x 'hline) "|-|")
+      (t (error "Garbage in listtable: %s" x))))
+   tbl "\n"))
+
+#+END_SRC
