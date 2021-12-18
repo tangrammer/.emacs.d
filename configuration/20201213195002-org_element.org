@@ -21,6 +21,8 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
 
 * Example of *org-element-parse-buffer*
  #+BEGIN_SRC emacs-lisp
+ ;;; -*- lexical-binding: t; -*-
+
  ;; the org data is a current buffer
  (defun org-ast-buffer (buffer-n)
    (with-current-buffer buffer-n (org-mode)
@@ -85,18 +87,26 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
        ;; (alias alias-function (intern function-name))
        (eval-code-string (format "%s" (alias alias-function (intern function-name)))))))
 
+
+ (defun alias-row-fun (fun alias categories)
+   (lambda ()
+     (insert (format "|%s|%s|%s|\n" fun alias (if categories (s-join ", " categories) "")))))
+
+ ;; (funcall (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
+
+
  ;; step-3, try to insert a new table row value
- (defun write-new-alias (path-file tblname fun alias categories)
+ (defun write-new-row (path-file tblname row-fun)
    (let ((datum (org-ast path-file)))
      (with-current-buffer (find-file-noselect path-file)
        (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
          (goto-char (org-element-property :contents-end extracted-table))
-         (insert (format "\t|%s|%s|%s|\n" fun alias (if categories (s-join ", " categories) "")))
+         (funcall row-fun)
          (org-table-align)
          (save-buffer))))
-   ;; eval again all defs
-   (eval-defs path-file tblname #'row-alias-fun))
- ;; eg (write-new-alias path-file tblname 'find-file 'wow '("chachi" "osospichi"))
+   )
+
+ ;; eg (write-new-row path-file tblname (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
 
  (setq categories '())
 
@@ -154,7 +164,9 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
    (interactive (list
                  (read-string "Tu nombre preferido de función: ")
                  (read-categories)))
-   (write-new-alias path-file tblname (intern (to-string last-command)) (intern alias) categories))
+   (write-new-row path-file tblname (alias-row-fun (intern (to-string last-command)) (intern alias) categories))
+     ;; eval again all defs
+   (eval-defs path-file tblname #'row-alias-fun))
  #+END_SRC
 
 
