@@ -12,3 +12,41 @@ add [[id:FEF71DEB-610B-44E2-88E8-CE2AED6F0091][paredit mode]] hook
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
 #+END_SRC
+
+* list modifications
+:PROPERTIES:
+:ID:       491A109A-E64D-404B-8CEC-78AC680FB23E
+:END:
+https://www.emacswiki.org/emacs/ListModification#h5o-1
+
+* remove text properties
+:PROPERTIES:
+:ID:       F1091FA3-21F4-4582-91C2-41C1314F9570
+:END:
+https://emacs.stackexchange.com/a/31226
+
+
+example, in elisp strings can be defined/returned as text property list
+... but when you output them to other contexts they always as shown as normal strings
+#+BEGIN_SRC emacs-lisp
+(setq foo #("foo" 0 3 (fontified t face font-lock-function-name-face)))
+(format "%s" foo)
+#+END_SRC
+
+#+RESULTS:
+: foo
+
+#+BEGIN_SRC emacs-lisp
+(shell-command-to-string (format "string=\"%s\"; echo $string"  #("foo sended and recieved from shell" 0 3 (fontified t face font-lock-function-name-face))))
+#+END_SRC
+
+#+RESULTS:
+: foo sended and recieved from shell
+
+
+
+
+~substring-no-properties~
+
+more on text properties
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Text-Properties.html
