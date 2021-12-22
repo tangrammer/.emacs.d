@@ -1,16 +1,15 @@
-#+title: orgmode element
+#+title: org element
 :PROPERTIES:
-:ID:       08EED441-17E3-46FA-812C-F0E6CC4A7896
+:ID:       AF667772-058A-45FF-AC6D-3F4285012322
 :END:
 
-utils to work with [[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]] elements
+* org-element
 
-[[id:AA646BB0-63E4-4EE3-A958-4FD9B0FEDBCC][WIP]]
+utils to work with [[id:6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682][org-mode]] elements
 
 https://emacs.stackexchange.com/questions/35042/parsing-an-orgmode-file-with-org-element-parse-buffer
 
 *org-element-interpret-data* is the reciprocal operation of *org-element-parse-buffer*
-
 
 https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
 
@@ -21,162 +20,237 @@ https://orgmode.org/worg/dev/org-element-api.html#org0e52fe6
 
 * Example of *org-element-parse-buffer*
  #+BEGIN_SRC emacs-lisp
- ;;; -*- lexical-binding: t; -*-
+  ;;; -*- lexical-binding: t; -*-
 
- ;; the org data is a current buffer
- (defun org-ast-buffer (buffer-n)
-   (with-current-buffer buffer-n (org-mode)
-                        (org-element-parse-buffer)))
- ;; eg: (org-ast-buffer "org-example.org")
+  ;; the org data is a current buffer
+  (defun org-ast-buffer (buffer-n)
+    (with-current-buffer buffer-n (org-mode)
+                         (org-element-parse-buffer)))
+  ;; eg: (org-ast-buffer "org-example.org")
 
- ;; the org data is a current file
- (defun org-ast (file)
-   (with-temp-buffer (insert-file-contents file)
-                     (org-mode)
-                     (org-element-parse-buffer)))
+  ;; the org data is a current file
+  (defun org-ast (file)
+    (with-temp-buffer (insert-file-contents file)
+                      (org-mode)
+                      (org-element-parse-buffer)))
+
+ (defun extract-element-from-org-ast (type name ast)
+   "returns the element based on org-type and name "
+    (org-element-map ast type
+      (lambda (element)
+        (when (string= name (org-element-property :name element))
+          element))
+      nil
+      t ))
 
  (defun extract-table-from-parsed-org (tb-name parsed-org-ast)
-   (org-element-map parsed-org-ast 'table
-     (lambda (element)
-       (when (string= tb-name (org-element-property :name element))
-         element))
-     nil                                 ;info
-     t ))
+    (extract-element-from-org-ast 'table tb-name parsed-org-ast))
 
- (setq path-file "org-example.org")
- (setq datum (org-ast path-file))
- (setq tblname "data-1")
+  (setq path-file "org-example.org")
+  (setq datum (org-ast path-file))
+  (setq tblname "data-1")
 
- (setq table  (extract-table-from-parsed-org tblname datum))
- ;; step-1, read table values and print values to *Messages*
- (with-temp-buffer (insert-file-contents path-file)
-                   (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
-                     (goto-char (org-element-property :contents-begin extracted-table))
-                     (let ((contents (org-table-to-lisp)))
-                       (dolist (row contents)
-                         (unless (eq row 'hline)
-                           (princ row)
-                           (princ "\n"))))))
+  (setq table  (extract-table-from-parsed-org tblname datum))
+  ;; step-1, read table values and print values to *Messages*
+ ;; (setq test-lisp-to-table)
 
- ;; step-2, read table values and eval as lisp
- (defun eval-defs (path-file tblname row-fun)
-   (let ((datum (org-ast path-file)))
-     (with-temp-buffer (insert-file-contents path-file)
-                            (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
-                              (goto-char (org-element-property :contents-begin extracted-table))
-                              (let ((format "lisp")
-                                    (contents (org-table-to-lisp)))
-                                (dolist (row contents)
-                                  (funcall row-fun row)))))))
- (defun eval-code-string (s)
-   (eval (car (read-from-string s))))
+  (with-temp-buffer (insert-file-contents path-file)
+                    (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+                      (goto-char (org-element-property :contents-begin extracted-table))
+                      (let ((contents (org-table-to-lisp)))
+ ;;                       (setq test-lisp-to-table contents)
+ ;;                       (org-listtable-to-string test-lisp-to-table)
+                        (dolist (row contents)
+                          (unless (eq row 'hline)
+                            (princ row)
+                            (princ "\n"))))))
 
- (defun row-alias-fun (row)
-   (unless
-       ;; when not is a line not the first comlum is call function-name
-       (or
-        (and
-         (not (eq row 'hline))
-         (string= (-first-item row) "function-name") )
-        (eq row 'hline))
-     ;; destructure expected row pattern
-     (-let (((function-name alias-function namespaces) row))
-       ;; following line only print row data
-       (message (format "%s - %s -%s"  (symbolp (intern function-name)) (symbolp (intern alias-function)) namespaces))
-       ;; belong only generate code but don't eval it
-       ;; (alias alias-function (intern function-name))
-       (eval-code-string (format "%s" (alias alias-function (intern function-name)))))))
+  ;; step-2, read table values and eval as lisp
+  (defun eval-defs (path-file tblname row-fun)
+    (let ((datum (org-ast path-file)))
+      (with-temp-buffer (insert-file-contents path-file)
+                             (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+                               (goto-char (org-element-property :contents-begin extracted-table))
+                               (let ((format "lisp")
+                                     (contents (org-table-to-lisp)))
+                                 (dolist (row contents)
+                                   (funcall row-fun row)))))))
+  (defun eval-code-string (s)
+    (eval (car (read-from-string s))))
 
-
- (defun alias-row-fun (fun alias categories)
-   (lambda ()
-     (insert (format "|%s|%s|%s|\n" fun alias (if categories (s-join ", " categories) "")))))
-
- ;; (funcall (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
+  (defun row-alias-fun (row)
+    (unless
+        ;; when not is a line not the first comlum is call function-name
+        (or
+         (and
+          (not (eq row 'hline))
+          (string= (-first-item row) "function-name") )
+         (eq row 'hline))
+      ;; destructure expected row pattern
+      (-let (((function-name alias-function namespaces) row))
+        ;; following line only print row data
+        (message (format "%s - %s -%s"  (symbolp (intern function-name)) (symbolp (intern alias-function)) namespaces))
+        ;; belong only generate code but don't eval it
+        ;; (alias alias-function (intern function-name))
+        (eval-code-string (format "%s" (alias alias-function (intern function-name)))))))
 
 
- ;; step-3, try to insert a new table row value
- (defun write-new-row (path-file tblname row-fun)
-   (let ((datum (org-ast path-file)))
-     (with-current-buffer (find-file-noselect path-file)
-       (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
-         (goto-char (org-element-property :contents-end extracted-table))
-         (funcall row-fun)
-         (org-table-align)
-         (save-buffer))))
+  (defun alias-row-fun (fun alias categories)
+    (lambda ()
+      (insert (format "|%s|%s|%s|\n" fun alias (if categories (s-join ", " categories) "")))))
+
+  ;; (funcall (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
+
+
+  ;; step-3, try to insert a new table row value
+  (defun write-new-row (path-file tblname row-fun)
+    (let ((datum (org-ast path-file)))
+      (with-current-buffer (find-file-noselect path-file)
+        (-when-let (extracted-table (extract-table-from-parsed-org tblname datum))
+          (goto-char (org-element-property :contents-end extracted-table))
+          (funcall row-fun)
+          (org-table-align)
+          (save-buffer))))
+    )
+
+  ;; eg (write-new-row path-file tblname (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
+
+  (setq categories '())
+
+  (defun row-category-fun (row)
+    (unless
+        ;; when not is a line not the first comlum is call function-name
+        (or
+         (and
+          (not (eq row 'hline))
+          (string= (-first-item row) "category-name") )
+         (eq row 'hline))
+      ;; destructure expected row pattern
+      (-let (((category-name) row))
+        ;; following line only print row data
+        (when category-name
+         (setq categories (append (list category-name) categories)))
+        (message (format "%s"  category-name))
+        (format "%s"  category-name))))
+
+  (defun load-categories-from-org-table ()
+    (progn
+      (setq categories '())
+      (eval-defs path-file "categories" #'row-category-fun)
+      categories))
+
+  (defun read-categories-from-org-table ()
+    (let (tags tag done)
+      (while (not done)
+        (setq tag (completing-read "Choose: " (-difference (load-categories-from-org-table) tags) nil t))
+        (if (string-empty-p tag)
+            (setq done t)
+          (push tag tags)))
+      (nreverse tags)))
+
+  (defun read-categories ()
+    (let (tags tag done)
+      (while (not done)
+        (setq tag (read-string "categoría: "))
+        (if (string-empty-p tag)
+            (setq done t)
+          (push tag tags)))
+      (nreverse tags)))
+
+  (defun interactive-test-categories (title tags)
+    (interactive (list (read-string "Title: ") (read-categories-from-org-table)))
+    (message "%s: %s" title tags))
+
+  (comment "already defined in aliasing_functions.el"
+           (defmacro alias (f-name var)
+             ``(defun ,(make-symbol ,f-name) ()
+                 (interactive)
+                 (call-interactively ',,var))))
+
+  (defun aprende (alias categories)
+    (interactive (list
+                  (read-string "Tu nombre preferido de función: ")
+                  (read-categories)))
+    (write-new-row path-file tblname (alias-row-fun (intern (to-string last-command)) (intern alias) categories))
+      ;; eval again all defs
+    (eval-defs path-file tblname #'row-alias-fun))
+ #+END_SRC
+
+* IN PROGRESS understanding org-element-map
+ #+BEGIN_SRC untangle
+ (setq data nil)
+ (org-element-map (org-ast-buffer (get-buffer "*scratch*")) 'headline
+   (lambda (element)
+     (format "%s" element)
+     (setq data element)
+        )
+      nil                                 ;info
+      t )
+
+ (setq tree (org-ast "hola"))
+
+ (substring-no-properties (org-element-interpret-data tree))
+
+ (org-element-map tree 'headline
+   (lambda (element)
+ ;;        (format "%s" element)
+     (org-element-set-element element data )
+        )
+
    )
 
- ;; eg (write-new-row path-file tblname (alias-row-fun 'find-file 'wow '("chachi" "ddosospichi")))
 
- (setq categories '())
 
- (defun row-category-fun (row)
-   (unless
-       ;; when not is a line not the first comlum is call function-name
-       (or
-        (and
-         (not (eq row 'hline))
-         (string= (-first-item row) "category-name") )
-        (eq row 'hline))
-     ;; destructure expected row pattern
-     (-let (((category-name) row))
-       ;; following line only print row data
-       (when category-name
-        (setq categories (append (list category-name) categories)))
-       (message (format "%s"  category-name))
-       (format "%s"  category-name))))
 
- (defun load-categories-from-org-table ()
-   (progn
-     (setq categories '())
-     (eval-defs path-file "categories" #'row-category-fun)
-     categories))
 
- (defun read-categories-from-org-table ()
-   (let (tags tag done)
-     (while (not done)
-       (setq tag (completing-read "Choose: " (-difference (load-categories-from-org-table) tags) nil t))
-       (if (string-empty-p tag)
-           (setq done t)
-         (push tag tags)))
-     (nreverse tags)))
 
- (defun read-categories ()
-   (let (tags tag done)
-     (while (not done)
-       (setq tag (read-string "categoría: "))
-       (if (string-empty-p tag)
-           (setq done t)
-         (push tag tags)))
-     (nreverse tags)))
 
- (defun interactive-test-categories (title tags)
-   (interactive (list (read-string "Title: ") (read-categories-from-org-table)))
-   (message "%s: %s" title tags))
+ ;; regexr.com/6buhv
+ #("ddd")
 
- (comment "already defined in aliasing_functions.el"
-          (defmacro alias (f-name var)
-            ``(defun ,(make-symbol ,f-name) ()
-                (interactive)
-                (call-interactively ',,var))))
+ (org-element-interpret-data
+  (-third-item tree)
+ )
 
- (defun aprende (alias categories)
-   (interactive (list
-                 (read-string "Tu nombre preferido de función: ")
-                 (read-categories)))
-   (write-new-row path-file tblname (alias-row-fun (intern (to-string last-command)) (intern alias) categories))
-     ;; eval again all defs
-   (eval-defs path-file tblname #'row-alias-fun))
+ (format "%s" (org-element-interpret-data tree))
+ (org-element-interpret-data
+      '(org-data nil (paragraph (:name "para") "Paragraph")))
+
+
+ (length data)
+ (-second-item data)
+
+ (a-get  (apply #'a-list  '(:abc 123 :def 456 :foo 7)) :abc)
+ (a-keys  (apply #'a-list  (-second-item data)))
+ (a-get  (apply #'a-list  (-second-item data)) :contents-begin)
+ (a-get  (apply #'a-list  (-second-item data)) :contents-end)
  #+END_SRC
 
 
+* IN PROGRESS find key
+get programmatically function key-bindings
+from kbd internal representation keys to human representation: https://stackoverflow.com/a/7292684
 
+#+BEGIN_SRC untangle :results silent
+global-set-key
+define-key
+(describe-function-1 #'find-file)
+(where-is-internal #'org-edit-src-save nil overriding-local-map)
+(where-is-internal #'find-file )
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Scanning-Keymaps.html
+(where-is-internal #'find-file nil t t)
+(where-is-internal #'org-edit-src-save nil t t)
+(global-set-key)
+(kbd "C-x C-p")
 
-* org-element-map
+(key-description [24 16])
+(key-description (kbd "C-x C-p"))
 
- #+BEGIN_SRC emacs-lisp
- org-element-map
- #+END_SRC
+(function-get 'find-file 'key-binding)
+describe-function
+
+#+END_SRC
+
 
 * advanced implementation examples
 
