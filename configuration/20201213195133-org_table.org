@@ -126,3 +126,8 @@ and tailing newline characters."
    tbl "\n"))
 
 #+END_SRC
+
+
+
+* TODO aggregate org tables
+https://github.com/tbanel/orgaggregate
