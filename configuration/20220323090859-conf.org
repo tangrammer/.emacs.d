@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       6D9BFD3A-1E21-48C7-A8E4-85BAA76D9849
+:END:
+#+title: org elisp conf
+
+* TODO more on reading/loading elisp from org files
+https://github.com/jingtaozf/literate-elisp
