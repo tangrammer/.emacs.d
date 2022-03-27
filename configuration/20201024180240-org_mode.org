@@ -202,8 +202,27 @@ https://www.graphviz.org/pdf/dotguide.pdf
 
 
 
+* awth13/org-appear
+https://github.com/awth13/org-appear
+Make invisible parts of Org elements appear visible.
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package org-appear
+  :straight (org-appear :type git :host github :repo "awth13/org-appear")
+  :hook org-mode-hook
+  )
+
+#+END_SRC
+
+
 
 * sheijk/org-menu
+https://github.com/sheijk/org-menu
+
+A menu for editing org-mode documents and exploring it’s features in a discoverable way.
+
+It is using transient, the package to create interactive menus magit uses.
+
 
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package org-menu
