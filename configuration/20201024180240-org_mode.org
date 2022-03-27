@@ -199,3 +199,16 @@ graph {
 
 https://www.tonyballantyne.com/graphs.html#orgheadline2
 https://www.graphviz.org/pdf/dotguide.pdf
+
+
+
+
+* sheijk/org-menu
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package org-menu
+  :straight (org-menu :type git :host github :repo "sheijk/org-menu")
+  :bind ("C-c m" . org-menu)
+  )
+
+#+END_SRC
