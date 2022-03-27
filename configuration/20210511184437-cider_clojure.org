@@ -117,3 +117,28 @@
 
 
  #+END_SRC
+
+
+
+*** CANCELLED format
+https://practical.li/spacemacs/improving-code/formatting/aligning-forms-expressions.html#aligning-forms-and-expressions
+
+problem: interfer with CI clj format expectations, so cancelling so far
+#+BEGIN_SRC untangle :results silent
+(setq clojure-indent-style 'align-arguments)
+(setq clojure-align-forms-automatically t)
+
+#+END_SRC
+
+
+
+*** utils
+
+**** remove-ns
+just a quick shortcut for refresh/reset repl compiling problem
+#+BEGIN_SRC emacs-lisp :results silent
+(defun remove-ns()
+    (interactive)
+    (with-current-buffer (current-buffer)
+      (cider-interactive-eval "(remove-ns (symbol (str *ns*)))")))
+#+END_SRC
