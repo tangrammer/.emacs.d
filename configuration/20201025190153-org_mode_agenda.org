@@ -1,8 +1,8 @@
-#+SETUPFILE: setup.org
 :PROPERTIES:
 :ID:       70414820-F3B0-429D-84DB-22920D8D7E8F
 :END:
 #+title: org-mode agenda
+#+SETUPFILE: setup.org
 #+FILETAGS: :orgmode:orgagenda
 - [See also [[id:9676C7B3-2F34-4CE8-87B5-1CDB656D7718][org-super-agenda-mode]].]
 
@@ -26,11 +26,15 @@ The extracted information is displayed in a special agenda buffer. This buffer i
   (defun agenda-todos nil
     (interactive)
     (org-agenda t "t"))
+  (defun agenda-tags nil
+    (interactive)
+    (org-agenda t "m"))
 
   (define-transient-command t/agenda ()
           "agenda related things"
           ["Actions"
            ("t" "todos" agenda-todos)
+           ("q" "tags" agenda-tags)
            ("l" "agenda files" (lambda () (interactive) (message "%s" org-agenda-files)))
            ("a" "Add file to agenda files" org-agenda-file-to-front)
            ("r" "remove file to agenda files" org-remove-file)])
@@ -44,7 +48,7 @@ The extracted information is displayed in a special agenda buffer. This buffer i
 #+END_SRC
 
 
-** WAITING add interactive function to add directory to scan agenda files :urgent:
+** WAITING add interactive function to add directory to scan agenda files
 
 [[/Users/tangrammer/.emacs.d/straight/repos/org/lisp/org.el::3136][If an entry is a directory, all files in that directory that are matched
 by `org-agenda-file-regexp' will be part of the file list.]]

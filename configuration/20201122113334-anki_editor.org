@@ -8,7 +8,7 @@ config from
 https://yiufung.net/post/anki-org/ and
 https://github.com/yiufung/dot-emacs/blob/master/init.el
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 (use-package anki-editor
   :after org
 :straight t
