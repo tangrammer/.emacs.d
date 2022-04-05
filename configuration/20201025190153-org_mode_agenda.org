@@ -1,8 +1,9 @@
+#+SETUPFILE: setup.org
 :PROPERTIES:
 :ID:       70414820-F3B0-429D-84DB-22920D8D7E8F
 :END:
 #+title: org-mode agenda
-
+#+FILETAGS: :orgmode:orgagenda
 - [See also [[id:9676C7B3-2F34-4CE8-87B5-1CDB656D7718][org-super-agenda-mode]].]
 
 - https://orgmode.org/manual/Agenda-Views.html

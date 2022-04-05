@@ -1,0 +1,5 @@
+#+FILETAGS: :emacs_conf
+#+STARTUP: overview
+
+* more startup options here
+https://orgmode.org/manual/In_002dbuffer-Settings.html
