@@ -58,3 +58,9 @@ org-agenda-files
 (setq org-agenda-files '("~/org-roam"))
 
 #+END_SRC
+
+** IN PROGRESS combine tags in search
+https://orgmode.org/manual/Matching-tags-and-properties.html
+
+=agenda-tags=
+eg:`rpi/TODO`

@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       99CBBFAE-C890-4DC2-B9BB-47F74F16BF01
+:END:
+#+title: lsp
+
+language server
+
+https://emacs-lsp.github.io/lsp-mode/page/installation/
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package lsp-mode
+  :straight t
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (clojure-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+(setq lsp-clojure-custom-server-command '("bash" "-c" "clojure-lsp"))
+
+;;
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package lsp-ui
+  :straight t
+  :commands lsp-ui-mode)
+(use-package lsp-treemacs
+  :straight t
+  :commands lsp-treemacs-errors-list)
+#+END_SRC
