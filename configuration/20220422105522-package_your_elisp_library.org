@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       4043BA4A-F90D-4BE4-90CD-CC287D254C2E
+:END:
+#+title: package your elisp library
+* cask
+:PROPERTIES:
+:ID:       2C722A01-7642-412C-9FD1-D40AAE14F9FD
+:END:
+https://github.com/cask/cask
+
+
+Cask can be likened to venv or maven for Emacs Lisp development, although, as with all things emacs, is decidedly less sophisticated (but no less arcane).
+
+Cask simplifies sandboxing that more expert elisp developers accomplish directly with emacs’s built-in -Q, --batch, and --eval switches. Within the sandbox, Cask provisions dependencies via a user-defined “Cask” file analogous to requirements-dev.txt or pom.xml.
