@@ -142,3 +142,16 @@ just a quick shortcut for refresh/reset repl compiling problem
     (with-current-buffer (current-buffer)
       (cider-interactive-eval "(remove-ns (symbol (str *ns*)))")))
 #+END_SRC
+
+
+**** run-cljs-test
+
+#+BEGIN_SRC emacs-lisp :results silent
+
+(defun test-cljs-ns()
+    (interactive)
+    (with-current-buffer (current-buffer)
+      (cider-interactive-eval "(cljs.test/run-tests *ns*)")))
+
+
+#+END_SRC
