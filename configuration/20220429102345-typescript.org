@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       0797E3B3-B9D2-4AFC-B82A-0081395D3905
+:END:
+#+title: typescript
+
+* typescript-mode
+https://github.com/emacs-typescript/typescript.el
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package typescript-mode
+  :straight t
+  ;; :hook hs-minor-mode
+  )
+
+#+END_SRC
