@@ -9,7 +9,6 @@ https://github.com/emacs-typescript/typescript.el
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package typescript-mode
   :straight t
-  ;; :hook hs-minor-mode
-  )
+  :init (remove-hook 'electric-indent-mode 'typescript-mode ))
 
 #+END_SRC
