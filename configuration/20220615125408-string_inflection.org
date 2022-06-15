@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       BADC699C-E401-4292-ABBE-12BA04755360
+:END:
+#+title: string inflection
+
+* akicho8/string-inflection
+
+https://github.com/akicho8/string-inflection
+underscore -> UPCASE -> CamelCase conversion of names
+
+
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package string-inflection
+  :straight (string-inflection :type git :host github :repo "akicho8/string-inflection")
+  )
+
+
+ #+END_SRC
+
+
+ #+BEGIN_SRC emacs-lisp :results silent
+ (defun camelCase ()
+   (interactive)
+   (let ((text (buffer-substring (mark) (point))))
+     (kill-region (mark) (point))
+     (insert (string-inflection-camelcase-function text))))
+ #+END_SRC
