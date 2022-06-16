@@ -21,9 +21,17 @@ underscore -> UPCASE -> CamelCase conversion of names
 
 
  #+BEGIN_SRC emacs-lisp :results silent
- (defun camelCase ()
+ (defun case-camelCase ()
    (interactive)
    (let ((text (buffer-substring (mark) (point))))
      (kill-region (mark) (point))
      (insert (string-inflection-camelcase-function text))))
+
+
+ (defun case-kebab-case ()
+   (interactive)
+   (let ((text (buffer-substring (mark) (point))))
+     (kill-region (mark) (point))
+     (insert (string-inflection-kebab-case-function text))))
+
  #+END_SRC
