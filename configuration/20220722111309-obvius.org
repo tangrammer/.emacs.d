@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       D8E69214-9C54-4069-9B7E-9C836B920197
+:END:
+#+title: obvius
+#+SETUPFILE: setup.org
+#+FILETAGS: :comments
+
+
+* https://github.com/alphapapa/obvious.el
+Who needs comments when the code is so obvious
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(use-package obvious
+  :straight (obvious :type git :host github :repo "alphapapa/obvious.el")
+  )
+
+#+END_SRC
