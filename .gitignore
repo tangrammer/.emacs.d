@@ -37,3 +37,7 @@ org-roam.db
 /logview-cache.extmap
 /backup
 /org-roam.bak
+/auto-save-list/
+/workspace/
+/.lsp-session-v1
+/backups/
