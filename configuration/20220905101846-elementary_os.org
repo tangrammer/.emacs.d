@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       462daf8e-0833-41ef-9ba7-0e0bd1ec6d97
+:END:
+#+title: elementary os
+
+Steps
+----
+
+- fix gpg var in init.el
+- install clojure-lsp
+ #+BEGIN_SRC
+  sudo bash < <(curl -s https://raw.githubusercontent.com/clojure-lsp/clojure-lsp/master/install)
+ #+END_SRC
+
+- install magit with emacs package-install
+
+- install clojure kondo
+
+     #+BEGIN_SRC
+curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo
+chmod +x install-clj-kondo
+./install-clj-kondo
+
+   #+END_SRC
