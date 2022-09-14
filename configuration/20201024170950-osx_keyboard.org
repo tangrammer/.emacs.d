@@ -9,7 +9,9 @@
 ** configure OSX keyboard
  #+BEGIN_SRC emacs-lisp
  ;; osx keys
- (setq default-input-method "MacOSX")
- (setq mac-command-modifier 'meta)
- (setq mac-option-modifier 'none)
+
+ (when (string= "darwin" system-type)
+   (setq default-input-method "MacOSX")
+   (setq mac-command-modifier 'meta)
+   (setq mac-option-modifier 'none))
  #+END_SRC

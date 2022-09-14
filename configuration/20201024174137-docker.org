@@ -28,7 +28,7 @@ https://github.com/emacs-pe/docker-tramp.el
 * TODO research  manage docker from emacs
 https://github.com/Silex/docker.el
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC untangle :results silent
 ;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 (use-package docker

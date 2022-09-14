@@ -41,3 +41,4 @@ org-roam.db
 /workspace/
 /.lsp-session-v1
 /backups/
+/eln-cache/

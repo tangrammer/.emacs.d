@@ -75,7 +75,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(epg-gpg-program "/usr/local/bin/gpg")
+ '(epg-gpg-program (if (string= "darwin" system-type)
+                       "/usr/local/bin/gpg"
+                       "/usr/bin/gpg"
+                       )
+                   )
  '(safe-local-variable-values
    '((org-roam-db-location . "~/.emacs.d/configuration/emacs-configuration.db")
      (org-roam-directory . "~/.emacs.d/configuration"))))
