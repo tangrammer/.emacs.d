@@ -67,6 +67,7 @@ and initially the intention was to call this logic in ob-tangle.el, but neverthe
 (org-babel-do-load-languages
   'org-babel-load-languages
   '((clojure . t)
+    (restclient . t)
     (dot . t)
     (shell . t)
     (sql . t)
