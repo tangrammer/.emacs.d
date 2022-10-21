@@ -155,3 +155,17 @@ just a quick shortcut for refresh/reset repl compiling problem
 
 
 #+END_SRC
+
+
+* core/tap>
+:PROPERTIES:
+:ID:       F9675E63-4DB7-407E-86B7-DBA2E2626760
+:END:
+#+BEGIN_SRC emacs-lisp :results silent
+(defun tangrammer-cider-tap>()
+    (interactive)
+    (with-current-buffer (current-buffer)
+      (cider-interactive-eval "(add-tap (bound-fn* clojure.pprint/pprint))")))
+
+
+#+END_SRC
