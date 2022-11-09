@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       892D3A4D-14E3-4D60-94DA-9410D6010331
+:END:
+#+title: ruca
+
+
+specifics of ruca & yorba
+
+
+#+BEGIN_SRC emacs-lisp :results silent
+(defun yorba (choice)
+  (interactive
+   (let ((completion-ignore-case  t))
+     (list (completing-read "Choose: " '("clojure-dev" "node-dev" "app-dev") nil t))))
+  (let ((dir (cond ((string= choice "clojure-dev" ) "http://localhost:3001")
+                   ((string= choice "node-dev" ) "http://localhost:3007/status")
+                   ((string= choice "app-dev" ) "http://localhost:3081"))))
+    (browse-url dir)))
+
+#+END_SRC
