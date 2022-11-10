@@ -11,10 +11,22 @@ specifics of ruca & yorba
 (defun yorba (choice)
   (interactive
    (let ((completion-ignore-case  t))
-     (list (completing-read "Choose: " '("clojure-dev" "node-dev" "app-dev") nil t))))
-  (let ((dir (cond ((string= choice "clojure-dev" ) "http://localhost:3001")
-                   ((string= choice "node-dev" ) "http://localhost:3007/status")
-                   ((string= choice "app-dev" ) "http://localhost:3081"))))
+     (list (completing-read "Choose: " '("clojure-local" "node-local" "app-local"
+                                         "clojure-dev" "node-dev" "app-dev"
+                                         "clojure-staging" "node-staging" "app-staging"
+                                         "clojure-prod" "node-prod" "app-prod") nil t))))
+  (let ((dir (cond ((string= choice "clojure-local" ) "http://localhost:3001")
+                   ((string= choice "clojure-dev" ) "https://dev-datasource.yorba.app/")
+                   ((string= choice "clojure-staging" ) "https://staging-datasource.yorba.app/")
+                   ((string= choice "clojure-prod" ) "https://datasource.yorba.app/")
+                   ((string= choice "node-local" ) "http://localhost:3007/status")
+                   ((string= choice "node-dev" ) "https://dev-api.yorba.app/status")
+                   ((string= choice "node-staging" ) "https://staging-api.yorba.app/status")
+                   ((string= choice "node-prod" ) "https://api.yorba.app/status")
+                   ((string= choice "app-local" ) "http://localhost:3081")
+                   ((string= choice "app-dev" ) "https://dev.yorba.app/")
+                   ((string= choice "app-staging" ) "https://staging.yorba.app/")
+                   ((string= choice "app-production" ) "https://yorba.app/"))))
     (browse-url dir)))
 
 #+END_SRC
