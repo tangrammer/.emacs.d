@@ -2,16 +2,18 @@
 :ID:       6C0A8A8F-69F8-46C0-8EEE-E93B4BC06682
 :END:
 #+TITLE: org-mode
+#+FILETAGS: :orgmode
 [[id:B39AECDA-33D7-4717-8044-E40BD40B05EC][major-mode]]
 
 * config
 
   #+BEGIN_SRC emacs-lisp :results silent
-  (setq org-edit-src-content-indentation 0
-        org-src-tab-acts-natively t
-        org-src-fontify-natively t
-        org-confirm-babel-evaluate nil
-        org-support-shift-select 'always)
+    (setq org-edit-src-content-indentation 0
+          org-src-tab-acts-natively t
+          org-src-fontify-natively t
+          org-confirm-babel-evaluate nil
+          org-support-shift-select 'always)
+
 
 
   #+END_SRC
@@ -99,6 +101,10 @@ https://emacs.stackexchange.com/a/20762/13373
    =C-c . (org-time-stamp)=
    =C-c ! (org-time-stamp-inactive)=
 
+* structure templates
+#+BEGIN_SRC emacs-lisp :results silent
+(require 'org-tempo)
+#+END_SRC
 
 * org-outer-indent
 https://github.com/rougier/org-outer-indent
@@ -146,12 +152,12 @@ Make invisible parts of Org elements appear visible.
 
 https://github.com/awth13/org-appear
 
-#+BEGIN_SRC untangle :results silent
 
-(use-package org-appear
-  :straight (org-appear :type git :host github :repo "awth13/org-appear")
-  :hook org-mode
-  )
+#+BEGIN_SRC emacs-lisp :results silent
+(straight-use-package '(org-appear :type git :host github :repo "awth13/org-appear"))
+
+
+(add-hook 'org-mode-hook 'org-appear-mode)
 
 
 #+END_SRC
@@ -168,7 +174,7 @@ https://github.com/awth13/org-appear
 
 
 
-* WAITING orq-ql
+* WAITING orq-ql                                             :query_language:
   https://github.com/alphapapa/org-ql
   An Org-mode query language, including search commands and saved views
 
@@ -209,8 +215,8 @@ Make invisible parts of Org elements appear visible.
 #+BEGIN_SRC emacs-lisp :results silent
 (use-package org-appear
   :straight (org-appear :type git :host github :repo "awth13/org-appear")
-  :hook org-mode-hook
   )
+(add-hook 'org-mode-hook 'org-appear-mode)
 
 #+END_SRC
 
@@ -231,3 +237,6 @@ It is using transient, the package to create interactive menus magit uses.
   )
 
 #+END_SRC
+
+
+* tagging                                                               :tags:
