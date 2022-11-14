@@ -6,7 +6,7 @@
 
 specifics of ruca & yorba
 
-
+* open app based on env and service
 #+BEGIN_SRC emacs-lisp :results silent
 (defun yorba (choice)
   (interactive
@@ -29,4 +29,27 @@ specifics of ruca & yorba
                    ((string= choice "app-production" ) "https://yorba.app/"))))
     (browse-url dir)))
 
+#+END_SRC
+
+* yorba-clj deployment based on env
+#+BEGIN_SRC emacs-lisp :results silent
+(setq yorba-repo "~/git/ruca/yorba-clj")
+
+(defun adapt-branch (deployment)
+(cond ((string= choice "dev" ) "dev")
+      ((string= choice "staging" ) "staging")
+      ((string= choice "production" ) "master")))
+
+(defun yorba-deployment (choice bool)
+  (interactive
+   (let ((completion-ignore-case  t))
+     (let* ((old (completing-read "Choose: " '("dev" "staging" "production") nil t))
+           (new (y-or-n-p (format "Are you sure to deploy to '%s'? " old))))
+      (list old new))))
+  (if bool
+      (progn
+        (shell-command-to-string (format "%s/cicd/trigger-deploy %s %s" yorba-repo choice (adapt-branch choice)))
+        (message (format "deployment triggered to %s" choice))
+        )
+    (message (format "Answering NO, avoiding deployment to %s "choice))))
 #+END_SRC
